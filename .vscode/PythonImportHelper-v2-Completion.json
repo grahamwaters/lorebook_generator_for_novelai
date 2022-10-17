@@ -59,11 +59,38 @@
         "documentation": {}
     },
     {
+        "label": "wikipedia",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "wikipedia",
+        "description": "wikipedia",
+        "detail": "wikipedia",
+        "documentation": {}
+    },
+    {
         "label": "preprocess",
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\n## The goal: generate a lorebook dict from a list of text entries.\n# list of text entries\nentries = [\n    'Testing 1',\n    'Testing 2',\n    'Testing 3'",
+        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    for name in list_of_names:\n        try:\n            entry = wikipedia.page(name)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "generate_entries_from_list",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    for name in list_of_names:\n        try:\n            entry = wikipedia.page(name)\n            entries.append(entry)\n            entry_names.append(entry.title)\n        except:\n            print('could not find entry for', name)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def main():\n    people = input('Enter a list of people, separated by commas: ')\n    # entries, entry_names = generate_entries_from_list(lore_dict['people'])\n    entries, entry_names = generate_entries_from_list(people)\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    # create a list of the keys for each entry (all proper nouns, places and dates)\n    keys = []\n    for entry in entries:\n        entry_keys = []\n        for word, tag in preprocess(entry):",
         "detail": "main",
         "documentation": {}
     },
@@ -72,34 +99,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\nwith open('Ripple (Mon Oct 17 2022).lorebook') as f:\n    lore_dict = json.load(f)\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\n## The goal: generate a lorebook dict from a list of text entries.\n# list of text entries",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "entries",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "entries = [\n    'Testing 1',\n    'Testing 2',\n    'Testing 3'\n]\nentry_names = [\n    'Test 1',\n    'Test 2',\n    'Test 3'\n]",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "entry_names",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "entry_names = [\n    'Test 1',\n    'Test 2',\n    'Test 3'\n]\n# add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n# create a list of the keys for each entry (all proper nouns, places and dates)\nkeys = []\nfor entry in entries:\n    entry_keys = []",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "keys",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "keys = []\nfor entry in entries:\n    entry_keys = []\n    for word, tag in preprocess(entry):\n        if tag == 'NNP' or tag == 'NNPS' or tag == 'CD':\n            entry_keys.append(word)\n    keys.append(entry_keys)\n# keys update 2\n# add any words in the entry that are unique to that entry compared to all other entries in the lorebook\nfor i in range(len(entries)):",
+        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\nwith open('Ripple (Mon Oct 17 2022).lorebook') as f:\n    lore_dict = json.load(f)\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia",
         "detail": "main",
         "documentation": {}
     }

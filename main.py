@@ -11,6 +11,8 @@ from nltk.corpus import stopwords
 
 from nltk.tokenize import word_tokenize
 from nltk.tag import pos_tag
+import wikipedia
+
 
 stop_words = set(stopwords.words('english'))
 
@@ -24,83 +26,100 @@ def preprocess(sent):
     sent = nltk.pos_tag(sent)
     return sent
 
+def generate_entries_from_list(list_of_names):
+    # enter a list of people's names and get a list of entries, from wikipedia
+    entries = []
+    for name in list_of_names:
+        try:
+            entry = wikipedia.page(name)
+            entries.append(entry)
+            entry_names.append(entry.title)
+        except:
+            print('could not find entry for', name)
+        try:
+            entry = wikipedia.summary(name)
+            entries.append(entry)
+            entry_names.append(entry.title)
+        except:
+            print('could not find summary for', name)
+    return entries, entry_names
 
 
 
 
 ## The goal: generate a lorebook dict from a list of text entries.
 # list of text entries
-entries = [
-    'Testing 1',
-    'Testing 2',
-    'Testing 3'
-]
-entry_names = [
-    'Test 1',
-    'Test 2',
-    'Test 3'
-]
+# entries = [
+#     'Testing 1',
+#     'Testing 2',
+#     'Testing 3'
+# ]
+# entry_names = [
+#     'Test 1',
+#     'Test 2',
+#     'Test 3'
+# ]
 
+def main():
+    people = input('Enter a list of people, separated by commas: ')
+    # entries, entry_names = generate_entries_from_list(lore_dict['people'])
+    entries, entry_names = generate_entries_from_list(people)
+    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.
 
+    # create a list of the keys for each entry (all proper nouns, places and dates)
+    keys = []
+    for entry in entries:
+        entry_keys = []
+        for word, tag in preprocess(entry):
+            if tag == 'NNP' or tag == 'NNPS' or tag == 'CD':
+                entry_keys.append(word)
+        keys.append(entry_keys)
 
+    # keys update 2
+    # add any words in the entry that are unique to that entry compared to all other entries in the lorebook
+    for i in range(len(entries)):
+        for j in range(len(entries)):
+            if i != j:
+                for word in entries[i].split():
+                    if word not in entries[j].split() and word not in keys[i]:
+                        keys[i].append(word)
 
-
-
-
-
-# add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.
-
-# create a list of the keys for each entry (all proper nouns, places and dates)
-keys = []
-for entry in entries:
-    entry_keys = []
-    for word, tag in preprocess(entry):
-        if tag == 'NNP' or tag == 'NNPS' or tag == 'CD':
-            entry_keys.append(word)
-    keys.append(entry_keys)
-
-# keys update 2
-# add any words in the entry that are unique to that entry compared to all other entries in the lorebook
-for i in range(len(entries)):
-    for j in range(len(entries)):
-        if i != j:
-            for word in entries[i].split():
-                if word not in entries[j].split() and word not in keys[i]:
-                    keys[i].append(word)
-
-# add the entries to the lorebook dictionary
-for i in range(len(entries)):
-    lore_dict['entries'].append({
-        "text": entries[i],
-        "contextConfig": {
-          "prefix": "",
-          "suffix": "\n",
-          "tokenBudget": 2048,
-          "reservedTokens": 0,
-          "budgetPriority": 400,
-          "trimDirection": "trimBottom",
-          "insertionType": "newline",
-          "maximumTrimType": "sentence",
-          "insertionPosition": -1
-        },
-        "lastUpdatedAt": 1666044123984,
-        "displayName": entry_names[i],
-        "id": ids[i],
-        "keys": keys[i],
-        "searchRange": 1000,
-        "enabled": True,
-        "forceActivation": False,
-        "keyRelative": False,
-        "nonStoryActivatable": False,
-        "category": "",
-        "loreBiasGroups": [
-          {
-            "phrases": [],
-            "ensureSequenceFinish": False,
-            "generateOnce": True,
-            "bias": 0,
+    # add the entries to the lorebook dictionary
+    for i in range(len(entries)):
+        lore_dict['entries'].append({
+            "text": entries[i],
+            "contextConfig": {
+            "prefix": "",
+            "suffix": "\n",
+            "tokenBudget": 2048,
+            "reservedTokens": 0,
+            "budgetPriority": 400,
+            "trimDirection": "trimBottom",
+            "insertionType": "newline",
+            "maximumTrimType": "sentence",
+            "insertionPosition": -1
+            },
+            "lastUpdatedAt": 1666044123984,
+            "displayName": entry_names[i],
+            "id": ids[i],
+            "keys": keys[i],
+            "searchRange": 1000,
             "enabled": True,
-            "whenInactive": False
-          }
-        ]
-      })
+            "forceActivation": False,
+            "keyRelative": False,
+            "nonStoryActivatable": False,
+            "category": "",
+            "loreBiasGroups": [
+            {
+                "phrases": [],
+                "ensureSequenceFinish": False,
+                "generateOnce": True,
+                "bias": 0,
+                "enabled": True,
+                "whenInactive": False
+            }
+            ]
+        })
+
+
+main()
