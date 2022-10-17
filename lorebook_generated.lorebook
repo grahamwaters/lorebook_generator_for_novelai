@@ -1,0 +1,155 @@
+{
+  "lorebookVersion": 4,
+  "entries": [
+    {
+      "text": "The Roman Empire burned in the year 476. The emperor Valens was killed by his own soldiers, and a civil war broke out among those who wished to succeed him. After years of fighting between rival factions, the empire fell apart into separate kingdoms - most notably that of Constantinople (now known as Istanbul). This marked the end of an era which had lasted for nearly two thousand years.",
+      "contextConfig": {
+        "prefix": "",
+        "suffix": "\n",
+        "tokenBudget": 2048,
+        "reservedTokens": 0,
+        "budgetPriority": 400,
+        "trimDirection": "trimBottom",
+        "insertionType": "newline",
+        "maximumTrimType": "sentence",
+        "insertionPosition": -1
+      },
+      "lastUpdatedAt": 1666044123984,
+      "displayName": "Rome Burning",
+      "id": "642723d1-a4a1-47a3-a63f-d36aee33de1b",
+      "keys": [
+        "Rome",
+        "Emperor",
+        "476 AD"
+      ],
+      "searchRange": 1000,
+      "enabled": true,
+      "forceActivation": false,
+      "keyRelative": false,
+      "nonStoryActivatable": false,
+      "category": "",
+      "loreBiasGroups": [
+        {
+          "phrases": [],
+          "ensureSequenceFinish": false,
+          "generateOnce": true,
+          "bias": 0,
+          "enabled": true,
+          "whenInactive": false
+        }
+      ]
+    },
+    {
+      "text": "Testing 1",
+      "contextConfig": {
+        "prefix": "",
+        "suffix": "\n",
+        "tokenBudget": 2048,
+        "reservedTokens": 0,
+        "budgetPriority": 400,
+        "trimDirection": "trimBottom",
+        "insertionType": "newline",
+        "maximumTrimType": "sentence",
+        "insertionPosition": -1
+      },
+      "lastUpdatedAt": 1666044123984,
+      "displayName": "Test 1",
+      "id": "16422c16-a45b-4c44-bdf8-1b53fe416d3f",
+      "keys": [
+        "1"
+      ],
+      "searchRange": 1000,
+      "enabled": true,
+      "forceActivation": false,
+      "keyRelative": false,
+      "nonStoryActivatable": false,
+      "category": "",
+      "loreBiasGroups": [
+        {
+          "phrases": [],
+          "ensureSequenceFinish": false,
+          "generateOnce": true,
+          "bias": 0,
+          "enabled": true,
+          "whenInactive": false
+        }
+      ]
+    },
+    {
+      "text": "Testing 2",
+      "contextConfig": {
+        "prefix": "",
+        "suffix": "\n",
+        "tokenBudget": 2048,
+        "reservedTokens": 0,
+        "budgetPriority": 400,
+        "trimDirection": "trimBottom",
+        "insertionType": "newline",
+        "maximumTrimType": "sentence",
+        "insertionPosition": -1
+      },
+      "lastUpdatedAt": 1666044123984,
+      "displayName": "Test 2",
+      "id": "53244e05-ab86-4725-ab30-6f6202787099",
+      "keys": [
+        "2"
+      ],
+      "searchRange": 1000,
+      "enabled": true,
+      "forceActivation": false,
+      "keyRelative": false,
+      "nonStoryActivatable": false,
+      "category": "",
+      "loreBiasGroups": [
+        {
+          "phrases": [],
+          "ensureSequenceFinish": false,
+          "generateOnce": true,
+          "bias": 0,
+          "enabled": true,
+          "whenInactive": false
+        }
+      ]
+    },
+    {
+      "text": "Testing 3",
+      "contextConfig": {
+        "prefix": "",
+        "suffix": "\n",
+        "tokenBudget": 2048,
+        "reservedTokens": 0,
+        "budgetPriority": 400,
+        "trimDirection": "trimBottom",
+        "insertionType": "newline",
+        "maximumTrimType": "sentence",
+        "insertionPosition": -1
+      },
+      "lastUpdatedAt": 1666044123984,
+      "displayName": "Test 3",
+      "id": "c3ae8782-9859-49d6-ba0b-c49ad5b8773e",
+      "keys": [
+        "3"
+      ],
+      "searchRange": 1000,
+      "enabled": true,
+      "forceActivation": false,
+      "keyRelative": false,
+      "nonStoryActivatable": false,
+      "category": "",
+      "loreBiasGroups": [
+        {
+          "phrases": [],
+          "ensureSequenceFinish": false,
+          "generateOnce": true,
+          "bias": 0,
+          "enabled": true,
+          "whenInactive": false
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "orderByKeyLocations": false
+  },
+  "categories": []
+}

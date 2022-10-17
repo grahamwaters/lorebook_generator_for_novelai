@@ -7,5 +7,100 @@
         "description": "pandas",
         "detail": "pandas",
         "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "nltk",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "nltk",
+        "description": "nltk",
+        "detail": "nltk",
+        "documentation": {}
+    },
+    {
+        "label": "sent_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
+        "isExtraImport": true,
+        "detail": "nltk.tokenize",
+        "documentation": {}
+    },
+    {
+        "label": "word_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
+        "isExtraImport": true,
+        "detail": "nltk.tokenize",
+        "documentation": {}
+    },
+    {
+        "label": "stopwords",
+        "importPath": "nltk.corpus",
+        "description": "nltk.corpus",
+        "isExtraImport": true,
+        "detail": "nltk.corpus",
+        "documentation": {}
+    },
+    {
+        "label": "pos_tag",
+        "importPath": "nltk.tag",
+        "description": "nltk.tag",
+        "isExtraImport": true,
+        "detail": "nltk.tag",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\n## The goal: generate a lorebook dict from a list of text entries.\n# list of text entries\nentries = [\n    'Testing 1',\n    'Testing 2',\n    'Testing 3'",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "stop_words",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\nwith open('Ripple (Mon Oct 17 2022).lorebook') as f:\n    lore_dict = json.load(f)\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\n## The goal: generate a lorebook dict from a list of text entries.\n# list of text entries",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "entries",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "entries = [\n    'Testing 1',\n    'Testing 2',\n    'Testing 3'\n]\nentry_names = [\n    'Test 1',\n    'Test 2',\n    'Test 3'\n]",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "entry_names",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "entry_names = [\n    'Test 1',\n    'Test 2',\n    'Test 3'\n]\n# add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n# create a list of the keys for each entry (all proper nouns, places and dates)\nkeys = []\nfor entry in entries:\n    entry_keys = []",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "keys",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "keys = []\nfor entry in entries:\n    entry_keys = []\n    for word, tag in preprocess(entry):\n        if tag == 'NNP' or tag == 'NNPS' or tag == 'CD':\n            entry_keys.append(word)\n    keys.append(entry_keys)\n# keys update 2\n# add any words in the entry that are unique to that entry compared to all other entries in the lorebook\nfor i in range(len(entries)):",
+        "detail": "main",
+        "documentation": {}
     }
 ]
