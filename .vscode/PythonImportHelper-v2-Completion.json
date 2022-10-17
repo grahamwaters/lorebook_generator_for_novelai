@@ -1,5 +1,13 @@
 [
     {
+        "label": "topics",
+        "importPath": "pydoc_data.topics",
+        "description": "pydoc_data.topics",
+        "isExtraImport": true,
+        "detail": "pydoc_data.topics",
+        "documentation": {}
+    },
+    {
         "label": "pandas",
         "kind": 6,
         "isExtraImport": true,
@@ -15,6 +23,15 @@
         "importPath": "json",
         "description": "json",
         "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
         "documentation": {}
     },
     {
@@ -72,7 +89,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    for name in list_of_names:\n        try:\n            entry = wikipedia.page(name)",
+        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    for name in list_of_names:\n        if name != '':",
         "detail": "main",
         "documentation": {}
     },
@@ -81,7 +98,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    for name in list_of_names:\n        try:\n            entry = wikipedia.page(name)\n            entries.append(entry)\n            entry_names.append(entry.title)\n        except:\n            print('could not find entry for', name)",
+        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    for name in list_of_names:\n        if name != '':\n            try:\n                entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant\n                entries.append(entry)\n                entry_names.append(entry.title)",
         "detail": "main",
         "documentation": {}
     },
@@ -90,7 +107,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    people = input('Enter a list of people, separated by commas: ')\n    # entries, entry_names = generate_entries_from_list(lore_dict['people'])\n    entries, entry_names = generate_entries_from_list(people)\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    # create a list of the keys for each entry (all proper nouns, places and dates)\n    keys = []\n    for entry in entries:\n        entry_keys = []\n        for word, tag in preprocess(entry):",
+        "peekOfCode": "def main():\n    with open('lorebook_example.lorebook') as f:\n        lore_dict = json.load(f)\n    topics_list = []\n    input_text = 'start'\n    while input_text != '':\n        input_text = input('Enter a topic: ')\n        topics_list.append(input_text)\n    assert(type(topics_list) == list) # make sure it's a list\n    # entries, entry_names = generate_entries_from_list(lore_dict['people'])",
         "detail": "main",
         "documentation": {}
     },
@@ -99,7 +116,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\nwith open('Ripple (Mon Oct 17 2022).lorebook') as f:\n    lore_dict = json.load(f)\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia",
+        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []",
         "detail": "main",
         "documentation": {}
     }
