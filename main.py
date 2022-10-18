@@ -16,7 +16,9 @@ import wikipedia
 import tqdm
 from tqdm import tqdm
 import datetime
-
+import warnings
+warnings.filterwarnings('ignore')
+# get the list of names from the topics file
 stop_words = set(stopwords.words('english'))
 
 # import the json file lorebook_example.lorebook
@@ -128,7 +130,15 @@ def generate_entries_from_list(list_of_names):
         ids.append(str(uuid.uuid4()))
     return entries, entry_names, ids,entry_keywords
 
-
+def check_json_for_entry(entry_name, json_file):
+    # check if an entry already exists in the json file
+    with open(json_file, 'r') as f:
+        data = json.load(f)
+    for entry in range(len(data['entries'])):
+        if data['entries'][entry]['displayName'] == entry_name:
+            print(f'{entry_name} - entry already exists')
+            return True
+    return False
 
 ## The goal: generate a lorebook dict from a list of text entries.
 # list of text entries
@@ -146,6 +156,10 @@ def generate_entries_from_list(list_of_names):
 from tqdm import tqdm
 import pandas as pd
 import wikipedia
+import re
+import random
+
+maxlinksperpage = 30
 
 def main():
 
@@ -154,11 +168,14 @@ def main():
 
     # check those article pages for length (if they are too short, skip them)
     # if they are long enough, and are not already in the list, add them to the list
-    list_of_names = pd.read_csv('characters.csv')
-    print(type(list_of_names))
-    list_of_names = [x[0] for x in list_of_names.values.tolist()]
+    list_of_names = pd.read_csv('characters.csv')['Name'].tolist()
+    # print(type(list_of_names))
+    # list_of_names = [x[0] for x in list_of_names.values.tolist()]
+    # only keep names in the list of names that are not already in the json file
+    list_of_names = [x for x in list_of_names if not check_json_for_entry(x, 'lorebook_generated.lorebook')]
     entries = []
-    entry_names = []
+    entry_names = list_of_names
+    # for each Name
     for name in tqdm(list_of_names):
         if name != '':
             try:
@@ -166,18 +183,33 @@ def main():
                 page = wikipedia.page(entry)
                 entry = page.content
                 links = page.links
+                # remove duplicate links
+                links = list(dict.fromkeys(links))
+                # random sample of maxlinksperpage links
+                links = random.sample(links, min(len(links), maxlinksperpage))
                 print(f'Adding {name} to entries')
-                for link in tqdm(links):
+                for link in links:
+                    if link.find('film')!=-1:
+                        continue # skip film pages
                     #print("Checking link ", link,end='')
                     # for every 2nd degree page
                     try:
                         entry = wikipedia.search(link)[0] # get the first result from wikipedia, which is usually the most relevant
                         page = wikipedia.page(entry)
                         #!print(" length:", len(page.content))
+
+
+
                         if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content):#?or page.content.find('born ')!=-1): # if the page is long enough and not already in the list, add it
                             entries.append(page.content)
                             entry_names.append(link)
                             print(f' ==> Adding {link} to the list of entries')
+
+                        # if is place
+                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content) and (page.content.find('Geography')!=-1 and page.content.find('History')!=-1 and page.content.find(r'Demographics|Demography')!=-1):
+                            entries.append(page.content)
+                            entry_names.append(link)
+                            print(f' ==> Adding LOC {link} to the list of entries')
                     except:
                         pass
             except Exception as e:
@@ -185,7 +217,13 @@ def main():
                 continue
         df = pd.DataFrame(entry_names)
         # append to the csv file
-        df.to_csv('characters.csv', mode='a', header=False)
+        prev_chars = pd.read_csv('characters.csv')
+        # add the new characters to the list
+        prev_chars = prev_chars.append(df)
+        # remove duplicates
+        prev_chars = prev_chars.drop_duplicates()
+        # save the new list
+        prev_chars.to_csv('characters.csv', index=False)
     # save entry_names to a csv
     df = pd.DataFrame(entry_names)
     df.to_csv('characters.csv', index=False)
