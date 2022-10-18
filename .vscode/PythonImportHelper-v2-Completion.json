@@ -159,7 +159,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv('characters.csv')\n    print(type(list_of_names))\n    list_of_names = list_of_names['Name'].tolist()\n    entries = []\n    entry_names = []\n    for name in tqdm(list_of_names):\n        if name != '':",
+        "peekOfCode": "def main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv('characters.csv')\n    print(type(list_of_names))\n    list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    entries = []\n    entry_names = []\n    for name in tqdm(list_of_names):\n        if name != '':",
         "detail": "main",
         "documentation": {}
     },

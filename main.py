@@ -156,7 +156,7 @@ def main():
     # if they are long enough, and are not already in the list, add them to the list
     list_of_names = pd.read_csv('characters.csv')
     print(type(list_of_names))
-    list_of_names = list_of_names['Name'].tolist()
+    list_of_names = [x[0] for x in list_of_names.values.tolist()]
     entries = []
     entry_names = []
     for name in tqdm(list_of_names):
@@ -174,7 +174,7 @@ def main():
                         entry = wikipedia.search(link)[0] # get the first result from wikipedia, which is usually the most relevant
                         page = wikipedia.page(entry)
                         #!print(" length:", len(page.content))
-                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content or page.content.find('born ')!=-1): # if the page is long enough and not already in the list, add it
+                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content):#?or page.content.find('born ')!=-1): # if the page is long enough and not already in the list, add it
                             entries.append(page.content)
                             entry_names.append(link)
                             print(f' ==> Adding {link} to the list of entries')
@@ -184,8 +184,8 @@ def main():
                 print(e)
                 continue
         df = pd.DataFrame(entry_names)
-        df.to_csv('characters.csv', index=False) # save the list of entries
-
+        # append to the csv file
+        df.to_csv('characters.csv', mode='a', header=False)
     # save entry_names to a csv
     df = pd.DataFrame(entry_names)
     df.to_csv('characters.csv', index=False)
