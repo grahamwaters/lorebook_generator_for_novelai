@@ -26,6 +26,15 @@
         "documentation": {}
     },
     {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
         "label": "uuid",
         "kind": 6,
         "isExtraImport": true,
@@ -85,11 +94,46 @@
         "documentation": {}
     },
     {
+        "label": "tqdm",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "preprocess",
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    for name in list_of_names:\n        if name != '':",
+        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "get_the_entities",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                entities.append(' '.join(c[0] for c in chunk.leaves()))\n    return entities\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia",
         "detail": "main",
         "documentation": {}
     },
@@ -98,7 +142,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    for name in list_of_names:\n        if name != '':\n            try:\n                entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant\n                entries.append(entry)\n                entry_names.append(entry.title)",
+        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    for name in tqdm(list_of_names):\n        if name != '':\n            try:\n                entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant\n                page = wikipedia.page(entry)",
         "detail": "main",
         "documentation": {}
     },
@@ -107,7 +151,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    with open('lorebook_example.lorebook') as f:\n        lore_dict = json.load(f)\n    topics_list = []\n    input_text = 'start'\n    while input_text != '':\n        input_text = input('Enter a topic: ')\n        topics_list.append(input_text)\n    assert(type(topics_list) == list) # make sure it's a list\n    # entries, entry_names = generate_entries_from_list(lore_dict['people'])",
+        "peekOfCode": "def main():\n    with open('starter.lorebook') as f:\n        lore_dict = json.load(f)\n    topics_list = []\n    entry_keys = []\n    input_text = 'start'\n    while input_text != '':\n        input_text = input('Enter a topic: ')\n        topics_list.append(input_text)\n    assert(type(topics_list) == list) # make sure it's a list",
         "detail": "main",
         "documentation": {}
     },
@@ -116,7 +160,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []",
+        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):",
         "detail": "main",
         "documentation": {}
     }

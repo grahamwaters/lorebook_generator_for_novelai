@@ -1,7 +1,7 @@
 from pydoc_data.topics import topics
 import pandas as pd
 import json
-
+import re
 import uuid
 # import nltk
 # nltk.download('punkt')
@@ -13,7 +13,9 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.tag import pos_tag
 import wikipedia
-
+import tqdm
+from tqdm import tqdm
+import datetime
 
 stop_words = set(stopwords.words('english'))
 
@@ -25,22 +27,54 @@ def preprocess(sent):
     sent = nltk.pos_tag(sent)
     return sent
 
+def get_the_entities(content):
+    # get the entities from the text
+    entities = []
+    for sent in sent_tokenize(content):
+        for chunk in nltk.ne_chunk(preprocess(sent)):
+            if hasattr(chunk, 'label'):
+                entities.append(' '.join(c[0] for c in chunk.leaves()))
+    return entities
+
 def generate_entries_from_list(list_of_names):
     # enter a list of people's names and get a list of entries, from wikipedia
     entries = []
     entry_names = []
-    for name in list_of_names:
+    entry_keywords = []
+    for name in tqdm(list_of_names):
         if name != '':
             try:
                 entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant
+                page = wikipedia.page(entry)
+                entry = page.content
+                entry = re.sub(r'\([^)]*\)', ' ', entry) # remove anything in brackets
+                # strip the text of all special characters, and any escaped characters using regex
+                #!entry = re.sub(r'[^\w\s]',' ',entry)
+                # remove any nonalpha characters
+                entry = re.sub(r"[^a-zA-Z0-9,.?!'\;: ]",' ',entry).strip()
+                entry = re.sub(r'\n',' ',entry)
+
+                # \u patterns for unicode characters need to be removed, and replaced with the actual character
+                # remove all unicode characters
+                entry = re.sub(r'\\u[0-9a-fA-F]{4}',' ',entry)
+
+
+                entry = re.sub(r'\\',' ',entry)
+                entry = entry.replace('  ', ' ')
+                entry = entry.replace('  ', ' ')
                 entries.append(entry)
-                entry_names.append(entry.title)
+                entry_names.append(page.title)
+                # entry_keywords.append(get_the_entities(entry))
+                # there may be related links in the wikipedia page, which we can also add to the list of keywords later
+                related_links = page.links
+                entry_keywords.append(related_links)
             except:
                 print('could not find entry for', name)
                 try:
                     entry = wikipedia.search(name)[1] # get the second result from wikipedia, which is usually the most relevant
                     entries.append(entry)
-                    entry_names.append(entry.title)
+                    entry_names.append(page.title)
+                    # entry_keywords.append(entry_keywords)
                 except:
                     print('could not find summary for', name)
 
@@ -49,7 +83,7 @@ def generate_entries_from_list(list_of_names):
     ids = []
     for i in range(len(entries)):
         ids.append(str(uuid.uuid4()))
-    return entries, entry_names, ids
+    return entries, entry_names, ids,entry_keywords
 
 
 
@@ -69,42 +103,71 @@ def generate_entries_from_list(list_of_names):
 def main():
 
 
-    with open('lorebook_example.lorebook') as f:
+    with open('starter.lorebook') as f:
         lore_dict = json.load(f)
 
     topics_list = []
+    entry_keys = []
     input_text = 'start'
     while input_text != '':
         input_text = input('Enter a topic: ')
         topics_list.append(input_text)
     assert(type(topics_list) == list) # make sure it's a list
     # entries, entry_names = generate_entries_from_list(lore_dict['people'])
-    entries, entry_names, ids = generate_entries_from_list(topics_list)
+    entries, entry_names, ids,entry_keywords = generate_entries_from_list(topics_list)
     # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.
 
     # create a list of the keys for each entry (all proper nouns, places and dates)
     keys = []
+    keys_dict = {}
+    entry_id = 0
     for entry in entries:
-        entry_keys = []
+        keys = [] # reset the keys list, so we don't have duplicate keys
         for word, tag in preprocess(entry):
-            if tag == 'NNP' or tag == 'NNPS' or tag == 'CD':
-                entry_keys.append(word)
-        keys.append(entry_keys)
+            if (tag == 'NNP' or tag == 'NNPS' or tag == 'CD') and word not in keys\
+                and word not in stop_words and len(word) > 2: # remove stop words, and numbers greater than 2020 (which are probably years)
+                try:
+                    if int(word) < 2020:
+                        continue
+                except:
+                    pass
+                keys.append(word)
+        # add further keywords from the related links
+        for linklist in entry_keywords:
+            for word in linklist:
+                if word not in keys:
+                    keys.append(word)
+        prev_keys = keys # get the previous keys
+        keys_dict[entry_id] = prev_keys + entry_keys # add the new keys to the previous keys
+        # remove dupe keys
+        res = []
+        for i in keys_dict[entry_id]:
+            if i not in res:
+                res.append(i)
 
-    # keys update 2
-    # add any words in the entry that are unique to that entry compared to all other entries in the lorebook
-    for i in range(len(entries)):
-        for j in range(len(entries)):
-            if i != j:
-                for word in entries[i].split():
-                    if word not in entries[j].split() and word not in keys[i]:
-                        keys[i].append(word)
 
-    # add the entries to the lorebook dictionary
-    for i in range(len(entries)):
-        lore_dict['entries'].append({
-            "text": entries[i],
-            "contextConfig": {
+
+        # remove YouTube, Wikipedia, and other website links from res list
+        res = [i for i in res if not i.startswith('http')]
+        res = [i for i in res if not i.startswith('www')]
+        res = [i for i in res if not i.startswith('YouTube')]
+        res = [i for i in res if not i.startswith('Wikipedia')]
+        res = [i for i in res if not i.startswith('List')]
+
+        # remove stop words from res list
+        res = [i for i in res if not i in stop_words]
+        # remove words that are less than 4 characters
+        res = [i for i in res if len(i) > 3]
+        copy = res.copy()
+        copy = [i.lower() for i in copy]
+        res = [i for i in res if copy.count(i.lower()) < 2]
+        keys_dict[entry_id] = res
+        entry_id += 1
+
+
+
+
+    context_config = {
             "prefix": "",
             "suffix": "\n",
             "tokenBudget": 2048,
@@ -114,43 +177,36 @@ def main():
             "insertionType": "newline",
             "maximumTrimType": "sentence",
             "insertionPosition": -1
-            },
-            "lastUpdatedAt": 1666044123984,
-            "displayName": entry_names[i],
-            "id": ids[i],
-            "keys": keys[i],
-            "searchRange": 1000,
-            "enabled": True,
-            "forceActivation": False,
-            "keyRelative": False,
-            "nonStoryActivatable": False,
-            "category": "",
-            "loreBiasGroups": [
-            {
-                "phrases": [],
-                "ensureSequenceFinish": False,
-                "generateOnce": True,
-                "bias": 0,
-                "enabled": True,
-                "whenInactive": False
-            }
-            ]
-        })
+        }
 
+    # add the entries to the lorebook dictionary
+
+    for i in range(len(entries)):
+        # append blanks to lore_dict['entries'] to make room for the new entries
+        lore_dict['entries'].append({})
+
+    for i in range(len(entries)):
+        # lore_dict > entries > text
+        # add a new entry to the lorebook dictionary
+        lore_dict['entries'][i]['text'] = str(entries[i])
+        # lore_dict > entries > contextConfig
+        lore_dict['entries'][i]['contextConfig'] = context_config
+        # lore_dict > entries > lastUpdatedAt
+        lore_dict['entries'][i]['lastUpdatedAt'] = 1649360732691
+        # lore_dict > entries > displayName
+        lore_dict['entries'][i]['displayName'] = entry_names[i] # todo - was causing builtin method error for some reason in the final json file
+        # lore_dict > entries > id
+        lore_dict['entries'][i]['id'] = str(ids[i])
+        # lore_dict > entries > keys
+        lore_dict['entries'][i]['keys'] = keys_dict[i] #
+        #*lore_dict['entries'][i]['keys'] = [] # blank for now
     print(f'Saving {len(entries)} entries to lorebook')
-    for entry in entries:
-        print(f'I found {len(entry)} words for {entry}')
+
     # save the new lorebook dictionary as a json file called lorebook_generated.lorebook
 
     # save the new lorebook dictionary as a json file called lorebook_generated.lorebook
-    with open('lorebook_generated.lorebook', 'w') as f:
-        # lore_dict needs to be json serializable
-        # this means that all the keys and values need to be strings
-        # so we need to convert the keys and values to strings
-        # we can do this with a dictionary comprehension
-        lore_dict = {str(key): str(value) for key, value in lore_dict.items()}
+    with open('lorebook_generated.lorebook', 'w+') as f:
         json.dump(lore_dict, f, indent=4)
-
 
 
 main()
