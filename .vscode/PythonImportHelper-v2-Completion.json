@@ -154,6 +154,73 @@
         "documentation": {}
     },
     {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "json,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json.",
+        "description": "json.",
+        "detail": "json.",
+        "documentation": {}
+    },
+    {
+        "label": "check_json_for_entry",
+        "importPath": "main",
+        "description": "main",
+        "isExtraImport": true,
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "entries",
+        "importPath": "main",
+        "description": "main",
+        "isExtraImport": true,
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "master_list_of_names",
+        "importPath": "main",
+        "description": "main",
+        "isExtraImport": true,
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess",
+        "importPath": "main",
+        "description": "main",
+        "isExtraImport": true,
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "stop_words",
+        "importPath": "main",
+        "description": "main",
+        "isExtraImport": true,
+        "detail": "main",
+        "documentation": {}
+    },
+    {
         "label": "preprocess",
         "kind": 2,
         "importPath": "main",
@@ -232,6 +299,96 @@
         "description": "main",
         "peekOfCode": "maxlinksperpage = 50\ndef examine_dates(entry1,entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                if chunk.label() == 'DATE':\n                    article_one_dates.append(' '.join(c[0] for c in chunk.leaves()))",
         "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "open_characters",
+        "kind": 2,
+        "importPath": "saver",
+        "description": "saver",
+        "peekOfCode": "def open_characters():\n    with open(\"characters.csv\", \"r\") as f:\n        characters = f.read().splitlines()\n    return characters\nlist_of_names_f = open_characters()\nwith open('lorebook_generated.lorebook') as f:\n    lore_dict = json.load(f)\ntopics_list = [x for x in list_of_names_f if not check_json_for_entry(x, 'lorebook_generated.lorebook')]\nentry_keys = []\nfor entry in entries:",
+        "detail": "saver",
+        "documentation": {}
+    },
+    {
+        "label": "list_of_names_f",
+        "kind": 5,
+        "importPath": "saver",
+        "description": "saver",
+        "peekOfCode": "list_of_names_f = open_characters()\nwith open('lorebook_generated.lorebook') as f:\n    lore_dict = json.load(f)\ntopics_list = [x for x in list_of_names_f if not check_json_for_entry(x, 'lorebook_generated.lorebook')]\nentry_keys = []\nfor entry in entries:\n    topics_list.append(entry)\n    entry_keys.append(str(uuid.uuid4()))\nassert(type(topics_list) == list) # make sure it's a list\n# entries, entry_names = generate_entries_from_list(lore_dict['people'])",
+        "detail": "saver",
+        "documentation": {}
+    },
+    {
+        "label": "topics_list",
+        "kind": 5,
+        "importPath": "saver",
+        "description": "saver",
+        "peekOfCode": "topics_list = [x for x in list_of_names_f if not check_json_for_entry(x, 'lorebook_generated.lorebook')]\nentry_keys = []\nfor entry in entries:\n    topics_list.append(entry)\n    entry_keys.append(str(uuid.uuid4()))\nassert(type(topics_list) == list) # make sure it's a list\n# entries, entry_names = generate_entries_from_list(lore_dict['people'])\n# generate only the entries in topics_list that are not already in the lorebook\n#existing_topics = [entry['name'] for entry in lore_dict['entries']]\n#topics_list = [x for x in topics_list if x not in lore_dict]",
+        "detail": "saver",
+        "documentation": {}
+    },
+    {
+        "label": "entry_keys",
+        "kind": 5,
+        "importPath": "saver",
+        "description": "saver",
+        "peekOfCode": "entry_keys = []\nfor entry in entries:\n    topics_list.append(entry)\n    entry_keys.append(str(uuid.uuid4()))\nassert(type(topics_list) == list) # make sure it's a list\n# entries, entry_names = generate_entries_from_list(lore_dict['people'])\n# generate only the entries in topics_list that are not already in the lorebook\n#existing_topics = [entry['name'] for entry in lore_dict['entries']]\n#topics_list = [x for x in topics_list if x not in lore_dict]\nentries, entry_names, ids,entry_keywords = generate_entries_from_list(master_list_of_names)",
+        "detail": "saver",
+        "documentation": {}
+    },
+    {
+        "label": "#existing_topics",
+        "kind": 5,
+        "importPath": "saver",
+        "description": "saver",
+        "peekOfCode": "#existing_topics = [entry['name'] for entry in lore_dict['entries']]\n#topics_list = [x for x in topics_list if x not in lore_dict]\nentries, entry_names, ids,entry_keywords = generate_entries_from_list(master_list_of_names)\n# add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n# create a list of the keys for each entry (all proper nouns, places and dates)\nkeys = []\nkeys_dict = {}\nentry_id = 0\nfor entry in tqdm(entries):\n    print(f'Processing entry {entry[0:50]}...')",
+        "detail": "saver",
+        "documentation": {}
+    },
+    {
+        "label": "#topics_list",
+        "kind": 5,
+        "importPath": "saver",
+        "description": "saver",
+        "peekOfCode": "#topics_list = [x for x in topics_list if x not in lore_dict]\nentries, entry_names, ids,entry_keywords = generate_entries_from_list(master_list_of_names)\n# add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n# create a list of the keys for each entry (all proper nouns, places and dates)\nkeys = []\nkeys_dict = {}\nentry_id = 0\nfor entry in tqdm(entries):\n    print(f'Processing entry {entry[0:50]}...')\n    keys = [] # reset the keys list, so we don't have duplicate keys",
+        "detail": "saver",
+        "documentation": {}
+    },
+    {
+        "label": "keys",
+        "kind": 5,
+        "importPath": "saver",
+        "description": "saver",
+        "peekOfCode": "keys = []\nkeys_dict = {}\nentry_id = 0\nfor entry in tqdm(entries):\n    print(f'Processing entry {entry[0:50]}...')\n    keys = [] # reset the keys list, so we don't have duplicate keys\n    for word, tag in tqdm(preprocess(entry)):\n        if (tag == 'NNP' or tag == 'NNPS' or tag == 'CD') and word not in keys\\\n            and word not in stop_words and len(word) > 2: # remove stop words, and numbers greater than 2020 (which are probably years)\n            try:",
+        "detail": "saver",
+        "documentation": {}
+    },
+    {
+        "label": "keys_dict",
+        "kind": 5,
+        "importPath": "saver",
+        "description": "saver",
+        "peekOfCode": "keys_dict = {}\nentry_id = 0\nfor entry in tqdm(entries):\n    print(f'Processing entry {entry[0:50]}...')\n    keys = [] # reset the keys list, so we don't have duplicate keys\n    for word, tag in tqdm(preprocess(entry)):\n        if (tag == 'NNP' or tag == 'NNPS' or tag == 'CD') and word not in keys\\\n            and word not in stop_words and len(word) > 2: # remove stop words, and numbers greater than 2020 (which are probably years)\n            try:\n                if int(word) < 2020:",
+        "detail": "saver",
+        "documentation": {}
+    },
+    {
+        "label": "entry_id",
+        "kind": 5,
+        "importPath": "saver",
+        "description": "saver",
+        "peekOfCode": "entry_id = 0\nfor entry in tqdm(entries):\n    print(f'Processing entry {entry[0:50]}...')\n    keys = [] # reset the keys list, so we don't have duplicate keys\n    for word, tag in tqdm(preprocess(entry)):\n        if (tag == 'NNP' or tag == 'NNPS' or tag == 'CD') and word not in keys\\\n            and word not in stop_words and len(word) > 2: # remove stop words, and numbers greater than 2020 (which are probably years)\n            try:\n                if int(word) < 2020:\n                    continue",
+        "detail": "saver",
+        "documentation": {}
+    },
+    {
+        "label": "context_config",
+        "kind": 5,
+        "importPath": "saver",
+        "description": "saver",
+        "peekOfCode": "context_config = {\n        \"prefix\": \"\",\n        \"suffix\": \"\\n\",\n        \"tokenBudget\": 100, # max 2048\n        \"reservedTokens\": 0,\n        \"budgetPriority\": 400,\n        \"trimDirection\": \"trimBottom\",\n        \"insertionType\": \"newline\",\n        \"maximumTrimType\": \"sentence\",\n        \"insertionPosition\": -1",
+        "detail": "saver",
         "documentation": {}
     }
 ]
