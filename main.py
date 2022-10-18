@@ -17,6 +17,9 @@ import tqdm
 from tqdm import tqdm
 import datetime
 
+# set set_rate_limiting to True to avoid getting blocked by wikipedia
+wikipedia.set_rate_limiting(True)
+
 stop_words = set(stopwords.words('english'))
 
 # import the json file lorebook_example.lorebook
@@ -85,28 +88,14 @@ def generate_entries_from_list(list_of_names):
         ids.append(str(uuid.uuid4()))
     return entries, entry_names, ids,entry_keywords
 
+layer = 0
+topics_list = []
 
-
-## The goal: generate a lorebook dict from a list of text entries.
-# list of text entries
-# entries = [
-#     'Testing 1',
-#     'Testing 2',
-#     'Testing 3'
-# ]
-# entry_names = [
-#     'Test 1',
-#     'Test 2',
-#     'Test 3'
-# ]
+with open('starter.lorebook') as f:
+    lore_dict = json.load(f)
 
 def main():
 
-
-    with open('starter.lorebook') as f:
-        lore_dict = json.load(f)
-
-    topics_list = []
     entry_keys = []
     input_text = 'start'
     while input_text != '':
@@ -120,6 +109,7 @@ def main():
     # create a list of the keys for each entry (all proper nouns, places and dates)
     keys = []
     keys_dict = {}
+    secondary_pages_master = []
     entry_id = 0
     for entry in entries:
         keys = [] # reset the keys list, so we don't have duplicate keys
@@ -134,6 +124,8 @@ def main():
                 keys.append(word)
         # add further keywords from the related links
         for linklist in entry_keywords:
+            secondary_pages = linklist # get the list of related links
+            secondary_pages_master.append(secondary_pages)
             for word in linklist:
                 if word not in keys:
                     keys.append(word)
@@ -144,9 +136,6 @@ def main():
         for i in keys_dict[entry_id]:
             if i not in res:
                 res.append(i)
-
-
-
         # remove YouTube, Wikipedia, and other website links from res list
         res = [i for i in res if not i.startswith('http')]
         res = [i for i in res if not i.startswith('www')]
@@ -163,6 +152,20 @@ def main():
         res = [i for i in res if copy.count(i.lower()) < 2]
         keys_dict[entry_id] = res
         entry_id += 1
+
+    # go through the secondary pages check them for names of people, only keep names of people.
+
+    for page in secondary_pages_master:
+        # check if the page is a person with nltk
+        if nltk.pos_tag(nltk.word_tokenize(page))[0][1] == 'NNP':
+            # if it is a person, add it to the list of topics
+            topics_list.append(page) # add the page to the list of topics
+            if layer == 0: layer = 1 # if this is the first layer, set the layer to 1
+            else: layer = 2 # if this is the second layer, set the layer to 2
+    if layer == 1:
+        main() # if the layer is 1, run the main function again
+    else:
+        pass
 
 
 

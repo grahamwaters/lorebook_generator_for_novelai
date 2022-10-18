@@ -151,7 +151,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    with open('starter.lorebook') as f:\n        lore_dict = json.load(f)\n    topics_list = []\n    entry_keys = []\n    input_text = 'start'\n    while input_text != '':\n        input_text = input('Enter a topic: ')\n        topics_list.append(input_text)\n    assert(type(topics_list) == list) # make sure it's a list",
+        "peekOfCode": "def main():\n    entry_keys = []\n    input_text = 'start'\n    while input_text != '':\n        input_text = input('Enter a topic: ')\n        topics_list.append(input_text)\n    assert(type(topics_list) == list) # make sure it's a list\n    # entries, entry_names = generate_entries_from_list(lore_dict['people'])\n    entries, entry_names, ids,entry_keywords = generate_entries_from_list(topics_list)\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.",
         "detail": "main",
         "documentation": {}
     },
@@ -161,6 +161,24 @@
         "importPath": "main",
         "description": "main",
         "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "layer",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "layer = 0\ntopics_list = []\nwith open('starter.lorebook') as f:\n    lore_dict = json.load(f)\ndef main():\n    entry_keys = []\n    input_text = 'start'\n    while input_text != '':\n        input_text = input('Enter a topic: ')\n        topics_list.append(input_text)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "topics_list",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "topics_list = []\nwith open('starter.lorebook') as f:\n    lore_dict = json.load(f)\ndef main():\n    entry_keys = []\n    input_text = 'start'\n    while input_text != '':\n        input_text = input('Enter a topic: ')\n        topics_list.append(input_text)\n    assert(type(topics_list) == list) # make sure it's a list",
         "detail": "main",
         "documentation": {}
     }
