@@ -174,7 +174,7 @@ def main():
     context_config = {
             "prefix": "",
             "suffix": "\n",
-            "tokenBudget": 2048,
+            "tokenBudget": 700, # note: was 2048
             "reservedTokens": 0,
             "budgetPriority": 400,
             "trimDirection": "trimBottom",
