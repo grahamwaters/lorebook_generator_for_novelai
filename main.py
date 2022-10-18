@@ -271,7 +271,8 @@ def main():
                         count_common_bigrams = len(common_bigrams)
 
 
-
+                        if link.find('fandom')!=-1:
+                            continue # skip fandom pages
                         if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name.lower() in page.content.lower())\
                             and examine_dates(corpus_outer, corpus): # if the page is not already in the list, and is long enough, and mentions the name in the page, and the dates are relevant
                             entries.append(page.content)
@@ -282,7 +283,7 @@ def main():
                             entries.append(page.content)
                             entry_names.append(link)
                             print(f' ==> Adding LOC {link} to the list of entries')
-                        elif count_relevant_bigrams > 5 or count_common_bigrams > 3:
+                        elif count_relevant_bigrams > 5 or count_common_bigrams > 3 and common_bigrams != [] and page.content != '':
                             # print the common bigrams (top 3)
                             print(f'Top 3 common bi/tri/quadgrams for {link}: {common_bigrams[:3]}')
                             entries.append(page.content)
