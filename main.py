@@ -206,7 +206,7 @@ def main():
                             print(f' ==> Adding {link} to the list of entries')
 
                         # if is place
-                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content) and (page.content.find('Geography')!=-1 and page.content.find('History')!=-1 and page.content.find(r'Demographics|Demography')!=-1):
+                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content) and (page.content.find('Geography')!=-1 and page.content.find('History')!=-1):# and page.content.find(r'Demographics|Demography')!=-1):
                             entries.append(page.content)
                             entry_names.append(link)
                             print(f' ==> Adding LOC {link} to the list of entries')
