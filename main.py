@@ -193,6 +193,7 @@ def main():
 
 
 
+
     # check those article pages for length (if they are too short, skip them)
     # if they are long enough, and are not already in the list, add them to the list
     list_of_names = pd.read_csv('characters.csv')['Name'].tolist()
@@ -220,6 +221,36 @@ def main():
                         continue # skip film pages
                     #print("Checking link ", link,end='')
                     # for every 2nd degree page
+                    if link.find('film')!=-1\
+                        or link.find('television')!=-1\
+                        or link.find('series')!=-1\
+                        or link.find('episode')!=-1\
+                        or link.find('century press')!=-1\
+                        or link.find('TV')!=-1:
+                            continue # skip film pages
+
+                        # skip religious pages
+                    if link.find('Christianity')!=-1\
+                        or link.find('Islam')!=-1\
+                        or link.find('Judaism')!=-1\
+                        or link.find('Buddhism')!=-1\
+                        or link.find('Hinduism')!=-1\
+                        or link.find('Sikhism')!=-1\
+                        or link.find('Atheism')!=-1\
+                        or link.find('Agnosticism')!=-1\
+                        or link.find('Religion')!=-1\
+                        or link.find('Religious')!=-1\
+                        or link.find('Jesus')!=-1\
+                        or link.find('God')!=-1\
+                        or link.find('Bible')!=-1\
+                        or link.find('Biblical')!=-1\
+                        or link.find('cult')!=-1\
+                        or link.find('Cult')!=-1\
+                        or link.find('Catholic')!=-1\
+                        or link.find('Protestant')!=-1\
+                        or link.find('Christian')!=-1\
+                        or link.find('Muslim')!=-1:
+                            continue # skip religious pages
                     try:
                         entry = wikipedia.search(link)[0] # get the first result from wikipedia, which is usually the most relevant
                         page = wikipedia.page(entry)
