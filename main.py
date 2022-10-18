@@ -23,6 +23,33 @@ stop_words = set(stopwords.words('english'))
 
 # import the json file lorebook_example.lorebook
 
+def examine_dates(entry1,entry2):
+    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.
+
+    article_one_dates = []
+    article_two_dates = []
+    for sent in sent_tokenize(entry1):
+        for chunk in nltk.ne_chunk(preprocess(sent)):
+            if hasattr(chunk, 'label'):
+                if chunk.label() == 'DATE':
+                    article_one_dates.append(' '.join(c[0] for c in chunk.leaves()))
+    for sent in sent_tokenize(entry2):
+        for chunk in nltk.ne_chunk(preprocess(sent)):
+            if hasattr(chunk, 'label'):
+                if chunk.label() == 'DATE':
+                    article_two_dates.append(' '.join(c[0] for c in chunk.leaves()))
+    if len(article_one_dates) > 0 and len(article_two_dates) > 0:
+        article_one_dates = [int(date) for date in article_one_dates if date.isdigit()]
+        article_two_dates = [int(date) for date in article_two_dates if date.isdigit()]
+        max_date = max(article_two_dates)
+        min_date = min(article_two_dates)
+        for date in article_one_dates:
+            if date > max_date + 10 or date < min_date - 10:
+                return False
+        return True
+    else:
+        return False
+
 """
     "Nikola Tesla",
 "Thomas Edison",
@@ -200,8 +227,8 @@ def main():
 
 
 
-                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content):#?or page.content.find('born ')!=-1): # if the page is long enough and not already in the list, add it
-                            entries.append(page.content)
+                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content) and (page.content.find('film')==-1):
+                            entries.append(page.content) #todo add examinedates
                             entry_names.append(link)
                             print(f' ==> Adding {link} to the list of entries')
 

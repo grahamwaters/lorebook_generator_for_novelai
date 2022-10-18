@@ -146,6 +146,15 @@
         "documentation": {}
     },
     {
+        "label": "examine_dates",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def examine_dates(entry1,entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                if chunk.label() == 'DATE':\n                    article_one_dates.append(' '.join(c[0] for c in chunk.leaves()))\n    for sent in sent_tokenize(entry2):",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
         "label": "preprocess",
         "kind": 2,
         "importPath": "main",
@@ -195,7 +204,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\n\"\"\"\n    \"Nikola Tesla\",\n\"Thomas Edison\",\n\"George Westinghouse\",\n\"Alexander Graham Bell\",\n\"Samuel Morse\",\n\"Benjamin Franklin\",\n\"Guglielmo Marconi\",",
+        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\ndef examine_dates(entry1,entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                if chunk.label() == 'DATE':",
         "detail": "main",
         "documentation": {}
     },
