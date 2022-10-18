@@ -111,6 +111,14 @@
         "documentation": {}
     },
     {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
         "label": "datetime",
         "kind": 6,
         "isExtraImport": true,
@@ -151,7 +159,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    with open('starter.lorebook') as f:\n        lore_dict = json.load(f)\n    topics_list = []\n    entry_keys = []\n    input_text = 'start'\n    while input_text != '':\n        input_text = input('Enter a topic: ')\n        topics_list.append(input_text)\n    assert(type(topics_list) == list) # make sure it's a list",
+        "peekOfCode": "def main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv('characters.csv')\n    print(type(list_of_names))\n    list_of_names = list_of_names['Name'].tolist()\n    entries = []\n    entry_names = []\n    for name in tqdm(list_of_names):\n        if name != '':",
         "detail": "main",
         "documentation": {}
     },
@@ -160,7 +168,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):",
+        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\n\"\"\"\n    \"Nikola Tesla\",\n\"Thomas Edison\",\n\"George Westinghouse\",\n\"Alexander Graham Bell\",\n\"Samuel Morse\",\n\"Benjamin Franklin\",\n\"Guglielmo Marconi\",",
         "detail": "main",
         "documentation": {}
     }
