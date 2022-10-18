@@ -95,7 +95,7 @@ with open('starter.lorebook') as f:
     lore_dict = json.load(f)
 
 def main():
-
+    global layer
     entry_keys = []
     input_text = 'start'
     while input_text != '':
@@ -155,13 +155,14 @@ def main():
 
     # go through the secondary pages check them for names of people, only keep names of people.
 
-    for page in secondary_pages_master:
-        # check if the page is a person with nltk
-        if nltk.pos_tag(nltk.word_tokenize(page))[0][1] == 'NNP':
-            # if it is a person, add it to the list of topics
-            topics_list.append(page) # add the page to the list of topics
-            if layer == 0: layer = 1 # if this is the first layer, set the layer to 1
-            else: layer = 2 # if this is the second layer, set the layer to 2
+    for pages in secondary_pages_master:
+        for page in pages:
+            # check if the page is a person with nltk
+            if nltk.pos_tag(nltk.word_tokenize(page))[0][1] == 'NNP':
+                # if it is a person, add it to the list of topics
+                topics_list.append(page) # add the page to the list of topics
+                if layer == 0: layer = 1 # if this is the first layer, set the layer to 1
+                else: layer = 2 # if this is the second layer, set the layer to 2
     if layer == 1:
         main() # if the layer is 1, run the main function again
     else:
