@@ -3,6 +3,7 @@ import pandas as pd
 import json
 import re
 import uuid
+from sklearn.feature_extraction.text import CountVectorizer
 # import nltk
 # nltk.download('punkt')
 import nltk
@@ -158,8 +159,40 @@ import pandas as pd
 import wikipedia
 import re
 import random
+vectorizer = CountVectorizer()
+maxlinksperpage = 50
 
-maxlinksperpage = 30
+
+def examine_dates(entry1,entry2):
+    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.
+
+    article_one_dates = []
+    article_two_dates = []
+    for sent in sent_tokenize(entry1):
+        for chunk in nltk.ne_chunk(preprocess(sent)):
+            if hasattr(chunk, 'label'):
+                if chunk.label() == 'DATE':
+                    article_one_dates.append(' '.join(c[0] for c in chunk.leaves()))
+    for sent in sent_tokenize(entry2):
+        for chunk in nltk.ne_chunk(preprocess(sent)):
+            if hasattr(chunk, 'label'):
+                if chunk.label() == 'DATE':
+                    article_two_dates.append(' '.join(c[0] for c in chunk.leaves()))
+    if len(article_one_dates) > 0 and len(article_two_dates) > 0:
+        article_one_dates = [int(date) for date in article_one_dates if date.isdigit()]
+        article_two_dates = [int(date) for date in article_two_dates if date.isdigit()]
+        max_date = max(article_two_dates)
+        min_date = min(article_two_dates)
+        for date in article_one_dates:
+            if date > max_date + 10 or date < min_date - 10:
+                return False
+        return True
+    else:
+        return False
+
+
+
+
 
 def main():
 
@@ -168,15 +201,41 @@ def main():
 
     # check those article pages for length (if they are too short, skip them)
     # if they are long enough, and are not already in the list, add them to the list
-    list_of_names = pd.read_csv('characters.csv')['Name'].tolist()
+    list_of_names_f = pd.read_csv('characters.csv')['Name'].tolist()
+    # DROP NANs
+    list_of_names_f = [x for x in list_of_names_f if str(x) != 'nan']
+
     # print(type(list_of_names))
     # list_of_names = [x[0] for x in list_of_names.values.tolist()]
     # only keep names in the list of names that are not already in the json file
-    list_of_names = [x for x in list_of_names if not check_json_for_entry(x, 'lorebook_generated.lorebook')]
+    list_of_names = [x for x in list_of_names_f if not check_json_for_entry(x, 'lorebook_generated.lorebook')]
     entries = []
     entry_names = list_of_names
     # for each Name
     for name in tqdm(list_of_names):
+
+        try:
+            entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant
+            page = wikipedia.page(entry)
+            print("Analyzing the page for ", name)
+            # bigrams for the name page
+            corpus_outer = [page.content]
+            # X = vectorizer.fit_transform(corpus)
+            vectorizer1 = CountVectorizer(analyzer='word', ngram_range=(3, 4), min_df=0, stop_words='english')
+            X = vectorizer1.fit_transform(corpus_outer)
+            bigrams = vectorizer1.get_feature_names() # get the bigrams
+        except wikipedia.exceptions.DisambiguationError as e:
+            print(e.options)
+            entry = e.options[0]
+            page = wikipedia.page(entry)
+        except:
+            # set the default bigrams to be none
+            bigrams = []
+            pass
+
+
+
+
         if name != '':
             try:
                 entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant
@@ -187,8 +246,9 @@ def main():
                 links = list(dict.fromkeys(links))
                 # random sample of maxlinksperpage links
                 links = random.sample(links, min(len(links), maxlinksperpage))
+                print(f'Found {len(links)} links for {name}')
                 print(f'Adding {name} to entries')
-                for link in links:
+                for link in tqdm(links):
                     if link.find('film')!=-1:
                         continue # skip film pages
                     #print("Checking link ", link,end='')
@@ -197,36 +257,59 @@ def main():
                         entry = wikipedia.search(link)[0] # get the first result from wikipedia, which is usually the most relevant
                         page = wikipedia.page(entry)
                         #!print(" length:", len(page.content))
+                        corpus = [page.content]
+                        # X = vectorizer.fit_transform(corpus)
+                        vectorizer2 = CountVectorizer(analyzer='word', ngram_range=(3, 4), min_df=0, stop_words='english')
+                        X2 = vectorizer2.fit_transform(corpus)
+                        bigrams_secondary = vectorizer2.get_feature_names() # get the bigrams
+                        # how many bigrams mention the name?
+                        relevant_bigrams = [x for x in bigrams if name.lower() in x]
+                        count_relevant_bigrams = len(relevant_bigrams) # how many bigrams mention the name?
+
+                        # how many bigrams in common does this page have with the name page?
+                        common_bigrams = [x for x in bigrams_secondary if x in bigrams]
+                        count_common_bigrams = len(common_bigrams)
 
 
 
-                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content):#?or page.content.find('born ')!=-1): # if the page is long enough and not already in the list, add it
+                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name.lower() in page.content.lower())\
+                            and examine_dates(corpus_outer, corpus): # if the page is not already in the list, and is long enough, and mentions the name in the page, and the dates are relevant
                             entries.append(page.content)
                             entry_names.append(link)
-                            print(f' ==> Adding {link} to the list of entries')
-
+                            print(f' = ($) => Adding {link} to the list of entries')
                         # if is place
-                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content) and (page.content.find('Geography')!=-1 and page.content.find('History')!=-1):# and page.content.find(r'Demographics|Demography')!=-1):
+                        elif link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content) and (page.content.find('Geography')!=-1 and page.content.find('History')!=-1) and examine_dates(corpus_outer, corpus):# and page.content.find(r'Demographics|Demography')!=-1):
                             entries.append(page.content)
                             entry_names.append(link)
                             print(f' ==> Adding LOC {link} to the list of entries')
+                        elif count_relevant_bigrams > 5 or count_common_bigrams > 3:
+                            # print the common bigrams (top 3)
+                            print(f'Top 3 common bi/tri/quadgrams for {link}: {common_bigrams[:3]}')
+                            entries.append(page.content)
+                            entry_names.append(link)
+                            print(f' =(*)=> Adding {link} because of bi/tri/quadgrams')
+                        elif examine_dates(corpus_outer, corpus):
+                            print(f' =(!)=> Adding {link} because of dates')
+                            entries.append(page.content)
+                            entry_names.append(link)
+                        else:
+                            #print(f' ==> Skipping {link}')
+                            pass
                     except:
                         pass
             except Exception as e:
                 print(e)
                 continue
-        df = pd.DataFrame(entry_names)
-        # append to the csv file
-        prev_chars = pd.read_csv('characters.csv')
-        # add the new characters to the list
-        prev_chars = prev_chars.append(df)
-        # remove duplicates
-        prev_chars = prev_chars.drop_duplicates()
-        # save the new list
-        prev_chars.to_csv('characters.csv', index=False)
-    # save entry_names to a csv
-    df = pd.DataFrame(entry_names)
-    df.to_csv('characters.csv', index=False)
+
+            # save the updated list of characters to the csv file (so we can keep track of which ones we have already added). Use the simple name,name format.
+            # add the initial list of names to master list, then add new names to the master list then remove duplicates
+            master_list_of_names = list_of_names_f + list_of_names
+            master_list_of_names = list(dict.fromkeys(master_list_of_names))
+            df = pd.DataFrame(master_list_of_names, columns=['Name'])
+            df.to_csv('characters.csv', index=False)
+        # # save entry_names to a csv
+        # df = pd.DataFrame(entry_names)
+        # df.to_csv('characters.csv', index=False)
 
 
 
