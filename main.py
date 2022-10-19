@@ -4,10 +4,12 @@ import json
 import re
 import uuid
 from sklearn.feature_extraction.text import CountVectorizer
+
 # import nltk
 # nltk.download('punkt')
 import nltk
-nltk.download('stopwords')
+
+nltk.download("stopwords")
 from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
 
@@ -18,96 +20,60 @@ import tqdm
 from tqdm import tqdm
 import datetime
 import warnings
-warnings.filterwarnings('ignore')
+import icecream
+from icecream import ic
+warnings.filterwarnings("ignore")
 # get the list of names from the topics file
-stop_words = set(stopwords.words('english'))
+stop_words = set(stopwords.words("english"))
 
 # import the json file lorebook_example.lorebook
 
-"""
-    "Nikola Tesla",
-"Thomas Edison",
-"George Westinghouse",
-"Alexander Graham Bell",
-"Samuel Morse",
-"Benjamin Franklin",
-"Guglielmo Marconi",
-"London",
-"Paris",
-"New York",
-"Washington DC",
-"Berlin, Germany",
-"West Berlin",
-"East Berlin",
-"Hitler",
-"Joseph Stalin",
-"Franklin D. Roosevelt",
-"Harry S. Truman",
-"Queen Victoria",
-"Charles Dickens",
-"William Shakespeare",
-"Jules Verne",
-"Samuel Clemens",
-"Charles Darwin",
-"Albert Einstein",
-"Isaac Newton",
-"Leonardo da Vinci",
-"Captain James Cook",
-"Wardenclyffe Tower",
-"Famous Scientists",
-"Famous Paintings",
-"Mythical Creatures",
-"World War 1",
-"World War 2",
-"Western Front",
-"List_of_people_who_disappeared_mysteriously:_pre-1910",
-"List_of_people_who_disappeared_mysteriously:_1910-1949",
-"List_of_people_who_disappeared_mysteriously:_1950-1999",
-"List_of_people_who_disappeared_mysteriously:_2000-present",
-
-    _extended_summary_
-"""
 
 def preprocess(sent):
     sent = nltk.word_tokenize(sent)
     sent = nltk.pos_tag(sent)
     return sent
 
+
 def get_the_entities(content):
+    ic()
     # get the entities from the text
     entities = []
     for sent in sent_tokenize(content):
         for chunk in nltk.ne_chunk(preprocess(sent)):
-            if hasattr(chunk, 'label'):
-                entities.append(' '.join(c[0] for c in chunk.leaves()))
+            if hasattr(chunk, "label"):
+                entities.append(" ".join(c[0] for c in chunk.leaves()))
     return entities
 
+
 def generate_entries_from_list(list_of_names):
+    ic()
     # enter a list of people's names and get a list of entries, from wikipedia
     entries = []
     entry_names = []
     entry_keywords = []
     for name in tqdm(list_of_names):
-        if name != '':
+        if name != "":
             try:
-                entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant
+                entry = wikipedia.search(name)[
+                    0
+                ]  # get the first result from wikipedia, which is usually the most relevant
                 page = wikipedia.page(entry)
                 entry = page.content
-                entry = re.sub(r'\([^)]*\)', ' ', entry) # remove anything in brackets
+                entry = re.sub(r"\([^)]*\)", " ", entry)  # remove anything in brackets
                 # strip the text of all special characters, and any escaped characters using regex
                 #!entry = re.sub(r'[^\w\s]',' ',entry)
                 # remove any nonalpha characters
-                entry = re.sub(r"[^a-zA-Z0-9,.?!'\;: ]",' ',entry).strip()
-                entry = re.sub(r'\n',' ',entry)
+                entry = re.sub(r"[^a-zA-Z0-9,.?!'\;: ]", " ", entry).strip()
+                entry = re.sub(r"\n", " ", entry)
 
                 # \u patterns for unicode characters need to be removed, and replaced with the actual character
                 # remove all unicode characters
-                entry = re.sub(r'\\u[0-9a-fA-F]{4}',' ',entry)
+                entry = re.sub(r"\\u[0-9a-fA-F]{4}", " ", entry)
 
-
-                entry = re.sub(r'\\',' ',entry)
-                entry = entry.replace('  ', ' ')
-                entry = entry.replace('  ', ' ')
+                entry = re.sub(r"\\", " ", entry)
+                entry = entry.replace("  ", " ")
+                entry = entry.replace("  ", " ")
                 entries.append(entry)
                 entry_names.append(page.title)
                 # entry_keywords.append(get_the_entities(entry))
@@ -115,69 +81,59 @@ def generate_entries_from_list(list_of_names):
                 related_links = page.links
                 entry_keywords.append(related_links)
             except:
-                print('could not find entry for', name)
+                print("could not find entry for", name)
                 try:
-                    entry = wikipedia.search(name)[1] # get the second result from wikipedia, which is usually the most relevant
+                    entry = wikipedia.search(name)[
+                        1
+                    ]  # get the second result from wikipedia, which is usually the most relevant
                     entries.append(entry)
                     entry_names.append(page.title)
                     # entry_keywords.append(entry_keywords)
                 except:
-                    print('could not find summary for', name)
-
+                    print("could not find summary for", name)
 
     # generate fake ids for the entries in the format: 642723d1-a4a1-47a3-a63f-d36aee33de1b
     ids = []
     for i in range(len(entries)):
         ids.append(str(uuid.uuid4()))
-    return entries, entry_names, ids,entry_keywords
+    return entries, entry_names, ids, entry_keywords
+
 
 def check_json_for_entry(entry_name, json_file):
     # check if an entry already exists in the json file
-    with open(json_file, 'r') as f:
+    with open(json_file, "r") as f:
         data = json.load(f)
-    for entry in range(len(data['entries'])):
-        if data['entries'][entry]['displayName'] == entry_name:
-            print(f'{entry_name} - entry already exists')
+    for entry in range(len(data["entries"])):
+        if data["entries"][entry]["displayName"] == entry_name:
+            print(f"{entry_name} - entry already exists")
             return True
     return False
 
-## The goal: generate a lorebook dict from a list of text entries.
-# list of text entries
-# entries = [
-#     'Testing 1',
-#     'Testing 2',
-#     'Testing 3'
-# ]
-# entry_names = [
-#     'Test 1',
-#     'Test 2',
-#     'Test 3'
-# ]
-# get all links on each of the entity pages
 from tqdm import tqdm
 import pandas as pd
 import wikipedia
 import re
 import random
+
 vectorizer = CountVectorizer()
 maxlinksperpage = 50
 
 
-def examine_dates(entry1,entry2):
+def examine_dates(entry1, entry2):
     # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.
-
+    ic()
     article_one_dates = []
     article_two_dates = []
     for sent in sent_tokenize(entry1):
         for chunk in nltk.ne_chunk(preprocess(sent)):
-            if hasattr(chunk, 'label'):
-                if chunk.label() == 'DATE':
-                    article_one_dates.append(' '.join(c[0] for c in chunk.leaves()))
+            if hasattr(chunk, "label"):
+                if chunk.label() == "DATE":
+                    article_one_dates.append(" ".join(c[0] for c in chunk.leaves()))
     for sent in sent_tokenize(entry2):
         for chunk in nltk.ne_chunk(preprocess(sent)):
-            if hasattr(chunk, 'label'):
-                if chunk.label() == 'DATE':
-                    article_two_dates.append(' '.join(c[0] for c in chunk.leaves()))
+            if hasattr(chunk, "label"):
+                if chunk.label() == "DATE":
+                    article_two_dates.append(" ".join(c[0] for c in chunk.leaves()))
     if len(article_one_dates) > 0 and len(article_two_dates) > 0:
         article_one_dates = [int(date) for date in article_one_dates if date.isdigit()]
         article_two_dates = [int(date) for date in article_two_dates if date.isdigit()]
@@ -191,39 +147,41 @@ def examine_dates(entry1,entry2):
         return False
 
 
-
-
-
 def main():
-
-
-
-
+    ic()
     # check those article pages for length (if they are too short, skip them)
     # if they are long enough, and are not already in the list, add them to the list
-    list_of_names_f = pd.read_csv('characters.csv')['Name'].tolist()
+    list_of_names_f = pd.read_csv("characters.csv")["Name"].tolist()
     # DROP NANs
-    list_of_names_f = [x for x in list_of_names_f if str(x) != 'nan']
+    list_of_names_f = [x for x in list_of_names_f if str(x) != "nan"]
 
     # print(type(list_of_names))
     # list_of_names = [x[0] for x in list_of_names.values.tolist()]
     # only keep names in the list of names that are not already in the json file
-    list_of_names = [x for x in list_of_names_f if not check_json_for_entry(x, 'lorebook_generated.lorebook')]
+    list_of_names = [
+        x
+        for x in list_of_names_f
+        if not check_json_for_entry(x, "lorebook_generated.lorebook")
+    ]
     entries = []
     entry_names = list_of_names
     # for each Name
     for name in tqdm(list_of_names):
 
         try:
-            entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant
+            entry = wikipedia.search(name)[
+                0
+            ]  # get the first result from wikipedia, which is usually the most relevant
             page = wikipedia.page(entry)
             print("Analyzing the page for ", name)
             # bigrams for the name page
             corpus_outer = [page.content]
             # X = vectorizer.fit_transform(corpus)
-            vectorizer1 = CountVectorizer(analyzer='word', ngram_range=(3, 4), min_df=0, stop_words='english')
+            vectorizer1 = CountVectorizer(
+                analyzer="word", ngram_range=(3, 4), min_df=0, stop_words="english"
+            )
             X = vectorizer1.fit_transform(corpus_outer)
-            bigrams = vectorizer1.get_feature_names() # get the bigrams
+            bigrams = vectorizer1.get_feature_names()  # get the bigrams
         except wikipedia.exceptions.DisambiguationError as e:
             print(e.options)
             entry = e.options[0]
@@ -233,12 +191,11 @@ def main():
             bigrams = []
             pass
 
-
-
-
-        if name != '':
+        if name != "":
             try:
-                entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant
+                entry = wikipedia.search(name)[
+                    0
+                ]  # get the first result from wikipedia, which is usually the most relevant
                 page = wikipedia.page(entry)
                 entry = page.content
                 links = page.links
@@ -246,55 +203,87 @@ def main():
                 links = list(dict.fromkeys(links))
                 # random sample of maxlinksperpage links
                 links = random.sample(links, min(len(links), maxlinksperpage))
-                print(f'Found {len(links)} links for {name}')
-                print(f'Adding {name} to entries')
+                print(f"Found {len(links)} links for {name}")
+                print(f"Adding {name} to entries")
                 for link in tqdm(links):
-                    if link.find('film')!=-1:
-                        continue # skip film pages
-                    #print("Checking link ", link,end='')
+                    if link.find("film") != -1:
+                        continue  # skip film pages
+                    # print("Checking link ", link,end='')
                     # for every 2nd degree page
                     try:
-                        entry = wikipedia.search(link)[0] # get the first result from wikipedia, which is usually the most relevant
+                        entry = wikipedia.search(link)[
+                            0
+                        ]  # get the first result from wikipedia, which is usually the most relevant
                         page = wikipedia.page(entry)
                         #!print(" length:", len(page.content))
                         corpus = [page.content]
                         # X = vectorizer.fit_transform(corpus)
-                        vectorizer2 = CountVectorizer(analyzer='word', ngram_range=(3, 4), min_df=0, stop_words='english')
+                        vectorizer2 = CountVectorizer(
+                            analyzer="word",
+                            ngram_range=(3, 4),
+                            min_df=0,
+                            stop_words="english",
+                        )
                         X2 = vectorizer2.fit_transform(corpus)
-                        bigrams_secondary = vectorizer2.get_feature_names() # get the bigrams
+                        bigrams_secondary = (
+                            vectorizer2.get_feature_names()
+                        )  # get the bigrams
                         # how many bigrams mention the name?
                         relevant_bigrams = [x for x in bigrams if name.lower() in x]
-                        count_relevant_bigrams = len(relevant_bigrams) # how many bigrams mention the name?
+                        count_relevant_bigrams = len(
+                            relevant_bigrams
+                        )  # how many bigrams mention the name?
 
                         # how many bigrams in common does this page have with the name page?
                         common_bigrams = [x for x in bigrams_secondary if x in bigrams]
                         count_common_bigrams = len(common_bigrams)
 
-
-                        if link.find('fandom')!=-1:
-                            continue # skip fandom pages
-                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name.lower() in page.content.lower())\
-                            and examine_dates(corpus_outer, corpus): # if the page is not already in the list, and is long enough, and mentions the name in the page, and the dates are relevant
+                        if link.find("fandom") != -1:
+                            continue  # skip fandom pages
+                        if (
+                            link not in entry_names
+                            and page.content != ""
+                            and len(page.content) > 5000
+                            and (name.lower() in page.content.lower())
+                            and examine_dates(corpus_outer, corpus)
+                        ):  # if the page is not already in the list, and is long enough, and mentions the name in the page, and the dates are relevant
                             entries.append(page.content)
                             entry_names.append(link)
-                            print(f' = ($) => Adding {link} to the list of entries')
+                            print(f" = ($) => Adding {link} to the list of entries")
                         # if is place
-                        elif link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content) and (page.content.find('Geography')!=-1 and page.content.find('History')!=-1) and examine_dates(corpus_outer, corpus):# and page.content.find(r'Demographics|Demography')!=-1):
+                        elif (
+                            link not in entry_names
+                            and page.content != ""
+                            and len(page.content) > 5000
+                            and (name in page.content)
+                            and (
+                                page.content.find("Geography") != -1
+                                and page.content.find("History") != -1
+                            )
+                            and examine_dates(corpus_outer, corpus)
+                        ):  # and page.content.find(r'Demographics|Demography')!=-1):
                             entries.append(page.content)
                             entry_names.append(link)
-                            print(f' ==> Adding LOC {link} to the list of entries')
-                        elif count_relevant_bigrams > 5 or count_common_bigrams > 3 and common_bigrams != [] and page.content != '':
+                            print(f" ==> Adding LOC {link} to the list of entries")
+                        elif (
+                            count_relevant_bigrams > 5
+                            or count_common_bigrams > 3
+                            and common_bigrams != []
+                            and page.content != ""
+                        ):
                             # print the common bigrams (top 3)
-                            print(f'Top 3 common bi/tri/quadgrams for {link}: {common_bigrams[:3]}')
+                            print(
+                                f"Top 3 common bi/tri/quadgrams for {link}: {common_bigrams[:3]}"
+                            )
                             entries.append(page.content)
                             entry_names.append(link)
-                            print(f' =(*)=> Adding {link} because of bi/tri/quadgrams')
+                            print(f" =(*)=> Adding {link} because of bi/tri/quadgrams")
                         elif examine_dates(corpus_outer, corpus):
-                            print(f' =(!)=> Adding {link} because of dates')
+                            print(f" =(!)=> Adding {link} because of dates")
                             entries.append(page.content)
                             entry_names.append(link)
                         else:
-                            #print(f' ==> Skipping {link}')
+                            # print(f' ==> Skipping {link}')
                             pass
                     except:
                         pass
@@ -306,26 +295,13 @@ def main():
             # add the initial list of names to master list, then add new names to the master list then remove duplicates
             master_list_of_names = list_of_names_f + list_of_names
             master_list_of_names = list(dict.fromkeys(master_list_of_names))
-            df = pd.DataFrame(master_list_of_names, columns=['Name'])
-            df.to_csv('characters.csv', index=False)
+            df = pd.DataFrame(master_list_of_names, columns=["Name"])
+            df.to_csv("characters.csv", index=False)
         # # save entry_names to a csv
         # df = pd.DataFrame(entry_names)
         # df.to_csv('characters.csv', index=False)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    with open('lorebook_generated.lorebook') as f:
+    with open("lorebook_generated.lorebook") as f:
         lore_dict = json.load(f)
 
     topics_list = []
@@ -335,15 +311,15 @@ def main():
     #     input_text = input('Enter a topic: ')
     #     topics_list.append(input_text)
     # read in the list of topics from the characters.csv file
-    topics_list = pd.read_csv('characters.csv')['Name'].tolist()
-    assert(type(topics_list) == list) # make sure it's a list
+    topics_list = pd.read_csv("characters.csv")["Name"].tolist()
+    assert type(topics_list) == list  # make sure it's a list
     # entries, entry_names = generate_entries_from_list(lore_dict['people'])
 
     # generate only the entries in topics_list that are not already in the lorebook
-    #existing_topics = [entry['name'] for entry in lore_dict['entries']]
-    #topics_list = [x for x in topics_list if x not in lore_dict]
+    # existing_topics = [entry['name'] for entry in lore_dict['entries']]
+    # topics_list = [x for x in topics_list if x not in lore_dict]
 
-    entries, entry_names, ids,entry_keywords = generate_entries_from_list(topics_list)
+    entries, entry_names, ids, entry_keywords = generate_entries_from_list(topics_list)
     # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.
 
     # create a list of the keys for each entry (all proper nouns, places and dates)
@@ -351,11 +327,15 @@ def main():
     keys_dict = {}
     entry_id = 0
     for entry in tqdm(entries):
-        print(f'Processing entry {entry[0:50]}...')
-        keys = [] # reset the keys list, so we don't have duplicate keys
+        print(f"Processing entry {entry[0:50]}...")
+        keys = []  # reset the keys list, so we don't have duplicate keys
         for word, tag in tqdm(preprocess(entry)):
-            if (tag == 'NNP' or tag == 'NNPS' or tag == 'CD') and word not in keys\
-                and word not in stop_words and len(word) > 2: # remove stop words, and numbers greater than 2020 (which are probably years)
+            if (
+                (tag == "NNP" or tag == "NNPS" or tag == "CD")
+                and word not in keys
+                and word not in stop_words
+                and len(word) > 2
+            ):  # remove stop words, and numbers greater than 2020 (which are probably years)
                 try:
                     if int(word) < 2020:
                         continue
@@ -367,22 +347,22 @@ def main():
             for word in linklist:
                 if word not in keys:
                     keys.append(word)
-        prev_keys = keys # get the previous keys
-        keys_dict[entry_id] = prev_keys + entry_keys # add the new keys to the previous keys
+        prev_keys = keys  # get the previous keys
+        keys_dict[entry_id] = (
+            prev_keys + entry_keys
+        )  # add the new keys to the previous keys
         # remove dupe keys
         res = []
         for i in keys_dict[entry_id]:
             if i not in res:
                 res.append(i)
 
-
-
         # remove YouTube, Wikipedia, and other website links from res list
-        res = [i for i in res if not i.startswith('http')]
-        res = [i for i in res if not i.startswith('www')]
-        res = [i for i in res if not i.startswith('YouTube')]
-        res = [i for i in res if not i.startswith('Wikipedia')]
-        res = [i for i in res if not i.startswith('List')]
+        res = [i for i in res if not i.startswith("http")]
+        res = [i for i in res if not i.startswith("www")]
+        res = [i for i in res if not i.startswith("YouTube")]
+        res = [i for i in res if not i.startswith("Wikipedia")]
+        res = [i for i in res if not i.startswith("List")]
 
         # remove stop words from res list
         res = [i for i in res if not i in stop_words]
@@ -394,53 +374,52 @@ def main():
         keys_dict[entry_id] = res
         entry_id += 1
 
-
-
-
     context_config = {
-            "prefix": "",
-            "suffix": "\n",
-            "tokenBudget": 100, # max 2048
-            "reservedTokens": 0,
-            "budgetPriority": 400,
-            "trimDirection": "trimBottom",
-            "insertionType": "newline",
-            "maximumTrimType": "sentence",
-            "insertionPosition": -1
-        }
+        "prefix": "",
+        "suffix": "\n",
+        "tokenBudget": 100,  # max 2048
+        "reservedTokens": 0,
+        "budgetPriority": 400,
+        "trimDirection": "trimBottom",
+        "insertionType": "newline",
+        "maximumTrimType": "sentence",
+        "insertionPosition": -1,
+    }
 
     # add the entries to the lorebook dictionary
 
     for i in range(len(entries)):
         # append blanks to lore_dict['entries'] to make room for the new entries
         try:
-            lore_dict['entries'][i] = {}
+            lore_dict["entries"][i] = {}
         except Exception as e:
             print(e)
-            #lore_dict['entries'].append({'text': entries[i]})
-            lore_dict['entries'].append({})
+            # lore_dict['entries'].append({'text': entries[i]})
+            lore_dict["entries"].append({})
 
     for i in tqdm(range(len(entries))):
         # lore_dict > entries > text
         # add a new entry to the lorebook dictionary
-        lore_dict['entries'][i]['text'] = str(entries[i])
+        lore_dict["entries"][i]["text"] = str(entries[i])
         # lore_dict > entries > contextConfig
-        lore_dict['entries'][i]['contextConfig'] = context_config
+        lore_dict["entries"][i]["contextConfig"] = context_config
         # lore_dict > entries > lastUpdatedAt
-        lore_dict['entries'][i]['lastUpdatedAt'] = 1649360732691
+        lore_dict["entries"][i]["lastUpdatedAt"] = 1649360732691
         # lore_dict > entries > displayName
-        lore_dict['entries'][i]['displayName'] = entry_names[i] # todo - was causing builtin method error for some reason in the final json file
+        lore_dict["entries"][i]["displayName"] = entry_names[
+            i
+        ]  # todo - was causing builtin method error for some reason in the final json file
         # lore_dict > entries > id
-        lore_dict['entries'][i]['id'] = str(ids[i])
+        lore_dict["entries"][i]["id"] = str(ids[i])
         # lore_dict > entries > keys
-        lore_dict['entries'][i]['keys'] = keys_dict[i] #
-        #*lore_dict['entries'][i]['keys'] = [] # blank for now
-    print(f'Saving {len(entries)} entries to lorebook')
+        lore_dict["entries"][i]["keys"] = keys_dict[i]  #
+        # *lore_dict['entries'][i]['keys'] = [] # blank for now
+    print(f"Saving {len(entries)} entries to lorebook")
 
     # save the new lorebook dictionary as a json file called lorebook_generated.lorebook
 
     # save the new lorebook dictionary as a json file called lorebook_generated.lorebook
-    with open('lorebook_generated.lorebook', 'w+') as f:
+    with open("lorebook_generated.lorebook", "w+") as f:
         json.dump(lore_dict, f, indent=4)
 
 

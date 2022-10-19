@@ -1,19 +1,38 @@
 [
     {
-        "label": "topics",
-        "importPath": "pydoc_data.topics",
-        "description": "pydoc_data.topics",
-        "isExtraImport": true,
-        "detail": "pydoc_data.topics",
-        "documentation": {}
-    },
-    {
         "label": "pandas",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "pandas",
         "description": "pandas",
         "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "wikipedia",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "wikipedia",
+        "description": "wikipedia",
+        "detail": "wikipedia",
         "documentation": {}
     },
     {
@@ -26,12 +45,36 @@
         "documentation": {}
     },
     {
-        "label": "re",
+        "label": "tqdm",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
         "documentation": {}
     },
     {
@@ -41,6 +84,23 @@
         "importPath": "uuid",
         "description": "uuid",
         "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "topics",
+        "importPath": "pydoc_data.topics",
+        "description": "pydoc_data.topics",
+        "isExtraImport": true,
+        "detail": "pydoc_data.topics",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
         "documentation": {}
     },
     {
@@ -93,40 +153,6 @@
         "documentation": {}
     },
     {
-        "label": "wikipedia",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "wikipedia",
-        "description": "wikipedia",
-        "detail": "wikipedia",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
         "label": "datetime",
         "kind": 6,
         "isExtraImport": true,
@@ -145,21 +171,20 @@
         "documentation": {}
     },
     {
-        "label": "random",
+        "label": "icecream",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "random",
-        "description": "random",
-        "detail": "random",
+        "importPath": "icecream",
+        "description": "icecream",
+        "detail": "icecream",
         "documentation": {}
     },
     {
-        "label": "numpy",
-        "kind": 6,
+        "label": "ic",
+        "importPath": "icecream",
+        "description": "icecream",
         "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
+        "detail": "icecream",
         "documentation": {}
     },
     {
@@ -221,11 +246,38 @@
         "documentation": {}
     },
     {
+        "label": "wikipedia_extractor",
+        "kind": 2,
+        "importPath": "lorebook_generator",
+        "description": "lorebook_generator",
+        "peekOfCode": "def wikipedia_extractor(names):\n    # given a person string (character), generate a lorebook for them from\n    # pages on wikipedia for the character. The lorebook will be a dictionary\n    lorebook = {}\n    # get the wikipedia page for each name in names\n    pages = []\n    iterator = 0\n    for name in names():\n        iterator += 1\n    iterator = 0",
+        "detail": "lorebook_generator",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "lorebook_generator",
+        "description": "lorebook_generator",
+        "peekOfCode": "def main():\n    # there is a list of characters/topics in several files in the data folder\n    # we will use these to generate a lorebook for the novelai project\n    # read in the files\n    characters = pd.read_csv('entities_and_topics/characters.csv')\n    # generate a lorebook for each character\n    lorebook = wikipedia_extractor(characters)\n    # save the lorebook to a json file\n    lorebook.to_json('generated_lorebook.lorebook')\nif __name__ == '__main__':",
+        "detail": "lorebook_generator",
+        "documentation": {}
+    },
+    {
+        "label": "context_config",
+        "kind": 5,
+        "importPath": "lorebook_generator",
+        "description": "lorebook_generator",
+        "peekOfCode": "context_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",\n    \"maximumTrimType\": \"sentence\",\n    \"insertionPosition\": -1,",
+        "detail": "lorebook_generator",
+        "documentation": {}
+    },
+    {
         "label": "preprocess",
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):",
+        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    ic()\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):",
         "detail": "main",
         "documentation": {}
     },
@@ -234,7 +286,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                entities.append(' '.join(c[0] for c in chunk.leaves()))\n    return entities\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia",
+        "peekOfCode": "def get_the_entities(content):\n    ic()\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                entities.append(\" \".join(c[0] for c in chunk.leaves()))\n    return entities\ndef generate_entries_from_list(list_of_names):",
         "detail": "main",
         "documentation": {}
     },
@@ -243,7 +295,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    for name in tqdm(list_of_names):\n        if name != '':\n            try:\n                entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant\n                page = wikipedia.page(entry)",
+        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    ic()\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    for name in tqdm(list_of_names):\n        if name != \"\":\n            try:\n                entry = wikipedia.search(name)[",
         "detail": "main",
         "documentation": {}
     },
@@ -252,7 +304,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def check_json_for_entry(entry_name, json_file):\n    # check if an entry already exists in the json file\n    with open(json_file, 'r') as f:\n        data = json.load(f)\n    for entry in range(len(data['entries'])):\n        if data['entries'][entry]['displayName'] == entry_name:\n            print(f'{entry_name} - entry already exists')\n            return True\n    return False\n## The goal: generate a lorebook dict from a list of text entries.",
+        "peekOfCode": "def check_json_for_entry(entry_name, json_file):\n    # check if an entry already exists in the json file\n    with open(json_file, \"r\") as f:\n        data = json.load(f)\n    for entry in range(len(data[\"entries\"])):\n        if data[\"entries\"][entry][\"displayName\"] == entry_name:\n            print(f\"{entry_name} - entry already exists\")\n            return True\n    return False\nfrom tqdm import tqdm",
         "detail": "main",
         "documentation": {}
     },
@@ -261,7 +313,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def examine_dates(entry1,entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                if chunk.label() == 'DATE':\n                    article_one_dates.append(' '.join(c[0] for c in chunk.leaves()))\n    for sent in sent_tokenize(entry2):",
+        "peekOfCode": "def examine_dates(entry1, entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    ic()\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                if chunk.label() == \"DATE\":\n                    article_one_dates.append(\" \".join(c[0] for c in chunk.leaves()))",
         "detail": "main",
         "documentation": {}
     },
@@ -270,7 +322,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names_f = pd.read_csv('characters.csv')['Name'].tolist()\n    # DROP NANs\n    list_of_names_f = [x for x in list_of_names_f if str(x) != 'nan']\n    # print(type(list_of_names))\n    # list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    # only keep names in the list of names that are not already in the json file\n    list_of_names = [x for x in list_of_names_f if not check_json_for_entry(x, 'lorebook_generated.lorebook')]",
+        "peekOfCode": "def main():\n    ic()\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names_f = pd.read_csv(\"characters.csv\")[\"Name\"].tolist()\n    # DROP NANs\n    list_of_names_f = [x for x in list_of_names_f if str(x) != \"nan\"]\n    # print(type(list_of_names))\n    # list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    # only keep names in the list of names that are not already in the json file",
         "detail": "main",
         "documentation": {}
     },
@@ -279,7 +331,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\n\"\"\"\n    \"Nikola Tesla\",\n\"Thomas Edison\",\n\"George Westinghouse\",\n\"Alexander Graham Bell\",\n\"Samuel Morse\",\n\"Benjamin Franklin\",\n\"Guglielmo Marconi\",",
+        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\n# import the json file lorebook_example.lorebook\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    ic()\n    # get the entities from the text\n    entities = []",
         "detail": "main",
         "documentation": {}
     },
@@ -288,7 +340,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "vectorizer = CountVectorizer()\nmaxlinksperpage = 50\ndef examine_dates(entry1,entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                if chunk.label() == 'DATE':",
+        "peekOfCode": "vectorizer = CountVectorizer()\nmaxlinksperpage = 50\ndef examine_dates(entry1, entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    ic()\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):",
         "detail": "main",
         "documentation": {}
     },
@@ -297,7 +349,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "maxlinksperpage = 50\ndef examine_dates(entry1,entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                if chunk.label() == 'DATE':\n                    article_one_dates.append(' '.join(c[0] for c in chunk.leaves()))",
+        "peekOfCode": "maxlinksperpage = 50\ndef examine_dates(entry1, entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    ic()\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                if chunk.label() == \"DATE\":",
         "detail": "main",
         "documentation": {}
     },
