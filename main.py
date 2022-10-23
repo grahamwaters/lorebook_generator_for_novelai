@@ -257,7 +257,7 @@ def main():
 
 
                         #!page.content = str(page.content).lower()
-                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name.lower() in str(page.content).lower()) and (page.content.find('film')==-1):
+                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name.lower() in str(page.content).lower()):
                             entries.append(page.content) #todo add examinedates
                             entry_names.append(link)
                             print(f' ==> Adding {link} to the list of entries')
