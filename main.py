@@ -216,10 +216,9 @@ def main():
                 # random sample of maxlinksperpage links
                 links = random.sample(links, min(len(links), maxlinksperpage))
                 print(f'Adding {name} to entries')
-                for link in links:
-                    if link.find('film')!=-1:
-                        continue # skip film pages
-                    #print("Checking link ", link,end='')
+                for link in tqdm(links):
+                    print(f'\nScanning {link}')
+
                     # for every 2nd degree page
                     if link.find('film')!=-1\
                         or link.find('television')!=-1\
@@ -244,8 +243,8 @@ def main():
                         or link.find('God')!=-1\
                         or link.find('Bible')!=-1\
                         or link.find('Biblical')!=-1\
-                        or link.find('cult')!=-1\
-                        or link.find('Cult')!=-1\
+                        or link.find(' cult ')!=-1\
+                        or link.find(' Cult ')!=-1\
                         or link.find('Catholic')!=-1\
                         or link.find('Protestant')!=-1\
                         or link.find('Christian')!=-1\
@@ -257,18 +256,18 @@ def main():
                         #!print(" length:", len(page.content))
 
 
-
-                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content) and (page.content.find('film')==-1):
+                        #!page.content = str(page.content).lower()
+                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name.lower() in str(page.content).lower()) and (page.content.find('film')==-1):
                             entries.append(page.content) #todo add examinedates
                             entry_names.append(link)
                             print(f' ==> Adding {link} to the list of entries')
 
                         # if is place
-                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name in page.content) and (page.content.find('Geography')!=-1 and page.content.find('History')!=-1):# and page.content.find(r'Demographics|Demography')!=-1):
+                        if link not in entry_names and page.content != '' and len(page.content) > 5000 and (name.lower() in str(page.content).lower()) and (page.content.find('Geography')!=-1 and page.content.find('History')!=-1):# and page.content.find(r'Demographics|Demography')!=-1):
                             entries.append(page.content)
                             entry_names.append(link)
                             print(f' ==> Adding LOC {link} to the list of entries')
-                    except:
+                    except Exception as e:
                         pass
             except Exception as e:
                 print(e)

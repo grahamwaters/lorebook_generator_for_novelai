@@ -1,631 +1,320 @@
-Name,0,0.1,0
-The Isle of Wight,,,
-Herbert George Wells,,,
-The Island of Doctor Moreau,,,
-The Time Machine,,,
-The Invisible Man,,,
-The War of the Worlds,,,
-Arthur Conan Doyle,,,
-The Lost World,,,
-Sherlock Holmes,,,
-Professor James Moriarty,,,
-Dr. John H. Watson,,,
-Dr. Henry Jekyll,,,
-Dr. Edward Hyde,,,
-Dr. Victor Frankenstein,,,
-Mary Shelley,,,
-Frankenstein,,,
-Professor Joseph Bell,,,
-Edgar Allan Poe,,,
-Social Darwinism,,,
-Socialism,,,
-Nikola Tesla,,,
-Thomas Edison,,,
-George Westinghouse,,,
-Alexander Graham Bell,,,
-Samuel Morse,,,
-Benjamin Franklin,,,
-Guglielmo Marconi,,,
-London,,,
-Paris,,,
-New York,,,
-Washington DC,,,
-Berlin Germany,,,
-West Berlin,,,
-East Berlin,,,
-Hitler,,,
-Joseph Stalin,,,
-Franklin D. Roosevelt,,,
-Harry S. Truman,,,
-Queen Victoria,,,
-Charles Dickens,,,
-William Shakespeare,,,
-Jules Verne,,,
-Samuel Clemens,,,
-Charles Darwin,,,
-Albert Einstein,,,
-Isaac Newton,,,
-Leonardo da Vinci,,,
-Captain James Cook,,,
-Wardenclyffe Tower,,,
-Famous Scientists,,,
-Famous Paintings,,,
-Mythical Creatures,,,
-World War 1,,,
-World War 2,,,
-Western Front,,,
-List_of_people_who_disappeared_mysteriously:_pre-1910,,,
-List_of_people_who_disappeared_mysteriously:_1910-1949,,,
-List_of_people_who_disappeared_mysteriously:_1950-1999,,,
-List_of_people_who_disappeared_mysteriously:_2000-present,,,
-Communism,,,
-Capitalism,,,
-Anarchism,,,
-Liberalism,,,
-Conservatism,,,
-Libertarianism,,,
-Victorian England,,,
-Time Travel,,,
-Time Machine,,,
-Aliens,,,
-UFOs,,,
-UFO Sightings,,,
-UFO Abductions,,,
-UFOs and Aliens,,,
-UFOs and the Government,,,
-UFOs and the Military,,,
-UFOs and the Media,,,
-Alien Myths,,,
-Unidentified_flying_object,,,
-UAP,,,
-causality,,,
-temporal causality,,,
-Michael Crichton,,,
-William Jenkins Shaw,,,
-The Lost World (Arthur Conan Doyle),,,
-King Solomon's Mines,,,
-Sherlock Holmes pastiches,,,
-Professor Moriarty in other media,,,
-Jack the Ripper suspects,,,
-Frederick Abberline,,,
-Thomas Bond (British surgeon),,,
-Ripper Street,,,
-Philip Sugden (historian),,,
-Walter Dew,,,
-George Bagster Phillips,,,
-Dear Boss letter,,,
-From Hell,,,
-Man in the Attic,,,
-Joseph Lawende,,,
-Donald Swanson,,,
-Batman: Gotham by Gaslight,,,
-Godfrey Lushington,,,
-Jack the Stripper,,,
-Under-Secretary of State for the Home Department,,,
-Durward Street,,,
-Catherine Eddowes,,,
-Jack the Ripper (1987 video game),,,
-Flower and Dean Street,,,
-Whitehall Mystery,,,
-Jack the Ripper (miniseries),,,
-The Lodger: A Story of the London Fog,,,
-Colin Wilson,,,
-Jack the Ripper in fiction,,,
-Scotland Yard,,,
-Valley of the Dinosaurs,,,
-The Aztec Treasure House,,,
-Charles Sumner Seeley,,,
-H.P. Lovecraft,,,
-The Narrative of Arthur Gordon Pym of Nantucket,,,
-A Treatise on the Binomial Theorem,,,
-The Return of Sherlock Holmes,,,
-Jean-Baptiste Greuze,,,
-Leslie S. Klinger,,,
-Napoleon,,,
-The Irish Times,,,
-Canon of Sherlock Holmes,,,
-Society of Jesus,,,
-Boss (crime),,,
-His Last Bow,,,
-Thomas Gainsborough,,,
-The Memoirs of Sherlock Holmes,,,
-Air gun,,,
-Mariner Books,,,
-The Adventure of the Illustrious Client,,,
-Sherlockian society,,,
-Edmund F. Robertson,,,
-Archenemy,,,
-Diogenes Club,,,
-Kuusankoski,,,
-The Strand Magazine,,,
-Kim Newman,,,
-The Adventure of the Norwood Builder,,,
-The Great Detective (book),,,
-Baritsu,,,
-John O'Connor Power,,,
-Stonyhurst Saint Mary's Hall,,,
-The Case-Book of Sherlock Holmes,,,
-Doctor Watson,,,
-The Field Bazaar,,,
-SUDOC (identifier),,,
-Undershaw,,,
-ISBN (identifier),,,
-VIAF (identifier),,,
-Naked Is the Best Disguise,,,
-Irene Adler,,,
-Station master,,,
-Dr. Watson,,,
-Stonyhurst,,,
-Reichenbach Falls,,,
-How Watson Learned the Trick,,,
-The Further Adventures of Sherlock Holmes (American radio series),,,
-Adam Worth,,,
-Donald Rumbelow,,,
-The Whitechapel Horrors,,,
-The Seven Crystal Balls,,,
-Gothic fiction,,,
-Jack The Ripper,,,
-,The Isle of Wight,,
-,Herbert George Wells,,
-,The Lost World,,
-,Professor James Moriarty,,
-,Dr. John H. Watson,,
-,Dr. Henry Jekyll,,
-,Dr. Edward Hyde,,
-,Dr. Victor Frankenstein,,
-,Mary Shelley,,
-,Frankenstein,,
-,Professor Joseph Bell,,
-,Nikola Tesla,,
-,Thomas Edison,,
-,George Westinghouse,,
-,Alexander Graham Bell,,
-,Samuel Morse,,
-,Benjamin Franklin,,
-,Guglielmo Marconi,,
-,London,,
-,Paris,,
-,New York,,
-,Washington DC,,
-,Berlin Germany,,
-,West Berlin,,
-,East Berlin,,
-,Hitler,,
-,Joseph Stalin,,
-,Franklin D. Roosevelt,,
-,Harry S. Truman,,
-,Queen Victoria,,
-,Charles Dickens,,
-,William Shakespeare,,
-,Jules Verne,,
-,Samuel Clemens,,
-,Charles Darwin,,
-,Albert Einstein,,
-,Isaac Newton,,
-,Leonardo da Vinci,,
-,Captain James Cook,,
-,Wardenclyffe Tower,,
-,Famous Scientists,,
-,Famous Paintings,,
-,Mythical Creatures,,
-,World War 1,,
-,World War 2,,
-,Western Front,,
-,List_of_people_who_disappeared_mysteriously:_pre-1910,,
-,List_of_people_who_disappeared_mysteriously:_1910-1949,,
-,List_of_people_who_disappeared_mysteriously:_1950-1999,,
-,List_of_people_who_disappeared_mysteriously:_2000-present,,
-,Capitalism,,
-,Liberalism,,
-,Victorian England,,
-,Time Travel,,
-,Time Machine,,
-,Aliens,,
-,UFOs,,
-,UFO Sightings,,
-,UFO Abductions,,
-,UFOs and Aliens,,
-,UFOs and the Government,,
-,UFOs and the Military,,
-,UFOs and the Media,,
-,Alien Myths,,
-,Unidentified_flying_object,,
-,UAP,,
-,causality,,
-,temporal causality,,
-,Michael Crichton,,
-,William Jenkins Shaw,,
-,The Lost World (Arthur Conan Doyle),,
-,King Solomon's Mines,,
-,Sherlock Holmes pastiches,,
-,Professor Moriarty in other media,,
-,Jack the Ripper suspects,,
-,Frederick Abberline,,
-,Thomas Bond (British surgeon),,
-,Ripper Street,,
-,Philip Sugden (historian),,
-,Walter Dew,,
-,George Bagster Phillips,,
-,Dear Boss letter,,
-,From Hell,,
-,Man in the Attic,,
-,Joseph Lawende,,
-,Donald Swanson,,
-,Batman: Gotham by Gaslight,,
-,Godfrey Lushington,,
-,Jack the Stripper,,
-,Under-Secretary of State for the Home Department,,
-,Durward Street,,
-,Catherine Eddowes,,
-,Jack the Ripper (1987 video game),,
-,Flower and Dean Street,,
-,Whitehall Mystery,,
-,Jack the Ripper (miniseries),,
-,The Lodger: A Story of the London Fog,,
-,Colin Wilson,,
-,Jack the Ripper in fiction,,
-,Scotland Yard,,
-,Valley of the Dinosaurs,,
-,The Aztec Treasure House,,
-,Charles Sumner Seeley,,
-,H.P. Lovecraft,,
-,The Narrative of Arthur Gordon Pym of Nantucket,,
-,A Treatise on the Binomial Theorem,,
-,The Return of Sherlock Holmes,,
-,Jean-Baptiste Greuze,,
-,Leslie S. Klinger,,
-,Napoleon,,
-,The Irish Times,,
-,Canon of Sherlock Holmes,,
-,Society of Jesus,,
-,Boss (crime),,
-,His Last Bow,,
-,Thomas Gainsborough,,
-,The Memoirs of Sherlock Holmes,,
-,Air gun,,
-,Mariner Books,,
-,The Adventure of the Illustrious Client,,
-,Sherlockian society,,
-,Edmund F. Robertson,,
-,Archenemy,,
-,Diogenes Club,,
-,Kuusankoski,,
-,The Strand Magazine,,
-,Kim Newman,,
-,The Adventure of the Norwood Builder,,
-,The Great Detective (book),,
-,Baritsu,,
-,John O'Connor Power,,
-,Stonyhurst Saint Mary's Hall,,
-,The Case-Book of Sherlock Holmes,,
-,Doctor Watson,,
-,The Field Bazaar,,
-,SUDOC (identifier),,
-,Undershaw,,
-,ISBN (identifier),,
-,VIAF (identifier),,
-,Naked Is the Best Disguise,,
-,Irene Adler,,
-,Station master,,
-,Stonyhurst,,
-,Reichenbach Falls,,
-,How Watson Learned the Trick,,
-,The Further Adventures of Sherlock Holmes (American radio series),,
-,Adam Worth,,
-,Donald Rumbelow,,
-,The Whitechapel Horrors,,
-,The Seven Crystal Balls,,
-,Gothic fiction,,
-,Jack The Ripper,,
-,Charles B. Stilson,,
-,,The Isle of Wight,
-,,Herbert George Wells,
-,,The Lost World,
-,,Professor James Moriarty,
-,,Dr. John H. Watson,
-,,Dr. Henry Jekyll,
-,,Dr. Edward Hyde,
-,,Dr. Victor Frankenstein,
-,,Mary Shelley,
-,,Frankenstein,
-,,Professor Joseph Bell,
-,,Nikola Tesla,
-,,Thomas Edison,
-,,George Westinghouse,
-,,Alexander Graham Bell,
-,,Samuel Morse,
-,,Benjamin Franklin,
-,,Guglielmo Marconi,
-,,London,
-,,Paris,
-,,New York,
-,,Washington DC,
-,,Berlin Germany,
-,,West Berlin,
-,,East Berlin,
-,,Hitler,
-,,Joseph Stalin,
-,,Franklin D. Roosevelt,
-,,Harry S. Truman,
-,,Queen Victoria,
-,,Charles Dickens,
-,,William Shakespeare,
-,,Jules Verne,
-,,Samuel Clemens,
-,,Charles Darwin,
-,,Albert Einstein,
-,,Isaac Newton,
-,,Leonardo da Vinci,
-,,Captain James Cook,
-,,Wardenclyffe Tower,
-,,Famous Scientists,
-,,Famous Paintings,
-,,Mythical Creatures,
-,,World War 1,
-,,World War 2,
-,,Western Front,
-,,List_of_people_who_disappeared_mysteriously:_pre-1910,
-,,List_of_people_who_disappeared_mysteriously:_1910-1949,
-,,List_of_people_who_disappeared_mysteriously:_1950-1999,
-,,List_of_people_who_disappeared_mysteriously:_2000-present,
-,,Capitalism,
-,,Liberalism,
-,,Victorian England,
-,,Time Travel,
-,,Time Machine,
-,,Aliens,
-,,UFOs,
-,,UFO Sightings,
-,,UFO Abductions,
-,,UFOs and Aliens,
-,,UFOs and the Government,
-,,UFOs and the Military,
-,,UFOs and the Media,
-,,Alien Myths,
-,,Unidentified_flying_object,
-,,UAP,
-,,causality,
-,,temporal causality,
-,,Michael Crichton,
-,,William Jenkins Shaw,
-,,The Lost World (Arthur Conan Doyle),
-,,King Solomon's Mines,
-,,Sherlock Holmes pastiches,
-,,Professor Moriarty in other media,
-,,Jack the Ripper suspects,
-,,Frederick Abberline,
-,,Thomas Bond (British surgeon),
-,,Ripper Street,
-,,Philip Sugden (historian),
-,,Walter Dew,
-,,George Bagster Phillips,
-,,Dear Boss letter,
-,,From Hell,
-,,Man in the Attic,
-,,Joseph Lawende,
-,,Donald Swanson,
-,,Batman: Gotham by Gaslight,
-,,Godfrey Lushington,
-,,Jack the Stripper,
-,,Under-Secretary of State for the Home Department,
-,,Durward Street,
-,,Catherine Eddowes,
-,,Jack the Ripper (1987 video game),
-,,Flower and Dean Street,
-,,Whitehall Mystery,
-,,Jack the Ripper (miniseries),
-,,The Lodger: A Story of the London Fog,
-,,Colin Wilson,
-,,Jack the Ripper in fiction,
-,,Scotland Yard,
-,,Valley of the Dinosaurs,
-,,The Aztec Treasure House,
-,,Charles Sumner Seeley,
-,,H.P. Lovecraft,
-,,The Narrative of Arthur Gordon Pym of Nantucket,
-,,A Treatise on the Binomial Theorem,
-,,The Return of Sherlock Holmes,
-,,Jean-Baptiste Greuze,
-,,Leslie S. Klinger,
-,,Napoleon,
-,,The Irish Times,
-,,Canon of Sherlock Holmes,
-,,Society of Jesus,
-,,Boss (crime),
-,,His Last Bow,
-,,Thomas Gainsborough,
-,,The Memoirs of Sherlock Holmes,
-,,Air gun,
-,,Mariner Books,
-,,The Adventure of the Illustrious Client,
-,,Sherlockian society,
-,,Edmund F. Robertson,
-,,Archenemy,
-,,Diogenes Club,
-,,Kuusankoski,
-,,The Strand Magazine,
-,,Kim Newman,
-,,The Adventure of the Norwood Builder,
-,,The Great Detective (book),
-,,Baritsu,
-,,John O'Connor Power,
-,,Stonyhurst Saint Mary's Hall,
-,,The Case-Book of Sherlock Holmes,
-,,Doctor Watson,
-,,The Field Bazaar,
-,,SUDOC (identifier),
-,,Undershaw,
-,,ISBN (identifier),
-,,VIAF (identifier),
-,,Naked Is the Best Disguise,
-,,Irene Adler,
-,,Station master,
-,,Stonyhurst,
-,,Reichenbach Falls,
-,,How Watson Learned the Trick,
-,,The Further Adventures of Sherlock Holmes (American radio series),
-,,Adam Worth,
-,,Donald Rumbelow,
-,,The Whitechapel Horrors,
-,,The Seven Crystal Balls,
-,,Gothic fiction,
-,,Jack The Ripper,
-,,Charles B. Stilson,
-,,From Holmes to Sherlock,
-,,The Dynamics of an Asteroid,
-,,,The Isle of Wight
-,,,Herbert George Wells
-,,,The Lost World
-,,,Professor James Moriarty
-,,,Dr. John H. Watson
-,,,Dr. Henry Jekyll
-,,,Dr. Edward Hyde
-,,,Dr. Victor Frankenstein
-,,,Mary Shelley
-,,,Frankenstein
-,,,Professor Joseph Bell
-,,,Nikola Tesla
-,,,Thomas Edison
-,,,George Westinghouse
-,,,Alexander Graham Bell
-,,,Samuel Morse
-,,,Benjamin Franklin
-,,,Guglielmo Marconi
-,,,London
-,,,Paris
-,,,New York
-,,,Washington DC
-,,,Berlin Germany
-,,,West Berlin
-,,,East Berlin
-,,,Hitler
-,,,Joseph Stalin
-,,,Franklin D. Roosevelt
-,,,Harry S. Truman
-,,,Queen Victoria
-,,,Charles Dickens
-,,,William Shakespeare
-,,,Jules Verne
-,,,Samuel Clemens
-,,,Charles Darwin
-,,,Albert Einstein
-,,,Isaac Newton
-,,,Leonardo da Vinci
-,,,Captain James Cook
-,,,Wardenclyffe Tower
-,,,Famous Scientists
-,,,Famous Paintings
-,,,Mythical Creatures
-,,,World War 1
-,,,World War 2
-,,,Western Front
-,,,List_of_people_who_disappeared_mysteriously:_pre-1910
-,,,List_of_people_who_disappeared_mysteriously:_1910-1949
-,,,List_of_people_who_disappeared_mysteriously:_1950-1999
-,,,List_of_people_who_disappeared_mysteriously:_2000-present
-,,,Capitalism
-,,,Liberalism
-,,,Victorian England
-,,,Time Travel
-,,,Time Machine
-,,,Aliens
-,,,UFOs
-,,,UFO Sightings
-,,,UFO Abductions
-,,,UFOs and Aliens
-,,,UFOs and the Government
-,,,UFOs and the Military
-,,,UFOs and the Media
-,,,Alien Myths
-,,,Unidentified_flying_object
-,,,UAP
-,,,causality
-,,,temporal causality
-,,,Michael Crichton
-,,,William Jenkins Shaw
-,,,The Lost World (Arthur Conan Doyle)
-,,,King Solomon's Mines
-,,,Sherlock Holmes pastiches
-,,,Professor Moriarty in other media
-,,,Jack the Ripper suspects
-,,,Frederick Abberline
-,,,Thomas Bond (British surgeon)
-,,,Ripper Street
-,,,Philip Sugden (historian)
-,,,Walter Dew
-,,,George Bagster Phillips
-,,,Dear Boss letter
-,,,From Hell
-,,,Man in the Attic
-,,,Joseph Lawende
-,,,Donald Swanson
-,,,Batman: Gotham by Gaslight
-,,,Godfrey Lushington
-,,,Jack the Stripper
-,,,Under-Secretary of State for the Home Department
-,,,Durward Street
-,,,Catherine Eddowes
-,,,Jack the Ripper (1987 video game)
-,,,Flower and Dean Street
-,,,Whitehall Mystery
-,,,Jack the Ripper (miniseries)
-,,,The Lodger: A Story of the London Fog
-,,,Colin Wilson
-,,,Jack the Ripper in fiction
-,,,Scotland Yard
-,,,Valley of the Dinosaurs
-,,,The Aztec Treasure House
-,,,Charles Sumner Seeley
-,,,H.P. Lovecraft
-,,,The Narrative of Arthur Gordon Pym of Nantucket
-,,,A Treatise on the Binomial Theorem
-,,,The Return of Sherlock Holmes
-,,,Jean-Baptiste Greuze
-,,,Leslie S. Klinger
-,,,Napoleon
-,,,The Irish Times
-,,,Canon of Sherlock Holmes
-,,,Society of Jesus
-,,,Boss (crime)
-,,,His Last Bow
-,,,Thomas Gainsborough
-,,,The Memoirs of Sherlock Holmes
-,,,Air gun
-,,,Mariner Books
-,,,The Adventure of the Illustrious Client
-,,,Sherlockian society
-,,,Edmund F. Robertson
-,,,Archenemy
-,,,Diogenes Club
-,,,Kuusankoski
-,,,The Strand Magazine
-,,,Kim Newman
-,,,The Adventure of the Norwood Builder
-,,,The Great Detective (book)
-,,,Baritsu
-,,,John O'Connor Power
-,,,Stonyhurst Saint Mary's Hall
-,,,The Case-Book of Sherlock Holmes
-,,,Doctor Watson
-,,,The Field Bazaar
-,,,SUDOC (identifier)
-,,,Undershaw
-,,,ISBN (identifier)
-,,,VIAF (identifier)
-,,,Naked Is the Best Disguise
-,,,Irene Adler
-,,,Station master
-,,,Stonyhurst
-,,,Reichenbach Falls
-,,,How Watson Learned the Trick
-,,,The Further Adventures of Sherlock Holmes (American radio series)
-,,,Adam Worth
-,,,Donald Rumbelow
-,,,The Whitechapel Horrors
-,,,The Seven Crystal Balls
-,,,Gothic fiction
-,,,Jack The Ripper
-,,,Charles B. Stilson
-,,,From Holmes to Sherlock
-,,,The Dynamics of an Asteroid
-,,,A Study in Terror
+Name,0,0.1,0.2,0.3,0
+The Isle of Wight,,,,,
+Herbert George Wells,,,,,
+The Island of Doctor Moreau,,,,,
+The Time Machine,,,,,
+The Invisible Man,,,,,
+The War of the Worlds,,,,,
+Arthur Conan Doyle,,,,,
+The Lost World,,,,,
+Sherlock Holmes,,,,,
+Professor James Moriarty,,,,,
+Dr. John H. Watson,,,,,
+Dr. Henry Jekyll,,,,,
+Dr. Edward Hyde,,,,,
+Dr. Victor Frankenstein,,,,,
+Mary Shelley,,,,,
+Frankenstein,,,,,
+Professor Joseph Bell,,,,,
+Edgar Allan Poe,,,,,
+Social Darwinism,,,,,
+Socialism,,,,,
+Nikola Tesla,,,,,
+Thomas Edison,,,,,
+George Westinghouse,,,,,
+Alexander Graham Bell,,,,,
+Samuel Morse,,,,,
+Benjamin Franklin,,,,,
+Guglielmo Marconi,,,,,
+London,,,,,
+Paris,,,,,
+New York,,,,,
+Washington DC,,,,,
+Berlin Germany,,,,,
+West Berlin,,,,,
+East Berlin,,,,,
+Hitler,,,,,
+Joseph Stalin,,,,,
+Franklin D. Roosevelt,,,,,
+Harry S. Truman,,,,,
+Queen Victoria,,,,,
+Charles Dickens,,,,,
+William Shakespeare,,,,,
+Jules Verne,,,,,
+Samuel Clemens,,,,,
+Charles Darwin,,,,,
+Albert Einstein,,,,,
+Isaac Newton,,,,,
+Leonardo da Vinci,,,,,
+Captain James Cook,,,,,
+Wardenclyffe Tower,,,,,
+Famous Scientists,,,,,
+Famous Paintings,,,,,
+Mythical Creatures,,,,,
+World War 1,,,,,
+World War 2,,,,,
+Western Front,,,,,
+List_of_people_who_disappeared_mysteriously:_pre-1910,,,,,
+List_of_people_who_disappeared_mysteriously:_1910-1949,,,,,
+List_of_people_who_disappeared_mysteriously:_1950-1999,,,,,
+List_of_people_who_disappeared_mysteriously:_2000-present,,,,,
+Communism,,,,,
+Capitalism,,,,,
+Anarchism,,,,,
+Liberalism,,,,,
+Conservatism,,,,,
+Libertarianism,,,,,
+Victorian England,,,,,
+Time Travel,,,,,
+Time Machine,,,,,
+Aliens,,,,,
+UFOs,,,,,
+UFO Sightings,,,,,
+UFO Abductions,,,,,
+UFOs and Aliens,,,,,
+UFOs and the Government,,,,,
+UFOs and the Military,,,,,
+UFOs and the Media,,,,,
+Alien Myths,,,,,
+Unidentified_flying_object,,,,,
+UAP,,,,,
+causality,,,,,
+temporal causality,,,,,
+Michael Crichton,,,,,
+William Jenkins Shaw,,,,,
+The Lost World (Arthur Conan Doyle),,,,,
+King Solomon's Mines,,,,,
+Sherlock Holmes pastiches,,,,,
+Professor Moriarty in other media,,,,,
+Jack the Ripper suspects,,,,,
+Frederick Abberline,,,,,
+Thomas Bond (British surgeon),,,,,
+Ripper Street,,,,,
+Philip Sugden (historian),,,,,
+Walter Dew,,,,,
+George Bagster Phillips,,,,,
+Dear Boss letter,,,,,
+From Hell,,,,,
+Man in the Attic,,,,,
+Joseph Lawende,,,,,
+Donald Swanson,,,,,
+Batman: Gotham by Gaslight,,,,,
+Godfrey Lushington,,,,,
+Jack the Stripper,,,,,
+Under-Secretary of State for the Home Department,,,,,
+Durward Street,,,,,
+Catherine Eddowes,,,,,
+Jack the Ripper (1987 video game),,,,,
+Flower and Dean Street,,,,,
+Whitehall Mystery,,,,,
+Jack the Ripper (miniseries),,,,,
+The Lodger: A Story of the London Fog,,,,,
+Colin Wilson,,,,,
+Jack the Ripper in fiction,,,,,
+Scotland Yard,,,,,
+Valley of the Dinosaurs,,,,,
+The Aztec Treasure House,,,,,
+Charles Sumner Seeley,,,,,
+H.P. Lovecraft,,,,,
+The Narrative of Arthur Gordon Pym of Nantucket,,,,,
+A Treatise on the Binomial Theorem,,,,,
+The Return of Sherlock Holmes,,,,,
+Jean-Baptiste Greuze,,,,,
+Leslie S. Klinger,,,,,
+Napoleon,,,,,
+The Irish Times,,,,,
+Canon of Sherlock Holmes,,,,,
+Society of Jesus,,,,,
+Boss (crime),,,,,
+His Last Bow,,,,,
+Thomas Gainsborough,,,,,
+The Memoirs of Sherlock Holmes,,,,,
+Air gun,,,,,
+Mariner Books,,,,,
+The Adventure of the Illustrious Client,,,,,
+Sherlockian society,,,,,
+Edmund F. Robertson,,,,,
+Archenemy,,,,,
+Diogenes Club,,,,,
+Kuusankoski,,,,,
+The Strand Magazine,,,,,
+Kim Newman,,,,,
+The Adventure of the Norwood Builder,,,,,
+The Great Detective (book),,,,,
+Baritsu,,,,,
+John O'Connor Power,,,,,
+Stonyhurst Saint Mary's Hall,,,,,
+The Case-Book of Sherlock Holmes,,,,,
+Doctor Watson,,,,,
+The Field Bazaar,,,,,
+SUDOC (identifier),,,,,
+Undershaw,,,,,
+ISBN (identifier),,,,,
+VIAF (identifier),,,,,
+Naked Is the Best Disguise,,,,,
+Irene Adler,,,,,
+Station master,,,,,
+Dr. Watson,,,,,
+Stonyhurst,,,,,
+Reichenbach Falls,,,,,
+How Watson Learned the Trick,,,,,
+The Further Adventures of Sherlock Holmes (American radio series),,,,,
+Adam Worth,,,,,
+Donald Rumbelow,,,,,
+The Whitechapel Horrors,,,,,
+The Seven Crystal Balls,,,,,
+Gothic fiction,,,,,
+Jack The Ripper,,,,,
+,,,,,The Isle of Wight
+,,,,,Herbert George Wells
+,,,,,The Lost World
+,,,,,Professor James Moriarty
+,,,,,Dr. John H. Watson
+,,,,,Dr. Henry Jekyll
+,,,,,Dr. Edward Hyde
+,,,,,Dr. Victor Frankenstein
+,,,,,Mary Shelley
+,,,,,Frankenstein
+,,,,,Professor Joseph Bell
+,,,,,Nikola Tesla
+,,,,,Thomas Edison
+,,,,,George Westinghouse
+,,,,,Alexander Graham Bell
+,,,,,Samuel Morse
+,,,,,Benjamin Franklin
+,,,,,Guglielmo Marconi
+,,,,,London
+,,,,,Paris
+,,,,,New York
+,,,,,Washington DC
+,,,,,Berlin Germany
+,,,,,West Berlin
+,,,,,East Berlin
+,,,,,Hitler
+,,,,,Joseph Stalin
+,,,,,Franklin D. Roosevelt
+,,,,,Harry S. Truman
+,,,,,Queen Victoria
+,,,,,Charles Dickens
+,,,,,William Shakespeare
+,,,,,Jules Verne
+,,,,,Samuel Clemens
+,,,,,Charles Darwin
+,,,,,Albert Einstein
+,,,,,Isaac Newton
+,,,,,Leonardo da Vinci
+,,,,,Captain James Cook
+,,,,,Wardenclyffe Tower
+,,,,,Famous Scientists
+,,,,,Famous Paintings
+,,,,,Mythical Creatures
+,,,,,World War 1
+,,,,,World War 2
+,,,,,Western Front
+,,,,,List_of_people_who_disappeared_mysteriously:_pre-1910
+,,,,,List_of_people_who_disappeared_mysteriously:_1910-1949
+,,,,,List_of_people_who_disappeared_mysteriously:_1950-1999
+,,,,,List_of_people_who_disappeared_mysteriously:_2000-present
+,,,,,Capitalism
+,,,,,Liberalism
+,,,,,Victorian England
+,,,,,Time Travel
+,,,,,Time Machine
+,,,,,Aliens
+,,,,,UFOs
+,,,,,UFO Sightings
+,,,,,UFO Abductions
+,,,,,UFOs and Aliens
+,,,,,UFOs and the Government
+,,,,,UFOs and the Military
+,,,,,UFOs and the Media
+,,,,,Alien Myths
+,,,,,Unidentified_flying_object
+,,,,,UAP
+,,,,,causality
+,,,,,temporal causality
+,,,,,Michael Crichton
+,,,,,William Jenkins Shaw
+,,,,,The Lost World (Arthur Conan Doyle)
+,,,,,King Solomon's Mines
+,,,,,Sherlock Holmes pastiches
+,,,,,Professor Moriarty in other media
+,,,,,Jack the Ripper suspects
+,,,,,Frederick Abberline
+,,,,,Thomas Bond (British surgeon)
+,,,,,Ripper Street
+,,,,,Philip Sugden (historian)
+,,,,,Walter Dew
+,,,,,George Bagster Phillips
+,,,,,Dear Boss letter
+,,,,,From Hell
+,,,,,Man in the Attic
+,,,,,Joseph Lawende
+,,,,,Donald Swanson
+,,,,,Batman: Gotham by Gaslight
+,,,,,Godfrey Lushington
+,,,,,Jack the Stripper
+,,,,,Under-Secretary of State for the Home Department
+,,,,,Durward Street
+,,,,,Catherine Eddowes
+,,,,,Jack the Ripper (1987 video game)
+,,,,,Flower and Dean Street
+,,,,,Whitehall Mystery
+,,,,,Jack the Ripper (miniseries)
+,,,,,The Lodger: A Story of the London Fog
+,,,,,Colin Wilson
+,,,,,Jack the Ripper in fiction
+,,,,,Scotland Yard
+,,,,,Valley of the Dinosaurs
+,,,,,The Aztec Treasure House
+,,,,,Charles Sumner Seeley
+,,,,,H.P. Lovecraft
+,,,,,The Narrative of Arthur Gordon Pym of Nantucket
+,,,,,A Treatise on the Binomial Theorem
+,,,,,The Return of Sherlock Holmes
+,,,,,Jean-Baptiste Greuze
+,,,,,Leslie S. Klinger
+,,,,,Napoleon
+,,,,,The Irish Times
+,,,,,Canon of Sherlock Holmes
+,,,,,Society of Jesus
+,,,,,Boss (crime)
+,,,,,His Last Bow
+,,,,,Thomas Gainsborough
+,,,,,The Memoirs of Sherlock Holmes
+,,,,,Air gun
+,,,,,Mariner Books
+,,,,,The Adventure of the Illustrious Client
+,,,,,Sherlockian society
+,,,,,Edmund F. Robertson
+,,,,,Archenemy
+,,,,,Diogenes Club
+,,,,,Kuusankoski
+,,,,,The Strand Magazine
+,,,,,Kim Newman
+,,,,,The Adventure of the Norwood Builder
+,,,,,The Great Detective (book)
+,,,,,Baritsu
+,,,,,John O'Connor Power
+,,,,,Stonyhurst Saint Mary's Hall
+,,,,,The Case-Book of Sherlock Holmes
+,,,,,Doctor Watson
+,,,,,The Field Bazaar
+,,,,,SUDOC (identifier)
+,,,,,Undershaw
+,,,,,ISBN (identifier)
+,,,,,VIAF (identifier)
+,,,,,Naked Is the Best Disguise
+,,,,,Irene Adler
+,,,,,Station master
+,,,,,Stonyhurst
+,,,,,Reichenbach Falls
+,,,,,How Watson Learned the Trick
+,,,,,The Further Adventures of Sherlock Holmes (American radio series)
+,,,,,Adam Worth
+,,,,,Donald Rumbelow
+,,,,,The Whitechapel Horrors
+,,,,,The Seven Crystal Balls
+,,,,,Gothic fiction
+,,,,,Jack The Ripper
+,,,,,
