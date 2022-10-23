@@ -94,8 +94,27 @@ topics_list = []
 with open('starter.lorebook') as f:
     lore_dict = json.load(f)
 
+
 def main():
     global layer
+
+
+    # topics_list = [
+    #     'Astronomy',
+    #     'Biology',
+    #     'Chemistry',
+    #     'Charles Darwin',
+    #     'Antarcitca',
+    #     'Victorian England',
+    #     'World War I',
+    #     'World War II',
+    #     'Richard Byrd',
+    #     'Charles Lindbergh',
+    #     'Charles Dickens'
+    # ]
+
+
+
     entry_keys = []
     input_text = 'start'
     while input_text != '':
@@ -155,18 +174,18 @@ def main():
 
     # go through the secondary pages check them for names of people, only keep names of people.
 
-    for pages in secondary_pages_master:
-        for page in pages:
-            # check if the page is a person with nltk
-            if nltk.pos_tag(nltk.word_tokenize(page))[0][1] == 'NNP':
-                # if it is a person, add it to the list of topics
-                topics_list.append(page) # add the page to the list of topics
-                if layer == 0: layer = 1 # if this is the first layer, set the layer to 1
-                else: layer = 2 # if this is the second layer, set the layer to 2
-    if layer == 1:
-        main() # if the layer is 1, run the main function again
-    else:
-        pass
+    # for pages in secondary_pages_master:
+    #     for page in pages:
+    #         # check if the page is a person with nltk
+    #         if nltk.pos_tag(nltk.word_tokenize(page))[0][1] == 'NNP':
+    #             # if it is a person, add it to the list of topics
+    #             topics_list.append(page) # add the page to the list of topics
+    #             if layer == 0: layer = 1 # if this is the first layer, set the layer to 1
+    #             else: layer = 2 # if this is the second layer, set the layer to 2
+    # if layer == 1:
+    #     main() # if the layer is 1, run the main function again
+    # else:
+    #     pass
 
 
 
@@ -174,7 +193,7 @@ def main():
     context_config = {
             "prefix": "",
             "suffix": "\n",
-            "tokenBudget": 700, # note: was 2048
+            "tokenBudget": 2048, # note: was 2048
             "reservedTokens": 0,
             "budgetPriority": 400,
             "trimDirection": "trimBottom",
@@ -184,11 +203,11 @@ def main():
         }
 
     # add the entries to the lorebook dictionary
-
+    print('adding entries to lorebook...')
     for i in range(len(entries)):
         # append blanks to lore_dict['entries'] to make room for the new entries
         lore_dict['entries'].append({})
-
+    print('done')
     for i in range(len(entries)):
         # lore_dict > entries > text
         # add a new entry to the lorebook dictionary

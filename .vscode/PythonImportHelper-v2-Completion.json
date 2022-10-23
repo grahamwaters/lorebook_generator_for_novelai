@@ -1,13 +1,5 @@
 [
     {
-        "label": "topics",
-        "importPath": "pydoc_data.topics",
-        "description": "pydoc_data.topics",
-        "isExtraImport": true,
-        "detail": "pydoc_data.topics",
-        "documentation": {}
-    },
-    {
         "label": "pandas",
         "kind": 6,
         "isExtraImport": true,
@@ -69,11 +61,43 @@
         "documentation": {}
     },
     {
+        "label": "sent_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
+        "isExtraImport": true,
+        "detail": "nltk.tokenize",
+        "documentation": {}
+    },
+    {
+        "label": "word_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
+        "isExtraImport": true,
+        "detail": "nltk.tokenize",
+        "documentation": {}
+    },
+    {
         "label": "stopwords",
         "importPath": "nltk.corpus",
         "description": "nltk.corpus",
         "isExtraImport": true,
         "detail": "nltk.corpus",
+        "documentation": {}
+    },
+    {
+        "label": "stopwords",
+        "importPath": "nltk.corpus",
+        "description": "nltk.corpus",
+        "isExtraImport": true,
+        "detail": "nltk.corpus",
+        "documentation": {}
+    },
+    {
+        "label": "pos_tag",
+        "importPath": "nltk.tag",
+        "description": "nltk.tag",
+        "isExtraImport": true,
+        "detail": "nltk.tag",
         "documentation": {}
     },
     {
@@ -111,12 +135,162 @@
         "documentation": {}
     },
     {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
         "label": "datetime",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "datetime",
         "description": "datetime",
         "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "topics",
+        "importPath": "pydoc_data.topics",
+        "description": "pydoc_data.topics",
+        "isExtraImport": true,
+        "detail": "pydoc_data.topics",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess",
+        "kind": 2,
+        "importPath": "Untitled-1",
+        "description": "Untitled-1",
+        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):",
+        "detail": "Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "get_the_entities",
+        "kind": 2,
+        "importPath": "Untitled-1",
+        "description": "Untitled-1",
+        "peekOfCode": "def get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                entities.append(' '.join(c[0] for c in chunk.leaves()))\n    return entities\ndef generate_entries_from_list(parents,list_of_names, cat_name=\"Person\"):\n    global all_links",
+        "detail": "Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "generate_entries_from_list",
+        "kind": 2,
+        "importPath": "Untitled-1",
+        "description": "Untitled-1",
+        "peekOfCode": "def generate_entries_from_list(parents,list_of_names, cat_name=\"Person\"):\n    global all_links\n    # enter a list of people's names and get a list of entries, from wikipedia\n    #cat_name is the category\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    for name in tqdm(list_of_names):\n        if name != '':\n            try:",
+        "detail": "Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "Untitled-1",
+        "description": "Untitled-1",
+        "peekOfCode": "def main():\n    global layer\n    # topics_list = [\n    #     'Astronomy',\n    #     'Biology',\n    #     'Chemistry',\n    #     'Charles Darwin',\n    #     'Antarcitca',\n    #     'Victorian England',\n    #     'World War I',",
+        "detail": "Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "main2",
+        "kind": 2,
+        "importPath": "Untitled-1",
+        "description": "Untitled-1",
+        "peekOfCode": "def main2():\n    global all_links\n    global layer\n    global master_list_entities\n    entries, entry_names, ids,entry_keywords,cat_name,all_links = generate_entries_from_list(all_links,all_links) #note: no category for secondary pages\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    # create a list of the keys for each entry (all proper nouns, places and dates)\n    keys = []\n    keys_dict = {}\n    secondary_pages_master = []",
+        "detail": "Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "master_list_entities",
+        "kind": 5,
+        "importPath": "Untitled-1",
+        "description": "Untitled-1",
+        "peekOfCode": "master_list_entities = ['Southsea',\"Hyde's Drapery Emporium\"]\nimport pandas as pd\nimport json\nimport re\nimport uuid\n# import nltk\n# nltk.download('punkt')\nimport nltk\nnltk.download('stopwords')\nfrom nltk.tokenize import sent_tokenize",
+        "detail": "Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "stop_words",
+        "kind": 5,
+        "importPath": "Untitled-1",
+        "description": "Untitled-1",
+        "peekOfCode": "stop_words = set(stopwords.words('english'))\nall_links = [] # list to store all the links that we will make\n# import the json file lorebook_example.lorebook\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []",
+        "detail": "Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "all_links",
+        "kind": 5,
+        "importPath": "Untitled-1",
+        "description": "Untitled-1",
+        "peekOfCode": "all_links = [] # list to store all the links that we will make\n# import the json file lorebook_example.lorebook\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):",
+        "detail": "Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "layer",
+        "kind": 5,
+        "importPath": "Untitled-1",
+        "description": "Untitled-1",
+        "peekOfCode": "layer = 0\ntopics_list = []\nwith open('starter.lorebook') as f:\n    lore_dict = json.load(f)\ndef main():\n    global layer\n    # topics_list = [\n    #     'Astronomy',\n    #     'Biology',\n    #     'Chemistry',",
+        "detail": "Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "topics_list",
+        "kind": 5,
+        "importPath": "Untitled-1",
+        "description": "Untitled-1",
+        "peekOfCode": "topics_list = []\nwith open('starter.lorebook') as f:\n    lore_dict = json.load(f)\ndef main():\n    global layer\n    # topics_list = [\n    #     'Astronomy',\n    #     'Biology',\n    #     'Chemistry',\n    #     'Charles Darwin',",
+        "detail": "Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "layer",
+        "kind": 5,
+        "importPath": "Untitled-1",
+        "description": "Untitled-1",
+        "peekOfCode": "layer = 0\ndef main2():\n    global all_links\n    global layer\n    global master_list_entities\n    entries, entry_names, ids,entry_keywords,cat_name,all_links = generate_entries_from_list(all_links,all_links) #note: no category for secondary pages\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    # create a list of the keys for each entry (all proper nouns, places and dates)\n    keys = []\n    keys_dict = {}",
+        "detail": "Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "links",
+        "kind": 5,
+        "importPath": "document_insights",
+        "description": "document_insights",
+        "peekOfCode": "links = []\n# create the list of keywords\nkeywords = ['Paris','1883','Tesla','hunting']\n# for each file in the directory\nfor file in tqdm(os.listdir('wikipedia_pages')):\n    # open the file\n    with open('wikipedia_pages/' + file, 'r') as f:\n        # read the file\n        text = f.read()\n        # split the text into paragraphs",
+        "detail": "document_insights",
+        "documentation": {}
+    },
+    {
+        "label": "keywords",
+        "kind": 5,
+        "importPath": "document_insights",
+        "description": "document_insights",
+        "peekOfCode": "keywords = ['Paris','1883','Tesla','hunting']\n# for each file in the directory\nfor file in tqdm(os.listdir('wikipedia_pages')):\n    # open the file\n    with open('wikipedia_pages/' + file, 'r') as f:\n        # read the file\n        text = f.read()\n        # split the text into paragraphs\n        paragraphs = text.split('\\n\\n')\n        # for each paragraph in the text",
+        "detail": "document_insights",
         "documentation": {}
     },
     {
@@ -151,7 +325,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    global layer\n    entry_keys = []\n    input_text = 'start'\n    while input_text != '':\n        input_text = input('Enter a topic: ')\n        topics_list.append(input_text)\n    assert(type(topics_list) == list) # make sure it's a list\n    # entries, entry_names = generate_entries_from_list(lore_dict['people'])\n    entries, entry_names, ids,entry_keywords = generate_entries_from_list(topics_list)",
+        "peekOfCode": "def main():\n    global layer\n    # topics_list = [\n    #     'Astronomy',\n    #     'Biology',\n    #     'Chemistry',\n    #     'Charles Darwin',\n    #     'Antarcitca',\n    #     'Victorian England',\n    #     'World War I',",
         "detail": "main",
         "documentation": {}
     },
@@ -169,7 +343,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "layer = 0\ntopics_list = []\nwith open('starter.lorebook') as f:\n    lore_dict = json.load(f)\ndef main():\n    global layer\n    entry_keys = []\n    input_text = 'start'\n    while input_text != '':\n        input_text = input('Enter a topic: ')",
+        "peekOfCode": "layer = 0\ntopics_list = []\nwith open('starter.lorebook') as f:\n    lore_dict = json.load(f)\ndef main():\n    global layer\n    # topics_list = [\n    #     'Astronomy',\n    #     'Biology',\n    #     'Chemistry',",
         "detail": "main",
         "documentation": {}
     },
@@ -178,7 +352,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "topics_list = []\nwith open('starter.lorebook') as f:\n    lore_dict = json.load(f)\ndef main():\n    global layer\n    entry_keys = []\n    input_text = 'start'\n    while input_text != '':\n        input_text = input('Enter a topic: ')\n        topics_list.append(input_text)",
+        "peekOfCode": "topics_list = []\nwith open('starter.lorebook') as f:\n    lore_dict = json.load(f)\ndef main():\n    global layer\n    # topics_list = [\n    #     'Astronomy',\n    #     'Biology',\n    #     'Chemistry',\n    #     'Charles Darwin',",
         "detail": "main",
         "documentation": {}
     }
