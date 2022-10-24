@@ -1,13 +1,5 @@
 [
     {
-        "label": "topics",
-        "importPath": "pydoc_data.topics",
-        "description": "pydoc_data.topics",
-        "isExtraImport": true,
-        "detail": "pydoc_data.topics",
-        "documentation": {}
-    },
-    {
         "label": "pandas",
         "kind": 6,
         "isExtraImport": true,
@@ -17,12 +9,71 @@
         "documentation": {}
     },
     {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
         "label": "json",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "json",
         "description": "json",
         "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "topics",
+        "importPath": "pydoc_data.topics",
+        "description": "pydoc_data.topics",
+        "isExtraImport": true,
+        "detail": "pydoc_data.topics",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
         "documentation": {}
     },
     {
@@ -94,31 +145,6 @@
         "documentation": {}
     },
     {
-        "label": "tqdm",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
         "label": "datetime",
         "kind": 6,
         "isExtraImport": true,
@@ -143,6 +169,33 @@
         "importPath": "random",
         "description": "random",
         "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "generate_entries_from_list",
+        "kind": 2,
+        "importPath": "lorebook_from_directory",
+        "description": "lorebook_from_directory",
+        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    for name in tqdm(list_of_names):\n        if name != '':\n            try:\n                entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant\n                page = wikipedia.page(entry)",
+        "detail": "lorebook_from_directory",
+        "documentation": {}
+    },
+    {
+        "label": "prev",
+        "kind": 2,
+        "importPath": "lorebook_from_directory",
+        "description": "lorebook_from_directory",
+        "peekOfCode": "def prev():\n    with open('lorebook_generated.lorebook') as f:\n        lore_dict = json.load(f)\n    topics_list = []\n    entry_keys = []\n    # input_text = 'start'\n    # while input_text != '':\n    #     input_text = input('Enter a topic: ')\n    #     topics_list.append(input_text)\n    # read in the list of topics from the characters.csv file",
+        "detail": "lorebook_from_directory",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "lorebook_from_directory",
+        "description": "lorebook_from_directory",
+        "peekOfCode": "def main():\n    # generate a lorebook.lorebook file from the articles (text files) in the wikipedia_pages directory.",
+        "detail": "lorebook_from_directory",
         "documentation": {}
     },
     {
@@ -186,7 +239,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def check_json_for_entry(entry_name, json_file):\n    # check if an entry already exists in the json file\n    with open(json_file, 'r') as f:\n        data = json.load(f)\n    for entry in range(len(data['entries'])):\n        if data['entries'][entry]['displayName'] == entry_name:\n            print(f'{entry_name} - entry already exists')\n            return True\n    return False\n## The goal: generate a lorebook dict from a list of text entries.",
+        "peekOfCode": "def check_json_for_entry(entry_name, json_file):\n    # check if an entry already exists in the json file\n    with open(json_file, 'r') as f:\n        data = json.load(f)\n    for entry in range(len(data['entries'])):\n        if entry_name == 'nan' or entry_name == '':\n            continue\n        if data['entries'][entry]['displayName'] == entry_name:\n            print(f'{entry_name} - entry already exists', datetime.datetime.now())\n            return True",
         "detail": "main",
         "documentation": {}
     },
@@ -195,7 +248,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv('characters.csv')['Name'].tolist()\n    # print(type(list_of_names))\n    # list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    # only keep names in the list of names that are not already in the json file\n    list_of_names = [x for x in list_of_names if not check_json_for_entry(x, 'lorebook_generated.lorebook')]\n    entries = []\n    entry_names = list_of_names",
+        "peekOfCode": "def main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv('characters.csv')['Name'].tolist()\n    # print(type(list_of_names))\n    # list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    # only keep names in the list of names that are not already in the json file\n    print(\"There are {} names in the list\".format(len(list_of_names)))\n    print(\"Checking for names that already exist in the json file\")\n    # list_of_names = [x for x in list_of_names if not check_json_for_entry(x, 'lorebook_generated.lorebook')]",
         "detail": "main",
         "documentation": {}
     },
@@ -213,7 +266,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "maxlinksperpage = 30\ndef main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv('characters.csv')['Name'].tolist()\n    # print(type(list_of_names))\n    # list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    # only keep names in the list of names that are not already in the json file\n    list_of_names = [x for x in list_of_names if not check_json_for_entry(x, 'lorebook_generated.lorebook')]\n    entries = []",
+        "peekOfCode": "maxlinksperpage = 30\ndef main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv('characters.csv')['Name'].tolist()\n    # print(type(list_of_names))\n    # list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    # only keep names in the list of names that are not already in the json file\n    print(\"There are {} names in the list\".format(len(list_of_names)))\n    print(\"Checking for names that already exist in the json file\")",
         "detail": "main",
         "documentation": {}
     }
