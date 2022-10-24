@@ -101,6 +101,7 @@ def create_keys(entries):
 
     for entry in tqdm(entries):
         #!print(f'Processing entry {entry[0:50]}...')
+        print(f'Processing entry {entry[0:50]}...')
         keys = [] # reset the keys list, so we don't have duplicate keys
         for word, tag in preprocess(entry):
             if (tag == 'NNP' or tag == 'NNPS' or tag == 'CD') and word not in keys\
@@ -182,7 +183,8 @@ context_config = {
 
 
 
-def generate_lorebook(lore_dict, characters, entries, entry_names, ids):
+def generate_lorebook(lore_dict, characters, entries, entry_names, ids,years_list, topics_scanner_list):
+
     # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.
     keys_dict = create_keys(entries) # create the keys for each entry in the entries list
     global context_config
@@ -209,6 +211,11 @@ def generate_lorebook(lore_dict, characters, entries, entry_names, ids):
         lore_dict['entries'][i]['id'] = str(uuid.uuid4())
         lore_dict['entries'][i]['searchRange'] = 10000
         # lore_dict > entries > keys
+        # update keys_dict[i] to include the display name of the entry, and the years_list, and the topics_scanner_list
+        # keys_dict[i].append(entry_names[i])
+        keys_dict[i].extend(years_list)
+        keys_dict[i].extend(topics_scanner_list)
+        #keys_dict[i].extend(entry_names[i])
         lore_dict['entries'][i]['keys'] = keys_dict[i] #
         #*lore_dict['entries'][i]['keys'] = [] # blank for now
 
@@ -265,11 +272,17 @@ def main():
         if inp == "":
             break
         else:
-            years_list.append(str(inp))
+            # if the input is a year (4 digits), add it to the years_list instead of the topics_scanner_list
+            if inp.isdigit() and len(inp) == 4:
+                years_list.append(str(inp))
+            else:
+                print("Detected a topic and added to the right list...")
+                topics_scanner_list.append(inp)
 
-    print(f'Will scane for the years: {years_list}')
+    print(f'Will scan for the years: {years_list}')
     print(f'Are there topics, people, places, or events you want to find to narrow the search?')
-    print('Note: this will return docs that contain (ALL) of the topics you enter')
+    print('Note: this will return docs that contain (ANY) of the topics you enter')
+    mode = input('Type "all" if all terms must be in the same document, or "any" if they can be in some but not in others: ')
     while True:
         inp = input("Topic: ")
         if inp == "":
@@ -285,15 +298,24 @@ def main():
             continue # skip the .DS_Store file
         with open(f'wikipedia_pages/{filename}', 'r') as f:
             f_rd = f.read()
-            # check if the file contains any of the topics in the topics_scanner_list
-            if (any(topic.lower() in f_rd.lower() for topic in topics_scanner_list) and any(year.lower() in f_rd.lower() for year in years_list)):
-                entries.append(f_rd)
-                entry_names.append(filename)
-                ids.append(str(uuid.uuid4()))
-
+            if mode == 'any':
+                # check if the file contains any of the topics in the topics_scanner_list
+                if (any(topic.lower() in f_rd.lower() for topic in topics_scanner_list) and any(year.lower() in f_rd.lower() for year in years_list)):
+                    entries.append(f_rd)
+                    entry_names.append(filename)
+                    ids.append(str(uuid.uuid4()))
+            elif mode == 'all':
+                # check if the file contains all of the topics in the topics_scanner_list
+                if (all(topic.lower() in f_rd.lower() for topic in topics_scanner_list) and all(year.lower() in f_rd.lower() for year in years_list)):
+                    entries.append(f_rd)
+                    entry_names.append(filename)
+                    ids.append(str(uuid.uuid4()))
+            else:
+                print('Invalid mode, exiting...')
+                return
 
     # generate the lorebook
-    lore_dict = generate_lorebook(lore_dict, characters, entries, entry_names, ids)
+    lore_dict = generate_lorebook(lore_dict, characters, entries, entry_names, ids, years_list, topics_scanner_list)
     print('Done')
 
 
