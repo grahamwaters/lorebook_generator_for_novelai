@@ -171,19 +171,7 @@ def check_json_for_entry(entry_name, json_file):
     print(f'{entry_name} - entry does not exist')
     return False
 
-## The goal: generate a lorebook dict from a list of text entries.
-# list of text entries
-# entries = [
-#     'Testing 1',
-#     'Testing 2',
-#     'Testing 3'
-# ]
-# entry_names = [
-#     'Test 1',
-#     'Test 2',
-#     'Test 3'
-# ]
-# get all links on each of the entity pages
+
 from tqdm import tqdm
 import pandas as pd
 import wikipedia
@@ -193,10 +181,6 @@ import random
 maxlinksperpage = 30
 
 def main():
-
-
-
-
 
     # check those article pages for length (if they are too short, skip them)
     # if they are long enough, and are not already in the list, add them to the list
