@@ -51,38 +51,20 @@
         "documentation": {}
     },
     {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
         "label": "json",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "json",
         "description": "json",
         "detail": "json",
-        "documentation": {}
-    },
-    {
-        "label": "topics",
-        "importPath": "pydoc_data.topics",
-        "description": "pydoc_data.topics",
-        "isExtraImport": true,
-        "detail": "pydoc_data.topics",
-        "documentation": {}
-    },
-    {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
         "documentation": {}
     },
     {
@@ -101,6 +83,31 @@
         "importPath": "nltk",
         "description": "nltk",
         "detail": "nltk",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "sent_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
+        "isExtraImport": true,
+        "detail": "nltk.tokenize",
+        "documentation": {}
+    },
+    {
+        "label": "word_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
+        "isExtraImport": true,
+        "detail": "nltk.tokenize",
         "documentation": {}
     },
     {
@@ -125,6 +132,22 @@
         "description": "nltk.corpus",
         "isExtraImport": true,
         "detail": "nltk.corpus",
+        "documentation": {}
+    },
+    {
+        "label": "stopwords",
+        "importPath": "nltk.corpus",
+        "description": "nltk.corpus",
+        "isExtraImport": true,
+        "detail": "nltk.corpus",
+        "documentation": {}
+    },
+    {
+        "label": "pos_tag",
+        "importPath": "nltk.tag",
+        "description": "nltk.tag",
+        "isExtraImport": true,
+        "detail": "nltk.tag",
         "documentation": {}
     },
     {
@@ -163,12 +186,47 @@
         "documentation": {}
     },
     {
+        "label": "topics",
+        "importPath": "pydoc_data.topics",
+        "description": "pydoc_data.topics",
+        "isExtraImport": true,
+        "detail": "pydoc_data.topics",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
         "label": "random",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "random",
         "description": "random",
         "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess",
+        "kind": 2,
+        "importPath": "lorebook_from_directory",
+        "description": "lorebook_from_directory",
+        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):",
+        "detail": "lorebook_from_directory",
+        "documentation": {}
+    },
+    {
+        "label": "get_the_entities",
+        "kind": 2,
+        "importPath": "lorebook_from_directory",
+        "description": "lorebook_from_directory",
+        "peekOfCode": "def get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                entities.append(' '.join(c[0] for c in chunk.leaves()))\n    return entities\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia",
+        "detail": "lorebook_from_directory",
         "documentation": {}
     },
     {
@@ -190,11 +248,47 @@
         "documentation": {}
     },
     {
+        "label": "create_keys",
+        "kind": 2,
+        "importPath": "lorebook_from_directory",
+        "description": "lorebook_from_directory",
+        "peekOfCode": "def create_keys(entries):\n    # create a list of the keys for each entry (all proper nouns, places and dates)\n    keys = []\n    keys_dict = {}\n    entry_id = 0\n    for entry in tqdm(entries):\n        print(f'Processing entry {entry[0:50]}...')\n        keys = [] # reset the keys list, so we don't have duplicate keys\n        for word, tag in tqdm(preprocess(entry)):\n            if (tag == 'NNP' or tag == 'NNPS' or tag == 'CD') and word not in keys\\",
+        "detail": "lorebook_from_directory",
+        "documentation": {}
+    },
+    {
+        "label": "generate_lorebook",
+        "kind": 2,
+        "importPath": "lorebook_from_directory",
+        "description": "lorebook_from_directory",
+        "peekOfCode": "def generate_lorebook(lore_dict, characters, entries, entry_names, ids):\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    keys_dict = create_keys(entries) # create the keys for each entry in the entries list\n    global context_config\n    for i in range(len(entries)):\n        # append blanks to lore_dict['entries'] to make room for the new entries\n        try:\n            lore_dict['entries'][i] = {}\n        except Exception as e:\n            print(e)",
+        "detail": "lorebook_from_directory",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "lorebook_from_directory",
         "description": "lorebook_from_directory",
-        "peekOfCode": "def main():\n    # generate a lorebook.lorebook file from the articles (text files) in the wikipedia_pages directory.",
+        "peekOfCode": "def main():\n    # generate a lorebook.lorebook file from the articles (text files) in the wikipedia_pages directory.\n    # Files:\n    # lorebook_example.lorebook - the example lorebook file\n    # lorebook_generated.lorebook - the generated lorebook file\n    # characters.csv - a list of characters to generate entries for (one per line)\n    # wikipedia_pages - a directory containing the text files of wikipedia articles to generate entries from (one per file), entry name will be the filename\n    # read in the lorebook_generated.lorebook file (if it exists)\n    try:\n        with open('lorebook_generated.lorebook', 'r') as f:",
+        "detail": "lorebook_from_directory",
+        "documentation": {}
+    },
+    {
+        "label": "stop_words",
+        "kind": 5,
+        "importPath": "lorebook_from_directory",
+        "description": "lorebook_from_directory",
+        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# Functions\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):",
+        "detail": "lorebook_from_directory",
+        "documentation": {}
+    },
+    {
+        "label": "context_config",
+        "kind": 5,
+        "importPath": "lorebook_from_directory",
+        "description": "lorebook_from_directory",
+        "peekOfCode": "context_config = {\n        \"prefix\": \"\",\n        \"suffix\": \"\\n\",\n        \"tokenBudget\": 100, # max 2048\n        \"reservedTokens\": 0,\n        \"budgetPriority\": 400,\n        \"trimDirection\": \"trimBottom\",\n        \"insertionType\": \"newline\",\n        \"maximumTrimType\": \"sentence\",\n        \"insertionPosition\": -1",
         "detail": "lorebook_from_directory",
         "documentation": {}
     },
