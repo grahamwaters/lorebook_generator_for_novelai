@@ -290,7 +290,7 @@ def main():
         else:
             topics_scanner_list.append(inp)
 
-
+    #//file_mode(mode,topics_scanner_list,years_list)
     print("Scanning for topics...")
 
     for filename in tqdm(os.listdir('wikipedia_pages')):
@@ -314,9 +314,64 @@ def main():
                 print('Invalid mode, exiting...')
                 return
 
+    #!web_mode(entry_names) # comment this out if you don't want to use the web mode
     # generate the lorebook
     lore_dict = generate_lorebook(lore_dict, characters, entries, entry_names, ids, years_list, topics_scanner_list)
     print('Done')
+
+def file_mode(mode,topics_scanner_list,years_list):
+    global entries
+    global entry_names
+    global ids
+
+    # global mode
+    print("Scanning for topics...")
+
+    for filename in tqdm(os.listdir('wikipedia_pages')):
+        if filename == '.DS_Store':
+            continue # skip the .DS_Store file
+        with open(f'wikipedia_pages/{filename}', 'r') as f:
+            f_rd = f.read()
+            if mode == 'any':
+                # check if the file contains any of the topics in the topics_scanner_list
+                if (any(topic.lower() in f_rd.lower() for topic in topics_scanner_list) and any(year.lower() in f_rd.lower() for year in years_list)):
+                    entries.append(f_rd)
+                    entry_names.append(filename)
+                    ids.append(str(uuid.uuid4()))
+            elif mode == 'all':
+                # check if the file contains all of the topics in the topics_scanner_list
+                if (all(topic.lower() in f_rd.lower() for topic in topics_scanner_list) and all(year.lower() in f_rd.lower() for year in years_list)):
+                    entries.append(f_rd)
+                    entry_names.append(filename)
+                    ids.append(str(uuid.uuid4()))
+            else:
+                print('Invalid mode, exiting...')
+                return
+
+def web_mode(entry_names):
+    # use the wikipedia api to get the text of the wikipedia pages instead of reading them from files.
+    # this is slower, but it will get the latest version of the page.
+    global entries
+    global ids
+    global topics_scanner_list
+    global years_list
+    global mode
+    print("Scanning for topics...")
+    for character in tqdm(entry_names):
+        try:
+            # get the wikipedia page for the character
+            page = wikipedia.page(character)
+            # get the text of the page
+            page_text = page.content
+            # check if the page contains any of the topics in the topics_scanner_list
+            if (any(topic.lower() in page_text.lower() for topic in topics_scanner_list) and any(year.lower() in page_text.lower() for year in years_list)):
+                entries.append(page_text)
+                entry_names.append(character)
+                ids.append(str(uuid.uuid4()))
+        except:
+            print(f'Could not find {character} on wikipedia')
+
+
 
 
 main()
