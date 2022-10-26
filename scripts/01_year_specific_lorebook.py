@@ -1,23 +1,24 @@
-# Python File
+# Imported Libraries
 import pandas as pd
-import os
-from tqdm import tqdm
+import re
 import json
 import uuid
 import nltk
-import re
-
-nltk.download("stopwords")
 from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
 import wikipedia
-import tqdm
 from tqdm import tqdm
 import warnings
 
-warnings.filterwarnings("ignore")
+
+warnings.filterwarnings("ignore") # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.
+
+# Global Variables Declaration ------------------------------------------------
 # get the list of names from the topics file
+nltk.download("stopwords") #& download stopwords
 stop_words = set(stopwords.words("english"))
+maxlinksperpage = 30
+
 
 #* Import Configuration Dictionary from scripts/lorebook_params.py file
 # goal: eventually have an external file for these variables
