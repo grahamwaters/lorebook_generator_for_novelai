@@ -9,53 +9,12 @@
         "documentation": {}
     },
     {
-        "label": "os",
+        "label": "re",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
         "documentation": {}
     },
     {
@@ -86,12 +45,11 @@
         "documentation": {}
     },
     {
-        "label": "re",
-        "kind": 6,
+        "label": "sent_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
         "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
+        "detail": "nltk.tokenize",
         "documentation": {}
     },
     {
@@ -119,14 +77,6 @@
         "documentation": {}
     },
     {
-        "label": "word_tokenize",
-        "importPath": "nltk.tokenize",
-        "description": "nltk.tokenize",
-        "isExtraImport": true,
-        "detail": "nltk.tokenize",
-        "documentation": {}
-    },
-    {
         "label": "stopwords",
         "importPath": "nltk.corpus",
         "description": "nltk.corpus",
@@ -143,19 +93,11 @@
         "documentation": {}
     },
     {
-        "label": "pos_tag",
-        "importPath": "nltk.tag",
-        "description": "nltk.tag",
+        "label": "stopwords",
+        "importPath": "nltk.corpus",
+        "description": "nltk.corpus",
         "isExtraImport": true,
-        "detail": "nltk.tag",
-        "documentation": {}
-    },
-    {
-        "label": "pos_tag",
-        "importPath": "nltk.tag",
-        "description": "nltk.tag",
-        "isExtraImport": true,
-        "detail": "nltk.tag",
+        "detail": "nltk.corpus",
         "documentation": {}
     },
     {
@@ -168,12 +110,27 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "kind": 6,
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
         "isExtraImport": true,
-        "importPath": "datetime",
-        "description": "datetime",
-        "detail": "datetime",
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
         "documentation": {}
     },
     {
@@ -186,20 +143,29 @@
         "documentation": {}
     },
     {
-        "label": "topics",
-        "importPath": "pydoc_data.topics",
-        "description": "pydoc_data.topics",
+        "label": "os",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "pydoc_data.topics",
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
         "documentation": {}
     },
     {
-        "label": "numpy",
+        "label": "pos_tag",
+        "importPath": "nltk.tag",
+        "description": "nltk.tag",
+        "isExtraImport": true,
+        "detail": "nltk.tag",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -214,154 +180,253 @@
     {
         "label": "preprocess",
         "kind": 2,
-        "importPath": "lorebook_from_directory",
-        "description": "lorebook_from_directory",
-        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):",
-        "detail": "lorebook_from_directory",
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "def preprocess(sent):\n    \"\"\"\n    preprocess the text to remove stopwords and punctuation\n    This function is used to preprocess the text before it is fed into the named entity recognition algorithm.\n    :param sent: the text to be preprocessed\n    :type sent: str\n    :return: the preprocessed text\n    :rtype: str\n    \"\"\"\n    sent = nltk.word_tokenize(sent)",
+        "detail": "scripts.01_lorebook_from_year",
         "documentation": {}
     },
     {
         "label": "get_the_entities",
         "kind": 2,
-        "importPath": "lorebook_from_directory",
-        "description": "lorebook_from_directory",
-        "peekOfCode": "def get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                entities.append(' '.join(c[0] for c in chunk.leaves()))\n    return entities\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia",
-        "detail": "lorebook_from_directory",
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "def get_the_entities(content):\n    \"\"\"\n    get_the_entities is a function that uses the nltk library to extract the named entities from a text.\n    This function uses the nltk library to extract the named entities from a text. It uses the nltk library to preprocess the text, and then uses the nltk library to extract the named entities from the text. It returns a list of the named entities.\n    :param content: the text to extract the named entities from\n    :type content:  str\n    :return: a list of the named entities\n    :rtype: list\n    \"\"\"\n    # get the entities from the text",
+        "detail": "scripts.01_lorebook_from_year",
         "documentation": {}
     },
     {
         "label": "generate_entries_from_list",
         "kind": 2,
-        "importPath": "lorebook_from_directory",
-        "description": "lorebook_from_directory",
-        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    for name in tqdm(list_of_names):\n        if name != '':\n            try:\n                entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant\n                page = wikipedia.page(entry)",
-        "detail": "lorebook_from_directory",
-        "documentation": {}
-    },
-    {
-        "label": "prev",
-        "kind": 2,
-        "importPath": "lorebook_from_directory",
-        "description": "lorebook_from_directory",
-        "peekOfCode": "def prev():\n    with open('lorebook_generated.lorebook') as f:\n        lore_dict = json.load(f)\n    topics_list = []\n    entry_keys = []\n    # input_text = 'start'\n    # while input_text != '':\n    #     input_text = input('Enter a topic: ')\n    #     topics_list.append(input_text)\n    # read in the list of topics from the characters.csv file",
-        "detail": "lorebook_from_directory",
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    \"\"\"\n    generate_entries_from_list is a function that generates a list of entries from a list of names.\n    This function generates a list of entries from a list of names. It uses the wikipedia library to get the wikipedia page for each name, and then extracts the text from the wikipedia page. It then returns a list of the entries.\n    :param list_of_names: a list of names\n    :type list_of_names: list\n    :return: a list of entries\n    :rtype: list\n    \"\"\"",
+        "detail": "scripts.01_lorebook_from_year",
         "documentation": {}
     },
     {
         "label": "create_keys",
         "kind": 2,
-        "importPath": "lorebook_from_directory",
-        "description": "lorebook_from_directory",
-        "peekOfCode": "def create_keys(entries):\n    # create a list of the keys for each entry (all proper nouns, places and dates)\n    keys = []\n    keys_dict = {}\n    entry_id = 0\n    for entry in tqdm(entries):\n        print(f'Processing entry {entry[0:50]}...')\n        keys = [] # reset the keys list, so we don't have duplicate keys\n        for word, tag in tqdm(preprocess(entry)):\n            if (tag == 'NNP' or tag == 'NNPS' or tag == 'CD') and word not in keys\\",
-        "detail": "lorebook_from_directory",
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "def create_keys(entries):\n    # create a list of the keys for each entry (all proper nouns, places and dates)\n    keys = []\n    try:  # try to open the keys dict csv file\n        keys_dict = pd.read_csv(\"keys_dict.csv\").set_index(\"id\").to_dict()[\"keys\"]\n        entry_id = len(keys_dict)\n    except Exception as e:\n        print(e)\n        keys_dict = {}\n        entry_id = 0",
+        "detail": "scripts.01_lorebook_from_year",
         "documentation": {}
     },
     {
         "label": "generate_lorebook",
         "kind": 2,
-        "importPath": "lorebook_from_directory",
-        "description": "lorebook_from_directory",
-        "peekOfCode": "def generate_lorebook(lore_dict, characters, entries, entry_names, ids):\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    keys_dict = create_keys(entries) # create the keys for each entry in the entries list\n    global context_config\n    for i in range(len(entries)):\n        # append blanks to lore_dict['entries'] to make room for the new entries\n        try:\n            lore_dict['entries'][i] = {}\n        except Exception as e:\n            print(e)",
-        "detail": "lorebook_from_directory",
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "def generate_lorebook(\n    lore_dict, characters, entries, entry_names, ids, years_list, topics_scanner_list\n):\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    keys_dict = create_keys(\n        entries\n    )  # create the keys for each entry in the entries list\n    global context_config\n    for i in range(len(entries)):\n        # append blanks to lore_dict['entries'] to make room for the new entries",
+        "detail": "scripts.01_lorebook_from_year",
         "documentation": {}
     },
     {
         "label": "main",
         "kind": 2,
-        "importPath": "lorebook_from_directory",
-        "description": "lorebook_from_directory",
-        "peekOfCode": "def main():\n    # generate a lorebook.lorebook file from the articles (text files) in the wikipedia_pages directory.\n    # Files:\n    # lorebook_example.lorebook - the example lorebook file\n    # lorebook_generated.lorebook - the generated lorebook file\n    # characters.csv - a list of characters to generate entries for (one per line)\n    # wikipedia_pages - a directory containing the text files of wikipedia articles to generate entries from (one per file), entry name will be the filename\n    # read in the lorebook_generated.lorebook file (if it exists)\n    try:\n        with open('lorebook_generated.lorebook', 'r') as f:",
-        "detail": "lorebook_from_directory",
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "def main():\n    # generate a lorebook.lorebook file from the articles (text files) in the wikipedia_pages directory.\n    # Files:\n    # lorebook_example.lorebook - the example lorebook file\n    # lorebook_generated.lorebook - the generated lorebook file\n    # characters.csv - a list of characters to generate entries for (one per line)\n    # wikipedia_pages - a directory containing the text files of wikipedia articles to generate entries from (one per file), entry name will be the filename\n    # read in the lorebook_generated.lorebook file (if it exists)\n    try:\n        with open(\"./supporting_files/lorebook_generated.lorebook\", \"r\") as f:",
+        "detail": "scripts.01_lorebook_from_year",
+        "documentation": {}
+    },
+    {
+        "label": "file_mode",
+        "kind": 2,
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "def file_mode(mode, topics_scanner_list, years_list):\n    global entries\n    global entry_names\n    global ids\n    # global mode\n    print(\"Scanning for topics...\")\n    for filename in tqdm(os.listdir(\"./wikipedia_pages\")):\n        if filename == \".DS_Store\":\n            continue  # skip the .DS_Store file\n        with open(f\"./wikipedia_pages/{filename}\", \"r\") as f:",
+        "detail": "scripts.01_lorebook_from_year",
+        "documentation": {}
+    },
+    {
+        "label": "web_mode",
+        "kind": 2,
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "def web_mode(entry_names):\n    # use the wikipedia api to get the text of the wikipedia pages instead of reading them from files.\n    # this is slower, but it will get the latest version of the page.\n    global entries\n    global ids\n    global topics_scanner_list\n    global years_list\n    global mode\n    print(\"Scanning for topics...\")\n    for character in tqdm(entry_names):",
+        "detail": "scripts.01_lorebook_from_year",
         "documentation": {}
     },
     {
         "label": "stop_words",
         "kind": 5,
-        "importPath": "lorebook_from_directory",
-        "description": "lorebook_from_directory",
-        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# Functions\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):",
-        "detail": "lorebook_from_directory",
-        "documentation": {}
-    },
-    {
-        "label": "context_config",
-        "kind": 5,
-        "importPath": "lorebook_from_directory",
-        "description": "lorebook_from_directory",
-        "peekOfCode": "context_config = {\n        \"prefix\": \"\",\n        \"suffix\": \"\\n\",\n        \"tokenBudget\": 100, # max 2048\n        \"reservedTokens\": 0,\n        \"budgetPriority\": 400,\n        \"trimDirection\": \"trimBottom\",\n        \"insertionType\": \"newline\",\n        \"maximumTrimType\": \"sentence\",\n        \"insertionPosition\": -1",
-        "detail": "lorebook_from_directory",
-        "documentation": {}
-    },
-    {
-        "label": "examine_dates",
-        "kind": 2,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "def examine_dates(entry1,entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                if chunk.label() == 'DATE':\n                    article_one_dates.append(' '.join(c[0] for c in chunk.leaves()))\n    for sent in sent_tokenize(entry2):",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "preprocess",
-        "kind": 2,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "get_the_entities",
-        "kind": 2,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "def get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                entities.append(' '.join(c[0] for c in chunk.leaves()))\n    return entities\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "generate_entries_from_list",
-        "kind": 2,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    for name in tqdm(list_of_names):\n        if name != '':\n            try:\n                entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant\n                page = wikipedia.page(entry)",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "check_json_for_entry",
-        "kind": 2,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "def check_json_for_entry(entry_name, json_file):\n    # check if an entry already exists in the json file\n    with open(json_file, 'r') as f:\n        data = json.load(f)\n    for entry in range(len(data['entries'])):\n        if entry_name == 'nan' or entry_name == '':\n            continue\n        if data['entries'][entry]['displayName'] == entry_name:\n            print(f'{entry_name} - entry already exists', datetime.datetime.now())\n            return True",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "main",
-        "kind": 2,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "def main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv('characters.csv')['Name'].tolist()\n    # print(type(list_of_names))\n    # list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    # only keep names in the list of names that are not already in the json file\n    print(\"There are {} names in the list\".format(len(list_of_names)))\n    print(\"Checking for names that already exist in the json file\")\n    # list_of_names = [x for x in list_of_names if not check_json_for_entry(x, 'lorebook_generated.lorebook')]",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "stop_words",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "stop_words = set(stopwords.words('english'))\n# import the json file lorebook_example.lorebook\ndef examine_dates(entry1,entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, 'label'):\n                if chunk.label() == 'DATE':",
-        "detail": "main",
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30\n#* Import Configuration Dictionary from scripts/lorebook_params.py file\n# goal: eventually have an external file for these variables\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 200,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,",
+        "detail": "scripts.01_lorebook_from_year",
         "documentation": {}
     },
     {
         "label": "maxlinksperpage",
         "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "maxlinksperpage = 30\ndef main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv('characters.csv')['Name'].tolist()\n    # print(type(list_of_names))\n    # list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    # only keep names in the list of names that are not already in the json file\n    print(\"There are {} names in the list\".format(len(list_of_names)))\n    print(\"Checking for names that already exist in the json file\")",
-        "detail": "main",
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "maxlinksperpage = 30\n#* Import Configuration Dictionary from scripts/lorebook_params.py file\n# goal: eventually have an external file for these variables\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 200,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",",
+        "detail": "scripts.01_lorebook_from_year",
+        "documentation": {}
+    },
+    {
+        "label": "context_config",
+        "kind": 5,
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "context_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 200,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",\n    \"maximumTrimType\": \"sentence\",\n    \"insertionPosition\": -1,",
+        "detail": "scripts.01_lorebook_from_year",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess",
+        "kind": 2,
+        "importPath": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "description": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):",
+        "detail": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "documentation": {}
+    },
+    {
+        "label": "get_the_entities",
+        "kind": 2,
+        "importPath": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "description": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "peekOfCode": "def get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                entities.append(\" \".join(c[0] for c in chunk.leaves()))\n    return entities\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia",
+        "detail": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "documentation": {}
+    },
+    {
+        "label": "generate_entries_from_list",
+        "kind": 2,
+        "importPath": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "description": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    for name in tqdm(list_of_names):\n        if name != \"\":\n            try:\n                entry = wikipedia.search(name)[\n                    0",
+        "detail": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "documentation": {}
+    },
+    {
+        "label": "prev",
+        "kind": 2,
+        "importPath": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "description": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "peekOfCode": "def prev():\n    with open(\"lorebook_generated.lorebook\") as f:\n        lore_dict = json.load(f)\n    topics_list = []\n    entry_keys = []\n    # input_text = 'start'\n    # while input_text != '':\n    #     input_text = input('Enter a topic: ')\n    #     topics_list.append(input_text)\n    # read in the list of topics from the characters.csv file",
+        "detail": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "documentation": {}
+    },
+    {
+        "label": "create_keys",
+        "kind": 2,
+        "importPath": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "description": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "peekOfCode": "def create_keys(entries):\n    # create a list of the keys for each entry (all proper nouns, places and dates)\n    keys = []\n    try:  # try to open the keys dict csv file\n        keys_dict = pd.read_csv(\"keys_dict.csv\").set_index(\"id\").to_dict()[\"keys\"]\n        entry_id = len(keys_dict)\n    except Exception as e:\n        print(e)\n        keys_dict = {}\n        entry_id = 0",
+        "detail": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "documentation": {}
+    },
+    {
+        "label": "generate_lorebook",
+        "kind": 2,
+        "importPath": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "description": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "peekOfCode": "def generate_lorebook(lore_dict, characters, entries, entry_names, ids):\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    keys_dict = create_keys(\n        entries\n    )  # create the keys for each entry in the entries list\n    global context_config\n    for i in range(len(entries)):\n        # append blanks to lore_dict['entries'] to make room for the new entries\n        try:\n            lore_dict[\"entries\"][i] = {}",
+        "detail": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "description": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "peekOfCode": "def main():\n    # generate a lorebook.lorebook file from the articles (text files) in the wikipedia_pages directory.\n    # Files:\n    # lorebook_example.lorebook - the example lorebook file\n    # lorebook_generated.lorebook - the generated lorebook file\n    # characters.csv - a list of characters to generate entries for (one per line)\n    # wikipedia_pages - a directory containing the text files of wikipedia articles to generate entries from (one per file), entry name will be the filename\n    # read in the lorebook_generated.lorebook file (if it exists)\n    try:\n        with open(\"lorebook_generated.lorebook\", \"r\") as f:",
+        "detail": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "documentation": {}
+    },
+    {
+        "label": "stop_words",
+        "kind": 5,
+        "importPath": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "description": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\n# Functions\ndef preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):",
+        "detail": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "documentation": {}
+    },
+    {
+        "label": "context_config",
+        "kind": 5,
+        "importPath": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "description": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "peekOfCode": "context_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 200,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",\n    \"maximumTrimType\": \"sentence\",\n    \"insertionPosition\": -1,",
+        "detail": "scripts.02_lorebook_from_downloaded_wiki_articles",
+        "documentation": {}
+    },
+    {
+        "label": "examine_dates",
+        "kind": 2,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "def examine_dates(entry1, entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                if chunk.label() == \"DATE\":\n                    article_one_dates.append(\" \".join(c[0] for c in chunk.leaves()))\n    for sent in sent_tokenize(entry2):",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess",
+        "kind": 2,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "get_the_entities",
+        "kind": 2,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "def get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                entities.append(\" \".join(c[0] for c in chunk.leaves()))\n    return entities\ndef generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "generate_entries_from_list",
+        "kind": 2,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    for name in tqdm(list_of_names):\n        if name != \"\":\n            try:\n                entry = wikipedia.search(name)[\n                    0",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "check_json_for_entry",
+        "kind": 2,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "def check_json_for_entry(entry_name, json_file):\n    # check if an entry already exists in the json file\n    with open(json_file, \"r\") as f:\n        data = json.load(f)\n    for entry in range(len(data[\"entries\"])):\n        if entry_name == \"nan\" or entry_name == \"\":\n            continue\n        if data[\"entries\"][entry][\"displayName\"] == entry_name:\n            print(f\"{entry_name} - entry already exists\", datetime.datetime.now())\n            return True",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "def main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv(\"characters.csv\")[\"Name\"].tolist()\n    # print(type(list_of_names))\n    # list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    # only keep names in the list of names that are not already in the json file\n    print(\"There are {} names in the list\".format(len(list_of_names)))\n    print(\"Checking for names that already exist in the json file\")\n    # list_of_names = [x for x in list_of_names if not check_json_for_entry(x, 'lorebook_generated.lorebook')]",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "stop_words",
+        "kind": 5,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30\n# import the json file lorebook_example.lorebook\ndef examine_dates(entry1, entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "maxlinksperpage",
+        "kind": 5,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "maxlinksperpage = 30\n# import the json file lorebook_example.lorebook\ndef examine_dates(entry1, entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                if chunk.label() == \"DATE\":",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     }
 ]
