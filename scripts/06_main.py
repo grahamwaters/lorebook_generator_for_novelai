@@ -4,10 +4,12 @@ import numpy as np
 import json
 import re
 import uuid
+
 # import nltk
 # nltk.download('punkt')
 import nltk
-nltk.download('stopwords')
+
+nltk.download("stopwords")
 from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
 
@@ -18,27 +20,29 @@ import tqdm
 from tqdm import tqdm
 import datetime
 import warnings
-warnings.filterwarnings('ignore')
+
+warnings.filterwarnings("ignore")
 # get the list of names from the topics file
-stop_words = set(stopwords.words('english'))
+stop_words = set(stopwords.words("english"))
 
 # import the json file lorebook_example.lorebook
 
-def examine_dates(entry1,entry2):
+
+def examine_dates(entry1, entry2):
     # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.
 
     article_one_dates = []
     article_two_dates = []
     for sent in sent_tokenize(entry1):
         for chunk in nltk.ne_chunk(preprocess(sent)):
-            if hasattr(chunk, 'label'):
-                if chunk.label() == 'DATE':
-                    article_one_dates.append(' '.join(c[0] for c in chunk.leaves()))
+            if hasattr(chunk, "label"):
+                if chunk.label() == "DATE":
+                    article_one_dates.append(" ".join(c[0] for c in chunk.leaves()))
     for sent in sent_tokenize(entry2):
         for chunk in nltk.ne_chunk(preprocess(sent)):
-            if hasattr(chunk, 'label'):
-                if chunk.label() == 'DATE':
-                    article_two_dates.append(' '.join(c[0] for c in chunk.leaves()))
+            if hasattr(chunk, "label"):
+                if chunk.label() == "DATE":
+                    article_two_dates.append(" ".join(c[0] for c in chunk.leaves()))
     if len(article_one_dates) > 0 and len(article_two_dates) > 0:
         article_one_dates = [int(date) for date in article_one_dates if date.isdigit()]
         article_two_dates = [int(date) for date in article_two_dates if date.isdigit()]
@@ -51,63 +55,22 @@ def examine_dates(entry1,entry2):
     else:
         return False
 
-"""
-    "Nikola Tesla",
-"Thomas Edison",
-"George Westinghouse",
-"Alexander Graham Bell",
-"Samuel Morse",
-"Benjamin Franklin",
-"Guglielmo Marconi",
-"London",
-"Paris",
-"New York",
-"Washington DC",
-"Berlin, Germany",
-"West Berlin",
-"East Berlin",
-"Hitler",
-"Joseph Stalin",
-"Franklin D. Roosevelt",
-"Harry S. Truman",
-"Queen Victoria",
-"Charles Dickens",
-"William Shakespeare",
-"Jules Verne",
-"Samuel Clemens",
-"Charles Darwin",
-"Albert Einstein",
-"Isaac Newton",
-"Leonardo da Vinci",
-"Captain James Cook",
-"Wardenclyffe Tower",
-"Famous Scientists",
-"Famous Paintings",
-"Mythical Creatures",
-"World War 1",
-"World War 2",
-"Western Front",
-"List_of_people_who_disappeared_mysteriously:_pre-1910",
-"List_of_people_who_disappeared_mysteriously:_1910-1949",
-"List_of_people_who_disappeared_mysteriously:_1950-1999",
-"List_of_people_who_disappeared_mysteriously:_2000-present",
-
-    _extended_summary_
-"""
 
 def preprocess(sent):
     sent = nltk.word_tokenize(sent)
     sent = nltk.pos_tag(sent)
     return sent
 
+
 def get_the_entities(content):
     # get the entities from the text
     entities = []
     for sent in sent_tokenize(content):
         for chunk in nltk.ne_chunk(preprocess(sent)):
-            if hasattr(chunk, 'label'):
-                entities.append(' '.join(c[0] for c in chunk.leaves()))
+            if hasattr(chunk, "label"):
+                entities.append(" ".join(c[0] for c in chunk.leaves()))
     return entities
+
 
 def generate_entries_from_list(list_of_names):
     # enter a list of people's names and get a list of entries, from wikipedia
@@ -115,26 +78,27 @@ def generate_entries_from_list(list_of_names):
     entry_names = []
     entry_keywords = []
     for name in tqdm(list_of_names):
-        if name != '':
+        if name != "":
             try:
-                entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant
+                entry = wikipedia.search(name)[
+                    0
+                ]  # get the first result from wikipedia, which is usually the most relevant
                 page = wikipedia.page(entry)
                 entry = page.content
-                entry = re.sub(r'\([^)]*\)', ' ', entry) # remove anything in brackets
+                entry = re.sub(r"\([^)]*\)", " ", entry)  # remove anything in brackets
                 # strip the text of all special characters, and any escaped characters using regex
                 #!entry = re.sub(r'[^\w\s]',' ',entry)
                 # remove any nonalpha characters
-                entry = re.sub(r"[^a-zA-Z0-9,.?!'\;: ]",' ',entry).strip()
-                entry = re.sub(r'\n',' ',entry)
+                entry = re.sub(r"[^a-zA-Z0-9,.?!'\;: ]", " ", entry).strip()
+                entry = re.sub(r"\n", " ", entry)
 
                 # \u patterns for unicode characters need to be removed, and replaced with the actual character
                 # remove all unicode characters
-                entry = re.sub(r'\\u[0-9a-fA-F]{4}',' ',entry)
+                entry = re.sub(r"\\u[0-9a-fA-F]{4}", " ", entry)
 
-
-                entry = re.sub(r'\\',' ',entry)
-                entry = entry.replace('  ', ' ')
-                entry = entry.replace('  ', ' ')
+                entry = re.sub(r"\\", " ", entry)
+                entry = entry.replace("  ", " ")
+                entry = entry.replace("  ", " ")
                 entries.append(entry)
                 entry_names.append(page.title)
                 # entry_keywords.append(get_the_entities(entry))
@@ -142,33 +106,35 @@ def generate_entries_from_list(list_of_names):
                 related_links = page.links
                 entry_keywords.append(related_links)
             except:
-                print('could not find entry for', name)
+                print("could not find entry for", name)
                 try:
-                    entry = wikipedia.search(name)[1] # get the second result from wikipedia, which is usually the most relevant
+                    entry = wikipedia.search(name)[
+                        1
+                    ]  # get the second result from wikipedia, which is usually the most relevant
                     entries.append(entry)
                     entry_names.append(page.title)
                     # entry_keywords.append(entry_keywords)
                 except:
-                    print('could not find summary for', name)
-
+                    print("could not find summary for", name)
 
     # generate fake ids for the entries in the format: 642723d1-a4a1-47a3-a63f-d36aee33de1b
     ids = []
     for i in range(len(entries)):
         ids.append(str(uuid.uuid4()))
-    return entries, entry_names, ids,entry_keywords
+    return entries, entry_names, ids, entry_keywords
+
 
 def check_json_for_entry(entry_name, json_file):
     # check if an entry already exists in the json file
-    with open(json_file, 'r') as f:
+    with open(json_file, "r") as f:
         data = json.load(f)
-    for entry in range(len(data['entries'])):
-        if entry_name == 'nan' or entry_name == '':
+    for entry in range(len(data["entries"])):
+        if entry_name == "nan" or entry_name == "":
             continue
-        if data['entries'][entry]['displayName'] == entry_name:
-            print(f'{entry_name} - entry already exists', datetime.datetime.now())
+        if data["entries"][entry]["displayName"] == entry_name:
+            print(f"{entry_name} - entry already exists", datetime.datetime.now())
             return True
-    print(f'{entry_name} - entry does not exist')
+    print(f"{entry_name} - entry does not exist")
     return False
 
 
@@ -180,11 +146,12 @@ import random
 
 maxlinksperpage = 30
 
+
 def main():
 
     # check those article pages for length (if they are too short, skip them)
     # if they are long enough, and are not already in the list, add them to the list
-    list_of_names = pd.read_csv('characters.csv')['Name'].tolist()
+    list_of_names = pd.read_csv("characters.csv")["Name"].tolist()
     # print(type(list_of_names))
     # list_of_names = [x[0] for x in list_of_names.values.tolist()]
     # only keep names in the list of names that are not already in the json file
@@ -194,14 +161,15 @@ def main():
 
     # check a json file to see if any of the characters are already in the file, if they are, remove them from the list
     import json
+
     # data['entries'][entry]['displayName'] == entry_name
     # look for entries where the data['entries'][entry_number]['displayName'] is in the list of filenames
     # if it is, remove it from the list
-    with open('lorebook_generated.lorebook') as f:
+    with open("lorebook_generated.lorebook") as f:
         data = json.load(f)
-        for entry in data['entries']:
-            if entry['displayName'] in list_of_names:
-                list_of_names.remove(entry['displayName'])
+        for entry in data["entries"]:
+            if entry["displayName"] in list_of_names:
+                list_of_names.remove(entry["displayName"])
 
     print(list_of_names[0:5])
     print("There are {} names in the list".format(len(list_of_names)))
@@ -211,9 +179,11 @@ def main():
     entry_names = list_of_names
     # for each Name
     for name in tqdm(list_of_names):
-        if name != '':
+        if name != "":
             try:
-                entry = wikipedia.search(name)[0] # get the first result from wikipedia, which is usually the most relevant
+                entry = wikipedia.search(name)[
+                    0
+                ]  # get the first result from wikipedia, which is usually the most relevant
                 page = wikipedia.page(entry)
                 entry = page.content
                 links = page.links
@@ -221,7 +191,7 @@ def main():
                 links = list(dict.fromkeys(links))
                 # random sample of maxlinksperpage links
                 links = random.sample(links, min(len(links), maxlinksperpage))
-                print(f'Adding {name} to entries')
+                print(f"Adding {name} to entries")
                 # for link in tqdm(links):
                 #     print(f'\nScanning {link}')
 
@@ -261,7 +231,6 @@ def main():
                 #         page = wikipedia.page(entry)
                 #         #!print(" length:", len(page.content))
 
-
                 #         #!page.content = str(page.content).lower()
                 #         if link not in entry_names and page.content != '' and len(page.content) > 5000 and \
                 #             (page.content.find('Born')!=-1 and page.content.find('Family')!= -1): #// and (name.lower() in str(page.content).lower()):
@@ -287,26 +256,23 @@ def main():
                 #     except Exception as e:
                 #         pass
 
-
             except Exception as e:
                 print(e)
                 continue
         df = pd.DataFrame(entry_names)
         # append to the csv file
-        prev_chars = pd.read_csv('characters.csv')
+        prev_chars = pd.read_csv("characters.csv")
         # add the new characters to the list
         prev_chars = prev_chars.append(df)
         # remove duplicates
         prev_chars = prev_chars.drop_duplicates()
         # save the new list
-        prev_chars.to_csv('characters.csv', index=False)
+        prev_chars.to_csv("characters.csv", index=False)
         # # save entry_names to a csv
         # df = pd.DataFrame(entry_names)
         # df.to_csv('characters.csv', index=False)
 
-
-
-        with open('lorebook_generated.lorebook') as f:
+        with open("lorebook_generated.lorebook") as f:
             lore_dict = json.load(f)
 
         topics_list = []
@@ -316,15 +282,17 @@ def main():
         #     input_text = input('Enter a topic: ')
         #     topics_list.append(input_text)
         # read in the list of topics from the characters.csv file
-        topics_list = pd.read_csv('characters.csv')['Name'].tolist()
-        assert(type(topics_list) == list) # make sure it's a list
+        topics_list = pd.read_csv("characters.csv")["Name"].tolist()
+        assert type(topics_list) == list  # make sure it's a list
         # entries, entry_names = generate_entries_from_list(lore_dict['people'])
 
         # generate only the entries in topics_list that are not already in the lorebook
-        #existing_topics = [entry['name'] for entry in lore_dict['entries']]
-        #topics_list = [x for x in topics_list if x not in lore_dict]
+        # existing_topics = [entry['name'] for entry in lore_dict['entries']]
+        # topics_list = [x for x in topics_list if x not in lore_dict]
 
-        entries, entry_names, ids,entry_keywords = generate_entries_from_list(topics_list)
+        entries, entry_names, ids, entry_keywords = generate_entries_from_list(
+            topics_list
+        )
         # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.
 
         # create a list of the keys for each entry (all proper nouns, places and dates)
@@ -332,11 +300,15 @@ def main():
         keys_dict = {}
         entry_id = 0
         for entry in tqdm(entries):
-            print(f'Processing entry {entry[0:50]}...')
-            keys = [] # reset the keys list, so we don't have duplicate keys
+            print(f"Processing entry {entry[0:50]}...")
+            keys = []  # reset the keys list, so we don't have duplicate keys
             for word, tag in tqdm(preprocess(entry)):
-                if (tag == 'NNP' or tag == 'NNPS' or tag == 'CD') and word not in keys\
-                    and word not in stop_words and len(word) > 2: # remove stop words, and numbers greater than 2020 (which are probably years)
+                if (
+                    (tag == "NNP" or tag == "NNPS" or tag == "CD")
+                    and word not in keys
+                    and word not in stop_words
+                    and len(word) > 2
+                ):  # remove stop words, and numbers greater than 2020 (which are probably years)
                     try:
                         if int(word) < 2020:
                             continue
@@ -348,22 +320,22 @@ def main():
                 for word in linklist:
                     if word not in keys:
                         keys.append(word)
-            prev_keys = keys # get the previous keys
-            keys_dict[entry_id] = prev_keys + entry_keys # add the new keys to the previous keys
+            prev_keys = keys  # get the previous keys
+            keys_dict[entry_id] = (
+                prev_keys + entry_keys
+            )  # add the new keys to the previous keys
             # remove dupe keys
             res = []
             for i in keys_dict[entry_id]:
                 if i not in res:
                     res.append(i)
 
-
-
             # remove YouTube, Wikipedia, and other website links from res list
-            res = [i for i in res if not i.startswith('http')]
-            res = [i for i in res if not i.startswith('www')]
-            res = [i for i in res if not i.startswith('YouTube')]
-            res = [i for i in res if not i.startswith('Wikipedia')]
-            res = [i for i in res if not i.startswith('List')]
+            res = [i for i in res if not i.startswith("http")]
+            res = [i for i in res if not i.startswith("www")]
+            res = [i for i in res if not i.startswith("YouTube")]
+            res = [i for i in res if not i.startswith("Wikipedia")]
+            res = [i for i in res if not i.startswith("List")]
 
             # remove stop words from res list
             res = [i for i in res if not i in stop_words]
@@ -375,54 +347,53 @@ def main():
             keys_dict[entry_id] = res
             entry_id += 1
 
-
-
-
         context_config = {
-                "prefix": "",
-                "suffix": "\n",
-                "tokenBudget": 100, # max 2048
-                "reservedTokens": 0,
-                "budgetPriority": 400,
-                "trimDirection": "trimBottom",
-                "insertionType": "newline",
-                "maximumTrimType": "sentence",
-                "insertionPosition": -1
-            }
+            "prefix": "",
+            "suffix": "\n",
+            "tokenBudget": 100,  # max 2048
+            "reservedTokens": 0,
+            "budgetPriority": 400,
+            "trimDirection": "trimBottom",
+            "insertionType": "newline",
+            "maximumTrimType": "sentence",
+            "insertionPosition": -1,
+        }
 
         # add the entries to the lorebook dictionary
 
         for i in range(len(entries)):
             # append blanks to lore_dict['entries'] to make room for the new entries
             try:
-                lore_dict['entries'][i] = {}
+                lore_dict["entries"][i] = {}
             except Exception as e:
                 print(e)
-                #lore_dict['entries'].append({'text': entries[i]})
-                lore_dict['entries'].append({})
+                # lore_dict['entries'].append({'text': entries[i]})
+                lore_dict["entries"].append({})
 
         for i in tqdm(range(len(entries))):
             # lore_dict > entries > text
             # add a new entry to the lorebook dictionary
-            lore_dict['entries'][i]['text'] = str(entries[i])
+            lore_dict["entries"][i]["text"] = str(entries[i])
             # lore_dict > entries > contextConfig
-            lore_dict['entries'][i]['contextConfig'] = context_config
+            lore_dict["entries"][i]["contextConfig"] = context_config
             # lore_dict > entries > lastUpdatedAt
-            lore_dict['entries'][i]['lastUpdatedAt'] = 1649360732691
+            lore_dict["entries"][i]["lastUpdatedAt"] = 1649360732691
             # lore_dict > entries > displayName
-            lore_dict['entries'][i]['displayName'] = entry_names[i] # todo - was causing builtin method error for some reason in the final json file
+            lore_dict["entries"][i]["displayName"] = entry_names[
+                i
+            ]  # todo - was causing builtin method error for some reason in the final json file
             # lore_dict > entries > id
-            lore_dict['entries'][i]['id'] = str(ids[i])
-            lore_dict['entries'][i]['searchRange'] = 10000
+            lore_dict["entries"][i]["id"] = str(ids[i])
+            lore_dict["entries"][i]["searchRange"] = 10000
             # lore_dict > entries > keys
-            lore_dict['entries'][i]['keys'] = keys_dict[i] #
-            #*lore_dict['entries'][i]['keys'] = [] # blank for now
-        print(f'Saving {len(entries)} entries to lorebook')
+            lore_dict["entries"][i]["keys"] = keys_dict[i]  #
+            # *lore_dict['entries'][i]['keys'] = [] # blank for now
+        print(f"Saving {len(entries)} entries to lorebook")
 
         # save the new lorebook dictionary as a json file called lorebook_generated.lorebook
 
         # save the new lorebook dictionary as a json file called lorebook_generated.lorebook
-        with open('lorebook_generated.lorebook', 'w+') as f:
+        with open("lorebook_generated.lorebook", "w+") as f:
             json.dump(lore_dict, f, indent=4)
 
 
