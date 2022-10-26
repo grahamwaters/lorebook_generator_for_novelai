@@ -1,27 +1,20 @@
-from pydoc_data.topics import topics
+
 import pandas as pd
 import numpy as np
 import json
 import re
 import uuid
-
-# import nltk
-# nltk.download('punkt')
 import nltk
-
 nltk.download("stopwords")
 from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
-
-from nltk.tokenize import word_tokenize
-from nltk.tag import pos_tag
 import wikipedia
 import tqdm
 from tqdm import tqdm
 import datetime
 import warnings
+warnings.filterwarnings("ignore") # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.
 
-warnings.filterwarnings("ignore")
 # get the list of names from the topics file
 stop_words = set(stopwords.words("english"))
 

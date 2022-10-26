@@ -19,6 +19,21 @@ warnings.filterwarnings("ignore")
 # get the list of names from the topics file
 stop_words = set(stopwords.words("english"))
 
+#* Import Configuration Dictionary from scripts/lorebook_params.py file
+# goal: eventually have an external file for these variables
+context_config = {
+    "prefix": "",
+    "suffix": "\n",
+    "tokenBudget": 200,  # max 2048
+    "reservedTokens": 0,
+    "budgetPriority": 400,
+    "trimDirection": "trimBottom",
+    "insertionType": "newline",
+    "maximumTrimType": "sentence",
+    "insertionPosition": -1,
+}
+
+
 # Functions for generating the lorebook
 def preprocess(sent):
     """
@@ -34,7 +49,6 @@ def preprocess(sent):
     sent = nltk.word_tokenize(sent)
     sent = nltk.pos_tag(sent)
     return sent
-
 
 def get_the_entities(content):
     """
@@ -202,20 +216,6 @@ def create_keys(entries):
             print("Saved keys_dict.csv")
 
     return keys_dict
-
-
-context_config = {
-    "prefix": "",
-    "suffix": "\n",
-    "tokenBudget": 200,  # max 2048
-    "reservedTokens": 0,
-    "budgetPriority": 400,
-    "trimDirection": "trimBottom",
-    "insertionType": "newline",
-    "maximumTrimType": "sentence",
-    "insertionPosition": -1,
-}
-
 
 def generate_lorebook(
     lore_dict, characters, entries, entry_names, ids, years_list, topics_scanner_list
