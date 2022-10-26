@@ -1,25 +1,23 @@
 # Python File
 import pandas as pd
 import os
-from tqdm import tqdm
 import json
 import uuid
 import nltk
 import re
-
-nltk.download("stopwords")
 from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
 
 from nltk.tokenize import word_tokenize
 from nltk.tag import pos_tag
 import wikipedia
-import tqdm
 from tqdm import tqdm
-import datetime
-import warnings
 
+import warnings
 warnings.filterwarnings("ignore")
+
+nltk.download("stopwords")
+
 # get the list of names from the topics file
 stop_words = set(stopwords.words("english"))
 

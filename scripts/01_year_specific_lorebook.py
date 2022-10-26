@@ -409,7 +409,7 @@ def file_mode(mode, topics_scanner_list, years_list):
                 print("Invalid mode, exiting...")
                 return
 
-
+#note: web_mode is in dev. Nonoperational as of 10/26/22
 def web_mode(entry_names):
     # use the wikipedia api to get the text of the wikipedia pages instead of reading them from files.
     # this is slower, but it will get the latest version of the page.
