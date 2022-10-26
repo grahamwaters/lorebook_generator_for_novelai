@@ -6,17 +6,23 @@ The repo contains two different versions: a basic one that generates based on a 
 
 ![](images/main.png)
 
-## How to use
+## How to use this repository
+
+![](images/main_concept.png)
+
 To use this lorebook generator, follow these steps:
 
 - First, populate the characters.csv file with your chosen keywords. You can use the example file as a template. Then run the python script, and it will generate a lorebook for you. This lorebook will be named `lorebook_generated.lorebook` and will be saved in the `supporting_files` folder.
+
+![](images/greatpyramid.png)
+
+As you can see from the screen shot above, the script will look at the wikipedia articles for each character or topic/place in the provided characters csv file. In the case of the pyramid of Giza, it will scan the text of the article for the significant NNS and NNPS (nouns) and then generate a lorebook with the article's text as the meat of the entry, and each of the unique words will be added in as keywords for NovelAI (which will allow the AI to trigger this entry). The script will also generate a list of the nouns it found in the article, which you can use to add to the characters.csv file if you are interested in building out a more robust contextually dense lorebook.
 
 - Once you have a lorebook created, you can upload the lorebook to NovelAI and use it to add background detail to your stories and characters.
 # How to Contribute:
 We are seeking contributors that are skilled at project organization and formatting. If you are interested in helping out, please contact me on Discord: `@its_graham#7425`
 Also, feel free to open issues, pull requests, and make suggestions for this project here on GitHub as well. Working together, we could add some more features to the program, like web scraping historical documents or corpora from Project Gutenberg! That would be really informative.
 
-# How to use this repo
 ## Included Files -
 - [year_specific_lorebook.py](scripts/01_lorebook_from_year.py)
 This script generates a lorebook based on a year. It pulls from Wikipedia articles and generates a lorebook based on the year you input. It also generates a list of characters that are mentioned in the article. This is a good way to get a feel for the program and how it works.
