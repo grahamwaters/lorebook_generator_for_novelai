@@ -241,14 +241,14 @@ def main():
 
     # read in the lorebook_generated.lorebook file (if it exists)
     try:
-        with open('lorebook_generated.lorebook', 'r') as f:
+        with open('./supporting_files/lorebook_generated.lorebook', 'r') as f:
             lore_dict = json.load(f)
     except:
         lore_dict = {}
 
 
     # read in the characters.csv file
-    with open('characters.csv', 'r') as f:
+    with open('./data/characters.csv', 'r') as f:
         characters = f.read().splitlines()
 
     # read in the wikipedia pages from each file in the wikipedia_pages directory
@@ -293,10 +293,10 @@ def main():
     #//file_mode(mode,topics_scanner_list,years_list)
     print("Scanning for topics...")
 
-    for filename in tqdm(os.listdir('wikipedia_pages')):
+    for filename in tqdm(os.listdir('./wikipedia_pages')):
         if filename == '.DS_Store':
             continue # skip the .DS_Store file
-        with open(f'wikipedia_pages/{filename}', 'r') as f:
+        with open(f'./wikipedia_pages/{filename}', 'r') as f:
             f_rd = f.read()
             if mode == 'any':
                 # check if the file contains any of the topics in the topics_scanner_list
@@ -327,10 +327,10 @@ def file_mode(mode,topics_scanner_list,years_list):
     # global mode
     print("Scanning for topics...")
 
-    for filename in tqdm(os.listdir('wikipedia_pages')):
+    for filename in tqdm(os.listdir('./wikipedia_pages')):
         if filename == '.DS_Store':
             continue # skip the .DS_Store file
-        with open(f'wikipedia_pages/{filename}', 'r') as f:
+        with open(f'./wikipedia_pages/{filename}', 'r') as f:
             f_rd = f.read()
             if mode == 'any':
                 # check if the file contains any of the topics in the topics_scanner_list
