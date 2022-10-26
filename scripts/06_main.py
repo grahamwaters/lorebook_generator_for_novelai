@@ -1,15 +1,12 @@
-
+# Imported Libraries
 import pandas as pd
-import numpy as np
 import re
 import json
 import uuid
 import nltk
-nltk.download("stopwords")
 from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
 import wikipedia
-import tqdm
 from tqdm import tqdm
 import datetime
 import warnings
@@ -19,10 +16,9 @@ warnings.filterwarnings("ignore") # reason we are ignoring the warning is becaus
 
 # Global Variables Declaration ------------------------------------------------
 # get the list of names from the topics file
+nltk.download("stopwords") #& download stopwords
 stop_words = set(stopwords.words("english"))
 maxlinksperpage = 30
-
-
 
 # import the json file lorebook_example.lorebook
 def examine_dates(entry1, entry2):
