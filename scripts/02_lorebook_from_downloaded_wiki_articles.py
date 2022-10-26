@@ -22,8 +22,6 @@ nltk.download("stopwords")
 stop_words = set(stopwords.words("english"))
 
 # Functions
-
-
 def preprocess(sent):
     sent = nltk.word_tokenize(sent)
     sent = nltk.pos_tag(sent)

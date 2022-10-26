@@ -8,8 +8,9 @@ Seeking Contributors that are skilled at project organization and formatting. Th
 If interested, please contact me via discord! I will (of course) give credit where it's due for pull requests and such that are added to the repo. If this goes well, then maybe we can add some more features to the program, like web scraping historical documents or corpora from Project Gutenberg.
 
 # How to use this repo
-
-
+## Included Files -
+- year_specific_lorebook.py
+- 
 
 # Notes on the Git Ignore
 Make sure to include the following in your `.gitignore` when you fork this repo:
