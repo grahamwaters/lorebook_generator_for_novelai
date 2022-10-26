@@ -21,12 +21,32 @@ stop_words = set(stopwords.words("english"))
 
 # Functions for generating the lorebook
 def preprocess(sent):
+    """
+    preprocess the text to remove stopwords and punctuation
+
+    This function is used to preprocess the text before it is fed into the named entity recognition algorithm.
+
+    :param sent: the text to be preprocessed
+    :type sent: str
+    :return: the preprocessed text
+    :rtype: str
+    """
     sent = nltk.word_tokenize(sent)
     sent = nltk.pos_tag(sent)
     return sent
 
 
 def get_the_entities(content):
+    """
+    get_the_entities is a function that uses the nltk library to extract the named entities from a text.
+
+    This function uses the nltk library to extract the named entities from a text. It uses the nltk library to preprocess the text, and then uses the nltk library to extract the named entities from the text. It returns a list of the named entities.
+
+    :param content: the text to extract the named entities from
+    :type content:  str
+    :return: a list of the named entities
+    :rtype: list
+    """
     # get the entities from the text
     entities = []
     for sent in sent_tokenize(content):
@@ -35,9 +55,18 @@ def get_the_entities(content):
                 entities.append(" ".join(c[0] for c in chunk.leaves()))
     return entities
 
-
 def generate_entries_from_list(list_of_names):
     # enter a list of people's names and get a list of entries, from wikipedia
+    """
+    generate_entries_from_list is a function that generates a list of entries from a list of names.
+
+    This function generates a list of entries from a list of names. It uses the wikipedia library to get the wikipedia page for each name, and then extracts the text from the wikipedia page. It then returns a list of the entries.
+
+    :param list_of_names: a list of names
+    :type list_of_names: list
+    :return: a list of entries
+    :rtype: list
+    """
     entries = []
     entry_names = []
     entry_keywords = []
