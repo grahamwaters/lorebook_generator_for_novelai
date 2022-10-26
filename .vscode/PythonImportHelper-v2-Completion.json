@@ -326,7 +326,7 @@
         "kind": 2,
         "importPath": "scripts.02_lorebook_from_downloaded_wiki_articles",
         "description": "scripts.02_lorebook_from_downloaded_wiki_articles",
-        "peekOfCode": "def generate_lorebook(lore_dict, characters, entries, entry_names, ids):\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    keys_dict = create_keys(\n        entries\n    )  # create the keys for each entry in the entries list\n    global context_config\n    for i in range(len(entries)):\n        # append blanks to lore_dict['entries'] to make room for the new entries\n        try:\n            lore_dict[\"entries\"][i] = {}",
+        "peekOfCode": "def generate_lorebook(lore_dict, entries, entry_names):\n    # generate a lorebook dictionary from the entries, entry_names, and ids\n    keys_dict = create_keys(\n        entries\n    )  # create the keys for each entry in the entries list\n    global context_config\n    for i in range(len(entries)):\n        # append blanks to lore_dict['entries'] to make room for the new entries\n        try:\n            lore_dict[\"entries\"][i] = {}",
         "detail": "scripts.02_lorebook_from_downloaded_wiki_articles",
         "documentation": {}
     },

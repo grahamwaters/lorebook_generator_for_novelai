@@ -314,9 +314,8 @@ context_config = {
     "insertionPosition": -1,
 }
 
-
-def generate_lorebook(lore_dict, characters, entries, entry_names, ids):
-    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.
+def generate_lorebook(lore_dict, entries, entry_names):
+    # generate a lorebook dictionary from the entries, entry_names, and ids
     keys_dict = create_keys(
         entries
     )  # create the keys for each entry in the entries list
@@ -396,7 +395,7 @@ def main():
         f'   this will scan all {len(os.listdir("wikipedia_pages"))} docs for the topics you enter'
     )
     while True:
-        inp = input("Topic: ")
+        inp = input("Topic/Keyword/Year : ")
         if inp == "":
             break
         else:
@@ -417,7 +416,8 @@ def main():
 
     # generate the lorebook
     lore_dict = generate_lorebook(lore_dict, characters, entries, entry_names, ids)
-    print("Done")
+    print("Done, saved to lorebook_generated.lorebook in the /supporting_files directory")
+
 
 
 main()
