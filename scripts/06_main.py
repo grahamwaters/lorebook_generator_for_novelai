@@ -382,4 +382,5 @@ def main():
             json.dump(lore_dict, f, indent=4)
 
 
-main()
+if __name__ == "__main__":
+    main() # run the main function when the script is run
