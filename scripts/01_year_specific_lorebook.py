@@ -10,22 +10,16 @@ import re
 nltk.download("stopwords")
 from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
-
-from nltk.tokenize import word_tokenize
-from nltk.tag import pos_tag
 import wikipedia
 import tqdm
 from tqdm import tqdm
-import datetime
 import warnings
 
 warnings.filterwarnings("ignore")
 # get the list of names from the topics file
 stop_words = set(stopwords.words("english"))
 
-# Functions
-
-
+# Functions for generating the lorebook
 def preprocess(sent):
     sent = nltk.word_tokenize(sent)
     sent = nltk.pos_tag(sent)
