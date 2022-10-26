@@ -1,8 +1,8 @@
 
 import pandas as pd
 import numpy as np
-import json
 import re
+import json
 import uuid
 import nltk
 nltk.download("stopwords")
@@ -13,14 +13,18 @@ import tqdm
 from tqdm import tqdm
 import datetime
 import warnings
+import random
+
 warnings.filterwarnings("ignore") # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.
 
+# Global Variables Declaration ------------------------------------------------
 # get the list of names from the topics file
 stop_words = set(stopwords.words("english"))
+maxlinksperpage = 30
+
+
 
 # import the json file lorebook_example.lorebook
-
-
 def examine_dates(entry1, entry2):
     # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.
 
@@ -130,16 +134,6 @@ def check_json_for_entry(entry_name, json_file):
     print(f"{entry_name} - entry does not exist")
     return False
 
-
-from tqdm import tqdm
-import pandas as pd
-import wikipedia
-import re
-import random
-
-maxlinksperpage = 30
-
-
 def main():
 
     # check those article pages for length (if they are too short, skip them)
@@ -153,8 +147,6 @@ def main():
     # list_of_names = [x for x in list_of_names if not check_json_for_entry(x, 'lorebook_generated.lorebook')]
 
     # check a json file to see if any of the characters are already in the file, if they are, remove them from the list
-    import json
-
     # data['entries'][entry]['displayName'] == entry_name
     # look for entries where the data['entries'][entry_number]['displayName'] is in the list of filenames
     # if it is, remove it from the list
