@@ -4,6 +4,14 @@
 This repo is designed to help all of us as authors using NovelAI. It pulls from Wikipedia articles to automatically generate lorebooks for real places or years and pretty much anything you could find on Wikipedia using python's wikipedia library.
 The repo contains two different versions: a basic one that generates based on a CSV file, 'characters.csv' and a more advanced version that implements multiple keywords for a more tailored search.
 
+![](images/main.png)
+
+## How to use
+To use this lorebook generator follow these steps:
+
+- first populate the characters.csv file with your chosen keywords. You can use the example file as a template. Then run the python script and it will generate a lorebook for you. This lorebook will be named `lorebook_generated.lorebook` and will be saved in the `supporting_files` folder.
+
+- Once you have a lorebook created you can upload the lorebook to NovelAI and use it to add background detail to your stories and characters.
 # How to Contribute:
 We are seeking contributors that are skilled at project organization and formatting. If you are interested in helping out, please contact me on Discord: `@its_graham#7425`
 Also, feel free to open issues, pull requests, and make suggestions for this project here on GitHub as well. Working together, we could add some more features to the program, like web scraping historical documents or corpora from Project Gutenberg! That would be really informative.
