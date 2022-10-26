@@ -14,7 +14,7 @@ import wikipedia
 from tqdm import tqdm
 
 import warnings
-warnings.filterwarnings("ignore")
+warnings.filterwarnings("ignore") # we don't need to see errors for this function at the moment. This could be improved later.
 
 nltk.download("stopwords")
 
