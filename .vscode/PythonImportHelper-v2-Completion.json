@@ -85,22 +85,6 @@
         "documentation": {}
     },
     {
-        "label": "sent_tokenize",
-        "importPath": "nltk.tokenize",
-        "description": "nltk.tokenize",
-        "isExtraImport": true,
-        "detail": "nltk.tokenize",
-        "documentation": {}
-    },
-    {
-        "label": "stopwords",
-        "importPath": "nltk.corpus",
-        "description": "nltk.corpus",
-        "isExtraImport": true,
-        "detail": "nltk.corpus",
-        "documentation": {}
-    },
-    {
         "label": "stopwords",
         "importPath": "nltk.corpus",
         "description": "nltk.corpus",
@@ -147,14 +131,6 @@
         "importPath": "wikipedia",
         "description": "wikipedia",
         "detail": "wikipedia",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
         "documentation": {}
     },
     {
@@ -247,31 +223,6 @@
         "importPath": "random",
         "description": "random",
         "detail": "random",
-        "documentation": {}
-    },
-    {
-        "label": "ratelimit",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "ratelimit",
-        "description": "ratelimit",
-        "detail": "ratelimit",
-        "documentation": {}
-    },
-    {
-        "label": "sleep_and_retry",
-        "importPath": "ratelimit",
-        "description": "ratelimit",
-        "isExtraImport": true,
-        "detail": "ratelimit",
-        "documentation": {}
-    },
-    {
-        "label": "limits",
-        "importPath": "ratelimit",
-        "description": "ratelimit",
-        "isExtraImport": true,
-        "detail": "ratelimit",
         "documentation": {}
     },
     {
@@ -738,132 +689,6 @@
         "description": "scripts.helpers",
         "peekOfCode": "def generate_lorebook(\n    lore_dict, characters, entries, entry_names, ids, years_list, topics_scanner_list\n):\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    keys_dict = create_keys(\n        entries\n    )  # create the keys for each entry in the entries list\n    global context_config\n    for i in range(len(entries)):\n        # append blanks to lore_dict['entries'] to make room for the new entries",
         "detail": "scripts.helpers",
-        "documentation": {}
-    },
-    {
-        "label": "filename_create",
-        "kind": 2,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "def filename_create(page_title):\n    filename = page_title.replace(\" \", \"_\") # replace spaces with underscores\n    filename = filename.replace(\"/\", \"_\") # replace slashes with underscores\n    filename = filename.replace(\":\", \"_\") # replace colons with underscores\n    filename = filename.replace(\"?\", \"_\") # replace question marks with underscores\n    filename = filename.replace(\"*\", \"_\") # replace asterisks with underscores\n    filename = filename.replace('\"', \"_\") # replace double quotes with underscores\n    filename = filename.replace(\"<\", \"_\") # replace less than signs with underscores\n    filename = filename.replace(\">\", \"_\") # replace greater than signs with underscores\n    filename = filename.replace(\"|\", \"_\") # replace pipes with underscores",
-        "detail": "temp_storage",
-        "documentation": {}
-    },
-    {
-        "label": "while_page_exists",
-        "kind": 2,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "def while_page_exists(page,filename):\n    try:\n        page_text = page.content # get the content of the page\n        # save the page text to a file with the name of the page as the file name in the wikipedia_pages folder\n        # to save storage space, we should parse the page_text and remove all extra spaces.\n        page_text = re.sub(r\"\\s+\", \" \", page_text) # replace all extra spaces with a single space\n        with open(f'wikipedia_pages/{filename}.txt', 'w+') as f:\n            f.write(page_text)\n        print(f'Saved {filename} to file.', end=' ')\n        return True",
-        "detail": "temp_storage",
-        "documentation": {}
-    },
-    {
-        "label": "get_links",
-        "kind": 2,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "def get_links(topic):\n    # get all links from the topic page\n    global pages_seen # get the list of topics that have already been seen\n    if topic in pages_seen: # if the topic has already been seen, return an empty list\n        # get the list of links from the existing file\n        filename = filename_create(topic)\n        with open(f'wikipedia_pages/{filename}.txt', 'r') as f:\n            page_text = f.read()\n    try:\n        topic_page = wikipedia.page(topic)",
-        "detail": "temp_storage",
-        "documentation": {}
-    },
-    {
-        "label": "get_relevant_subtopics",
-        "kind": 2,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "def get_relevant_subtopics(parent_topic):\n    # get the list of subtopics from the parent topic page.\n    # get all links from the parent topic page\n    # make sure that the topic page will show up in the search results\n    parent_topic_links = get_links(parent_topic)\n    #note: could use a for loop above until len(parent_topic_links) > 0\n    # get the list of subtopics from the parent topic page.\n    subtopics = []\n    for link in tqdm(parent_topic_links):\n        if \":\" not in link:",
-        "detail": "temp_storage",
-        "documentation": {}
-    },
-    {
-        "label": "divide_into_segments",
-        "kind": 2,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "def divide_into_segments(page_file_content):\n    # goal:\n    # 1. divide the page into segments based on the pattern '== History ==' where History is the name of a section, and the page_name is the name of the dictionary entry.\n    # 2. Save each segment to the dictionary entry for the page_name using the section name as the key.\n    # 3. Return the dictionary entry for the page_name.\n    # 4. If the page does not have any sections, then save the entire page as the value for the key 'content'.\n    # get the list of sections\n    sections = re.findall(r\"==\\s*(.*?)\\s*==\", page_file_content)\n    # get the list of section contents\n    section_contents = re.split(r\"==\\s*(.*?)\\s*==\", page_file_content)",
-        "detail": "temp_storage",
-        "documentation": {}
-    },
-    {
-        "label": "add_to_master_dict",
-        "kind": 2,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "def add_to_master_dict(subdict):\n    # given the results of divide_into_segments, add the subdict to the master dictionary\n    # if the page_name is already in the master dictionary, then add the subdict to the existing dictionary entry\n    # if the page_name is not in the master dictionary, then add the subdict as a new dictionary entry\n    global master_dict\n    for page_name in subdict:\n        if page_name in master_dict:\n            master_dict[page_name].update(subdict[page_name])\n        else:\n            master_dict[page_name] = subdict[page_name]",
-        "detail": "temp_storage",
-        "documentation": {}
-    },
-    {
-        "label": "main",
-        "kind": 2,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "def main():\n    parent_page = \"Exposition Universelle (1889)\"\n    relevant_subtopics = get_relevant_subtopics(parent_page)\n    print(relevant_subtopics)\nmain()",
-        "detail": "temp_storage",
-        "documentation": {}
-    },
-    {
-        "label": "stop_words",
-        "kind": 5,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",",
-        "detail": "temp_storage",
-        "documentation": {}
-    },
-    {
-        "label": "maxlinksperpage",
-        "kind": 5,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "maxlinksperpage = 30\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",",
-        "detail": "temp_storage",
-        "documentation": {}
-    },
-    {
-        "label": "minimum_key_occurrences",
-        "kind": 5,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "minimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",\n    \"maximumTrimType\": \"sentence\",",
-        "detail": "temp_storage",
-        "documentation": {}
-    },
-    {
-        "label": "context_config",
-        "kind": 5,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "context_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",\n    \"maximumTrimType\": \"sentence\",\n    \"insertionPosition\": -1,",
-        "detail": "temp_storage",
-        "documentation": {}
-    },
-    {
-        "label": "master_dict",
-        "kind": 5,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "master_dict = {} # get the list of keywords from the parent topic page.\n# read pages_seen.csv file to populate the pages_seen list\npages_seen = [] # keep track of the pages we have seen already so we don't overtax the wikipedia api\nwith open('./data/pages_seen.csv', 'r') as f:\n    for line in f:\n        pages_seen.append(line.strip())\n#*###########################################################################################################\n#& Functions\n#*###########################################################################################################\n#& Global Variables:",
-        "detail": "temp_storage",
-        "documentation": {}
-    },
-    {
-        "label": "pages_seen",
-        "kind": 5,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "pages_seen = [] # keep track of the pages we have seen already so we don't overtax the wikipedia api\nwith open('./data/pages_seen.csv', 'r') as f:\n    for line in f:\n        pages_seen.append(line.strip())\n#*###########################################################################################################\n#& Functions\n#*###########################################################################################################\n#& Global Variables:\nN = 10 # number of words each child page should have in common with the parent page to be considered.\n#*############################################################################################################",
-        "detail": "temp_storage",
-        "documentation": {}
-    },
-    {
-        "label": "N",
-        "kind": 5,
-        "importPath": "temp_storage",
-        "description": "temp_storage",
-        "peekOfCode": "N = 10 # number of words each child page should have in common with the parent page to be considered.\n#*############################################################################################################\n#^ Getting the relevant subtopics for a parent topic (e.g. \"Machine Learning\" for \"Artificial Intelligence\"). This is done by getting the list of subtopics from the Wikipedia page of the parent topic and then getting the list of keywords (links) from the Wikipedia page of each subtopic. The subtopic is then considered relevant if it has at least N keywords in common with the parent topic.\n##############################################################################################################\ndef filename_create(page_title):\n    filename = page_title.replace(\" \", \"_\") # replace spaces with underscores\n    filename = filename.replace(\"/\", \"_\") # replace slashes with underscores\n    filename = filename.replace(\":\", \"_\") # replace colons with underscores\n    filename = filename.replace(\"?\", \"_\") # replace question marks with underscores\n    filename = filename.replace(\"*\", \"_\") # replace asterisks with underscores",
-        "detail": "temp_storage",
         "documentation": {}
     }
 ]
