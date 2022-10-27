@@ -151,7 +151,7 @@ def book_keeper_bot(topic):
 
 
 @sleep_and_retry # retry if there is an error, wait 5 seconds between retries
-def get_links(topic):
+def get_links(topic,all_topics):
 
     # If the topic has already been saved to the wikipedia_pages folder, then skip it
     status = book_keeper_bot(topic) # check if the topic has already been saved to the wikipedia_pages folder
@@ -170,9 +170,17 @@ def get_links(topic):
     try:
         # filename
         #& using topic_check_pos_type(topic) to check if the topic word is a noun
-        if topic_check_pos_type(topic) != True:
+        if topic_check_pos_type(topic) == True and len(all_topics) > 1: # if the topic word is a noun and there are more than 1 topic words
             print(f'{topic} is not a noun. Skipping...')
             return []
+        elif topic_check_pos_type(topic) == True and len(all_topics) == 1: # if the topic word is not a noun and there is only 1 topic
+            print(f'{topic} is not a noun. Using it as a keyword to search for subtopics.')
+            pass
+        elif topic_check_pos_type(topic) == False and len(all_topics) == 1: # if the topic word is not a noun and there is only 1 topic
+            print(f'{topic} is not a noun. Using it as a keyword to search for subtopics.')
+            pass
+        else:
+            pass
         filename = filename_create(topic)
         topic_page = wikipedia.page(topic)
         topic_links = topic_page.links
@@ -192,7 +200,7 @@ def get_relevant_subtopics(parent_topic):
     # get all links from the parent topic page
     global keys_dict
     # make sure that the topic page will show up in the search results
-    parent_topic_links = get_links(parent_topic)
+    parent_topic_links = get_links(parent_topic,parent_topic)
     #note: could use a for loop above until len(parent_topic_links) > 0
 
     # get the list of subtopics from the parent topic page.
@@ -207,7 +215,7 @@ def get_relevant_subtopics(parent_topic):
             subtopics.append(link)
 
     # get the list of keywords from the parent topic page.
-    parent_topic_keywords = get_links(parent_topic)
+    parent_topic_keywords = get_links(parent_topic,parent_topic)
 
     # get the list of keywords from each subtopic page.
     subtopics_keywords = {}
@@ -218,7 +226,7 @@ def get_relevant_subtopics(parent_topic):
             if any(skipword in subtopic for skipword in skipwords):
                 continue # skip the subtopic if it contains any of the following words
             bar.text(f'Getting keywords for {subtopic}...')
-            subtopics_keywords[subtopic] = get_links(subtopic)
+            subtopics_keywords[subtopic] = get_links(subtopic,subtopics)
             if len(subtopics_keywords[subtopic]) == 0:
                 #print('')
                 pass
