@@ -310,6 +310,16 @@ def main():
                 len(keys_row)
             )
         )
+    # add the words from the entry that are not stopwords and are longer than 3 letters to the list of keywords
+    for entry in entries:
+        entry_keywords.append(
+            [
+                word for word in entry.split()
+                if word.lower() not in stopwords.words('english')
+                and len(word) > 3
+            ]
+        )
+
 
     #!assert(len(entries) == len(entry_names), "The number of entries and entry names must be the same")
     # remove any entries that are already in the lorebook, or are only one word long
