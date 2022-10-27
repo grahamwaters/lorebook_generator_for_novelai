@@ -401,3 +401,8 @@ if __name__ == "__main__":
         print("Updating existing lorebook")
     main()  # run the main function when the script is run
     print("Done")
+
+
+# Notes:
+# - Add in keys for years and dates, locations, people's names.
+# - Add unique words that are used in the entries to the keywords list.
