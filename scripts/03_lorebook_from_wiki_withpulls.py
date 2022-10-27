@@ -381,7 +381,7 @@ def main():
             ]
         )
 
-    final_checks(entries, entry_names, entry_keywords, lore_dict, list_of_names,ids)
+    #!final_checks(entries, entry_names, entry_keywords, lore_dict, list_of_names,ids)
 
     #!assert(len(entries) == len(entry_names), "The number of entries and entry names must be the same")
     # remove any entries that are already in the lorebook, or are only one word long
