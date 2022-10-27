@@ -41,6 +41,14 @@ This is a CSV file that contains a list of characters that are mentioned in the 
   - [ ] Identification of instances in the text where the following pattern exists:
     - [ ] `character one` and `character two` are both mentioned within some distance `d` of each other. This is an interesting method of identifying characters that are related to each other. Proximity could be useful in determining how these topics or characters should be considered.
 
+
+- The code is currently adding a huge number of keys to the lorebook. This is potentially causing problems on the server side of NovelAI. I will reduce the key count to less than fifty and see if that helps.
+
+
+
+
+
+
 ## Future Development Goals
 - [place_specific_lorebook.py](scripts/02_lorebook_from_place.py) - This script will be used to generate lorebooks from a specific place. We will do this by using the Wikipedia library to search for a place and then using the article text as the lorebook entry.
 

@@ -457,7 +457,16 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):",
+        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\n#todo:ticket 0001 - add a function to reduce keywords to a max of 50.\n# get the top most unique keywords for the entry as compared to the other entries\ndef find_unique_keys(keys_dict):\n    # the top most unique keywords for the entry as compared to the other entries in the lorebook\n    # the keys_dict is a dictionary with all keywords in it.\n    # each row is an entry, and each column is a keyword",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "find_unique_keys",
+        "kind": 2,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "def find_unique_keys(keys_dict):\n    # the top most unique keywords for the entry as compared to the other entries in the lorebook\n    # the keys_dict is a dictionary with all keywords in it.\n    # each row is an entry, and each column is a keyword\n    # get all the keywords (across all entries) -> keyword_master_list\n    # go through each row's keywords and keep them in one of two cases (1) if they occur only once in keyword_master_list or (2) if they occur more than once but the number of keywords currently saved is less than 50 and we have already checked all the keywords in the row for uniqueness.\n    # then we go to the next row and repeat the process.\n    # code:\n    # consolidate all the keywords into one list (from all the entries in keys_dict)\n    keyword_master_list = []",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
