@@ -31,8 +31,13 @@ cd lorebook_generator_for_novelai
 pip install -r requirements.txt
 ```
 
+So, what exactly does this do? Well, it installs all of the dependencies that are required to run the code. You can see the dependencies in the requirements.txt file.
 
+## How does the basic version work?
 
+### Figure A. Basic version (example of keywords)
+![example1](images/example1.png)
+You can easily tell that in a wikipedia article, the links are usually some sort of entity or concept. In the figure above, you can see that `Queen Victoria`, `Rudyard Kipling` and `Charles Dickens` are all hyperlinks. These will be extracted by our code and used to either reinforce a lorebook to make it more robust or to create a lorebook from scratch.
 ### Mode 1. Basic Mode - Using a CSV file to generate lorebooks
 - Once you have it cloned, populate the `characters.csv` file with your chosen keywords. (You can use the example file as a template.)
 - Then run the python script [scripts/03_lorebook_from_wiki_withpulls.py](scripts/03_lorebook_from_wiki_withpulls.py), and it will generate a lorebook for you. This lorebook will be named `lorebook_generated.lorebook` and will be saved in the `supporting_files` folder.
