@@ -556,12 +556,13 @@ def main():
     with open("./supporting_files/lorebook_generated.lorebook", "w+") as f:
         json.dump(lore_dict, f, indent=4)
 
-def preview_lorebook(lorebook):
-    # preview the lorebook by creating a pandas dataframe from the json file.
-    # convert the lorebook object (json) to a pandas dataframe
-    df = pd.DataFrame(lorebook)
-    # print the first 5 rows of the dataframe
-    print(df.head())
+# def preview_lorebook(lorebook):
+#     # preview the lorebook by creating a pandas dataframe from the json file.
+#     # convert the lorebook object (json) to a pandas dataframe
+#     df = pd.DataFrame(lorebook['entries'])
+#     # preview the dataframe
+#     # print the first 5 rows of the dataframe
+#     print(df.head())
 
 
 
@@ -569,7 +570,7 @@ def preview_lorebook(lorebook):
 if __name__ == "__main__":
     main() # run the main function when the script is run
     print("Done")
-    print("previewing the lorebook")
-    with open("./supporting_files/lorebook_generated.lorebook") as f:
-        lorebook = json.load(f)
-    preview_lorebook(lorebook) # preview the lorebook
+    # print("previewing the lorebook")
+    # with open("./supporting_files/lorebook_generated.lorebook") as f:
+    #     lorebook = json.load(f)
+    # preview_lorebook(lorebook) # preview the lorebook
