@@ -7,6 +7,7 @@ from tqdm import tqdm
 import warnings
 from ratelimit import sleep_and_retry
 import os
+from alive_progress import alive_bar
 
 warnings.filterwarnings(
     "ignore"
@@ -210,25 +211,32 @@ def get_relevant_subtopics(parent_topic):
 
     # get the list of keywords from each subtopic page.
     subtopics_keywords = {}
-    for subtopic in tqdm(subtopics):
-        print(f'Getting keywords for {subtopic}...', end=' ')
-        subtopics_keywords[subtopic] = get_links(subtopic)
-        if len(subtopics_keywords[subtopic]) == 0:
-            print('')
-        else:
-            print(f'Found {len(subtopics_keywords[subtopic])} keywords.')
-        #//print(f'Found {len(subtopics_keywords[subtopic])}')
-
+    with alive_bar(len(subtopics)) as bar:
+        for subtopic in subtopics:
+            # skip the subtopic if it contains any of the following words
+            skipwords = ['film', 'TV', 'series','video game','(play)']
+            if any(skipword in subtopic for skipword in skipwords):
+                continue # skip the subtopic if it contains any of the following words
+            bar.text(f'Getting keywords for {subtopic}...')
+            subtopics_keywords[subtopic] = get_links(subtopic)
+            if len(subtopics_keywords[subtopic]) == 0:
+                #print('')
+                pass
+            else:
+                bar.text(f'Found {len(subtopics_keywords[subtopic])} keywords.')
+            #//print(f'Found {len(subtopics_keywords[subtopic])}')
+            bar()
     # get the list of relevant subtopics
     relevant_subtopics = []
-    for subtopic in subtopics_keywords:
-        # get the number of keywords in common between the parent topic and the subtopic
-        common_keywords = set(parent_topic_keywords).intersection(
-            set(subtopics_keywords[subtopic])
-        )
-        if len(common_keywords) >= N:
-            relevant_subtopics.append(subtopic)
-
+    with alive_bar(len(subtopics_keywords)) as bar:
+        for subtopic in subtopics_keywords:
+            # get the number of keywords in common between the parent topic and the subtopic
+            common_keywords = set(parent_topic_keywords).intersection(
+                set(subtopics_keywords[subtopic])
+            )
+            if len(common_keywords) >= N:
+                relevant_subtopics.append(subtopic)
+            bar()
     return relevant_subtopics
 
 def divide_into_segments(page_file_content):

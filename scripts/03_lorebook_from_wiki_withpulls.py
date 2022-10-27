@@ -266,7 +266,21 @@ def main():
     # remove any names that are already in the json file
     for entry in range(len(data['entries'])):
         if data['entries'][entry]['displayName'] in list_of_names:
-            list_of_names.remove(data['entries'][entry]['displayName'])
+            try:
+                list_of_names.remove(data['entries'][entry]['displayName'])
+                # and remove the corresponding entry from the entries list
+                entries.remove(data['entries'][entry])
+                # and remove the corresponding entry from the entry_names list
+                entry_names.remove(data['entries'][entry]['displayName'])
+                # and remove the corresponding entry from the ids list
+                ids.remove(data['entries'][entry]['id'])
+                # and remove the corresponding entry from the entry_keywords list
+                entry_keywords.remove(data['entries'][entry]['keywords'])
+            except Exception as e:
+                print(e)
+                print(f"Error removing {data['entries'][entry]['displayName']} from the list of names")
+
+
     print(f"Removed {len(entry_names) - len(list_of_names)} names that were already in the json file")
     # for each Name
     #todo: chunk this into smaller iteratable chunks and save the results to a file incrementally (will reduce the likelihood of losing all the work if the program crashes or is interrupted. It also will reduce load on the wikipedia API).
@@ -367,6 +381,7 @@ def main():
             ]
         )
 
+    final_checks(entries, entry_names, entry_keywords, lore_dict, list_of_names,ids)
 
     #!assert(len(entries) == len(entry_names), "The number of entries and entry names must be the same")
     # remove any entries that are already in the lorebook, or are only one word long
@@ -381,11 +396,15 @@ def main():
     # remove duplicates
     entries = list(dict.fromkeys(entries))
 
+
+
     successful_saves = 0  # count the number of successful saves
     # add the new entries to the lorebook
     with alive_bar(len(entries),dual_line=True,title='Adding Entries to Lorebook') as bar:
         for i in range(len(entries)):
             #!print(f"\nAdding {entry_names[i]} to the lorebook")
+            # assert that list_of_names[i] is in the entries[i] string (this is to make sure that the entry is about the correct topic)
+            assert(list_of_names[i].lower() in entries[i].lower(), "The entry is not about the correct topic")
             try:
                 default_config = {
                     "prefix": "",
@@ -423,7 +442,6 @@ def main():
             except Exception as e:
                 #print(e)
                 continue
-
             bar()
     print(f"Saved {successful_saves} entries to the lorebook")
 
@@ -434,6 +452,20 @@ def main():
     # save the new lorebook dictionary as a json file called lorebook_generated.lorebook
     with open("./supporting_files/lorebook_generated.lorebook", "w+") as f:
         json.dump(lore_dict, f, indent=4)
+
+
+def final_checks(entries, entry_names, entry_keywords, lore_dict, list_of_names,ids):
+
+    # assert -- make sure the lengths are the same
+    assert(len(entries) == len(entry_names), "after removing existing entries lengths are not the same")
+    assert(len(entries) == len(entry_keywords), "after removing existing entries lengths are not the same")
+    assert(len(entries) == len(ids), "after removing existing entries lengths are not the same")
+    assert(len(entry_names) == len(entry_keywords), "after removing existing entries lengths are not the same")
+    # check that the name of each entry (i.e. 'Florence Nightingale') is in the first paragraph of the entry's text. If not, then raise an error
+    for entry, entry_name in zip(entries, entry_names):
+        if entry_name not in entry.split('\n')[0]:
+            raise Exception(f"{entry_name} is not in the first paragraph of the entry")
+
 
 
 if __name__ == "__main__":

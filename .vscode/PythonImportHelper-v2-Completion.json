@@ -260,6 +260,14 @@
         "documentation": {}
     },
     {
+        "label": "alive_bar",
+        "importPath": "alive_progress",
+        "description": "alive_progress",
+        "isExtraImport": true,
+        "detail": "alive_progress",
+        "documentation": {}
+    },
+    {
         "label": "limits",
         "importPath": "ratelimit",
         "description": "ratelimit",
@@ -513,6 +521,15 @@
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
         "peekOfCode": "def main():\n    \"\"\"\n    main function - runs the program, processing the names provided in the characters.csv file and adding them to the lorebook_generated.lorebook file in the supporting_files folder. The function uses the generate_entries_from_list function to generate the entries, and then adds them to the lorebook_generated.lorebook file.\n    \"\"\"\n    global context_config\n    global minimum_key_occurrences\n    global chunk_size # the number of names to process in each chunk\n    # open the lorebook_generated.lorebook file\n    try:\n        with open(\"./supporting_files/lorebook_generated.lorebook\") as f:",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "final_checks",
+        "kind": 2,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "def final_checks(entries, entry_names, entry_keywords, lore_dict, list_of_names,ids):\n    # assert -- make sure the lengths are the same\n    assert(len(entries) == len(entry_names), \"after removing existing entries lengths are not the same\")\n    assert(len(entries) == len(entry_keywords), \"after removing existing entries lengths are not the same\")\n    assert(len(entries) == len(ids), \"after removing existing entries lengths are not the same\")\n    assert(len(entry_names) == len(entry_keywords), \"after removing existing entries lengths are not the same\")\n    # check that the name of each entry (i.e. 'Florence Nightingale') is in the first paragraph of the entry's text. If not, then raise an error\n    for entry, entry_name in zip(entries, entry_names):\n        if entry_name not in entry.split('\\n')[0]:\n            raise Exception(f\"{entry_name} is not in the first paragraph of the entry\")",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
