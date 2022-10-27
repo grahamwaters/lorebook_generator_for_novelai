@@ -20,7 +20,7 @@ warnings.filterwarnings(
 # get the list of names from the topics file
 nltk.download("stopwords")  # & download stopwords
 stop_words = set(stopwords.words("english"))
-maxlinksperpage = 30
+maxlinksperpage = 30 # how many randomly sampled links to get from each page, to add to the list of keywords
 minimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword
 context_config = {
     "prefix": "",
@@ -225,8 +225,6 @@ def main():
     print(f"Generating entries for {len(entry_names)} names")
     print(entry_names)
 
-    #!------------------------
-
     print(f"Processed {len(entry_names)} names")
     countnans = list_of_names.count("nan")
     print(f"Found {countnans} nan values")
@@ -256,17 +254,7 @@ def main():
                 continue
 
         df = pd.DataFrame(entry_names)
-        # append to the csv file
-        #!prev_chars = pd.read_csv("./data/characters.csv")
-        # add the new characters to the list
-        #!prev_chars = prev_chars.append(df)
-        # remove duplicates
-        #!prev_chars = prev_chars.drop_duplicates()
-        # save the new list
-        #!prev_chars.to_csv("./data/characters.csv", index=False)
-        # # save entry_names to a csv
-        # df = pd.DataFrame(entry_names)
-        # df.to_csv('characters.csv', index=False)
+
 
     with open("./supporting_files/lorebook_generated.lorebook") as f:
         lore_dict = json.load(f)
