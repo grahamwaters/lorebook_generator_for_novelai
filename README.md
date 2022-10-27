@@ -12,7 +12,7 @@ The repo contains two different versions: a basic one that generates based on a 
 
 To use this lorebook generator, follow these steps:
 
-- First, populate the characters.csv file with your chosen keywords. You can use the example file as a template. Then run the python script, and it will generate a lorebook for you. This lorebook will be named `lorebook_generated.lorebook` and will be saved in the `supporting_files` folder.
+- First, populate the characters.csv file with your chosen keywords. You can use the example file as a template. Then run the python script [scripts/03_lorebook_from_wiki_withpulls.py](scripts/03_lorebook_from_wiki_withpulls.py), and it will generate a lorebook for you. This lorebook will be named `lorebook_generated.lorebook` and will be saved in the `supporting_files` folder.
 
 ![](images/greatpyramid.png)
 
