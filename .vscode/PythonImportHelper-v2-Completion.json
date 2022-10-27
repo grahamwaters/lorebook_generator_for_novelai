@@ -241,7 +241,7 @@
         "kind": 5,
         "importPath": "scripts.01_lorebook_from_year",
         "description": "scripts.01_lorebook_from_year",
-        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30\n#* Import Configuration Dictionary from scripts/lorebook_params.py file\n# goal: eventually have an external file for these variables\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 200,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,",
+        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30\n# * Import Configuration Dictionary from scripts/lorebook_params.py file\n# goal: eventually have an external file for these variables\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 200,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,",
         "detail": "scripts.01_lorebook_from_year",
         "documentation": {}
     },
@@ -250,7 +250,7 @@
         "kind": 5,
         "importPath": "scripts.01_lorebook_from_year",
         "description": "scripts.01_lorebook_from_year",
-        "peekOfCode": "maxlinksperpage = 30\n#* Import Configuration Dictionary from scripts/lorebook_params.py file\n# goal: eventually have an external file for these variables\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 200,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",",
+        "peekOfCode": "maxlinksperpage = 30\n# * Import Configuration Dictionary from scripts/lorebook_params.py file\n# goal: eventually have an external file for these variables\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 200,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",",
         "detail": "scripts.01_lorebook_from_year",
         "documentation": {}
     },
@@ -412,7 +412,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30\nminimum_key_occurrences = 4 # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",",
+        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -421,7 +421,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "maxlinksperpage = 30\nminimum_key_occurrences = 4 # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",",
+        "peekOfCode": "maxlinksperpage = 30\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -430,7 +430,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "minimum_key_occurrences = 4 # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",\n    \"maximumTrimType\": \"sentence\",",
+        "peekOfCode": "minimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",\n    \"maximumTrimType\": \"sentence\",",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },

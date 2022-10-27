@@ -11,16 +11,18 @@ from tqdm import tqdm
 import warnings
 import os
 
-warnings.filterwarnings("ignore") # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.
+warnings.filterwarnings(
+    "ignore"
+)  # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.
 
 # Global Variables Declaration ------------------------------------------------
 # get the list of names from the topics file
-nltk.download("stopwords") #& download stopwords
+nltk.download("stopwords")  # & download stopwords
 stop_words = set(stopwords.words("english"))
 maxlinksperpage = 30
 
 
-#* Import Configuration Dictionary from scripts/lorebook_params.py file
+# * Import Configuration Dictionary from scripts/lorebook_params.py file
 # goal: eventually have an external file for these variables
 context_config = {
     "prefix": "",
@@ -34,7 +36,7 @@ context_config = {
     "insertionPosition": -1,
 }
 
-#* Import helper functions from scripts/helpers.py file
+# * Import helper functions from scripts/helpers.py file
 # import the helper functions from the helpers.py file
 from helpers import *
 
@@ -415,7 +417,8 @@ def file_mode(mode, topics_scanner_list, years_list):
                 print("Invalid mode, exiting...")
                 return
 
-#note: web_mode is in dev. Nonoperational as of 10/26/22
+
+# note: web_mode is in dev. Nonoperational as of 10/26/22
 def web_mode(entry_names):
     # use the wikipedia api to get the text of the wikipedia pages instead of reading them from files.
     # this is slower, but it will get the latest version of the page.

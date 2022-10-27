@@ -14,7 +14,10 @@ import wikipedia
 from tqdm import tqdm
 
 import warnings
-warnings.filterwarnings("ignore") # we don't need to see errors for this function at the moment. This could be improved later.
+
+warnings.filterwarnings(
+    "ignore"
+)  # we don't need to see errors for this function at the moment. This could be improved later.
 
 nltk.download("stopwords")
 
@@ -314,6 +317,7 @@ context_config = {
     "insertionPosition": -1,
 }
 
+
 def generate_lorebook(lore_dict, entries, entry_names):
     # generate a lorebook dictionary from the entries, entry_names, and ids
     keys_dict = create_keys(
@@ -416,8 +420,9 @@ def main():
 
     # generate the lorebook
     lore_dict = generate_lorebook(lore_dict, characters, entries, entry_names, ids)
-    print("Done, saved to lorebook_generated.lorebook in the /supporting_files directory")
-
+    print(
+        "Done, saved to lorebook_generated.lorebook in the /supporting_files directory"
+    )
 
 
 main()

@@ -9,8 +9,10 @@ from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
 import wikipedia
 from tqdm import tqdm
+
 # import warnings
 # import os
+
 
 def preprocess(sent):
     """
@@ -46,6 +48,7 @@ def get_the_entities(content):
             if hasattr(chunk, "label"):
                 entities.append(" ".join(c[0] for c in chunk.leaves()))
     return entities
+
 
 def generate_entries_from_list(list_of_names):
     # enter a list of people's names and get a list of entries, from wikipedia
@@ -203,6 +206,7 @@ def create_keys(entries):
             print("Saved keys_dict.csv")
 
     return keys_dict
+
 
 def generate_lorebook(
     lore_dict, characters, entries, entry_names, ids, years_list, topics_scanner_list

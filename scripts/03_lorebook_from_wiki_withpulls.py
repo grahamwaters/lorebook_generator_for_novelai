@@ -12,14 +12,16 @@ import datetime
 import warnings
 import random
 
-warnings.filterwarnings("ignore") # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.
+warnings.filterwarnings(
+    "ignore"
+)  # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.
 
 # Global Variables Declaration ------------------------------------------------
 # get the list of names from the topics file
-nltk.download("stopwords") #& download stopwords
+nltk.download("stopwords")  # & download stopwords
 stop_words = set(stopwords.words("english"))
 maxlinksperpage = 30
-minimum_key_occurrences = 4 # minimum number of times a keyword must appear in the text to be considered a keyword
+minimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword
 context_config = {
     "prefix": "",
     "suffix": "\n",
@@ -111,17 +113,21 @@ def generate_entries_from_list(list_of_names):
                 entry_keywords.append(related_links)
                 entry_names.append(page.title)
             except:
-                print("could not find entry for", name, " trying secondary search result instead")
+                print(
+                    "could not find entry for",
+                    name,
+                    " trying secondary search result instead",
+                )
                 for xx in range(1, 5):
                     try:
                         entry = wikipedia.search(name)[
                             xx
                         ]  # get the second result from wikipedia, which is usually the most relevant
-                        print(f'Looking at the {entry} page')
+                        print(f"Looking at the {entry} page")
                         entries.append(entry)
                         entry_names.append(page.title)
                         # entry_keywords.append(entry_keywords)
-                        break # break out of the loop if we find a result
+                        break  # break out of the loop if we find a result
                     except:
                         print("could not find summary for", name, " skipping")
 
@@ -149,8 +155,9 @@ def check_json_for_entry(entry_name, json_file):
         if data["entries"][entry]["displayName"] == entry_name:
             print(f"{entry_name} - entry already exists", datetime.datetime.now())
             return True
-    #print(f"{entry_name} - entry does not exist")
+    # print(f"{entry_name} - entry does not exist")
     return False
+
 
 def clear_the_lorebook():
     # reset the lorebook to an empty dictionary keeping the same format
@@ -160,6 +167,7 @@ def clear_the_lorebook():
     with open("./supporting_files/lorebook_generated.lorebook", "w+") as f:
         json.dump(lore_dict, f, indent=4)
     print("Lorebook cleared")
+
 
 def main():
     """
@@ -176,20 +184,26 @@ def main():
         print(e)
         print("Error opening lorebook_generated.lorebook file")
         with open("./supporting_files/starter.lorebook") as f:
-            lore_dict = json.load(f) # if the file doesn't exist, use the starter.lorebook file
+            lore_dict = json.load(
+                f
+            )  # if the file doesn't exist, use the starter.lorebook file
     # check those article pages for length (if they are too short, skip them)
     # if they are long enough, and are not already in the list, add them to the list
     list_of_names = pd.read_csv("./data/characters.csv")["Name"].tolist()
-    #* we need to be sure that none of the names are "None" or "nan"
-    list_of_names = [x for x in list_of_names if str(x) != "nan"] # remove nan
-    list_of_names = [x for x in list_of_names if str(x) != "None"] # remove None
-    list_of_names = [x for x in list_of_names if str(x) != ""] # remove empty strings
-    list_of_names = [x for x in list_of_names if str(x) != " "] # remove empty strings
+    # * we need to be sure that none of the names are "None" or "nan"
+    list_of_names = [x for x in list_of_names if str(x) != "nan"]  # remove nan
+    list_of_names = [x for x in list_of_names if str(x) != "None"]  # remove None
+    list_of_names = [x for x in list_of_names if str(x) != ""]  # remove empty strings
+    list_of_names = [x for x in list_of_names if str(x) != " "]  # remove empty strings
 
     # only keep names in the list of names that are not already in the json file
     print("There are {} names in the list".format(len(list_of_names)))
     print("Checking for names that already exist in the json file")
-    list_of_names = [x for x in list_of_names if not check_json_for_entry(x, './supporting_files/lorebook_generated.lorebook')]
+    list_of_names = [
+        x
+        for x in list_of_names
+        if not check_json_for_entry(x, "./supporting_files/lorebook_generated.lorebook")
+    ]
 
     # check a json file to see if any of the characters are already in the file, if they are, remove them from the list
     # data['entries'][entry]['displayName'] == entry_name
@@ -208,21 +222,21 @@ def main():
     entries = []
     entry_names = list_of_names
 
-    print(f'Generating entries for {len(entry_names)} names')
+    print(f"Generating entries for {len(entry_names)} names")
     print(entry_names)
 
     #!------------------------
 
-    print(f'Processed {len(entry_names)} names')
-    countnans = list_of_names.count('nan')
-    print(f'Found {countnans} nan values')
-    list_of_names = [x for x in entry_names if str(x) != 'nan']
-    print(f'Removed {countnans} nan values')
-    print(f'Processed {len(entry_names)} names')
+    print(f"Processed {len(entry_names)} names")
+    countnans = list_of_names.count("nan")
+    print(f"Found {countnans} nan values")
+    list_of_names = [x for x in entry_names if str(x) != "nan"]
+    print(f"Removed {countnans} nan values")
+    print(f"Processed {len(entry_names)} names")
 
     # for each Name
     for name in tqdm(list_of_names):
-        keys = [] # list of keys for the entry
+        keys = []  # list of keys for the entry
         if name != "":
             try:
                 entry = wikipedia.search(name)[
@@ -257,8 +271,6 @@ def main():
     with open("./supporting_files/lorebook_generated.lorebook") as f:
         lore_dict = json.load(f)
 
-
-
     # topics_list = []
     # entry_keys = []
     # input_text = 'start'
@@ -275,7 +287,6 @@ def main():
         list_of_names
     )
 
-
     # remove any keywords from the dictionary that are found in multiple entries, in other words, identify which keys are unique to each entry
     list_of_all_keys = []
     for entry in entry_keywords:
@@ -284,25 +295,25 @@ def main():
     print("There are {} keys in the list of all keys".format(len(list_of_all_keys)))
 
     for entry_keys in entry_keywords:
-        keys_row = entry_keys # get the list of keys for the entry
-        print("There are {} keys in the list of keys for this entry".format(len(keys_row)))
-        keys_row = [x for x in keys_row if x != ''] # remove empty strings
-        keys_row = [x for x in keys_row if list_of_all_keys.count(x.lower()) < 2] # remove keys that are found in more than 1 entries
+        keys_row = entry_keys  # get the list of keys for the entry
+        print(
+            "There are {} keys in the list of keys for this entry".format(len(keys_row))
+        )
+        keys_row = [x for x in keys_row if x != ""]  # remove empty strings
+        keys_row = [
+            x for x in keys_row if list_of_all_keys.count(x.lower()) < 2
+        ]  # remove keys that are found in more than 1 entries
         # save the entry_keywords list with the new keys
         entry_keywords[entry_keywords.index(entry_keys)] = keys_row
-        print('After removing keys that are found in more than 3 entries, there are {} keys in the list of keys for this entry'.format(len(keys_row)))
-
-
-
-
-
-
-
-
+        print(
+            "After removing keys that are found in more than 3 entries, there are {} keys in the list of keys for this entry".format(
+                len(keys_row)
+            )
+        )
 
     #!assert(len(entries) == len(entry_names), "The number of entries and entry names must be the same")
     # remove any entries that are already in the lorebook, or are only one word long
-    #&entries = [x for x in entries if not check_json_for_entry(x, './supporting_files/lorebook_generated.lorebook')]
+    # &entries = [x for x in entries if not check_json_for_entry(x, './supporting_files/lorebook_generated.lorebook')]
     entries = [x for x in entries if len(x.split()) > 1]
     # remove any duplicate entry names
     entry_names = list(dict.fromkeys(entry_names))
@@ -313,7 +324,7 @@ def main():
     # remove duplicates
     entries = list(dict.fromkeys(entries))
 
-    successful_saves = 0 # count the number of successful saves
+    successful_saves = 0  # count the number of successful saves
     # add the new entries to the lorebook
     for i in range(len(entries)):
         #!print(f"\nAdding {entry_names[i]} to the lorebook")
@@ -321,34 +332,35 @@ def main():
             default_config = {
                 "prefix": "",
                 "suffix": "\n",
-                "tokenBudget": 2048, #note: this is the number of tokens, not the number of characters
+                "tokenBudget": 2048,  # note: this is the number of tokens, not the number of characters
                 "reservedTokens": 0,
                 "budgetPriority": 400,
                 "trimDirection": "trimBottom",
                 "insertionType": "newline",
                 "maximumTrimType": "sentence",
-                "insertionPosition": -1}
-            lore_dict['entries'].append(
+                "insertionPosition": -1,
+            }
+            lore_dict["entries"].append(
                 {
-                'displayName': list_of_names[i],
-                'id': ids[i],
-                'keys': entry_keywords[i],
-                'text': entries[i],
-                "lastUpdatedAt": 1666846259188,
-                "searchRange": 10000,
-                "category": "python_generated",
-                "loreBiasGroups": [
-                    {
-                    "phrases": []
-                    }
-                ]
-            })
-            print(f"Added {entry_names[i]} to the lorebook, with {len(entry_keywords[i])} keywords", end= ' ')
-                # save the new lorebook
+                    "displayName": list_of_names[i],
+                    "id": ids[i],
+                    "keys": entry_keywords[i],
+                    "text": entries[i],
+                    "lastUpdatedAt": 1666846259188,
+                    "searchRange": 10000,
+                    "category": "python_generated",
+                    "loreBiasGroups": [{"phrases": []}],
+                }
+            )
+            print(
+                f"Added {entry_names[i]} to the lorebook, with {len(entry_keywords[i])} keywords",
+                end=" ",
+            )
+            # save the new lorebook
             with open("./supporting_files/lorebook_generated.lorebook", "w") as f:
                 json.dump(lore_dict, f, indent=4)
 
-            print(f' and saved progress...')
+            print(f" and saved progress...")
             successful_saves += 1
         except Exception as e:
             print(e)
@@ -369,11 +381,13 @@ if __name__ == "__main__":
     print("Welcome to the lorebook generator")
     choice = input("Would you like to generate a new lorebook? (y/n): ")
 
-    if choice == 'y':
+    if choice == "y":
 
-        print("Generating a new lorebook using the template lorebook") # generate a new lorebook using the template lorebook
+        print(
+            "Generating a new lorebook using the template lorebook"
+        )  # generate a new lorebook using the template lorebook
         clear_the_lorebook()
     else:
         print("Updating existing lorebook")
-    main() # run the main function when the script is run
+    main()  # run the main function when the script is run
     print("Done")
