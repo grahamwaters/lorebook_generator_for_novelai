@@ -85,6 +85,22 @@
         "documentation": {}
     },
     {
+        "label": "sent_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
+        "isExtraImport": true,
+        "detail": "nltk.tokenize",
+        "documentation": {}
+    },
+    {
+        "label": "stopwords",
+        "importPath": "nltk.corpus",
+        "description": "nltk.corpus",
+        "isExtraImport": true,
+        "detail": "nltk.corpus",
+        "documentation": {}
+    },
+    {
         "label": "stopwords",
         "importPath": "nltk.corpus",
         "description": "nltk.corpus",
@@ -123,6 +139,14 @@
         "importPath": "wikipedia",
         "description": "wikipedia",
         "detail": "wikipedia",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
         "documentation": {}
     },
     {
@@ -207,6 +231,31 @@
         "importPath": "random",
         "description": "random",
         "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "ratelimit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "ratelimit",
+        "description": "ratelimit",
+        "detail": "ratelimit",
+        "documentation": {}
+    },
+    {
+        "label": "limits",
+        "importPath": "ratelimit",
+        "description": "ratelimit",
+        "isExtraImport": true,
+        "detail": "ratelimit",
+        "documentation": {}
+    },
+    {
+        "label": "sleep_and_retry",
+        "importPath": "ratelimit",
+        "description": "ratelimit",
+        "isExtraImport": true,
+        "detail": "ratelimit",
         "documentation": {}
     },
     {
@@ -441,6 +490,87 @@
         "description": "scripts.03_lorebook_from_wiki_withpulls",
         "peekOfCode": "context_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",\n    \"maximumTrimType\": \"sentence\",\n    \"insertionPosition\": -1,",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "while_page_exists",
+        "kind": 2,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "def while_page_exists(page):\n    try:\n        page_text = page.content # get the content of the page\n        # save the page text to a file with the name of the page as the file name in the wikipedia_pages folder\n        with open(f'wikipedia_pages/{page.title}.txt', 'w+') as f:\n            f.write(page_text)\n        print(f'Saved {page.title} to file.')\n        return True\n    except:\n        return False",
+        "detail": "scripts.04_get_relevant_subtopics",
+        "documentation": {}
+    },
+    {
+        "label": "get_links",
+        "kind": 2,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "def get_links(topic):\n    # get all links from the topic page\n    try:\n        topic_page = wikipedia.page(topic)\n        topic_links = topic_page.links\n        #? While the page exists save the page text to a file with the name of the page as the file name in the wikipedia_pages folder\n        while_page_exists(topic_page)\n    except:\n        topic_links = []\n    return topic_links",
+        "detail": "scripts.04_get_relevant_subtopics",
+        "documentation": {}
+    },
+    {
+        "label": "get_relevant_subtopics",
+        "kind": 2,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "def get_relevant_subtopics(parent_topic):\n    # get the list of subtopics from the parent topic page.\n    # get all links from the parent topic page\n    # make sure that the topic page will show up in the search results\n    parent_topic_links = get_links(parent_topic)\n    #note: could use a for loop above until len(parent_topic_links) > 0\n    # get the list of subtopics from the parent topic page.\n    subtopics = []\n    for link in tqdm(parent_topic_links):\n        if \":\" not in link:",
+        "detail": "scripts.04_get_relevant_subtopics",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "def main():\n    parent_page = \"Exposition Universelle (1889)\"\n    relevant_subtopics = get_relevant_subtopics(parent_page)\n    print(relevant_subtopics)\nmain()",
+        "detail": "scripts.04_get_relevant_subtopics",
+        "documentation": {}
+    },
+    {
+        "label": "stop_words",
+        "kind": 5,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",",
+        "detail": "scripts.04_get_relevant_subtopics",
+        "documentation": {}
+    },
+    {
+        "label": "maxlinksperpage",
+        "kind": 5,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "maxlinksperpage = 30\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",",
+        "detail": "scripts.04_get_relevant_subtopics",
+        "documentation": {}
+    },
+    {
+        "label": "minimum_key_occurrences",
+        "kind": 5,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "minimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",\n    \"maximumTrimType\": \"sentence\",",
+        "detail": "scripts.04_get_relevant_subtopics",
+        "documentation": {}
+    },
+    {
+        "label": "context_config",
+        "kind": 5,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "context_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",\n    \"maximumTrimType\": \"sentence\",\n    \"insertionPosition\": -1,",
+        "detail": "scripts.04_get_relevant_subtopics",
+        "documentation": {}
+    },
+    {
+        "label": "N",
+        "kind": 5,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "N = 10 # number of words each child page should have in common with the parent page to be considered.\n#*############################################################################################################\n#^ Getting the relevant subtopics for a parent topic (e.g. \"Machine Learning\" for \"Artificial Intelligence\"). This is done by getting the list of subtopics from the Wikipedia page of the parent topic and then getting the list of keywords (links) from the Wikipedia page of each subtopic. The subtopic is then considered relevant if it has at least N keywords in common with the parent topic.\n##############################################################################################################\ndef while_page_exists(page):\n    try:\n        page_text = page.content # get the content of the page\n        # save the page text to a file with the name of the page as the file name in the wikipedia_pages folder\n        with open(f'wikipedia_pages/{page.title}.txt', 'w+') as f:\n            f.write(page_text)",
+        "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
     {
