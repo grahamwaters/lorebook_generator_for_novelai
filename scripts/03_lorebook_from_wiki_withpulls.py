@@ -20,6 +20,18 @@ nltk.download("stopwords") #& download stopwords
 stop_words = set(stopwords.words("english"))
 maxlinksperpage = 30
 
+context_config = {
+    "prefix": "",
+    "suffix": "\n",
+    "tokenBudget": 100,  # max 2048
+    "reservedTokens": 0,
+    "budgetPriority": 400,
+    "trimDirection": "trimBottom",
+    "insertionType": "newline",
+    "maximumTrimType": "sentence",
+    "insertionPosition": -1,
+}
+
 # import the json file lorebook_example.lorebook
 def examine_dates(entry1, entry2):
     # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.
@@ -132,6 +144,7 @@ def check_json_for_entry(entry_name, json_file):
 
 def main():
 
+    global context_config
     # check those article pages for length (if they are too short, skip them)
     # if they are long enough, and are not already in the list, add them to the list
     list_of_names = pd.read_csv("./data/characters.csv")["Name"].tolist()
@@ -328,17 +341,7 @@ def main():
             keys_dict[entry_id] = res
             entry_id += 1
 
-        context_config = {
-            "prefix": "",
-            "suffix": "\n",
-            "tokenBudget": 100,  # max 2048
-            "reservedTokens": 0,
-            "budgetPriority": 400,
-            "trimDirection": "trimBottom",
-            "insertionType": "newline",
-            "maximumTrimType": "sentence",
-            "insertionPosition": -1,
-        }
+
 
         # add the entries to the lorebook dictionary
 

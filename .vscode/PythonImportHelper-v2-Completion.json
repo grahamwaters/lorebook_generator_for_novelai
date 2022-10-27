@@ -394,7 +394,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv(\"./data/characters.csv\")[\"Name\"].tolist()\n    # print(type(list_of_names))\n    # list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    # only keep names in the list of names that are not already in the json file\n    print(\"There are {} names in the list\".format(len(list_of_names)))\n    print(\"Checking for names that already exist in the json file\")\n    # list_of_names = [x for x in list_of_names if not check_json_for_entry(x, 'lorebook_generated.lorebook')]",
+        "peekOfCode": "def main():\n    global context_config\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv(\"./data/characters.csv\")[\"Name\"].tolist()\n    # print(type(list_of_names))\n    # list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    # only keep names in the list of names that are not already in the json file\n    print(\"There are {} names in the list\".format(len(list_of_names)))\n    print(\"Checking for names that already exist in the json file\")",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -403,7 +403,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30\n# import the json file lorebook_example.lorebook\ndef examine_dates(entry1, entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):",
+        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -412,7 +412,16 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "maxlinksperpage = 30\n# import the json file lorebook_example.lorebook\ndef examine_dates(entry1, entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                if chunk.label() == \"DATE\":",
+        "peekOfCode": "maxlinksperpage = 30\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",\n    \"maximumTrimType\": \"sentence\",",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "context_config",
+        "kind": 5,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "context_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",\n    \"maximumTrimType\": \"sentence\",\n    \"insertionPosition\": -1,",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
