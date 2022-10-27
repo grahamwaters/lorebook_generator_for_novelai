@@ -322,6 +322,10 @@ def main():
                 "Name,\n"
             )
             for subtopic in tqdm(relevant_subtopics):
+                #& Remove commas from the subtopic names because they will mess up the csv file
+                subtopic = subtopic.replace(",", "")
+                #& Remove nonalpha numeric characters from the subtopic names because they will mess up the csv file
+                subtopic = re.sub(r"[^a-zA-Z0-9]+", " ", subtopic) # remove all non-alphanumeric characters
                 f.write(
                     f'{subtopic},\n'
                 )

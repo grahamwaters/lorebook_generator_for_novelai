@@ -11,6 +11,8 @@ from tqdm import tqdm
 import datetime
 import warnings
 import random
+import time
+import os
 
 warnings.filterwarnings(
     "ignore"
@@ -85,6 +87,10 @@ def generate_entries_from_list(list_of_names):
     entry_names = []
     entry_keywords = []
     for name in tqdm(list_of_names):
+        # pause every 10 iterations to avoid getting blocked by wikipedia (for a random number of seconds)
+        if list_of_names.index(name) % 10 == 0:
+            print("pausing for a bit")
+            time.sleep(random.randint(5, 15))
         if name != "":
             try:
                 entry = wikipedia.search(name)[
@@ -169,6 +175,12 @@ def clear_the_lorebook():
     print("Lorebook cleared")
 
 
+def clear_all_previously_saved_files():
+    # delete all files in the wikipedia_pages folder
+    for filename in os.listdir("wikipedia_pages"):
+        os.remove(f"wikipedia_pages/{filename}")
+
+
 def main():
     """
     main function - runs the program, processing the names provided in the characters.csv file and adding them to the lorebook_generated.lorebook file in the supporting_files folder. The function uses the generate_entries_from_list function to generate the entries, and then adds them to the lorebook_generated.lorebook file.
@@ -233,6 +245,7 @@ def main():
     print(f"Processed {len(entry_names)} names")
 
     # for each Name
+    #todo: chunk this into smaller iteratable chunks and save the results to a file incrementally (will reduce the likelihood of losing all the work if the program crashes or is interrupted. It also will reduce load on the wikipedia API).
     for name in tqdm(list_of_names):
         keys = []  # list of keys for the entry
         if name != "":
@@ -376,7 +389,23 @@ def main():
 
 
 if __name__ == "__main__":
-    print("Welcome to the lorebook generator")
+
+    print("\n\nWelcome to the Lorebook Generator!")
+    print("This program will generate a lorebook json file with the pages related to a given topic.")
+    print("All subtopics will be saved (article text to the wikipedia_pages directory) and added to the master dictionary.")
+    choice = input("\n  Would you like to clear previously generated articles? (y/n) ")
+    if choice == "y":
+        clear_all_previously_saved_files()
+
+    print("Settings (Current):")
+    #todo: maxlinksperpage may not be needed.
+    print(f'maxlinksperpage = {maxlinksperpage} - The maximum number of child pages or related links to extract from the pages (and examine).')
+
+    choice = input("Would you like to change settings? (y/n) ")
+    if choice == "y":
+        maxlinksperpage = int(input("maxlinksperpage = "))
+        print(f'maxlinksperpage = {maxlinksperpage} - has been updated.')
+
     choice = input("Would you like to generate a new lorebook? (y/n): ")
 
     if choice == "y":
@@ -387,8 +416,14 @@ if __name__ == "__main__":
         clear_the_lorebook()
     else:
         print("Updating existing lorebook")
+
+    # using all inputs from above generate a new lorebook
     main()  # run the main function when the script is run
+
     print("Done")
+
+
+
 
 
 # Notes:

@@ -226,6 +226,15 @@
         "documentation": {}
     },
     {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "sleep_and_retry",
         "importPath": "ratelimit",
         "description": "ratelimit",
@@ -417,7 +426,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    for name in tqdm(list_of_names):\n        if name != \"\":\n            try:\n                entry = wikipedia.search(name)[\n                    0",
+        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    for name in tqdm(list_of_names):\n        # pause every 10 iterations to avoid getting blocked by wikipedia (for a random number of seconds)\n        if list_of_names.index(name) % 10 == 0:\n            print(\"pausing for a bit\")\n            time.sleep(random.randint(5, 15))",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -435,7 +444,16 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def clear_the_lorebook():\n    # reset the lorebook to an empty dictionary keeping the same format\n    # use the text in the /supporting_files/starter.lorebook file\n    with open(\"./supporting_files/starter.lorebook\", \"r\") as f:\n        lore_dict = json.load(f)\n    with open(\"./supporting_files/lorebook_generated.lorebook\", \"w+\") as f:\n        json.dump(lore_dict, f, indent=4)\n    print(\"Lorebook cleared\")\ndef main():\n    \"\"\"",
+        "peekOfCode": "def clear_the_lorebook():\n    # reset the lorebook to an empty dictionary keeping the same format\n    # use the text in the /supporting_files/starter.lorebook file\n    with open(\"./supporting_files/starter.lorebook\", \"r\") as f:\n        lore_dict = json.load(f)\n    with open(\"./supporting_files/lorebook_generated.lorebook\", \"w+\") as f:\n        json.dump(lore_dict, f, indent=4)\n    print(\"Lorebook cleared\")\ndef clear_all_previously_saved_files():\n    # delete all files in the wikipedia_pages folder",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "clear_all_previously_saved_files",
+        "kind": 2,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "def clear_all_previously_saved_files():\n    # delete all files in the wikipedia_pages folder\n    for filename in os.listdir(\"wikipedia_pages\"):\n        os.remove(f\"wikipedia_pages/{filename}\")\ndef main():\n    \"\"\"\n    main function - runs the program, processing the names provided in the characters.csv file and adding them to the lorebook_generated.lorebook file in the supporting_files folder. The function uses the generate_entries_from_list function to generate the entries, and then adds them to the lorebook_generated.lorebook file.\n    \"\"\"\n    global context_config\n    global minimum_key_occurrences",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
