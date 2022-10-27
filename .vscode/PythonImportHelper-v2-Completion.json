@@ -390,6 +390,15 @@
         "documentation": {}
     },
     {
+        "label": "clear_the_lorebook",
+        "kind": 2,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "def clear_the_lorebook():\n    # reset the lorebook to an empty dictionary keeping the same format\n    # use the text in the /supporting_files/starter.lorebook file\n    with open(\"./supporting_files/starter.lorebook\", \"r\") as f:\n        lore_dict = json.load(f)\n    with open(\"./supporting_files/lorebook_generated.lorebook\", \"w+\") as f:\n        json.dump(lore_dict, f, indent=4)\n    print(\"Lorebook cleared\")\ndef main():\n    \"\"\"",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
