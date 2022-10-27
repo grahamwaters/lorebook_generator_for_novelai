@@ -299,7 +299,33 @@ def main():
         parent_page = input("Enter a topic: ")
     else:
         parent_page = "Nikola Tesla"
+
+
+    print("Would you like to also generate a lorebook with the results of the subtopic finder? (y/n)")
+    choice = input("(y/n): ")
+    if choice == "y":
+        generate_lorebook = True # flag to generate a lorebook
+    else:
+        generate_lorebook = False # flag to not generate a lorebook
+
+
+
+
     relevant_subtopics = get_relevant_subtopics(parent_page)
-    print(relevant_subtopics)
+    # print(relevant_subtopics)
+    if generate_lorebook:
+        # create a new lorebook
+        # to do this, save the subtopics we found to the characters.csv file and then run the lorebook generator
+        # save the subtopics to the characters.csv file
+        with open("./data/characters.csv", "w") as f:
+            f.write(
+                "Name,\n"
+            )
+            for subtopic in tqdm(relevant_subtopics):
+                f.write(
+                    f'{subtopic},\n'
+                )
+        # run the lorebook generator
+        print("\nCharacters File has been updated!\n\nTo generate a new Lorebook, run the 03_lorebook_from_wiki_withpulls.py file.")
 
 main()
