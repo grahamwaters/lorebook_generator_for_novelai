@@ -13,6 +13,8 @@ import warnings
 import random
 import time
 import os
+import math
+from alive_progress import alive_bar
 
 warnings.filterwarnings(
     "ignore"
@@ -246,25 +248,37 @@ def main():
 
     # for each Name
     #todo: chunk this into smaller iteratable chunks and save the results to a file incrementally (will reduce the likelihood of losing all the work if the program crashes or is interrupted. It also will reduce load on the wikipedia API).
-    for name in tqdm(list_of_names):
-        keys = []  # list of keys for the entry
-        if name != "":
-            try:
-                entry = wikipedia.search(name)[
-                    0
-                ]  # get the first result from wikipedia, which is usually the most relevant
-                page = wikipedia.page(entry)
-                entry = page.content
-                links = page.links
-                # remove duplicate links
-                links = list(dict.fromkeys(links))
-                # random sample of maxlinksperpage links
-                links = random.sample(links, min(len(links), maxlinksperpage))
-                print(f"Adding {name} to entries")
-                entries.append(entry)
-            except Exception as e:
-                print(e)
-                continue
+
+    # divide the list of names into as many chunks of 30 as possible and then process each chunk (the final chunk may be smaller than 30).
+    # this is to reduce the load on the wikipedia API
+    # the chunk size can be changed by changing the chunk_size variable
+    chunk_size = 30
+    number_of_chunks = math.ceil(len(list_of_names) / chunk_size)
+    print(f"Processing {number_of_chunks} chunks of {chunk_size} names each")
+    for chunk in range(number_of_chunks):
+        print(f"Processing chunk {chunk + 1} of {number_of_chunks}")
+        with alive_bar(len(list_of_names[chunk * chunk_size : (chunk + 1) * chunk_size])) as bar:
+            for name in list_of_names[chunk * chunk_size : (chunk + 1) * chunk_size]:
+                # keys = []  # list of keys for the entry
+                if name != "":
+                    try:
+                        entry = wikipedia.search(name)[
+                            0
+                        ]  # get the first result from wikipedia, which is usually the most relevant
+                        page = wikipedia.page(entry)
+                        entry = page.content
+                        links = page.links
+                        # remove duplicate links
+                        links = list(dict.fromkeys(links))
+                        # random sample of maxlinksperpage links
+                        links = random.sample(links, min(len(links), maxlinksperpage))
+                        bar.text(f"Adding {name} to entries")
+                        entries.append(entry)
+                    except Exception as e:
+                        print(e)
+                        continue
+                bar()
+
 
         df = pd.DataFrame(entry_names)
 
