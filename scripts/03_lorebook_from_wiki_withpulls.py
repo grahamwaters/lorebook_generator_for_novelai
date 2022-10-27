@@ -134,7 +134,7 @@ def main():
 
     # check those article pages for length (if they are too short, skip them)
     # if they are long enough, and are not already in the list, add them to the list
-    list_of_names = pd.read_csv("../data/characters.csv")["Name"].tolist()
+    list_of_names = pd.read_csv("./data/characters.csv")["Name"].tolist()
     # print(type(list_of_names))
     # list_of_names = [x[0] for x in list_of_names.values.tolist()]
     # only keep names in the list of names that are not already in the json file
@@ -146,7 +146,7 @@ def main():
     # data['entries'][entry]['displayName'] == entry_name
     # look for entries where the data['entries'][entry_number]['displayName'] is in the list of filenames
     # if it is, remove it from the list
-    with open("../supporting_files/lorebook_generated.lorebook") as f:
+    with open("./supporting_files/lorebook_generated.lorebook") as f:
         data = json.load(f)
         for entry in data["entries"]:
             if entry["displayName"] in list_of_names:
@@ -242,18 +242,18 @@ def main():
                 continue
         df = pd.DataFrame(entry_names)
         # append to the csv file
-        prev_chars = pd.read_csv("../data/characters.csv")
+        prev_chars = pd.read_csv("./data/characters.csv")
         # add the new characters to the list
         prev_chars = prev_chars.append(df)
         # remove duplicates
         prev_chars = prev_chars.drop_duplicates()
         # save the new list
-        prev_chars.to_csv("../data/characters.csv", index=False)
+        prev_chars.to_csv("./data/characters.csv", index=False)
         # # save entry_names to a csv
         # df = pd.DataFrame(entry_names)
         # df.to_csv('characters.csv', index=False)
 
-        with open("../supporting_files/lorebook_generated.lorebook") as f:
+        with open("./supporting_files/lorebook_generated.lorebook") as f:
             lore_dict = json.load(f)
 
         topics_list = []
@@ -263,7 +263,7 @@ def main():
         #     input_text = input('Enter a topic: ')
         #     topics_list.append(input_text)
         # read in the list of topics from the characters.csv file
-        topics_list = pd.read_csv("../data/characters.csv")["Name"].tolist()
+        topics_list = pd.read_csv("./data/characters.csv")["Name"].tolist()
         assert type(topics_list) == list  # make sure it's a list
         # entries, entry_names = generate_entries_from_list(lore_dict['people'])
 
@@ -374,7 +374,7 @@ def main():
         # save the new lorebook dictionary as a json file called lorebook_generated.lorebook
 
         # save the new lorebook dictionary as a json file called lorebook_generated.lorebook
-        with open("../supporting_files/lorebook_generated.lorebook", "w+") as f:
+        with open("./supporting_files/lorebook_generated.lorebook", "w+") as f:
             json.dump(lore_dict, f, indent=4)
 
 
