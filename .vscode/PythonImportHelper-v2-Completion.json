@@ -403,7 +403,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def main():\n    \"\"\"\n    main function - runs the program, processing the names provided in the characters.csv file and adding them to the lorebook_generated.lorebook file in the supporting_files folder. The function uses the generate_entries_from_list function to generate the entries, and then adds them to the lorebook_generated.lorebook file.\n    \"\"\"\n    global context_config\n    global minimum_key_occurrences\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv(\"./data/characters.csv\")[\"Name\"].tolist()\n    #* we need to be sure that none of the names are \"None\" or \"nan\"",
+        "peekOfCode": "def main():\n    \"\"\"\n    main function - runs the program, processing the names provided in the characters.csv file and adding them to the lorebook_generated.lorebook file in the supporting_files folder. The function uses the generate_entries_from_list function to generate the entries, and then adds them to the lorebook_generated.lorebook file.\n    \"\"\"\n    global context_config\n    global minimum_key_occurrences\n    # open the lorebook_generated.lorebook file\n    try:\n        with open(\"./supporting_files/lorebook_generated.lorebook\") as f:\n            lore_dict = json.load(f)",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },

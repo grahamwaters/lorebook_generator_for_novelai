@@ -111,21 +111,30 @@ def generate_entries_from_list(list_of_names):
                 related_links = page.links
                 entry_keywords.append(related_links)
             except:
-                print("could not find entry for", name)
-                try:
-                    entry = wikipedia.search(name)[
-                        1
-                    ]  # get the second result from wikipedia, which is usually the most relevant
-                    entries.append(entry)
-                    entry_names.append(page.title)
-                    # entry_keywords.append(entry_keywords)
-                except:
-                    print("could not find summary for", name)
+                print("could not find entry for", name, " trying secondary search result instead")
+                for xx in range(1, 5):
+                    try:
+                        entry = wikipedia.search(name)[
+                            xx
+                        ]  # get the second result from wikipedia, which is usually the most relevant
+                        print(f'Looking at the {entry} page')
+                        entries.append(entry)
+                        entry_names.append(page.title)
+                        # entry_keywords.append(entry_keywords)
+                        break # break out of the loop if we find a result
+                    except:
+                        print("could not find summary for", name, " skipping")
 
     # generate fake ids for the entries in the format: 642723d1-a4a1-47a3-a63f-d36aee33de1b
     ids = []
     for i in range(len(entries)):
         ids.append(str(uuid.uuid4()))
+
+    print("Entries generated")
+    print(entry_names)
+    print('--------------------------------')
+    print(len(entry_keywords))
+    print('--------------------------------')
     return entries, entry_names, ids, entry_keywords
 
 
@@ -402,6 +411,16 @@ def main():
     """
     global context_config
     global minimum_key_occurrences
+
+    # open the lorebook_generated.lorebook file
+    try:
+        with open("./supporting_files/lorebook_generated.lorebook") as f:
+            lore_dict = json.load(f)
+    except Exception as e:
+        print(e)
+        print("Error opening lorebook_generated.lorebook file")
+        with open("./supporting_files/starter.lorebook") as f:
+            lore_dict = json.load(f) # if the file doesn't exist, use the starter.lorebook file
     # check those article pages for length (if they are too short, skip them)
     # if they are long enough, and are not already in the list, add them to the list
     list_of_names = pd.read_csv("./data/characters.csv")["Name"].tolist()
@@ -465,6 +484,7 @@ def main():
             except Exception as e:
                 print(e)
                 continue
+
         df = pd.DataFrame(entry_names)
         # append to the csv file
         prev_chars = pd.read_csv("./data/characters.csv")
@@ -496,130 +516,49 @@ def main():
         entries, entry_names, ids, entry_keywords = generate_entries_from_list(
             list_of_names
         )
+        assert(len(entries) == len(entry_names), "The number of entries and entry names must be the same")
+        # remove any entries that are already in the lorebook, or are only one word long
+        entries = [x for x in entries if not check_json_for_entry(x, './supporting_files/lorebook_generated.lorebook')]
+        entries = [x for x in entries if len(x.split()) > 1]
+        # entry_names = [x for x in entry_names if not check_json_for_entry(x, './supporting_files/lorebook_generated.lorebook')]
+        assert(len(entries) == len(entry_names), "after removing existing entries lengths are not the same") # make sure the lengths are the same
+        # remove duplicates
+        entries = list(dict.fromkeys(entries))
 
-        # topics_list = [x for x in topics_list if x not in lore_dict]
-
-        # entries, entry_names, ids, entry_keywords = generate_entries_from_list(
-        #     [topics_list]
-        # )
-        # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.
-
-        # create a list of the keys for each entry (all proper nouns, places and dates)
-        keys = []
-        keys_dict = {}
-        entry_id = 0
-        for entry in tqdm(entries):
-            print(f"\nProcessing entry {entry[0:50]}...")
-            keys = []  # reset the keys list, so we don't have duplicate keys
-            for word, tag in tqdm(preprocess(entry)):
-                if (
-                    (tag == "NNP" or tag == "NNPS" or tag == "CD")
-                    and word not in keys
-                    and word not in stop_words
-                    and len(word) > 2
-                ):  # remove stop words, and numbers greater than 2020 (which are probably years)
-                    try:
-                        if int(word) < 2020:
-                            continue
-                    except:
-                        pass
-                    keys.append(word)
-            # add further keywords from the related links
-            if entry_id < len(entries)-1:
-                for linklist in entry_keywords[entry_id]:
-                    for word in linklist:
-                        if word not in keys:
-                            keys.append(word)
-
-            prev_keys = keys  # get the previous keys
-            keys_dict[entry_id] = (
-                prev_keys + entry_keywords
-            )  # add the new keys to the previous keys
-            # remove dupe keys
-            res = []
-            for i in keys_dict[entry_id]:
-                if i not in res:
-                    res.append(i)
-
-            # remove YouTube, Wikipedia, and other website links from res list
-            res = [x for x in res if "http" not in x]
-            res = [x for x in res if "www" not in x]
-            res = [x for x in res if "." not in x]
-            #res = [x for x in res if r".(.*?)" not in x]
-
-            # remove stop words from res list
-            res = [x for x in res if str(x) not in stop_words]
-
-            #//res = [i for i in res if not i in stop_words]
-            # remove words that are less than 4 characters
-            res = [i for i in res if len(i) > 3]
-            copy = [] # make lowercase
-            for word in res:
-                try:
-                    for i in word.split():
-                        copy.append(i.lower())
-                except AttributeError:
-                    pass
-            #// res = res2
-
-            # remove keys that occur less than 4 times
-            for word in res:
-                for i in word:
-                    if copy.count(i.lower()) < minimum_key_occurrences: #todo -- fix this... it's not working
-                        try:
-                            res.remove(word)
-                        except ValueError:
-                            pass
-
-            # to test if this worked randomly choose one key from the list and tell how many times it occurs (do this ten times)
-            # print("DEBUG: Testing if keys are being removed correctly")
-            # for i in range(20):
-            #     random_key = random.choice(res)
-            #     # occurances
-            #     occurances = res.count(random_key)
-
-            #     print(
-            #         f"Random key {random_key} occurs {res.count(random_key)} times"
-            #     )
-
-
-            keys_dict[entry_id] = res
-            entry_id += 1
-
-
-
-        # add the entries to the lorebook dictionary
-
+        # add the new entries to the lorebook
         for i in range(len(entries)):
-            # append blanks to lore_dict['entries'] to make room for the new entries
             try:
-                lore_dict["entries"][i] = {}
+                lore_dict['entries'].append({
+                    'displayName': list_of_names[i],
+                    'id': ids[i],
+                    'keywords': entry_keywords[i],
+                    'text': entries[i]
+                })
             except Exception as e:
                 print(e)
-                # lore_dict['entries'].append({'text': entries[i]})
-                lore_dict["entries"].append({})
+                continue
 
-        for i in tqdm(range(len(entries))):
-            # lore_dict > entries > text
-            # add a new entry to the lorebook dictionary
-            lore_dict["entries"][i]["text"] = str(entries[i])
-            # lore_dict > entries > contextConfig
-            lore_dict["entries"][i]["contextConfig"] = context_config
-            # lore_dict > entries > lastUpdatedAt
-            lore_dict["entries"][i]["lastUpdatedAt"] = 1649360732691
-            # lore_dict > entries > displayName
-            lore_dict["entries"][i]["displayName"] = entry_names[
-                i
-            ]  # todo - was causing builtin method error for some reason in the final json file
-            # lore_dict > entries > id
-            lore_dict["entries"][i]["id"] = str(ids[i])
-            lore_dict["entries"][i]["searchRange"] = 10000
-            # lore_dict > entries > keys
-            lore_dict["entries"][i]["keys"] = keys_dict[i]  #
-            # *lore_dict['entries'][i]['keys'] = [] # blank for now
-        print(f"Saving {len(entries)} entries to lorebook")
+        # save the new lorebook
+        with open("./supporting_files/lorebook_generated.lorebook", "w") as f:
+            json.dump(lore_dict, f, indent=4)
 
-        # save the new lorebook dictionary as a json file called lorebook_generated.lorebook
+
+        # remove all the duplicate entries from the lorebook file
+        with open("./supporting_files/lorebook_generated.lorebook") as f:
+            lore_dict = json.load(f)
+        lore_dict['entries'] = list(dict.fromkeys(lore_dict['entries']))
+        with open("./supporting_files/lorebook_generated.lorebook", "w") as f:
+            json.dump(lore_dict, f, indent=4)
+        print("Saved the new lorebook")
+
+
+
+
+
+        print(f'Added {len(entries)} entries to the lorebook')
+        # for each entry print the number of keys in the keywords list
+        for entry in lore_dict['entries']:
+            print(f'{entry["displayName"]} has {len(entry["keywords"])} keywords')
 
     # save the new lorebook dictionary as a json file called lorebook_generated.lorebook
     with open("./supporting_files/lorebook_generated.lorebook", "w+") as f:
