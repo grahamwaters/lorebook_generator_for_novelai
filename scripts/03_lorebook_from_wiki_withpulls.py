@@ -336,7 +336,7 @@ def main():
         pages_seen = [str(x).lower() for x in pages_seen]
 
 
-        with alive_bar(len(list_of_names[chunk * chunk_size : (chunk + 1) * chunk_size]),dual_line=True,title='Chunks Are Processing') as bar:
+        with alive_bar(len(list_of_names[chunk * chunk_size : (chunk + 1) * chunk_size]),dual_line=False,title='Processing') as bar:
             for name in list_of_names[chunk * chunk_size : (chunk + 1) * chunk_size]:
                 # keys = []  # list of keys for the entry
 
@@ -389,7 +389,7 @@ def main():
     #     topics_list.append(input_text)
     # read in the list of topics from the characters.csv file
     # topics_list = pd.read_csv("./data/characters.csv")["Name"].tolist()
-    # assert type(topics_list) == list  # make sure it's a list
+    # #assert type(topics_list) == list  # make sure it's a list
     # entries, entry_names = generate_entries_from_list(lore_dict['people'])
 
     # generate only the entries in topics_list that are not already in the lorebook
@@ -433,7 +433,7 @@ def main():
 
     #!final_checks(entries, entry_names, entry_keywords, lore_dict, list_of_names,ids)
 
-    #!assert(len(entries) == len(entry_names), "The number of entries and entry names must be the same")
+    #!#assert(len(entries) == len(entry_names), "The number of entries and entry names must be the same")
     # remove any entries that are already in the lorebook, or are only one word long
     # &entries = [x for x in entries if not check_json_for_entry(x, './supporting_files/lorebook_generated.lorebook')]
     entries = [x for x in entries if len(x.split()) > 1]
@@ -442,7 +442,7 @@ def main():
     # remove any duplicate entries
     entries = list(dict.fromkeys(entries))
     # entry_names = [x for x in entry_names if not check_json_for_entry(x, './supporting_files/lorebook_generated.lorebook')]
-    #!assert(len(entries) == len(entry_names), "after removing existing entries lengths are not the same") # make sure the lengths are the same
+    #!#assert(len(entries) == len(entry_names), "after removing existing entries lengths are not the same") # make sure the lengths are the same
     # remove duplicates
     entries = list(dict.fromkeys(entries))
 
@@ -450,11 +450,11 @@ def main():
 
     successful_saves = 0  # count the number of successful saves
     # add the new entries to the lorebook
-    with alive_bar(len(entries),dual_line=True,title='Adding Entries to Lorebook') as bar:
+    with alive_bar(len(entries),dual_line=False,title='Adding Entries to Lorebook') as bar:
         for i in range(len(entries)):
             #!print(f"\nAdding {entry_names[i]} to the lorebook")
-            # assert that list_of_names[i] is in the entries[i] string (this is to make sure that the entry is about the correct topic)
-            assert(list_of_names[i].lower() in entries[i].lower(), "The entry is not about the correct topic")
+            # #assert that list_of_names[i] is in the entries[i] string (this is to make sure that the entry is about the correct topic)
+            #assert(list_of_names[i].lower() in entries[i].lower(), "The entry is not about the correct topic")
             try:
                 default_config = {
                     "prefix": "",
@@ -511,11 +511,11 @@ def main():
 
 def final_checks(entries, entry_names, entry_keywords, lore_dict, list_of_names,ids):
 
-    # assert -- make sure the lengths are the same
-    assert(len(entries) == len(entry_names), "after removing existing entries lengths are not the same")
-    assert(len(entries) == len(entry_keywords), "after removing existing entries lengths are not the same")
-    assert(len(entries) == len(ids), "after removing existing entries lengths are not the same")
-    assert(len(entry_names) == len(entry_keywords), "after removing existing entries lengths are not the same")
+    # #assert -- make sure the lengths are the same
+    #assert(len(entries) == len(entry_names), "after removing existing entries lengths are not the same")
+    #assert(len(entries) == len(entry_keywords), "after removing existing entries lengths are not the same")
+    #assert(len(entries) == len(ids), "after removing existing entries lengths are not the same")
+    #assert(len(entry_names) == len(entry_keywords), "after removing existing entries lengths are not the same")
     # check that the name of each entry (i.e. 'Florence Nightingale') is in the first paragraph of the entry's text. If not, then raise an error
     for entry, entry_name in zip(entries, entry_names):
         if entry_name not in entry.split('\n')[0]:

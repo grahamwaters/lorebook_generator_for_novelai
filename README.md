@@ -10,7 +10,23 @@ The repo contains two different versions: a basic one that generates based on a 
 
 To use this lorebook generator, follow these steps:
 
-- First, populate the characters.csv file with your chosen keywords. You can use the example file as a template. Then run the python script [scripts/03_lorebook_from_wiki_withpulls.py](scripts/03_lorebook_from_wiki_withpulls.py), and it will generate a lorebook for you. This lorebook will be named `lorebook_generated.lorebook` and will be saved in the `supporting_files` folder.
+- If you are going to contribute or add things to the repository, fork it before you start.
+- To start, you need to clone the repo to your local machine. You can do this by running the following command in your terminal:
+
+Note: you will need to replace the url with your forked repos url. If you are not going to contribute, you can use the original url.
+
+```bash
+git clone https://github.com/grahamwaters/lorebook_generator_for_novelai
+```
+
+### Mode 1. Basic Mode - Using a CSV file to generate lorebooks
+- Once you have it cloned, populate the characters.csv file with your chosen keywords. (You can use the example file as a template.)
+- Then run the python script [scripts/03_lorebook_from_wiki_withpulls.py](scripts/03_lorebook_from_wiki_withpulls.py), and it will generate a lorebook for you. This lorebook will be named `lorebook_generated.lorebook` and will be saved in the `supporting_files` folder.
+
+### Mode 2. Subtopics -> to keywords -> to lorebook
+If you're feeling adventurous but not super productive you can provide one topic (wikipedia page) to the [mode_2](./scripts/04_get_relevant_subtopics.py) script and it will generate a list of keywords that are relevant to that topic. Then it will generate a lorebook for you based on those keywords. This is a good way to get a quick lorebook for a topic that you don't know much about. It does currently have limitations in that it will provide WAY more information than you may need for a lorebook. So you may need to do some editing to get it to a place where you're happy with it.
+
+
 
 ![](images/greatpyramid.png)
 
