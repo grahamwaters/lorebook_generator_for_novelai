@@ -535,11 +535,20 @@
         "documentation": {}
     },
     {
+        "label": "topic_check_pos_type",
+        "kind": 2,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "def topic_check_pos_type(topic):\n    # Using NLTK, determine what POS the topic word is and return True if it is a noun, False if it is not\n    # if the topic word is a noun, then we can use it as a keyword to search for subtopics\n    # if the topic word is not a noun, then we cannot use it as a keyword to search for subtopics\n    # get the POS of the topic word\n    topic_pos = nltk.pos_tag([topic])[0][1]\n    # if the topic word is a noun, then return True\n    if topic_pos[0] == \"N\": # if the first letter of the POS is N, then it is a noun\n        return True\n    else:",
+        "detail": "scripts.04_get_relevant_subtopics",
+        "documentation": {}
+    },
+    {
         "label": "get_links",
         "kind": 2,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "def get_links(topic):\n    # get all links from the topic page\n    try:\n        # filename\n        filename = filename_create(topic)\n        topic_page = wikipedia.page(topic)\n        topic_links = topic_page.links\n        #? While the page exists save the page text to a file with the name of the page as the file name in the wikipedia_pages folder\n        while_page_exists(topic_page,filename)\n    except Exception as e:",
+        "peekOfCode": "def get_links(topic):\n    # get all links from the topic page\n    try:\n        # filename\n        #& using topic_check_pos_type(topic) to check if the topic word is a noun\n        if topic_check_pos_type(topic) != True:\n            print(f'{topic} is not a noun. Skipping...')\n            return []\n        filename = filename_create(topic)\n        topic_page = wikipedia.page(topic)",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },

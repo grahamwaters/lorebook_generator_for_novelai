@@ -90,11 +90,30 @@ def while_page_exists(page,filename):
     except:
         return False
 
+def topic_check_pos_type(topic):
+    # Using NLTK, determine what POS the topic word is and return True if it is a noun, False if it is not
+    # if the topic word is a noun, then we can use it as a keyword to search for subtopics
+    # if the topic word is not a noun, then we cannot use it as a keyword to search for subtopics
+
+    # get the POS of the topic word
+    topic_pos = nltk.pos_tag([topic])[0][1]
+
+    # if the topic word is a noun, then return True
+    if topic_pos[0] == "N": # if the first letter of the POS is N, then it is a noun
+        return True
+    else:
+        return False # if the topic word is not a noun, then return False
+
+
 @sleep_and_retry
 def get_links(topic):
     # get all links from the topic page
     try:
         # filename
+        #& using topic_check_pos_type(topic) to check if the topic word is a noun
+        if topic_check_pos_type(topic) != True:
+            print(f'{topic} is not a noun. Skipping...')
+            return []
         filename = filename_create(topic)
         topic_page = wikipedia.page(topic)
         topic_links = topic_page.links
