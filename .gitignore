@@ -4,6 +4,7 @@
 .hazellock
 /.vscode
 /wikipedia_pages
+/wikipedia_keys
 .vscode
 .ipynb_checkpoints
 __pycache__

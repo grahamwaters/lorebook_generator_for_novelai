@@ -283,6 +283,23 @@
         "documentation": {}
     },
     {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "lorebook_from_year",
+        "importPath": "01_lorebook_from_year",
+        "description": "01_lorebook_from_year",
+        "isExtraImport": true,
+        "detail": "01_lorebook_from_year",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "scripts.01_lorebook_from_year",
@@ -485,7 +502,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",",
+        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30 # how many randomly sampled links to get from each page, to add to the list of keywords\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -494,7 +511,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "maxlinksperpage = 30\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",",
+        "peekOfCode": "maxlinksperpage = 30 # how many randomly sampled links to get from each page, to add to the list of keywords\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -514,6 +531,15 @@
         "description": "scripts.03_lorebook_from_wiki_withpulls",
         "peekOfCode": "context_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",\n    \"maximumTrimType\": \"sentence\",\n    \"insertionPosition\": -1,",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess_sentence",
+        "kind": 2,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "def preprocess_sentence(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef filename_create(page_title):\n    filename = page_title.replace(\" \", \"_\") # replace spaces with underscores\n    filename = filename.replace(\"/\", \"_\") # replace slashes with underscores\n    filename = filename.replace(\":\", \"_\") # replace colons with underscores\n    filename = filename.replace(\"?\", \"_\") # replace question marks with underscores\n    filename = filename.replace(\"*\", \"_\") # replace asterisks with underscores",
+        "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
     {
@@ -539,7 +565,16 @@
         "kind": 2,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "def topic_check_pos_type(topic):\n    # Using NLTK, determine what POS the topic word is and return True if it is a noun, False if it is not\n    # if the topic word is a noun, then we can use it as a keyword to search for subtopics\n    # if the topic word is not a noun, then we cannot use it as a keyword to search for subtopics\n    # get the POS of the topic word\n    topic_pos = nltk.pos_tag([topic])[0][1]\n    # if the topic word is a noun, then return True\n    if topic_pos[0] == \"N\": # if the first letter of the POS is N, then it is a noun\n        return True\n    else:",
+        "peekOfCode": "def topic_check_pos_type(topic):\n    # Using NLTK, determine what POS the topic word is and return True if it is a noun, False if it is not\n    # if the topic word is a noun, then we can use it as a keyword to search for subtopics\n    # if the topic word is not a noun, then we cannot use it as a keyword to search for subtopics\n    topic_processed = preprocess_sentence(topic) # preprocess the topic word\n    # Noun-phrase chunking to identify entities in the topic\n    pattern = r\"NP: {<DT|PP\\$>?<JJ>*<NN>}\"   # chunk determiner/possessive, adjectives and noun\n    cp = nltk.RegexpParser(pattern) # create the chunk parser\n    cs = cp.parse(topic_processed) # parse the topic\n    # if the entity is a person, country, organization, or historical event, then keep going otherwise return False",
+        "detail": "scripts.04_get_relevant_subtopics",
+        "documentation": {}
+    },
+    {
+        "label": "book_keeper_bot",
+        "kind": 2,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "def book_keeper_bot(topic):\n    # this function will check if the topic has already been saved to the wikipedia_pages folder\n    # if it has, then it will return True\n    # if it has not, then it will return False\n    filename = filename_create(topic) # create the filename\n    if os.path.exists(f'./wikipedia_keys/{filename}.csv'): # if the file exists, then return True\n        return True\n    else:\n        return False\n#check if the topic has a file in the wikipedia_pages or wikipedia_keys folder",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -548,7 +583,7 @@
         "kind": 2,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "def get_links(topic):\n    # get all links from the topic page\n    try:\n        # filename\n        #& using topic_check_pos_type(topic) to check if the topic word is a noun\n        if topic_check_pos_type(topic) != True:\n            print(f'{topic} is not a noun. Skipping...')\n            return []\n        filename = filename_create(topic)\n        topic_page = wikipedia.page(topic)",
+        "peekOfCode": "def get_links(topic):\n    # If the topic has already been saved to the wikipedia_pages folder, then skip it\n    status = book_keeper_bot(topic) # check if the topic has already been saved to the wikipedia_pages folder\n    #//status = book_keeper(topic) # check if the topic has already been saved to the wikipedia_pages folder\n    if status == True: # if the topic has already been saved to the wikipedia_pages folder, then skip it\n        print(f'{topic} has already been saved to the wikipedia_pages folder.',end=' -> ')\n        # open the file and get the links\n        filename = filename_create(topic) # create the filename\n        with open(f'./wikipedia_keys/{filename}.csv', 'r') as f:\n            links = f.read().splitlines() # read the file and split the lines into a list",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -557,7 +592,7 @@
         "kind": 2,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "def get_relevant_subtopics(parent_topic):\n    # get the list of subtopics from the parent topic page.\n    # get all links from the parent topic page\n    # make sure that the topic page will show up in the search results\n    parent_topic_links = get_links(parent_topic)\n    #note: could use a for loop above until len(parent_topic_links) > 0\n    # get the list of subtopics from the parent topic page.\n    subtopics = []\n    for link in tqdm(parent_topic_links):\n        if \":\" not in link:",
+        "peekOfCode": "def get_relevant_subtopics(parent_topic):\n    # get the list of subtopics from the parent topic page.\n    # get all links from the parent topic page\n    global keys_dict\n    # make sure that the topic page will show up in the search results\n    parent_topic_links = get_links(parent_topic)\n    #note: could use a for loop above until len(parent_topic_links) > 0\n    # get the list of subtopics from the parent topic page.\n    subtopics = []\n    # if parent_topic_links is NoneType then check the keys_dict.csv file for the topic",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -638,7 +673,16 @@
         "kind": 5,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "master_dict = {} # get the list of keywords from the parent topic page.\n#*###########################################################################################################\n#& Functions\n#*###########################################################################################################\n#& Global Variables:\nN = 10 # number of words each child page should have in common with the parent page to be considered.\n#*############################################################################################################\n#^ Getting the relevant subtopics for a parent topic (e.g. \"Machine Learning\" for \"Artificial Intelligence\"). This is done by getting the list of subtopics from the Wikipedia page of the parent topic and then getting the list of keywords (links) from the Wikipedia page of each subtopic. The subtopic is then considered relevant if it has at least N keywords in common with the parent topic.\n##############################################################################################################\ndef filename_create(page_title):",
+        "peekOfCode": "master_dict = {} # get the list of keywords from the parent topic page.\n# save the keys from the keys_dict.csv file to a dict: keys_dict\nkeys_dict = {}\nwith open(\"./data/keys_dict.csv\", \"r\") as f:\n    for line in f:\n        line = line.strip()\n        line = line.split(\",\")\n        keys_dict[line[0]] = line[1]\n#*###########################################################################################################\n#& Functions",
+        "detail": "scripts.04_get_relevant_subtopics",
+        "documentation": {}
+    },
+    {
+        "label": "keys_dict",
+        "kind": 5,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "keys_dict = {}\nwith open(\"./data/keys_dict.csv\", \"r\") as f:\n    for line in f:\n        line = line.strip()\n        line = line.split(\",\")\n        keys_dict[line[0]] = line[1]\n#*###########################################################################################################\n#& Functions\n#*###########################################################################################################\n#& Global Variables:",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -647,7 +691,7 @@
         "kind": 5,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "N = 10 # number of words each child page should have in common with the parent page to be considered.\n#*############################################################################################################\n#^ Getting the relevant subtopics for a parent topic (e.g. \"Machine Learning\" for \"Artificial Intelligence\"). This is done by getting the list of subtopics from the Wikipedia page of the parent topic and then getting the list of keywords (links) from the Wikipedia page of each subtopic. The subtopic is then considered relevant if it has at least N keywords in common with the parent topic.\n##############################################################################################################\ndef filename_create(page_title):\n    filename = page_title.replace(\" \", \"_\") # replace spaces with underscores\n    filename = filename.replace(\"/\", \"_\") # replace slashes with underscores\n    filename = filename.replace(\":\", \"_\") # replace colons with underscores\n    filename = filename.replace(\"?\", \"_\") # replace question marks with underscores\n    filename = filename.replace(\"*\", \"_\") # replace asterisks with underscores",
+        "peekOfCode": "N = 10 # number of words each child page should have in common with the parent page to be considered.\n#*############################################################################################################\n#^ Getting the relevant subtopics for a parent topic (e.g. \"Machine Learning\" for \"Artificial Intelligence\"). This is done by getting the list of subtopics from the Wikipedia page of the parent topic and then getting the list of keywords (links) from the Wikipedia page of each subtopic. The subtopic is then considered relevant if it has at least N keywords in common with the parent topic.\n##############################################################################################################\ndef preprocess_sentence(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef filename_create(page_title):\n    filename = page_title.replace(\" \", \"_\") # replace spaces with underscores",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },

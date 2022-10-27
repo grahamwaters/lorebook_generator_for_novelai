@@ -30,6 +30,13 @@ context_config = {
     "insertionPosition": -1,
 }
 master_dict = {} # get the list of keywords from the parent topic page.
+# save the keys from the keys_dict.csv file to a dict: keys_dict
+keys_dict = {}
+with open("./data/keys_dict.csv", "r") as f:
+    for line in f:
+        line = line.strip()
+        line = line.split(",")
+        keys_dict[line[0]] = line[1]
 
 #*###########################################################################################################
 #& Functions
@@ -39,6 +46,10 @@ N = 10 # number of words each child page should have in common with the parent p
 #*############################################################################################################
 #^ Getting the relevant subtopics for a parent topic (e.g. "Machine Learning" for "Artificial Intelligence"). This is done by getting the list of subtopics from the Wikipedia page of the parent topic and then getting the list of keywords (links) from the Wikipedia page of each subtopic. The subtopic is then considered relevant if it has at least N keywords in common with the parent topic.
 ##############################################################################################################
+def preprocess_sentence(sent):
+    sent = nltk.word_tokenize(sent)
+    sent = nltk.pos_tag(sent)
+    return sent
 
 def filename_create(page_title):
     filename = page_title.replace(" ", "_") # replace spaces with underscores
@@ -94,19 +105,66 @@ def topic_check_pos_type(topic):
     # Using NLTK, determine what POS the topic word is and return True if it is a noun, False if it is not
     # if the topic word is a noun, then we can use it as a keyword to search for subtopics
     # if the topic word is not a noun, then we cannot use it as a keyword to search for subtopics
+    topic_processed = preprocess_sentence(topic) # preprocess the topic word
 
-    # get the POS of the topic word
-    topic_pos = nltk.pos_tag([topic])[0][1]
-
-    # if the topic word is a noun, then return True
-    if topic_pos[0] == "N": # if the first letter of the POS is N, then it is a noun
+    # Noun-phrase chunking to identify entities in the topic
+    pattern = r"NP: {<DT|PP\$>?<JJ>*<NN>}"   # chunk determiner/possessive, adjectives and noun
+    cp = nltk.RegexpParser(pattern) # create the chunk parser
+    cs = cp.parse(topic_processed) # parse the topic
+    # if the entity is a person, country, organization, or historical event, then keep going otherwise return False
+    if cs[0][1] == 'NNP' or cs[0][1] == 'NNPS' or cs[0][1] == 'NN' or cs[0][1] == 'NNS':
         return True
     else:
-        return False # if the topic word is not a noun, then return False
+        return False
+
+    # # get the POS of the topic word
+    # topic_pos = nltk.pos_tag([topic])[0][1]
+
+    # # if the topic word is a noun, then return True
+    # if topic_pos[0] == "N": # if the first letter of the POS is N, then it is a noun
+    #     return True
+    # else:
+    #     return False # if the topic word is not a noun, then return False
+
+def book_keeper_bot(topic):
+    # this function will check if the topic has already been saved to the wikipedia_pages folder
+    # if it has, then it will return True
+    # if it has not, then it will return False
+    filename = filename_create(topic) # create the filename
+    if os.path.exists(f'./wikipedia_keys/{filename}.csv'): # if the file exists, then return True
+        return True
+    else:
+        return False
 
 
-@sleep_and_retry
+#check if the topic has a file in the wikipedia_pages or wikipedia_keys folder
+# def book_keeper(topic):
+#     # this function will check if the topic has already been saved to the wikipedia_pages folder
+#     # if it has, then it will return True
+#     # if it has not, then it will return False
+#     filename = filename_create(topic) # create the filename
+#     if os.path.exists(f'./wikipedia_pages/{filename}.csv'): # if the file exists, then return True
+#         return True
+#     else:
+#         return False
+
+
+@sleep_and_retry # retry if there is an error, wait 5 seconds between retries
 def get_links(topic):
+
+    # If the topic has already been saved to the wikipedia_pages folder, then skip it
+    status = book_keeper_bot(topic) # check if the topic has already been saved to the wikipedia_pages folder
+    #//status = book_keeper(topic) # check if the topic has already been saved to the wikipedia_pages folder
+    if status == True: # if the topic has already been saved to the wikipedia_pages folder, then skip it
+        print(f'{topic} has already been saved to the wikipedia_pages folder.',end=' -> ')
+        # open the file and get the links
+        filename = filename_create(topic) # create the filename
+        with open(f'./wikipedia_keys/{filename}.csv', 'r') as f:
+            links = f.read().splitlines() # read the file and split the lines into a list
+        #links.replace('\n', ',') # replace the new line characters with commas
+        #links = links.split(',') # split the links into a list
+        print(f' loaded {len(links)} links from file.')
+        return links # return the links
     # get all links from the topic page
     try:
         # filename
@@ -117,6 +175,10 @@ def get_links(topic):
         filename = filename_create(topic)
         topic_page = wikipedia.page(topic)
         topic_links = topic_page.links
+        # save the keys to a file with the name of the page as the file name in the wikipedia_keys folder
+        with open(f'./wikipedia_keys/{filename}.csv', 'w+') as f:
+            for link in topic_links:
+                f.write(f'{link}\n')
         #? While the page exists save the page text to a file with the name of the page as the file name in the wikipedia_pages folder
         while_page_exists(topic_page,filename)
     except Exception as e:
@@ -127,13 +189,18 @@ def get_links(topic):
 def get_relevant_subtopics(parent_topic):
     # get the list of subtopics from the parent topic page.
     # get all links from the parent topic page
-
+    global keys_dict
     # make sure that the topic page will show up in the search results
     parent_topic_links = get_links(parent_topic)
     #note: could use a for loop above until len(parent_topic_links) > 0
 
     # get the list of subtopics from the parent topic page.
     subtopics = []
+    # if parent_topic_links is NoneType then check the keys_dict.csv file for the topic
+    if parent_topic_links == None:
+        # check the keys_dict.csv file for the topic
+        subtopics = keys_dict[parent_topic]
+
     for link in tqdm(parent_topic_links):
         if ":" not in link:
             subtopics.append(link)
@@ -146,7 +213,11 @@ def get_relevant_subtopics(parent_topic):
     for subtopic in tqdm(subtopics):
         print(f'Getting keywords for {subtopic}...', end=' ')
         subtopics_keywords[subtopic] = get_links(subtopic)
-        print(f'Found {len(subtopics_keywords[subtopic])}')
+        if len(subtopics_keywords[subtopic]) == 0:
+            print('')
+        else:
+            print(f'Found {len(subtopics_keywords[subtopic])} keywords.')
+        #//print(f'Found {len(subtopics_keywords[subtopic])}')
 
     # get the list of relevant subtopics
     relevant_subtopics = []
@@ -203,7 +274,6 @@ def clear_all_previously_saved_files():
     # delete all files in the wikipedia_pages folder
     for filename in os.listdir("wikipedia_pages"):
         os.remove(f"wikipedia_pages/{filename}")
-
 
 def main():
     global N
