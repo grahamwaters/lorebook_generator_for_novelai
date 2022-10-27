@@ -1,4 +1,5 @@
 # Imported Libraries
+from unicodedata import name
 import pandas as pd
 import re
 import json
@@ -15,7 +16,9 @@ import time
 import os
 import math
 from alive_progress import alive_bar
-
+from ratelimit import limits, sleep_and_retry
+rest_time = 10 # max number of calls before resting
+chunk_size = 10 # number of entries per chunk
 warnings.filterwarnings(
     "ignore"
 )  # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.
@@ -82,63 +85,76 @@ def get_the_entities(content):
                 entities.append(" ".join(c[0] for c in chunk.leaves()))
     return entities
 
+period = 300 # 5 minutes
 
-def generate_entries_from_list(list_of_names):
+@sleep_and_retry
+#@limits(calls=15, period=period) # 15 calls per 5 minutes
+def inner_generator(name,entries,entry_keywords,entry_names,bar):
+
+
+    if name != "":
+        try:
+            entry = wikipedia.search(name)[
+                0
+            ]  # get the first result from wikipedia, which is usually the most relevant
+            page = wikipedia.page(entry)
+            entry = page.content
+            entry = re.sub(r"\([^)]*\)", " ", entry)  # remove anything in brackets
+            # strip the text of all special characters, and any escaped characters using regex
+            #!entry = re.sub(r'[^\w\s]',' ',entry)
+            # remove any nonalpha characters
+            entry = re.sub(r"[^a-zA-Z0-9,.?!'\;: ]", " ", entry).strip()
+            entry = re.sub(r"\n", " ", entry)
+
+            # \u patterns for unicode characters need to be removed, and replaced with the actual character
+            # remove all unicode characters
+            entry = re.sub(r"\\u[0-9a-fA-F]{4}", " ", entry)
+
+            entry = re.sub(r"\\", " ", entry)
+            entry = entry.replace("  ", " ")
+            entry = entry.replace("  ", " ")
+            entries.append(entry)
+            # entry_keywords.append(get_the_entities(entry))
+            # there may be related links in the wikipedia page, which we can also add to the list of keywords later
+            related_links = page.links
+
+            entry_keywords.append(related_links)
+            entry_names.append(page.title)
+        except:
+            print(
+                "could not find entry for",
+                name,
+                " trying secondary search result instead",
+            )
+            for xx in range(1, 5):
+                try:
+                    entry = wikipedia.search(name)[
+                        xx
+                    ]  # get the second result from wikipedia, which is usually the most relevant
+                    print(f"Looking at the {entry} page")
+                    entries.append(entry)
+                    entry_names.append(page.title)
+                    # entry_keywords.append(entry_keywords)
+                    break  # break out of the loop if we find a result
+                except:
+                    print("could not find summary for", name, " skipping")
+
+def generate_entries_from_list(list_of_names,bar):
     # enter a list of people's names and get a list of entries, from wikipedia
     entries = []
     entry_names = []
     entry_keywords = []
-    for name in tqdm(list_of_names):
-        # pause every 10 iterations to avoid getting blocked by wikipedia (for a random number of seconds)
-        if list_of_names.index(name) % 10 == 0:
-            print("pausing for a bit")
-            time.sleep(random.randint(5, 15))
-        if name != "":
-            try:
-                entry = wikipedia.search(name)[
-                    0
-                ]  # get the first result from wikipedia, which is usually the most relevant
-                page = wikipedia.page(entry)
-                entry = page.content
-                entry = re.sub(r"\([^)]*\)", " ", entry)  # remove anything in brackets
-                # strip the text of all special characters, and any escaped characters using regex
-                #!entry = re.sub(r'[^\w\s]',' ',entry)
-                # remove any nonalpha characters
-                entry = re.sub(r"[^a-zA-Z0-9,.?!'\;: ]", " ", entry).strip()
-                entry = re.sub(r"\n", " ", entry)
+    with alive_bar(len(list_of_names),bar=bar) as bar2:
+        for name in list_of_names:
+            # pause every 10 iterations to avoid getting blocked by wikipedia (for a random number of seconds)
+            # if list_of_names.index(name) % rest_time == 0:
+            #     waittime = random.randint(2, 6) # wait between 4 and 15 seconds
+            #     bar.text("pausing for " + str(waittime) + " seconds")
+            #     time.sleep(waittime)
 
-                # \u patterns for unicode characters need to be removed, and replaced with the actual character
-                # remove all unicode characters
-                entry = re.sub(r"\\u[0-9a-fA-F]{4}", " ", entry)
-
-                entry = re.sub(r"\\", " ", entry)
-                entry = entry.replace("  ", " ")
-                entry = entry.replace("  ", " ")
-                entries.append(entry)
-                # entry_keywords.append(get_the_entities(entry))
-                # there may be related links in the wikipedia page, which we can also add to the list of keywords later
-                related_links = page.links
-                entry_keywords.append(related_links)
-                entry_names.append(page.title)
-            except:
-                print(
-                    "could not find entry for",
-                    name,
-                    " trying secondary search result instead",
-                )
-                for xx in range(1, 5):
-                    try:
-                        entry = wikipedia.search(name)[
-                            xx
-                        ]  # get the second result from wikipedia, which is usually the most relevant
-                        print(f"Looking at the {entry} page")
-                        entries.append(entry)
-                        entry_names.append(page.title)
-                        # entry_keywords.append(entry_keywords)
-                        break  # break out of the loop if we find a result
-                    except:
-                        print("could not find summary for", name, " skipping")
-
+            bar.text(f"Getting entry for {name}")
+            inner_generator(name,entries,entry_keywords,entry_names,bar)
+            bar2()
     # generate fake ids for the entries in the format: 642723d1-a4a1-47a3-a63f-d36aee33de1b
     ids = []
     for i in range(len(entries)):
@@ -149,6 +165,7 @@ def generate_entries_from_list(list_of_names):
     # print('--------------------------------')
     # print(len(entry_keywords))
     # print('--------------------------------')
+
 
     return entries, entry_names, ids, entry_keywords
 
@@ -189,7 +206,7 @@ def main():
     """
     global context_config
     global minimum_key_occurrences
-
+    global chunk_size # the number of names to process in each chunk
     # open the lorebook_generated.lorebook file
     try:
         with open("./supporting_files/lorebook_generated.lorebook") as f:
@@ -237,29 +254,35 @@ def main():
     entry_names = list_of_names
 
     print(f"Generating entries for {len(entry_names)} names")
-    print(entry_names)
+    print(entry_names[0:5],'...')
 
-    print(f"Processed {len(entry_names)} names")
+    # print(f"Processed {len(entry_names)} names")
     countnans = list_of_names.count("nan")
     print(f"Found {countnans} nan values")
     list_of_names = [x for x in entry_names if str(x) != "nan"]
     print(f"Removed {countnans} nan values")
     print(f"Processed {len(entry_names)} names")
 
+    # remove any names that are already in the json file
+    for entry in range(len(data['entries'])):
+        if data['entries'][entry]['displayName'] in list_of_names:
+            list_of_names.remove(data['entries'][entry]['displayName'])
+    print(f"Removed {len(entry_names) - len(list_of_names)} names that were already in the json file")
     # for each Name
     #todo: chunk this into smaller iteratable chunks and save the results to a file incrementally (will reduce the likelihood of losing all the work if the program crashes or is interrupted. It also will reduce load on the wikipedia API).
 
     # divide the list of names into as many chunks of 30 as possible and then process each chunk (the final chunk may be smaller than 30).
     # this is to reduce the load on the wikipedia API
     # the chunk size can be changed by changing the chunk_size variable
-    chunk_size = 30
+
     number_of_chunks = math.ceil(len(list_of_names) / chunk_size)
     print(f"Processing {number_of_chunks} chunks of {chunk_size} names each")
     for chunk in range(number_of_chunks):
         print(f"Processing chunk {chunk + 1} of {number_of_chunks}")
-        with alive_bar(len(list_of_names[chunk * chunk_size : (chunk + 1) * chunk_size])) as bar:
+        with alive_bar(len(list_of_names[chunk * chunk_size : (chunk + 1) * chunk_size]),dual_line=True,title='Chunks Are Processing') as bar:
             for name in list_of_names[chunk * chunk_size : (chunk + 1) * chunk_size]:
                 # keys = []  # list of keys for the entry
+
                 if name != "":
                     try:
                         entry = wikipedia.search(name)[
@@ -279,12 +302,20 @@ def main():
                         continue
                 bar()
 
+            print(f'Resting the wikipedia API for {rest_time} seconds')
+            time.sleep(rest_time)
+            pd.DataFrame(entry_names).to_pickle('./supporting_files/entry_names.pkl')
+            pd.DataFrame(entries).to_pickle('./supporting_files/entries.pkl')
 
-        df = pd.DataFrame(entry_names)
 
 
     with open("./supporting_files/lorebook_generated.lorebook") as f:
         lore_dict = json.load(f)
+
+
+
+
+
 
     # topics_list = []
     # entry_keys = []
@@ -299,7 +330,8 @@ def main():
 
     # generate only the entries in topics_list that are not already in the lorebook
     entries, entry_names, ids, entry_keywords = generate_entries_from_list(
-        list_of_names
+        list_of_names, # topics_list
+        bar # pass the alive_bar object to the function so that it can be updated
     )
 
     # remove any keywords from the dictionary that are found in multiple entries, in other words, identify which keys are unique to each entry
@@ -351,46 +383,48 @@ def main():
 
     successful_saves = 0  # count the number of successful saves
     # add the new entries to the lorebook
-    for i in range(len(entries)):
-        #!print(f"\nAdding {entry_names[i]} to the lorebook")
-        try:
-            default_config = {
-                "prefix": "",
-                "suffix": "\n",
-                "tokenBudget": 2048,  # note: this is the number of tokens, not the number of characters
-                "reservedTokens": 0,
-                "budgetPriority": 400,
-                "trimDirection": "trimBottom",
-                "insertionType": "newline",
-                "maximumTrimType": "sentence",
-                "insertionPosition": -1,
-            }
-            lore_dict["entries"].append(
-                {
-                    "displayName": list_of_names[i],
-                    "id": ids[i],
-                    "keys": entry_keywords[i],
-                    "text": entries[i],
-                    "lastUpdatedAt": 1666846259188,
-                    "searchRange": 10000,
-                    "category": "python_generated",
-                    "loreBiasGroups": [{"phrases": []}],
+    with alive_bar(len(entries),dual_line=True,title='Adding Entries to Lorebook') as bar:
+        for i in range(len(entries)):
+            #!print(f"\nAdding {entry_names[i]} to the lorebook")
+            try:
+                default_config = {
+                    "prefix": "",
+                    "suffix": "\n",
+                    "tokenBudget": 2048,  # note: this is the number of tokens, not the number of characters
+                    "reservedTokens": 0,
+                    "budgetPriority": 400,
+                    "trimDirection": "trimBottom",
+                    "insertionType": "newline",
+                    "maximumTrimType": "sentence",
+                    "insertionPosition": -1,
                 }
-            )
-            print(
-                f"Added {entry_names[i]} to the lorebook, with {len(entry_keywords[i])} keywords",
-                end=" ",
-            )
-            # save the new lorebook
-            with open("./supporting_files/lorebook_generated.lorebook", "w") as f:
-                json.dump(lore_dict, f, indent=4)
+                lore_dict["entries"].append(
+                    {
+                        "displayName": list_of_names[i],
+                        "id": ids[i],
+                        "keys": entry_keywords[i],
+                        "text": entries[i],
+                        "lastUpdatedAt": 1666846259188,
+                        "searchRange": 10000,
+                        "category": "python_generated",
+                        "loreBiasGroups": [{"phrases": []}],
+                    }
+                )
+                print(
+                    f"Added {entry_names[i]} to the lorebook, with {len(entry_keywords[i])} keywords",
+                    end=" ",
+                )
+                # save the new lorebook
+                with open("./supporting_files/lorebook_generated.lorebook", "w") as f:
+                    json.dump(lore_dict, f, indent=4)
 
-            print(f" and saved progress...")
-            successful_saves += 1
-        except Exception as e:
-            #print(e)
-            continue
+                print(f" and saved progress...")
+                successful_saves += 1
+            except Exception as e:
+                #print(e)
+                continue
 
+            bar()
     print(f"Saved {successful_saves} entries to the lorebook")
 
     # # for each entry print the number of keys in the keywords list
@@ -437,8 +471,8 @@ if __name__ == "__main__":
     print(f'Running File Checks...')
     print(f'Check 1. Characters in the list must be unique. (Current):', end='')
     # Check 1. Detect any duplicates in the character list (characters.csv)
-    ch_list = pd.read_csv('./supporting_files/characters.csv')
-    ch_list = ch_list['name'].tolist() # convert to list
+    ch_list = pd.read_csv('./data/characters.csv')
+    ch_list = ch_list['Name'].tolist() # convert to list
     orig_count = len(ch_list) # get the original count
     ch_list_lower = [x.lower() for x in ch_list] # convert to lowercase
     ch_list_lower = list(dict.fromkeys(ch_list_lower)) # remove duplicates
@@ -446,7 +480,7 @@ if __name__ == "__main__":
     ch_list_upd = [x for x in ch_list if x.lower() in ch_list_lower]
     # save the updated list to the characters.csv file with the header 'Name'
     ch_list_upd = pd.DataFrame(ch_list_upd, columns=['Name'])
-    ch_list_upd.to_csv('./supporting_files/characters.csv', index=False)
+    ch_list_upd.to_csv('./data/characters.csv', index=False)
     print(f' {orig_count} characters in the list.')
     if orig_count != len(ch_list_upd):
         print(f'  - {orig_count - len(ch_list_upd)} duplicates removed.')
