@@ -399,6 +399,15 @@
         "documentation": {}
     },
     {
+        "label": "preview_lorebook",
+        "kind": 2,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "def preview_lorebook(lorebook):\n    # preview the lorebook by creating a pandas dataframe from the json file.\n    # convert the lorebook object (json) to a pandas dataframe\n    df = pd.DataFrame(lorebook)\n    # print the first 5 rows of the dataframe\n    print(df.head())\nif __name__ == \"__main__\":\n    main() # run the main function when the script is run\n    print(\"Done\")\n    print(\"previewing the lorebook\")",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
         "label": "stop_words",
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
