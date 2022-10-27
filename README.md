@@ -4,11 +4,9 @@
 This repo is designed to help all of us as authors using NovelAI. It pulls from Wikipedia articles to automatically generate lorebooks for real places or years and pretty much anything you could find on Wikipedia using python's wikipedia library.
 The repo contains two different versions: a basic one that generates based on a CSV file, 'characters.csv' and a more advanced version that implements multiple keywords for a more tailored search.
 
-![](images/main.png)
+![](images/main_concept.png)
 
 ## How to use this repository
-
-![](images/main_concept.png)
 
 To use this lorebook generator, follow these steps:
 
@@ -16,7 +14,7 @@ To use this lorebook generator, follow these steps:
 
 ![](images/greatpyramid.png)
 
-As you can see from the screen shot above, the script will look at the wikipedia articles for each character or topic/place in the provided characters csv file. In the case of the pyramid of Giza, it will scan the text of the article for the significant NNS and NNPS (nouns) and then generate a lorebook with the article's text as the meat of the entry, and each of the unique words will be added in as keywords for NovelAI (which will allow the AI to trigger this entry). The script will also generate a list of the nouns it found in the article, which you can use to add to the characters.csv file if you are interested in building out a more robust contextually dense lorebook.
+As you can see from the screenshot above, the script will look at the wikipedia articles for each character or topic/place in the provided characters csv file. In the case of the pyramid of Giza, it will scan the text of the article for the significant NNS and NNPS (nouns) and then generate a lorebook with the article's text as the meat of the entry, and each of the unique words will be added in as keywords for NovelAI (which will allow the AI to trigger this entry). The script will also generate a list of the nouns it found in the article, which you can use to add to the characters.csv file if you are interested in building out a more robust contextually dense lorebook.
 
 - Once you have a lorebook created, you can upload the lorebook to NovelAI and use it to add background detail to your stories and characters.
 # How to Contribute:
