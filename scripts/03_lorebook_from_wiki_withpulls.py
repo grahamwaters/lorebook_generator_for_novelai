@@ -76,6 +76,34 @@ def preprocess(sent):
     return sent
 
 
+#todo:ticket 0001 - add a function to reduce keywords to a max of 50.
+# get the top most unique keywords for the entry as compared to the other entries
+def find_unique_keys(keys_dict):
+    # the top most unique keywords for the entry as compared to the other entries in the lorebook
+    # the keys_dict is a dictionary with all keywords in it.
+    # each row is an entry, and each column is a keyword
+
+    # get all the keywords (across all entries) -> keyword_master_list
+    # go through each row's keywords and keep them in one of two cases (1) if they occur only once in keyword_master_list or (2) if they occur more than once but the number of keywords currently saved is less than 50 and we have already checked all the keywords in the row for uniqueness.
+    # then we go to the next row and repeat the process.
+
+    # code:
+    # consolidate all the keywords into one list (from all the entries in keys_dict)
+    keyword_master_list = []
+    final_keywords = [] # the final list of keywords to return (max 50 in each row)
+    for entry in keys_dict:
+        keyword_master_list.extend(keys_dict[entry])
+    # go through each row's keywords and keep them in one of two cases (1) if they occur only once in keyword_master_list or (2) if they occur more than once but the number of keywords currently saved is less than 50 and we have already checked all the keywords in the row for uniqueness.
+    # sort the row's keywords by their frequency (descending)
+    for entry in keys_dict:
+        sorted_keywords = sorted(keys_dict[entry], key=keys_dict[entry].count, reverse=True) # sort the keywords by their frequency (descending)
+        for keyword in sorted_keywords: # go through each keyword in the row
+            if keyword_master_list.count(keyword) == 1 or (len(final_keywords) < 50 and keyword not in final_keywords): # if the keyword occurs only once in the master list or if the number of keywords currently saved is less than 50 and we have already checked all the keywords in the row for uniqueness.
+                final_keywords.append(keyword) # get the list of names from the topics file
+
+
+
+
 def get_the_entities(content):
     # get the entities from the text
     entities = []
@@ -439,6 +467,11 @@ def main():
                     "maximumTrimType": "sentence",
                     "insertionPosition": -1,
                 }
+
+                #& Reducing Key Count to at most 50
+                entry_keys = entry_keywords[i][:50] # get the list of keys for the entry
+                #todo:ticket 0001
+
                 lore_dict["entries"].append(
                     {
                         "displayName": list_of_names[i],
