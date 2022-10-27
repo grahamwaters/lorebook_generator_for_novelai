@@ -432,6 +432,28 @@ if __name__ == "__main__":
         print("Updating existing lorebook")
 
     # using all inputs from above generate a new lorebook
+
+    # Basic Checks --
+    print(f'Running File Checks...')
+    print(f'Check 1. Characters in the list must be unique. (Current):', end='')
+    # Check 1. Detect any duplicates in the character list (characters.csv)
+    ch_list = pd.read_csv('./supporting_files/characters.csv')
+    ch_list = ch_list['name'].tolist() # convert to list
+    orig_count = len(ch_list) # get the original count
+    ch_list_lower = [x.lower() for x in ch_list] # convert to lowercase
+    ch_list_lower = list(dict.fromkeys(ch_list_lower)) # remove duplicates
+    # now go through ch_list and remove any characters not in ch_list_lower
+    ch_list_upd = [x for x in ch_list if x.lower() in ch_list_lower]
+    # save the updated list to the characters.csv file with the header 'Name'
+    ch_list_upd = pd.DataFrame(ch_list_upd, columns=['Name'])
+    ch_list_upd.to_csv('./supporting_files/characters.csv', index=False)
+    print(f' {orig_count} characters in the list.')
+    if orig_count != len(ch_list_upd):
+        print(f'  - {orig_count - len(ch_list_upd)} duplicates removed.')
+        print(f'Updated characters.csv file with {len(ch_list_upd)} unique characters.')
+    else:
+        print(f'\nPassed Check 1.\n')
+
     main()  # run the main function when the script is run
 
     print("Done")
