@@ -1,12 +1,18 @@
 # Imported Libraries
+import pandas as pd
 import re
+import json
+import uuid
 import nltk
+from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
 import wikipedia
 from tqdm import tqdm
+import datetime
 import warnings
-from ratelimit import sleep_and_retry
-import os
+import random
+import ratelimit
+from ratelimit import limits, sleep_and_retry
 
 warnings.filterwarnings(
     "ignore"
@@ -30,7 +36,11 @@ context_config = {
     "insertionPosition": -1,
 }
 master_dict = {} # get the list of keywords from the parent topic page.
-
+# read pages_seen.csv file to populate the pages_seen list
+pages_seen = [] # keep track of the pages we have seen already so we don't overtax the wikipedia api
+with open('./data/pages_seen.csv', 'r') as f:
+    for line in f:
+        pages_seen.append(line.strip())
 #*###########################################################################################################
 #& Functions
 #*###########################################################################################################
@@ -46,8 +56,7 @@ def filename_create(page_title):
     filename = filename.replace(":", "_") # replace colons with underscores
     filename = filename.replace("?", "_") # replace question marks with underscores
     filename = filename.replace("*", "_") # replace asterisks with underscores
-    filename = filename.replace('"', "") # replace double quotes with underscores
-    filename = filename.replace("'", "") # replace single quotes with underscores
+    filename = filename.replace('"', "_") # replace double quotes with underscores
     filename = filename.replace("<", "_") # replace less than signs with underscores
     filename = filename.replace(">", "_") # replace greater than signs with underscores
     filename = filename.replace("|", "_") # replace pipes with underscores
@@ -61,6 +70,7 @@ def filename_create(page_title):
     filename = filename.replace(",", "_") # replace commas with underscores
     filename = filename.replace(".", "_") # replace periods with underscores
     filename = filename.replace(";", "_") # replace semicolons with underscores
+    filename = filename.replace("'", "_") # replace single quotes with underscores
     filename = filename.replace("=", "_") # replace equals signs with underscores
     filename = filename.replace("+", "_") # replace plus signs with underscores
     filename = filename.replace("-", "_") # replace minus signs with underscores
@@ -73,9 +83,9 @@ def filename_create(page_title):
     filename = filename.replace("&", "_") # replace ampersands with underscores
     filename = filename.replace("~", "_") # replace tildes with underscores
     filename = filename.replace("`", "_") # replace backticks with underscores
-    filename = filename.replace("__","_") # replace double underscores with single underscores
 
     return filename # return the filename
+
 
 def while_page_exists(page,filename):
     try:
@@ -93,14 +103,20 @@ def while_page_exists(page,filename):
 @sleep_and_retry
 def get_links(topic):
     # get all links from the topic page
-    try:
-        # filename
+    global pages_seen # get the list of topics that have already been seen
+    if topic in pages_seen: # if the topic has already been seen, return an empty list
+        # get the list of links from the existing file
         filename = filename_create(topic)
+        with open(f'wikipedia_pages/{filename}.txt', 'r') as f:
+            page_text = f.read()
+    try:
         topic_page = wikipedia.page(topic)
+        page_name = topic_page.title #* get the title of the page
+        filename = filename_create(topic) #& create the filename
         topic_links = topic_page.links
         #? While the page exists save the page text to a file with the name of the page as the file name in the wikipedia_pages folder
-        while_page_exists(topic_page,filename)
-    except Exception as e:
+        while_page_exists(topic_page)
+    except:
         topic_links = []
 
     return topic_links
@@ -180,36 +196,9 @@ def add_to_master_dict(subdict):
         else:
             master_dict[page_name] = subdict[page_name]
 
-def clear_all_previously_saved_files():
-    # delete all files in the wikipedia_pages folder
-    for filename in os.listdir("wikipedia_pages"):
-        os.remove(f"wikipedia_pages/{filename}")
-
 
 def main():
-    global N
-    global master_dict
-
-    print("\n\nWelcome to the Subtopic Finder!")
-    print("This program will find subtopics for a given topic.")
-    print("All subtopics will be saved (article text to the wikipedia_pages directory) and added to the master dictionary.")
-    choice = input("\n  Would you like to clear previously generated articles? (y/n) ")
-    if choice == "y":
-        clear_all_previously_saved_files()
-
-    print("Settings (Current):")
-    print(f'N = {N} - The required minimum number of keywords in common between parent-child pages.')
-    choice = input("Would you like to change settings? (y/n) ")
-    if choice == "y":
-        N = int(input("N = "))
-        print(f'updated: N = {N}')
-
-    print("Please wait while the program runs...")
-    choice = input("Would you like to enter a topic (parent_page)? (y/n) ")
-    if choice == "y":
-        parent_page = input("Enter a topic: ")
-    else:
-        parent_page = "Nikola Tesla"
+    parent_page = "Exposition Universelle (1889)"
     relevant_subtopics = get_relevant_subtopics(parent_page)
     print(relevant_subtopics)
 

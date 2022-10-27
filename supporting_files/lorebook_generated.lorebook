@@ -37,7 +37,7 @@
         },
         {
             "displayName": "Python syntax and semantics",
-            "id": "838d793b-c3d2-40a4-931c-1319833e7978",
+            "id": "9ab6d35a-e865-4287-bfda-fab14d393137",
             "keys": [
                 "ABC (programming language)",
                 "ALGOL",
@@ -195,7 +195,7 @@
         },
         {
             "displayName": "Python (programming language)",
-            "id": "453119c0-68c2-46b8-b7a2-c740de1fadb9",
+            "id": "9e9322ef-b78b-487c-a696-60260df82bea",
             "keys": [
                 "\"Hello, World!\" program",
                 "3ds Max",
@@ -988,7 +988,7 @@
         },
         {
             "displayName": "Object-oriented programming",
-            "id": "aa0473da-cf1e-4080-8ae3-f3ff591e547f",
+            "id": "1936cec1-1e68-4421-b7d5-a4dfe22bb2f0",
             "keys": [
                 ".NET Framework",
                 "ABAP",
@@ -1476,7 +1476,7 @@
         },
         {
             "displayName": "R (programming language)",
-            "id": "77bc475b-5425-45b4-8857-a600347c25fd",
+            "id": "0eb52ca8-b2af-47d9-b897-c3b56c7ad658",
             "keys": [
                 ".NET Framework",
                 "ADMB",
@@ -1909,7 +1909,7 @@
         },
         {
             "displayName": "Class (computer programming)",
-            "id": "39f5cd9e-80f0-4432-8ca9-08dfbdfa49f3",
+            "id": "bfcb269f-f485-4ec3-8c8a-afcd267c490b",
             "keys": [
                 ".NET Framework",
                 "Abstract data type",
@@ -2151,7 +2151,7 @@
         },
         {
             "displayName": "Function (computer programming)",
-            "id": "32a96030-57c0-4a8d-841d-25735c1acd00",
+            "id": "b5534204-aafa-4355-a57f-97b113a2be1f",
             "keys": [
                 "\"Hello, World!\" program",
                 "AI Memo",
@@ -2351,7 +2351,7 @@
         },
         {
             "displayName": "Method (computer programming)",
-            "id": "d12a626e-b305-4b75-8ad0-b29418d1f33b",
+            "id": "c44ce935-d19b-441b-939f-0672c1dcfe14",
             "keys": [
                 "Abstract data types",
                 "Abstraction layer",
@@ -2414,7 +2414,7 @@
         },
         {
             "displayName": "Object (computer science)",
-            "id": "07fb3756-4f58-4df8-9d1e-4bab34086c13",
+            "id": "37ae5a6d-c97e-4241-b1a1-25707da38bb1",
             "keys": [
                 "Abstract data type",
                 "Abstract data types",
@@ -2640,7 +2640,7 @@
         },
         {
             "displayName": "Java",
-            "id": "6844cd25-f9ed-4c33-95ab-35d9d3d81790",
+            "id": "57902538-98fe-4f7c-a28e-a98b7c4d6c33",
             "keys": [
                 ".jp",
                 "1923 Great Kant\u014d earthquake",
@@ -4070,7 +4070,7 @@
         },
         {
             "displayName": "C++",
-            "id": "5941896d-13de-4e25-9eee-6d0c6cdd5c44",
+            "id": "78253298-6d8b-4795-bc30-bfab2f036669",
             "keys": [
                 "110 film",
                 "126 film",
@@ -4864,7 +4864,7 @@
         },
         {
             "displayName": "C#",
-            "id": "a0521c00-a29a-44c9-89a3-51c2f0e38f63",
+            "id": "9405ee9d-ca0b-4e34-a221-60f010cbc395",
             "keys": [
                 "A-type main-sequence star",
                 "Absolute magnitude",
@@ -5164,7 +5164,7 @@
         },
         {
             "displayName": "Python",
-            "id": "e45c4172-fcd6-4b7a-b990-f84a467d99c2",
+            "id": "eb072ebd-b488-4b74-a1ff-5343f9c815dd",
             "keys": [
                 "Affricate",
                 "Algic language",
@@ -5620,7 +5620,7 @@
         },
         {
             "displayName": "R",
-            "id": "c428b4a3-b6c5-4950-8211-ab94de5e8e93",
+            "id": "4d7a2b8b-c407-495d-a6ff-14fdabe06d37",
             "keys": [
                 "API oil\u2013water separator",
                 "Acid",
@@ -5921,7 +5921,7 @@
         },
         {
             "displayName": "PHP",
-            "id": "10f09e22-4597-4a0a-a32c-54425511302a",
+            "id": "64dc3f80-5f2c-495e-b387-9eb11886834e",
             "keys": [
                 ".NET",
                 ".NET Bio",
@@ -6504,7 +6504,7 @@
         },
         {
             "displayName": "Visual Basic.NET",
-            "id": "9c8bc644-fde0-49b7-95af-82a9b49b6c45",
+            "id": "dba67875-b783-447f-8b64-9509807a6549",
             "keys": [
                 "\"Hello, World!\" program",
                 ".js",
@@ -7077,7 +7077,7 @@
         },
         {
             "displayName": "JavaScript",
-            "id": "eea9d13e-5c7e-4ecd-905a-1145896e17a8",
+            "id": "ee1c2b37-ea84-4432-bedd-2b504a20829b",
             "keys": [
                 "Abalone",
                 "Abductin",
@@ -7556,7 +7556,7 @@
         },
         {
             "displayName": "Ruby",
-            "id": "fc0c3cc7-5044-4109-808b-0d78207b1805",
+            "id": "4908d7d6-118d-40c7-979b-04fde3aa86a1",
             "keys": [
                 "CACI",
                 "Charles Babbage Institute",
@@ -7594,7 +7594,7 @@
         },
         {
             "displayName": "Perl",
-            "id": "df60fb80-7099-40c6-98f7-4bc2c0faf1bc",
+            "id": "56eed561-a96f-4979-a2a5-1e0ae4ee9d74",
             "keys": [
                 "syntax",
                 "Python",
@@ -10178,7 +10178,7 @@
         },
         {
             "displayName": "SIMSCRIPT",
-            "id": "09cd5e71-15b0-4f1e-9a10-962e11b3f128",
+            "id": "fdc16a14-2036-4cd5-9870-d165de894641",
             "keys": [
                 "Python",
                 "high",

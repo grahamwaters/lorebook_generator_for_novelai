@@ -3,6 +3,7 @@
 .lorebook
 .hazellock
 /.vscode
+/wikipedia_pages
 .vscode
 .ipynb_checkpoints
 __pycache__
