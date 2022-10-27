@@ -19,6 +19,20 @@ Note: you will need to replace the url with your forked repos url. If you are no
 git clone https://github.com/grahamwaters/lorebook_generator_for_novelai
 ```
 
+Then make sure you navigate into the directory:
+
+```bash
+cd lorebook_generator_for_novelai
+```
+
+- Next, you need to install the dependencies. You can do this by running the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+
+
 ### Mode 1. Basic Mode - Using a CSV file to generate lorebooks
 - Once you have it cloned, populate the characters.csv file with your chosen keywords. (You can use the example file as a template.)
 - Then run the python script [scripts/03_lorebook_from_wiki_withpulls.py](scripts/03_lorebook_from_wiki_withpulls.py), and it will generate a lorebook for you. This lorebook will be named `lorebook_generated.lorebook` and will be saved in the `supporting_files` folder.
