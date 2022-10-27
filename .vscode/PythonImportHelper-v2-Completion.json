@@ -77,6 +77,22 @@
         "documentation": {}
     },
     {
+        "label": "sent_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
+        "isExtraImport": true,
+        "detail": "nltk.tokenize",
+        "documentation": {}
+    },
+    {
+        "label": "stopwords",
+        "importPath": "nltk.corpus",
+        "description": "nltk.corpus",
+        "isExtraImport": true,
+        "detail": "nltk.corpus",
+        "documentation": {}
+    },
+    {
         "label": "stopwords",
         "importPath": "nltk.corpus",
         "description": "nltk.corpus",
@@ -134,6 +150,14 @@
         "documentation": {}
     },
     {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
         "label": "warnings",
         "kind": 6,
         "isExtraImport": true,
@@ -149,6 +173,14 @@
         "importPath": "os",
         "description": "os",
         "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "helpers",
+        "description": "helpers",
+        "isExtraImport": true,
+        "detail": "helpers",
         "documentation": {}
     },
     {
@@ -175,51 +207,6 @@
         "importPath": "random",
         "description": "random",
         "detail": "random",
-        "documentation": {}
-    },
-    {
-        "label": "preprocess",
-        "kind": 2,
-        "importPath": "scripts.01_lorebook_from_year",
-        "description": "scripts.01_lorebook_from_year",
-        "peekOfCode": "def preprocess(sent):\n    \"\"\"\n    preprocess the text to remove stopwords and punctuation\n    This function is used to preprocess the text before it is fed into the named entity recognition algorithm.\n    :param sent: the text to be preprocessed\n    :type sent: str\n    :return: the preprocessed text\n    :rtype: str\n    \"\"\"\n    sent = nltk.word_tokenize(sent)",
-        "detail": "scripts.01_lorebook_from_year",
-        "documentation": {}
-    },
-    {
-        "label": "get_the_entities",
-        "kind": 2,
-        "importPath": "scripts.01_lorebook_from_year",
-        "description": "scripts.01_lorebook_from_year",
-        "peekOfCode": "def get_the_entities(content):\n    \"\"\"\n    get_the_entities is a function that uses the nltk library to extract the named entities from a text.\n    This function uses the nltk library to extract the named entities from a text. It uses the nltk library to preprocess the text, and then uses the nltk library to extract the named entities from the text. It returns a list of the named entities.\n    :param content: the text to extract the named entities from\n    :type content:  str\n    :return: a list of the named entities\n    :rtype: list\n    \"\"\"\n    # get the entities from the text",
-        "detail": "scripts.01_lorebook_from_year",
-        "documentation": {}
-    },
-    {
-        "label": "generate_entries_from_list",
-        "kind": 2,
-        "importPath": "scripts.01_lorebook_from_year",
-        "description": "scripts.01_lorebook_from_year",
-        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    \"\"\"\n    generate_entries_from_list is a function that generates a list of entries from a list of names.\n    This function generates a list of entries from a list of names. It uses the wikipedia library to get the wikipedia page for each name, and then extracts the text from the wikipedia page. It then returns a list of the entries.\n    :param list_of_names: a list of names\n    :type list_of_names: list\n    :return: a list of entries\n    :rtype: list\n    \"\"\"",
-        "detail": "scripts.01_lorebook_from_year",
-        "documentation": {}
-    },
-    {
-        "label": "create_keys",
-        "kind": 2,
-        "importPath": "scripts.01_lorebook_from_year",
-        "description": "scripts.01_lorebook_from_year",
-        "peekOfCode": "def create_keys(entries):\n    # create a list of the keys for each entry (all proper nouns, places and dates)\n    keys = []\n    try:  # try to open the keys dict csv file\n        keys_dict = pd.read_csv(\"keys_dict.csv\").set_index(\"id\").to_dict()[\"keys\"]\n        entry_id = len(keys_dict)\n    except Exception as e:\n        print(e)\n        keys_dict = {}\n        entry_id = 0",
-        "detail": "scripts.01_lorebook_from_year",
-        "documentation": {}
-    },
-    {
-        "label": "generate_lorebook",
-        "kind": 2,
-        "importPath": "scripts.01_lorebook_from_year",
-        "description": "scripts.01_lorebook_from_year",
-        "peekOfCode": "def generate_lorebook(\n    lore_dict, characters, entries, entry_names, ids, years_list, topics_scanner_list\n):\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    keys_dict = create_keys(\n        entries\n    )  # create the keys for each entry in the entries list\n    global context_config\n    for i in range(len(entries)):\n        # append blanks to lore_dict['entries'] to make room for the new entries",
-        "detail": "scripts.01_lorebook_from_year",
         "documentation": {}
     },
     {
@@ -407,7 +394,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv(\"characters.csv\")[\"Name\"].tolist()\n    # print(type(list_of_names))\n    # list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    # only keep names in the list of names that are not already in the json file\n    print(\"There are {} names in the list\".format(len(list_of_names)))\n    print(\"Checking for names that already exist in the json file\")\n    # list_of_names = [x for x in list_of_names if not check_json_for_entry(x, 'lorebook_generated.lorebook')]",
+        "peekOfCode": "def main():\n    # check those article pages for length (if they are too short, skip them)\n    # if they are long enough, and are not already in the list, add them to the list\n    list_of_names = pd.read_csv(\"../data/characters.csv\")[\"Name\"].tolist()\n    # print(type(list_of_names))\n    # list_of_names = [x[0] for x in list_of_names.values.tolist()]\n    # only keep names in the list of names that are not already in the json file\n    print(\"There are {} names in the list\".format(len(list_of_names)))\n    print(\"Checking for names that already exist in the json file\")\n    # list_of_names = [x for x in list_of_names if not check_json_for_entry(x, 'lorebook_generated.lorebook')]",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -427,6 +414,51 @@
         "description": "scripts.03_lorebook_from_wiki_withpulls",
         "peekOfCode": "maxlinksperpage = 30\n# import the json file lorebook_example.lorebook\ndef examine_dates(entry1, entry2):\n    # an article is useful if most of the dates in article A, fall within the max and min dates of article B with an error margin of 10 years.\n    article_one_dates = []\n    article_two_dates = []\n    for sent in sent_tokenize(entry1):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                if chunk.label() == \"DATE\":",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess",
+        "kind": 2,
+        "importPath": "scripts.helpers",
+        "description": "scripts.helpers",
+        "peekOfCode": "def preprocess(sent):\n    \"\"\"\n    preprocess the text to remove stopwords and punctuation\n    This function is used to preprocess the text before it is fed into the named entity recognition algorithm.\n    :param sent: the text to be preprocessed\n    :type sent: str\n    :return: the preprocessed text\n    :rtype: str\n    \"\"\"\n    sent = nltk.word_tokenize(sent)",
+        "detail": "scripts.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "get_the_entities",
+        "kind": 2,
+        "importPath": "scripts.helpers",
+        "description": "scripts.helpers",
+        "peekOfCode": "def get_the_entities(content):\n    \"\"\"\n    get_the_entities is a function that uses the nltk library to extract the named entities from a text.\n    This function uses the nltk library to extract the named entities from a text. It uses the nltk library to preprocess the text, and then uses the nltk library to extract the named entities from the text. It returns a list of the named entities.\n    :param content: the text to extract the named entities from\n    :type content:  str\n    :return: a list of the named entities\n    :rtype: list\n    \"\"\"\n    # get the entities from the text",
+        "detail": "scripts.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "generate_entries_from_list",
+        "kind": 2,
+        "importPath": "scripts.helpers",
+        "description": "scripts.helpers",
+        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    \"\"\"\n    generate_entries_from_list is a function that generates a list of entries from a list of names.\n    This function generates a list of entries from a list of names. It uses the wikipedia library to get the wikipedia page for each name, and then extracts the text from the wikipedia page. It then returns a list of the entries.\n    :param list_of_names: a list of names\n    :type list_of_names: list\n    :return: a list of entries\n    :rtype: list\n    \"\"\"",
+        "detail": "scripts.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "create_keys",
+        "kind": 2,
+        "importPath": "scripts.helpers",
+        "description": "scripts.helpers",
+        "peekOfCode": "def create_keys(entries):\n    \"\"\"\n    create_keys is a function that creates a list of keys from a list of entries.\n    This function creates a list of keys from a list of entries. It uses the gensim library to create a list of keys from the entries. It returns a list of keys.\n    :param entries: a list of entries\n    :type entries: list\n    :return: a list of keys\n    :rtype: list\n    \"\"\"\n    # create a list of the keys for each entry (all proper nouns, places and dates)",
+        "detail": "scripts.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "generate_lorebook",
+        "kind": 2,
+        "importPath": "scripts.helpers",
+        "description": "scripts.helpers",
+        "peekOfCode": "def generate_lorebook(\n    lore_dict, characters, entries, entry_names, ids, years_list, topics_scanner_list\n):\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    keys_dict = create_keys(\n        entries\n    )  # create the keys for each entry in the entries list\n    global context_config\n    for i in range(len(entries)):\n        # append blanks to lore_dict['entries'] to make room for the new entries",
+        "detail": "scripts.helpers",
         "documentation": {}
     }
 ]
