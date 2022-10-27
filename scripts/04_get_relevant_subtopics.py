@@ -7,6 +7,7 @@ from tqdm import tqdm
 import warnings
 from ratelimit import sleep_and_retry
 import os
+from alive_progress import alive_bar
 
 warnings.filterwarnings(
     "ignore"
@@ -210,25 +211,32 @@ def get_relevant_subtopics(parent_topic):
 
     # get the list of keywords from each subtopic page.
     subtopics_keywords = {}
-    for subtopic in tqdm(subtopics):
-        print(f'Getting keywords for {subtopic}...', end=' ')
-        subtopics_keywords[subtopic] = get_links(subtopic)
-        if len(subtopics_keywords[subtopic]) == 0:
-            print('')
-        else:
-            print(f'Found {len(subtopics_keywords[subtopic])} keywords.')
-        #//print(f'Found {len(subtopics_keywords[subtopic])}')
-
+    with alive_bar(len(subtopics)) as bar:
+        for subtopic in subtopics:
+            # skip the subtopic if it contains any of the following words
+            skipwords = ['film', 'TV', 'series','video game','(play)','(soundtrack)']
+            if any(skipword in subtopic for skipword in skipwords):
+                continue # skip the subtopic if it contains any of the following words
+            bar.text(f'Getting keywords for {subtopic}...')
+            subtopics_keywords[subtopic] = get_links(subtopic)
+            if len(subtopics_keywords[subtopic]) == 0:
+                #print('')
+                pass
+            else:
+                bar.text(f'Found {len(subtopics_keywords[subtopic])} keywords.')
+            #//print(f'Found {len(subtopics_keywords[subtopic])}')
+            bar()
     # get the list of relevant subtopics
     relevant_subtopics = []
-    for subtopic in subtopics_keywords:
-        # get the number of keywords in common between the parent topic and the subtopic
-        common_keywords = set(parent_topic_keywords).intersection(
-            set(subtopics_keywords[subtopic])
-        )
-        if len(common_keywords) >= N:
-            relevant_subtopics.append(subtopic)
-
+    with alive_bar(len(subtopics_keywords)) as bar:
+        for subtopic in subtopics_keywords:
+            # get the number of keywords in common between the parent topic and the subtopic
+            common_keywords = set(parent_topic_keywords).intersection(
+                set(subtopics_keywords[subtopic])
+            )
+            if len(common_keywords) >= N:
+                relevant_subtopics.append(subtopic)
+            bar()
     return relevant_subtopics
 
 def divide_into_segments(page_file_content):
@@ -299,7 +307,37 @@ def main():
         parent_page = input("Enter a topic: ")
     else:
         parent_page = "Nikola Tesla"
+
+
+    print("Would you like to also generate a lorebook with the results of the subtopic finder? (y/n)")
+    choice = input("(y/n): ")
+    if choice == "y":
+        generate_lorebook = True # flag to generate a lorebook
+    else:
+        generate_lorebook = False # flag to not generate a lorebook
+
+
+
+
     relevant_subtopics = get_relevant_subtopics(parent_page)
-    print(relevant_subtopics)
+    # print(relevant_subtopics)
+    if generate_lorebook:
+        # create a new lorebook
+        # to do this, save the subtopics we found to the characters.csv file and then run the lorebook generator
+        # save the subtopics to the characters.csv file
+        with open("./data/characters.csv", "w") as f:
+            f.write(
+                "Name,\n"
+            )
+            for subtopic in tqdm(relevant_subtopics):
+                #& Remove commas from the subtopic names because they will mess up the csv file
+                subtopic = subtopic.replace(",", "")
+                #& Remove nonalpha numeric characters from the subtopic names because they will mess up the csv file
+                subtopic = re.sub(r"[^a-zA-Z0-9]+", " ", subtopic) # remove all non-alphanumeric characters
+                f.write(
+                    f'{subtopic},\n'
+                )
+        # run the lorebook generator
+        print("\nCharacters File has been updated!\n\nTo generate a new Lorebook, run the 03_lorebook_from_wiki_withpulls.py file.")
 
 main()
