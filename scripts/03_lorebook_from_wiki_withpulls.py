@@ -608,7 +608,7 @@ def main():
             # lore_dict > entries > lastUpdatedAt
             lore_dict["entries"][i]["lastUpdatedAt"] = 1649360732691
             # lore_dict > entries > displayName
-            lore_dict["entries"][i-1]["displayName"] = entry_names[
+            lore_dict["entries"][i]["displayName"] = entry_names[
                 i
             ]  # todo - was causing builtin method error for some reason in the final json file
             # lore_dict > entries > id
