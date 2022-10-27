@@ -214,7 +214,7 @@ def get_relevant_subtopics(parent_topic):
     with alive_bar(len(subtopics)) as bar:
         for subtopic in subtopics:
             # skip the subtopic if it contains any of the following words
-            skipwords = ['film', 'TV', 'series','video game','(play)']
+            skipwords = ['film', 'TV', 'series','video game','(play)','(soundtrack)']
             if any(skipword in subtopic for skipword in skipwords):
                 continue # skip the subtopic if it contains any of the following words
             bar.text(f'Getting keywords for {subtopic}...')

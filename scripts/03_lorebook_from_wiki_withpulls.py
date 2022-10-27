@@ -261,7 +261,9 @@ def main():
     print(f"Found {countnans} nan values")
     list_of_names = [x for x in entry_names if str(x) != "nan"]
     print(f"Removed {countnans} nan values")
-    print(f"Processed {len(entry_names)} names")
+
+
+
 
     # remove any names that are already in the json file
     for entry in range(len(data['entries'])):
@@ -293,11 +295,24 @@ def main():
     print(f"Processing {number_of_chunks} chunks of {chunk_size} names each")
     for chunk in range(number_of_chunks):
         print(f"Processing chunk {chunk + 1} of {number_of_chunks}")
+        # get pages seen from the data directory (if it exists)
+        try:
+            with open("./data/pages_seen.csv",'r') as f:
+                pages_seen = pd.read_csv(f)["Pages"].tolist()
+        except Exception as e:
+            print(e)
+            print("Error opening pages_seen.csv file")
+            pages_seen = []
+
+        # convert the list 'pages_seen' to a list of strings
+        pages_seen = [str(x).lower() for x in pages_seen]
+
+
         with alive_bar(len(list_of_names[chunk * chunk_size : (chunk + 1) * chunk_size]),dual_line=True,title='Chunks Are Processing') as bar:
             for name in list_of_names[chunk * chunk_size : (chunk + 1) * chunk_size]:
                 # keys = []  # list of keys for the entry
 
-                if name != "":
+                if name != "" and name.lower() not in pages_seen:
                     try:
                         entry = wikipedia.search(name)[
                             0
@@ -311,9 +326,16 @@ def main():
                         links = random.sample(links, min(len(links), maxlinksperpage))
                         bar.text(f"Adding {name} to entries")
                         entries.append(entry)
+                        # add this page to pages_seen.csv so that we don't try to get it again
+                        pages_seen.append(name)
+                        with open("./data/pages_seen.csv", "a+") as f:
+                            f.write(f"{name}\n")
+
                     except Exception as e:
                         print(e)
                         continue
+
+
                 bar()
 
             print(f'Resting the wikipedia API for {rest_time} seconds')
