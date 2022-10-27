@@ -363,7 +363,7 @@ def main():
             print(f" and saved progress...")
             successful_saves += 1
         except Exception as e:
-            print(e)
+            #print(e)
             continue
 
     print(f"Saved {successful_saves} entries to the lorebook")
