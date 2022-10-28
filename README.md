@@ -1,10 +1,70 @@
 
-# Lorebook Generator
+<p align="center">
+    Lorebook Generator Engine for use with NovelAI
+</p>
+<!-- adding shields for contributor count/chat on discord and coverage -->
+
+
+<!-- <p align="center">
+    <a href="https://github.com/badges/shields/graphs/contributors" alt="Contributors">
+        <img src="https://img.shields.io/github/contributors/NovelAI/Lorebook" /></a>
+    <a href="https://discord.gg/NovelAI" alt="Discord">
+        <img src="https://img.shields.io/discord/729675425767811142" /></a>
+        </a>
+</p> -->
+
+
+
 
 This repo is designed to help all of us as authors using NovelAI. It pulls from Wikipedia articles to automatically generate lorebooks for real places or years and pretty much anything you could find on Wikipedia using python's wikipedia library.
 The repo contains two different versions: a basic one that generates based on a CSV file, 'characters.csv' and a more advanced version that implements multiple keywords for a more tailored search.
 
-### Basic Comments and Feedback
+
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+<a name="readme-top"></a>
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
+
+
+
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+<!-- [![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url] -->
+
+
+
+
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+This project is designed to augment the fantastic work being done by the NovelAI team to make AI writing a reality. In its simplest form, this tool provides the extra thoughts that you want to remind your AI of when it is writing. In its more advanced form, it can be used to generate a lorebook for a specific year or place, which can be used to help the AI understand the world it is writing about.
+
+
+### Basic Comments and Feedback (so far)
+
+* The feedback we have received about the tool's current functionality is encouraging.
+* Lorebooks are a source of insight that are critical for any author. Having a human in the loop with this process is one essential component that has been mentioned several times.
+
+*Feel free to add your comments on our project board or in a messgae to us on Discord.*
 
 
 ![](images/main_concept.png)

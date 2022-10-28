@@ -1,5 +1,90 @@
 [
     {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "none",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "none",
+        "description": "none",
+        "detail": "none",
+        "documentation": {}
+    },
+    {
+        "label": "none",
+        "importPath": "none",
+        "description": "none",
+        "isExtraImport": true,
+        "detail": "none",
+        "documentation": {}
+    },
+    {
+        "label": "cli",
+        "importPath": "none",
+        "description": "none",
+        "isExtraImport": true,
+        "detail": "none",
+        "documentation": {}
+    },
+    {
+        "label": "click",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "click",
+        "description": "click",
+        "detail": "click",
+        "documentation": {}
+    },
+    {
+        "label": "unittest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "unittest",
+        "description": "unittest",
+        "detail": "unittest",
+        "documentation": {}
+    },
+    {
+        "label": "CliRunner",
+        "importPath": "click.testing",
+        "description": "click.testing",
+        "isExtraImport": true,
+        "detail": "click.testing",
+        "documentation": {}
+    },
+    {
+        "label": "setup",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "find_packages",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
         "label": "pandas",
         "kind": 6,
         "isExtraImport": true,
@@ -183,15 +268,6 @@
         "documentation": {}
     },
     {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
-        "documentation": {}
-    },
-    {
         "label": "pos_tag",
         "importPath": "nltk.tag",
         "description": "nltk.tag",
@@ -298,6 +374,222 @@
         "description": "01_lorebook_from_year",
         "isExtraImport": true,
         "detail": "01_lorebook_from_year",
+        "documentation": {}
+    },
+    {
+        "label": "extensions",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']\n# Add any paths that contain templates here, relative to this directory.\ntemplates_path = ['_templates']\n# The suffix(es) of source filenames.\n# You can specify multiple suffix as a list of string:\n#\n# source_suffix = ['.rst', '.md']\nsource_suffix = '.rst'\n# The master toctree document.\nmaster_doc = 'index'",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "templates_path",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "templates_path = ['_templates']\n# The suffix(es) of source filenames.\n# You can specify multiple suffix as a list of string:\n#\n# source_suffix = ['.rst', '.md']\nsource_suffix = '.rst'\n# The master toctree document.\nmaster_doc = 'index'\n# General information about the project.\nproject = 'lorebook_generator_for_novelai'",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "source_suffix",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "source_suffix = '.rst'\n# The master toctree document.\nmaster_doc = 'index'\n# General information about the project.\nproject = 'lorebook_generator_for_novelai'\ncopyright = \"2022, Graham G. Waters\"\nauthor = \"Graham G. Waters\"\n# The version info for the project you're documenting, acts as replacement\n# for |version| and |release|, also used in various other places throughout\n# the built documents.",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "master_doc",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "master_doc = 'index'\n# General information about the project.\nproject = 'lorebook_generator_for_novelai'\ncopyright = \"2022, Graham G. Waters\"\nauthor = \"Graham G. Waters\"\n# The version info for the project you're documenting, acts as replacement\n# for |version| and |release|, also used in various other places throughout\n# the built documents.\n#\n# The short X.Y version.",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "project",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "project = 'lorebook_generator_for_novelai'\ncopyright = \"2022, Graham G. Waters\"\nauthor = \"Graham G. Waters\"\n# The version info for the project you're documenting, acts as replacement\n# for |version| and |release|, also used in various other places throughout\n# the built documents.\n#\n# The short X.Y version.\nversion = none.__version__\n# The full version, including alpha/beta/rc tags.",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "copyright",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "copyright = \"2022, Graham G. Waters\"\nauthor = \"Graham G. Waters\"\n# The version info for the project you're documenting, acts as replacement\n# for |version| and |release|, also used in various other places throughout\n# the built documents.\n#\n# The short X.Y version.\nversion = none.__version__\n# The full version, including alpha/beta/rc tags.\nrelease = none.__version__",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "author",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "author = \"Graham G. Waters\"\n# The version info for the project you're documenting, acts as replacement\n# for |version| and |release|, also used in various other places throughout\n# the built documents.\n#\n# The short X.Y version.\nversion = none.__version__\n# The full version, including alpha/beta/rc tags.\nrelease = none.__version__\n# The language for content autogenerated by Sphinx. Refer to documentation",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "version",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "version = none.__version__\n# The full version, including alpha/beta/rc tags.\nrelease = none.__version__\n# The language for content autogenerated by Sphinx. Refer to documentation\n# for a list of supported languages.\n#\n# This is also used if you do content translation via gettext catalogs.\n# Usually you set \"language\" from the command line for these cases.\nlanguage = None\n# List of patterns, relative to source directory, that match files and",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "release",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "release = none.__version__\n# The language for content autogenerated by Sphinx. Refer to documentation\n# for a list of supported languages.\n#\n# This is also used if you do content translation via gettext catalogs.\n# Usually you set \"language\" from the command line for these cases.\nlanguage = None\n# List of patterns, relative to source directory, that match files and\n# directories to ignore when looking for source files.\n# This patterns also effect to html_static_path and html_extra_path",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "language",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "language = None\n# List of patterns, relative to source directory, that match files and\n# directories to ignore when looking for source files.\n# This patterns also effect to html_static_path and html_extra_path\nexclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']\n# The name of the Pygments (syntax highlighting) style to use.\npygments_style = 'sphinx'\n# If true, `todo` and `todoList` produce output, else they produce nothing.\ntodo_include_todos = False\n# -- Options for HTML output -------------------------------------------",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "exclude_patterns",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']\n# The name of the Pygments (syntax highlighting) style to use.\npygments_style = 'sphinx'\n# If true, `todo` and `todoList` produce output, else they produce nothing.\ntodo_include_todos = False\n# -- Options for HTML output -------------------------------------------\n# The theme to use for HTML and HTML Help pages.  See the documentation for\n# a list of builtin themes.\n#\nhtml_theme = 'alabaster'",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "pygments_style",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "pygments_style = 'sphinx'\n# If true, `todo` and `todoList` produce output, else they produce nothing.\ntodo_include_todos = False\n# -- Options for HTML output -------------------------------------------\n# The theme to use for HTML and HTML Help pages.  See the documentation for\n# a list of builtin themes.\n#\nhtml_theme = 'alabaster'\n# Theme options are theme-specific and customize the look and feel of a\n# theme further.  For a list of options available for each theme, see the",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "todo_include_todos",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "todo_include_todos = False\n# -- Options for HTML output -------------------------------------------\n# The theme to use for HTML and HTML Help pages.  See the documentation for\n# a list of builtin themes.\n#\nhtml_theme = 'alabaster'\n# Theme options are theme-specific and customize the look and feel of a\n# theme further.  For a list of options available for each theme, see the\n# documentation.\n#",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "html_theme",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "html_theme = 'alabaster'\n# Theme options are theme-specific and customize the look and feel of a\n# theme further.  For a list of options available for each theme, see the\n# documentation.\n#\n# html_theme_options = {}\n# Add any paths that contain custom static files (such as style sheets) here,\n# relative to this directory. They are copied after the builtin static files,\n# so a file named \"default.css\" will overwrite the builtin \"default.css\".\nhtml_static_path = ['_static']",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "html_static_path",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "html_static_path = ['_static']\n# -- Options for HTMLHelp output ---------------------------------------\n# Output file base name for HTML help builder.\nhtmlhelp_basename = 'nonedoc'\n# -- Options for LaTeX output ------------------------------------------\nlatex_elements = {\n    # The paper size ('letterpaper' or 'a4paper').\n    #\n    # 'papersize': 'letterpaper',\n    # The font size ('10pt', '11pt' or '12pt').",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "htmlhelp_basename",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "htmlhelp_basename = 'nonedoc'\n# -- Options for LaTeX output ------------------------------------------\nlatex_elements = {\n    # The paper size ('letterpaper' or 'a4paper').\n    #\n    # 'papersize': 'letterpaper',\n    # The font size ('10pt', '11pt' or '12pt').\n    #\n    # 'pointsize': '10pt',\n    # Additional stuff for the LaTeX preamble.",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "latex_elements",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "latex_elements = {\n    # The paper size ('letterpaper' or 'a4paper').\n    #\n    # 'papersize': 'letterpaper',\n    # The font size ('10pt', '11pt' or '12pt').\n    #\n    # 'pointsize': '10pt',\n    # Additional stuff for the LaTeX preamble.\n    #\n    # 'preamble': '',",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "latex_documents",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "latex_documents = [\n    (master_doc, 'none.tex',\n     'lorebook_generator_for_novelai Documentation',\n     'Graham G. Waters', 'manual'),\n]\n# -- Options for manual page output ------------------------------------\n# One entry per manual page. List of tuples\n# (source start file, name, description, authors, manual section).\nman_pages = [\n    (master_doc, 'none',",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "man_pages",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "man_pages = [\n    (master_doc, 'none',\n     'lorebook_generator_for_novelai Documentation',\n     [author], 1)\n]\n# -- Options for Texinfo output ----------------------------------------\n# Grouping the document tree into Texinfo files. List of tuples\n# (source start file, target name, title, author,\n#  dir menu entry, description, category)\ntexinfo_documents = [",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "texinfo_documents",
+        "kind": 5,
+        "importPath": "none.docs.conf",
+        "description": "none.docs.conf",
+        "peekOfCode": "texinfo_documents = [\n    (master_doc, 'none',\n     'lorebook_generator_for_novelai Documentation',\n     author,\n     'none',\n     'One line description of project.',\n     'Miscellaneous'),\n]",
+        "detail": "none.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "none.none.cli",
+        "description": "none.none.cli",
+        "peekOfCode": "def main(args=None):\n    \"\"\"Console script for none.\"\"\"\n    click.echo(\"Replace this message by putting your code into \"\n               \"none.cli.main\")\n    click.echo(\"See click documentation at https://click.palletsprojects.com/\")\n    return 0\nif __name__ == \"__main__\":\n    sys.exit(main())  # pragma: no cover",
+        "detail": "none.none.cli",
+        "documentation": {}
+    },
+    {
+        "label": "TestNone",
+        "kind": 6,
+        "importPath": "none.tests.test_none",
+        "description": "none.tests.test_none",
+        "peekOfCode": "class TestNone(unittest.TestCase):\n    \"\"\"Tests for `none` package.\"\"\"\n    def setUp(self):\n        \"\"\"Set up test fixtures, if any.\"\"\"\n    def tearDown(self):\n        \"\"\"Tear down test fixtures, if any.\"\"\"\n    def test_000_something(self):\n        \"\"\"Test something.\"\"\"\n    def test_command_line_interface(self):\n        \"\"\"Test the CLI.\"\"\"",
+        "detail": "none.tests.test_none",
+        "documentation": {}
+    },
+    {
+        "label": "requirements",
+        "kind": 5,
+        "importPath": "none.setup",
+        "description": "none.setup",
+        "peekOfCode": "requirements = ['Click>=7.0', ]\ntest_requirements = [ ]\nsetup(\n    author=\"Graham G. Waters\",\n    author_email='graham.waters.business@gmail.com',\n    python_requires='>=3.6',\n    classifiers=[\n        'Development Status :: 2 - Pre-Alpha',\n        'Intended Audience :: Developers',\n        'License :: OSI Approved :: MIT License',",
+        "detail": "none.setup",
+        "documentation": {}
+    },
+    {
+        "label": "test_requirements",
+        "kind": 5,
+        "importPath": "none.setup",
+        "description": "none.setup",
+        "peekOfCode": "test_requirements = [ ]\nsetup(\n    author=\"Graham G. Waters\",\n    author_email='graham.waters.business@gmail.com',\n    python_requires='>=3.6',\n    classifiers=[\n        'Development Status :: 2 - Pre-Alpha',\n        'Intended Audience :: Developers',\n        'License :: OSI Approved :: MIT License',\n        'Natural Language :: English',",
+        "detail": "none.setup",
         "documentation": {}
     },
     {
