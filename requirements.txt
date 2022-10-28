@@ -137,7 +137,7 @@ noaa-coops==0.1.9
 notebook==6.4.12
 notebook-shim==0.1.0
 numba==0.55.2
-numpy==1.20.3
+numpy==1.22.0
 oauthlib==3.2.0
 opencv-contrib-python==4.6.0.66
 opencv-python==4.6.0.66
