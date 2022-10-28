@@ -192,14 +192,6 @@
         "documentation": {}
     },
     {
-        "label": "*",
-        "importPath": "helpers",
-        "description": "helpers",
-        "isExtraImport": true,
-        "detail": "helpers",
-        "documentation": {}
-    },
-    {
         "label": "pos_tag",
         "importPath": "nltk.tag",
         "description": "nltk.tag",
@@ -306,6 +298,51 @@
         "description": "01_lorebook_from_year",
         "isExtraImport": true,
         "detail": "01_lorebook_from_year",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess",
+        "kind": 2,
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "def preprocess(sent):\n    \"\"\"\n    preprocess the text to remove stopwords and punctuation\n    This function is used to preprocess the text before it is fed into the named entity recognition algorithm.\n    :param sent: the text to be preprocessed\n    :type sent: str\n    :return: the preprocessed text\n    :rtype: str\n    \"\"\"\n    sent = nltk.word_tokenize(sent)",
+        "detail": "scripts.01_lorebook_from_year",
+        "documentation": {}
+    },
+    {
+        "label": "get_the_entities",
+        "kind": 2,
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "def get_the_entities(content):\n    \"\"\"\n    get_the_entities is a function that uses the nltk library to extract the named entities from a text.\n    This function uses the nltk library to extract the named entities from a text. It uses the nltk library to preprocess the text, and then uses the nltk library to extract the named entities from the text. It returns a list of the named entities.\n    :param content: the text to extract the named entities from\n    :type content:  str\n    :return: a list of the named entities\n    :rtype: list\n    \"\"\"\n    # get the entities from the text",
+        "detail": "scripts.01_lorebook_from_year",
+        "documentation": {}
+    },
+    {
+        "label": "generate_entries_from_list",
+        "kind": 2,
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "def generate_entries_from_list(list_of_names):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    \"\"\"\n    generate_entries_from_list is a function that generates a list of entries from a list of names.\n    This function generates a list of entries from a list of names. It uses the wikipedia library to get the wikipedia page for each name, and then extracts the text from the wikipedia page. It then returns a list of the entries.\n    :param list_of_names: a list of names\n    :type list_of_names: list\n    :return: a list of entries\n    :rtype: list\n    \"\"\"",
+        "detail": "scripts.01_lorebook_from_year",
+        "documentation": {}
+    },
+    {
+        "label": "create_keys",
+        "kind": 2,
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "def create_keys(entries):\n    # create a list of the keys for each entry (all proper nouns, places and dates)\n    keys = []\n    try:  # try to open the keys dict csv file\n        keys_dict = pd.read_csv(\"keys_dict.csv\").set_index(\"id\").to_dict()[\"keys\"]\n        entry_id = len(keys_dict)\n    except Exception as e:\n        print(e)\n        keys_dict = {}\n        entry_id = 0",
+        "detail": "scripts.01_lorebook_from_year",
+        "documentation": {}
+    },
+    {
+        "label": "generate_lorebook",
+        "kind": 2,
+        "importPath": "scripts.01_lorebook_from_year",
+        "description": "scripts.01_lorebook_from_year",
+        "peekOfCode": "def generate_lorebook(\n    lore_dict, characters, entries, entry_names, ids, years_list, topics_scanner_list\n):\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    keys_dict = create_keys(\n        entries\n    )  # create the keys for each entry in the entries list\n    global context_config\n    for i in range(len(entries)):\n        # append blanks to lore_dict['entries'] to make room for the new entries",
+        "detail": "scripts.01_lorebook_from_year",
         "documentation": {}
     },
     {
@@ -457,7 +494,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\n#todo:ticket 0001 - add a function to reduce keywords to a max of 50.\n# get the top most unique keywords for the entry as compared to the other entries\ndef find_unique_keys(keys_dict):\n    # the top most unique keywords for the entry as compared to the other entries in the lorebook\n    # the keys_dict is a dictionary with all keywords in it.\n    # each row is an entry, and each column is a keyword",
+        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\n# todo:ticket 0001 - add a function to reduce keywords to a max of 50.\n# get the top most unique keywords for the entry as compared to the other entries\ndef find_unique_keys(keys_dict):\n    # the top most unique keywords for the entry as compared to the other entries in the lorebook\n    # the keys_dict is a dictionary with all keywords in it.\n    # each row is an entry, and each column is a keyword",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -475,7 +512,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                entities.append(\" \".join(c[0] for c in chunk.leaves()))\n    return entities\nperiod = 300 # 5 minutes\n@sleep_and_retry",
+        "peekOfCode": "def get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                entities.append(\" \".join(c[0] for c in chunk.leaves()))\n    return entities\nperiod = 300  # 5 minutes\n@sleep_and_retry",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -484,7 +521,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def inner_generator(name,entries,entry_keywords,entry_names,bar):\n    if name != \"\":\n        try:\n            entry = wikipedia.search(name)[\n                0\n            ]  # get the first result from wikipedia, which is usually the most relevant\n            page = wikipedia.page(entry)\n            entry = page.content\n            entry = re.sub(r\"\\([^)]*\\)\", \" \", entry)  # remove anything in brackets\n            # strip the text of all special characters, and any escaped characters using regex",
+        "peekOfCode": "def inner_generator(name, entries, entry_keywords, entry_names, bar):\n    if name != \"\":\n        try:\n            entry = wikipedia.search(name)[\n                0\n            ]  # get the first result from wikipedia, which is usually the most relevant\n            page = wikipedia.page(entry)\n            entry = page.content\n            entry = re.sub(r\"\\([^)]*\\)\", \" \", entry)  # remove anything in brackets\n            # strip the text of all special characters, and any escaped characters using regex",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -493,7 +530,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def generate_entries_from_list(list_of_names,bar):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    with alive_bar(len(list_of_names),bar=bar) as bar2:\n        for name in list_of_names:\n            # pause every 10 iterations to avoid getting blocked by wikipedia (for a random number of seconds)\n            # if list_of_names.index(name) % rest_time == 0:\n            #     waittime = random.randint(2, 6) # wait between 4 and 15 seconds",
+        "peekOfCode": "def generate_entries_from_list(list_of_names, bar):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    with alive_bar(len(list_of_names), bar=bar) as bar2:\n        for name in list_of_names:\n            # pause every 10 iterations to avoid getting blocked by wikipedia (for a random number of seconds)\n            # if list_of_names.index(name) % rest_time == 0:\n            #     waittime = random.randint(2, 6) # wait between 4 and 15 seconds",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -529,7 +566,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def main():\n    \"\"\"\n    main function - runs the program, processing the names provided in the characters.csv file and adding them to the lorebook_generated.lorebook file in the supporting_files folder. The function uses the generate_entries_from_list function to generate the entries, and then adds them to the lorebook_generated.lorebook file.\n    \"\"\"\n    global context_config\n    global minimum_key_occurrences\n    global chunk_size # the number of names to process in each chunk\n    # open the lorebook_generated.lorebook file\n    try:\n        with open(\"./supporting_files/lorebook_generated.lorebook\") as f:",
+        "peekOfCode": "def main():\n    \"\"\"\n    main function - runs the program, processing the names provided in the characters.csv file and adding them to the lorebook_generated.lorebook file in the supporting_files folder. The function uses the generate_entries_from_list function to generate the entries, and then adds them to the lorebook_generated.lorebook file.\n    \"\"\"\n    global context_config\n    global minimum_key_occurrences\n    global chunk_size  # the number of names to process in each chunk\n    # open the lorebook_generated.lorebook file\n    try:\n        with open(\"./supporting_files/lorebook_generated.lorebook\") as f:",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -538,7 +575,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def final_checks(entries, entry_names, entry_keywords, lore_dict, list_of_names,ids):\n    # #assert -- make sure the lengths are the same\n    #assert(len(entries) == len(entry_names), \"after removing existing entries lengths are not the same\")\n    #assert(len(entries) == len(entry_keywords), \"after removing existing entries lengths are not the same\")\n    #assert(len(entries) == len(ids), \"after removing existing entries lengths are not the same\")\n    #assert(len(entry_names) == len(entry_keywords), \"after removing existing entries lengths are not the same\")\n    # check that the name of each entry (i.e. 'Florence Nightingale') is in the first paragraph of the entry's text. If not, then raise an error\n    for entry, entry_name in zip(entries, entry_names):\n        if entry_name not in entry.split('\\n')[0]:\n            raise Exception(f\"{entry_name} is not in the first paragraph of the entry\")",
+        "peekOfCode": "def final_checks(entries, entry_names, entry_keywords, lore_dict, list_of_names, ids):\n    # #assert -- make sure the lengths are the same\n    # assert(len(entries) == len(entry_names), \"after removing existing entries lengths are not the same\")\n    # assert(len(entries) == len(entry_keywords), \"after removing existing entries lengths are not the same\")\n    # assert(len(entries) == len(ids), \"after removing existing entries lengths are not the same\")\n    # assert(len(entry_names) == len(entry_keywords), \"after removing existing entries lengths are not the same\")\n    # check that the name of each entry (i.e. 'Florence Nightingale') is in the first paragraph of the entry's text. If not, then raise an error\n    for entry, entry_name in zip(entries, entry_names):\n        if entry_name not in entry.split(\"\\n\")[0]:\n            raise Exception(f\"{entry_name} is not in the first paragraph of the entry\")",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -547,7 +584,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "rest_time = 10 # max number of calls before resting\nchunk_size = 10 # number of entries per chunk\nwarnings.filterwarnings(\n    \"ignore\"\n)  # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.\n# Global Variables Declaration ------------------------------------------------\n# get the list of names from the topics file\nnltk.download(\"stopwords\")  # & download stopwords\nstop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30 # how many randomly sampled links to get from each page, to add to the list of keywords",
+        "peekOfCode": "rest_time = 10  # max number of calls before resting\nchunk_size = 10  # number of entries per chunk\nwarnings.filterwarnings(\n    \"ignore\"\n)  # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.\n# Global Variables Declaration ------------------------------------------------\n# get the list of names from the topics file\nnltk.download(\"stopwords\")  # & download stopwords\nstop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30  # how many randomly sampled links to get from each page, to add to the list of keywords",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -556,7 +593,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "chunk_size = 10 # number of entries per chunk\nwarnings.filterwarnings(\n    \"ignore\"\n)  # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.\n# Global Variables Declaration ------------------------------------------------\n# get the list of names from the topics file\nnltk.download(\"stopwords\")  # & download stopwords\nstop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30 # how many randomly sampled links to get from each page, to add to the list of keywords\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword",
+        "peekOfCode": "chunk_size = 10  # number of entries per chunk\nwarnings.filterwarnings(\n    \"ignore\"\n)  # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.\n# Global Variables Declaration ------------------------------------------------\n# get the list of names from the topics file\nnltk.download(\"stopwords\")  # & download stopwords\nstop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30  # how many randomly sampled links to get from each page, to add to the list of keywords\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -565,7 +602,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30 # how many randomly sampled links to get from each page, to add to the list of keywords\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",",
+        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30  # how many randomly sampled links to get from each page, to add to the list of keywords\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -574,7 +611,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "maxlinksperpage = 30 # how many randomly sampled links to get from each page, to add to the list of keywords\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",",
+        "peekOfCode": "maxlinksperpage = 30  # how many randomly sampled links to get from each page, to add to the list of keywords\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -601,7 +638,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "period = 300 # 5 minutes\n@sleep_and_retry\n#@limits(calls=15, period=period) # 15 calls per 5 minutes\ndef inner_generator(name,entries,entry_keywords,entry_names,bar):\n    if name != \"\":\n        try:\n            entry = wikipedia.search(name)[\n                0\n            ]  # get the first result from wikipedia, which is usually the most relevant\n            page = wikipedia.page(entry)",
+        "peekOfCode": "period = 300  # 5 minutes\n@sleep_and_retry\n# @limits(calls=15, period=period) # 15 calls per 5 minutes\ndef inner_generator(name, entries, entry_keywords, entry_names, bar):\n    if name != \"\":\n        try:\n            entry = wikipedia.search(name)[\n                0\n            ]  # get the first result from wikipedia, which is usually the most relevant\n            page = wikipedia.page(entry)",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -610,7 +647,7 @@
         "kind": 2,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "def preprocess_sentence(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef filename_create(page_title):\n    filename = page_title.replace(\" \", \"_\") # replace spaces with underscores\n    filename = filename.replace(\"/\", \"_\") # replace slashes with underscores\n    filename = filename.replace(\":\", \"_\") # replace colons with underscores\n    filename = filename.replace(\"?\", \"_\") # replace question marks with underscores\n    filename = filename.replace(\"*\", \"_\") # replace asterisks with underscores",
+        "peekOfCode": "def preprocess_sentence(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef filename_create(page_title):\n    filename = page_title.replace(\" \", \"_\")  # replace spaces with underscores\n    filename = filename.replace(\"/\", \"_\")  # replace slashes with underscores\n    filename = filename.replace(\":\", \"_\")  # replace colons with underscores\n    filename = filename.replace(\"?\", \"_\")  # replace question marks with underscores\n    filename = filename.replace(\"*\", \"_\")  # replace asterisks with underscores",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -619,7 +656,7 @@
         "kind": 2,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "def filename_create(page_title):\n    filename = page_title.replace(\" \", \"_\") # replace spaces with underscores\n    filename = filename.replace(\"/\", \"_\") # replace slashes with underscores\n    filename = filename.replace(\":\", \"_\") # replace colons with underscores\n    filename = filename.replace(\"?\", \"_\") # replace question marks with underscores\n    filename = filename.replace(\"*\", \"_\") # replace asterisks with underscores\n    filename = filename.replace('\"', \"\") # replace double quotes with underscores\n    filename = filename.replace(\"'\", \"\") # replace single quotes with underscores\n    filename = filename.replace(\"<\", \"_\") # replace less than signs with underscores\n    filename = filename.replace(\">\", \"_\") # replace greater than signs with underscores",
+        "peekOfCode": "def filename_create(page_title):\n    filename = page_title.replace(\" \", \"_\")  # replace spaces with underscores\n    filename = filename.replace(\"/\", \"_\")  # replace slashes with underscores\n    filename = filename.replace(\":\", \"_\")  # replace colons with underscores\n    filename = filename.replace(\"?\", \"_\")  # replace question marks with underscores\n    filename = filename.replace(\"*\", \"_\")  # replace asterisks with underscores\n    filename = filename.replace('\"', \"\")  # replace double quotes with underscores\n    filename = filename.replace(\"'\", \"\")  # replace single quotes with underscores\n    filename = filename.replace(\"<\", \"_\")  # replace less than signs with underscores\n    filename = filename.replace(\">\", \"_\")  # replace greater than signs with underscores",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -628,7 +665,7 @@
         "kind": 2,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "def while_page_exists(page,filename):\n    try:\n        page_text = page.content # get the content of the page\n        # save the page text to a file with the name of the page as the file name in the wikipedia_pages folder\n        # to save storage space, we should parse the page_text and remove all extra spaces.\n        page_text = re.sub(r\"\\s+\", \" \", page_text) # replace all extra spaces with a single space\n        with open(f'wikipedia_pages/{filename}.txt', 'w+') as f:\n            f.write(page_text)\n        print(f'Saved {filename} to file.', end=' ')\n        return True",
+        "peekOfCode": "def while_page_exists(page, filename):\n    try:\n        page_text = page.content  # get the content of the page\n        # save the page text to a file with the name of the page as the file name in the wikipedia_pages folder\n        # to save storage space, we should parse the page_text and remove all extra spaces.\n        page_text = re.sub(\n            r\"\\s+\", \" \", page_text\n        )  # replace all extra spaces with a single space\n        with open(f\"wikipedia_pages/{filename}.txt\", \"w+\") as f:\n            f.write(page_text)",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -637,7 +674,7 @@
         "kind": 2,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "def topic_check_pos_type(topic):\n    # Using NLTK, determine what POS the topic word is and return True if it is a noun, False if it is not\n    # if the topic word is a noun, then we can use it as a keyword to search for subtopics\n    # if the topic word is not a noun, then we cannot use it as a keyword to search for subtopics\n    topic_processed = preprocess_sentence(topic) # preprocess the topic word\n    # Noun-phrase chunking to identify entities in the topic\n    pattern = r\"NP: {<DT|PP\\$>?<JJ>*<NN>}\"   # chunk determiner/possessive, adjectives and noun\n    cp = nltk.RegexpParser(pattern) # create the chunk parser\n    cs = cp.parse(topic_processed) # parse the topic\n    # if the entity is a person, country, organization, or historical event, then keep going otherwise return False",
+        "peekOfCode": "def topic_check_pos_type(topic):\n    # Using NLTK, determine what POS the topic word is and return True if it is a noun, False if it is not\n    # if the topic word is a noun, then we can use it as a keyword to search for subtopics\n    # if the topic word is not a noun, then we cannot use it as a keyword to search for subtopics\n    topic_processed = preprocess_sentence(topic)  # preprocess the topic word\n    # Noun-phrase chunking to identify entities in the topic\n    pattern = (\n        r\"NP: {<DT|PP\\$>?<JJ>*<NN>}\"  # chunk determiner/possessive, adjectives and noun\n    )\n    cp = nltk.RegexpParser(pattern)  # create the chunk parser",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -646,7 +683,7 @@
         "kind": 2,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "def book_keeper_bot(topic):\n    # this function will check if the topic has already been saved to the wikipedia_pages folder\n    # if it has, then it will return True\n    # if it has not, then it will return False\n    filename = filename_create(topic) # create the filename\n    if os.path.exists(f'./wikipedia_keys/{filename}.csv'): # if the file exists, then return True\n        return True\n    else:\n        return False\n#check if the topic has a file in the wikipedia_pages or wikipedia_keys folder",
+        "peekOfCode": "def book_keeper_bot(topic):\n    # this function will check if the topic has already been saved to the wikipedia_pages folder\n    # if it has, then it will return True\n    # if it has not, then it will return False\n    filename = filename_create(topic)  # create the filename\n    if os.path.exists(\n        f\"./wikipedia_keys/{filename}.csv\"\n    ):  # if the file exists, then return True\n        return True\n    else:",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -655,7 +692,7 @@
         "kind": 2,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "def get_links(topic,all_topics):\n    # If the topic has already been saved to the wikipedia_pages folder, then skip it\n    status = book_keeper_bot(topic) # check if the topic has already been saved to the wikipedia_pages folder\n    #//status = book_keeper(topic) # check if the topic has already been saved to the wikipedia_pages folder\n    if status == True: # if the topic has already been saved to the wikipedia_pages folder, then skip it\n        print(f'{topic} has already been saved to the wikipedia_pages folder.',end=' -> ')\n        # open the file and get the links\n        filename = filename_create(topic) # create the filename\n        with open(f'./wikipedia_keys/{filename}.csv', 'r') as f:\n            links = f.read().splitlines() # read the file and split the lines into a list",
+        "peekOfCode": "def get_links(topic, all_topics):\n    # If the topic has already been saved to the wikipedia_pages folder, then skip it\n    status = book_keeper_bot(\n        topic\n    )  # check if the topic has already been saved to the wikipedia_pages folder\n    # //status = book_keeper(topic) # check if the topic has already been saved to the wikipedia_pages folder\n    if (\n        status == True\n    ):  # if the topic has already been saved to the wikipedia_pages folder, then skip it\n        print(",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -664,7 +701,7 @@
         "kind": 2,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "def get_relevant_subtopics(parent_topic):\n    # get the list of subtopics from the parent topic page.\n    # get all links from the parent topic page\n    global keys_dict\n    # make sure that the topic page will show up in the search results\n    parent_topic_links = get_links(parent_topic,parent_topic)\n    #note: could use a for loop above until len(parent_topic_links) > 0\n    # get the list of subtopics from the parent topic page.\n    subtopics = []\n    # if parent_topic_links is NoneType then check the keys_dict.csv file for the topic",
+        "peekOfCode": "def get_relevant_subtopics(parent_topic):\n    # get the list of subtopics from the parent topic page.\n    # get all links from the parent topic page\n    global keys_dict\n    # make sure that the topic page will show up in the search results\n    parent_topic_links = get_links(parent_topic, parent_topic)\n    # note: could use a for loop above until len(parent_topic_links) > 0\n    # get the list of subtopics from the parent topic page.\n    subtopics = []\n    # if parent_topic_links is NoneType then check the keys_dict.csv file for the topic",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -691,7 +728,7 @@
         "kind": 2,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "def clear_all_previously_saved_files():\n    # delete all files in the wikipedia_pages folder\n    for filename in os.listdir(\"wikipedia_pages\"):\n        os.remove(f\"wikipedia_pages/{filename}\")\ndef main():\n    global N\n    global master_dict\n    print(\"\\n\\nWelcome to the Subtopic Finder!\")\n    print(\"This program will find subtopics for a given topic.\")\n    print(\"All subtopics will be saved (article text to the wikipedia_pages directory) and added to the master dictionary.\")",
+        "peekOfCode": "def clear_all_previously_saved_files():\n    # delete all files in the wikipedia_pages folder\n    for filename in os.listdir(\"wikipedia_pages\"):\n        os.remove(f\"wikipedia_pages/{filename}\")\ndef main():\n    global N\n    global master_dict\n    print(\"\\n\\nWelcome to the Subtopic Finder!\")\n    print(\"This program will find subtopics for a given topic.\")\n    print(",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -700,7 +737,7 @@
         "kind": 2,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "def main():\n    global N\n    global master_dict\n    print(\"\\n\\nWelcome to the Subtopic Finder!\")\n    print(\"This program will find subtopics for a given topic.\")\n    print(\"All subtopics will be saved (article text to the wikipedia_pages directory) and added to the master dictionary.\")\n    choice = input(\"\\n  Would you like to clear previously generated articles? (y/n) \")\n    if choice == \"y\":\n        clear_all_previously_saved_files()\n    print(\"Settings (Current):\")",
+        "peekOfCode": "def main():\n    global N\n    global master_dict\n    print(\"\\n\\nWelcome to the Subtopic Finder!\")\n    print(\"This program will find subtopics for a given topic.\")\n    print(\n        \"All subtopics will be saved (article text to the wikipedia_pages directory) and added to the master dictionary.\"\n    )\n    choice = input(\"\\n  Would you like to clear previously generated articles? (y/n) \")\n    if choice == \"y\":",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -745,7 +782,7 @@
         "kind": 5,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "master_dict = {} # get the list of keywords from the parent topic page.\n# save the keys from the keys_dict.csv file to a dict: keys_dict\nkeys_dict = {}\nwith open(\"./data/keys_dict.csv\", \"r\") as f:\n    for line in f:\n        line = line.strip()\n        line = line.split(\",\")\n        keys_dict[line[0]] = line[1]\n#*###########################################################################################################\n#& Functions",
+        "peekOfCode": "master_dict = {}  # get the list of keywords from the parent topic page.\n# save the keys from the keys_dict.csv file to a dict: keys_dict\nkeys_dict = {}\nwith open(\"./data/keys_dict.csv\", \"r\") as f:\n    for line in f:\n        line = line.strip()\n        line = line.split(\",\")\n        keys_dict[line[0]] = line[1]\n# *###########################################################################################################\n# & Functions",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -754,7 +791,7 @@
         "kind": 5,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "keys_dict = {}\nwith open(\"./data/keys_dict.csv\", \"r\") as f:\n    for line in f:\n        line = line.strip()\n        line = line.split(\",\")\n        keys_dict[line[0]] = line[1]\n#*###########################################################################################################\n#& Functions\n#*###########################################################################################################\n#& Global Variables:",
+        "peekOfCode": "keys_dict = {}\nwith open(\"./data/keys_dict.csv\", \"r\") as f:\n    for line in f:\n        line = line.strip()\n        line = line.split(\",\")\n        keys_dict[line[0]] = line[1]\n# *###########################################################################################################\n# & Functions\n# *###########################################################################################################\n# & Global Variables:",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
@@ -763,7 +800,7 @@
         "kind": 5,
         "importPath": "scripts.04_get_relevant_subtopics",
         "description": "scripts.04_get_relevant_subtopics",
-        "peekOfCode": "N = 10 # number of words each child page should have in common with the parent page to be considered.\n#*############################################################################################################\n#^ Getting the relevant subtopics for a parent topic (e.g. \"Machine Learning\" for \"Artificial Intelligence\"). This is done by getting the list of subtopics from the Wikipedia page of the parent topic and then getting the list of keywords (links) from the Wikipedia page of each subtopic. The subtopic is then considered relevant if it has at least N keywords in common with the parent topic.\n##############################################################################################################\ndef preprocess_sentence(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef filename_create(page_title):\n    filename = page_title.replace(\" \", \"_\") # replace spaces with underscores",
+        "peekOfCode": "N = 10  # number of words each child page should have in common with the parent page to be considered.\n# *############################################################################################################\n# ^ Getting the relevant subtopics for a parent topic (e.g. \"Machine Learning\" for \"Artificial Intelligence\"). This is done by getting the list of subtopics from the Wikipedia page of the parent topic and then getting the list of keywords (links) from the Wikipedia page of each subtopic. The subtopic is then considered relevant if it has at least N keywords in common with the parent topic.\n##############################################################################################################\ndef preprocess_sentence(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\ndef filename_create(page_title):\n    filename = page_title.replace(\" \", \"_\")  # replace spaces with underscores",
         "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
