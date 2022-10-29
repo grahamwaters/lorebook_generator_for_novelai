@@ -8,6 +8,49 @@ import warnings
 from ratelimit import sleep_and_retry
 import os
 from alive_progress import alive_bar
+import spacy
+
+# used `spacy download en_core_web_sm` to download the small English model in the terminal.
+print("Loading spaCy model...")
+try:
+    nlp = spacy.load("en_core_web_sm")
+except Exception as e:
+    print(e)
+    try:
+        nlp = spacy.load("en_core_web_md")
+    except Exception as e:
+        print(e)
+        try:
+            nlp = spacy.load("en_core_web_lg")
+        except Exception as e:
+            print(e)
+            print("No spaCy model found. Please download a spaCy model and try again.")
+            exit()
+print("model loaded.")
+# write a function that scans a word and returns True if it is a person's name or False if it is not
+def is_person(word):
+    doc = nlp(word)
+    for ent in doc.ents:
+        if ent.label_ == "PERSON":
+            return True
+    return False
+
+
+def is_country(word):
+    doc = nlp(word)
+    for ent in doc.ents:
+        if ent.label_ == "GPE":
+            return True
+    return False
+
+
+def is_organization(word):
+    doc = nlp(word)
+    for ent in doc.ents:
+        if ent.label_ == "ORG":
+            return True
+    return False
+
 
 warnings.filterwarnings(
     "ignore"
@@ -124,6 +167,8 @@ def topic_check_pos_type(topic):
     # if the entity is a person, country, organization, or historical event, then keep going otherwise return False
     if cs[0][1] == "NNP" or cs[0][1] == "NNPS" or cs[0][1] == "NN" or cs[0][1] == "NNS":
         return True
+    elif is_person(topic) or is_country(topic) or is_organization(topic):
+        return True
     else:
         return False
 
@@ -191,7 +236,7 @@ def get_links(topic, all_topics):
         # filename
         # & using topic_check_pos_type(topic) to check if the topic word is a noun
         if (
-            topic_check_pos_type(topic) == True and len(all_topics) > 1
+            topic_check_pos_type(topic) == False and len(all_topics) > 1
         ):  # if the topic word is a noun and there are more than 1 topic words
             print(f"{topic} is not a noun. Skipping...")
             return []

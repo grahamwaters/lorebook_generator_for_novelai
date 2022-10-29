@@ -85,6 +85,22 @@
         "documentation": {}
     },
     {
+        "label": "find_packages",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "setup",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
         "label": "pandas",
         "kind": 6,
         "isExtraImport": true,
@@ -276,14 +292,6 @@
         "documentation": {}
     },
     {
-        "label": "name",
-        "importPath": "unicodedata",
-        "description": "unicodedata",
-        "isExtraImport": true,
-        "detail": "unicodedata",
-        "documentation": {}
-    },
-    {
         "label": "datetime",
         "kind": 6,
         "isExtraImport": true,
@@ -360,6 +368,15 @@
         "documentation": {}
     },
     {
+        "label": "spacy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "spacy",
+        "description": "spacy",
+        "detail": "spacy",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -377,11 +394,537 @@
         "documentation": {}
     },
     {
+        "label": "Mock",
+        "importPath": "mock",
+        "description": "mock",
+        "isExtraImport": true,
+        "detail": "mock",
+        "documentation": {}
+    },
+    {
+        "label": "ple",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "ple",
+        "description": "ple",
+        "detail": "ple",
+        "documentation": {}
+    },
+    {
+        "label": "PLE",
+        "importPath": "ple",
+        "description": "ple",
+        "isExtraImport": true,
+        "detail": "ple",
+        "documentation": {}
+    },
+    {
+        "label": "PLE",
+        "importPath": "ple",
+        "description": "ple",
+        "isExtraImport": true,
+        "detail": "ple",
+        "documentation": {}
+    },
+    {
+        "label": "PLE",
+        "importPath": "ple",
+        "description": "ple",
+        "isExtraImport": true,
+        "detail": "ple",
+        "documentation": {}
+    },
+    {
+        "label": "PLE",
+        "importPath": "ple",
+        "description": "ple",
+        "isExtraImport": true,
+        "detail": "ple",
+        "documentation": {}
+    },
+    {
+        "label": "Doom",
+        "importPath": "ple.games",
+        "description": "ple.games",
+        "isExtraImport": true,
+        "detail": "ple.games",
+        "documentation": {}
+    },
+    {
+        "label": "base",
+        "importPath": "ple.games",
+        "description": "ple.games",
+        "isExtraImport": true,
+        "detail": "ple.games",
+        "documentation": {}
+    },
+    {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "Sequential",
+        "importPath": "keras.models",
+        "description": "keras.models",
+        "isExtraImport": true,
+        "detail": "keras.models",
+        "documentation": {}
+    },
+    {
+        "label": "Sequential",
+        "importPath": "keras.models",
+        "description": "keras.models",
+        "isExtraImport": true,
+        "detail": "keras.models",
+        "documentation": {}
+    },
+    {
+        "label": "Dense",
+        "importPath": "keras.layers.core",
+        "description": "keras.layers.core",
+        "isExtraImport": true,
+        "detail": "keras.layers.core",
+        "documentation": {}
+    },
+    {
+        "label": "Flatten",
+        "importPath": "keras.layers.core",
+        "description": "keras.layers.core",
+        "isExtraImport": true,
+        "detail": "keras.layers.core",
+        "documentation": {}
+    },
+    {
+        "label": "Dense",
+        "importPath": "keras.layers.core",
+        "description": "keras.layers.core",
+        "isExtraImport": true,
+        "detail": "keras.layers.core",
+        "documentation": {}
+    },
+    {
+        "label": "Convolution2D",
+        "importPath": "keras.layers.convolutional",
+        "description": "keras.layers.convolutional",
+        "isExtraImport": true,
+        "detail": "keras.layers.convolutional",
+        "documentation": {}
+    },
+    {
+        "label": "SGD",
+        "importPath": "keras.optimizers",
+        "description": "keras.optimizers",
+        "isExtraImport": true,
+        "detail": "keras.optimizers",
+        "documentation": {}
+    },
+    {
+        "label": "Adam",
+        "importPath": "keras.optimizers",
+        "description": "keras.optimizers",
+        "isExtraImport": true,
+        "detail": "keras.optimizers",
+        "documentation": {}
+    },
+    {
+        "label": "RMSprop",
+        "importPath": "keras.optimizers",
+        "description": "keras.optimizers",
+        "isExtraImport": true,
+        "detail": "keras.optimizers",
+        "documentation": {}
+    },
+    {
+        "label": "SGD",
+        "importPath": "keras.optimizers",
+        "description": "keras.optimizers",
+        "isExtraImport": true,
+        "detail": "keras.optimizers",
+        "documentation": {}
+    },
+    {
+        "label": "theano.tensor",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "theano.tensor",
+        "description": "theano.tensor",
+        "detail": "theano.tensor",
+        "documentation": {}
+    },
+    {
+        "label": "Catcher",
+        "importPath": "ple.games.catcher",
+        "description": "ple.games.catcher",
+        "isExtraImport": true,
+        "detail": "ple.games.catcher",
+        "documentation": {}
+    },
+    {
+        "label": "ExampleAgent",
+        "importPath": "example_support",
+        "description": "example_support",
+        "isExtraImport": true,
+        "detail": "example_support",
+        "documentation": {}
+    },
+    {
+        "label": "ReplayMemory",
+        "importPath": "example_support",
+        "description": "example_support",
+        "isExtraImport": true,
+        "detail": "example_support",
+        "documentation": {}
+    },
+    {
+        "label": "loop_play_forever",
+        "importPath": "example_support",
+        "description": "example_support",
+        "isExtraImport": true,
+        "detail": "example_support",
+        "documentation": {}
+    },
+    {
+        "label": "RaycastMaze",
+        "importPath": "ple.games.raycastmaze",
+        "description": "ple.games.raycastmaze",
+        "isExtraImport": true,
+        "detail": "ple.games.raycastmaze",
+        "documentation": {}
+    },
+    {
+        "label": "WaterWorld",
+        "importPath": "ple.games.waterworld",
+        "description": "ple.games.waterworld",
+        "isExtraImport": true,
+        "detail": "ple.games.waterworld",
+        "documentation": {}
+    },
+    {
+        "label": "pygame",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pygame",
+        "description": "pygame",
+        "detail": "pygame",
+        "documentation": {}
+    },
+    {
+        "label": "KEYDOWN",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "KEYUP",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_F15",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_a",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_d",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_w",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_s",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_w",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_s",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_w",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_a",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_s",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_d",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_w",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_a",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_d",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_s",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_w",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_a",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_d",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_s",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_w",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_a",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_s",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_d",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_w",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_a",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_s",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "K_d",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "OnBoard",
+        "importPath": "onBoard",
+        "description": "onBoard",
+        "isExtraImport": true,
+        "detail": "onBoard",
+        "documentation": {}
+    },
+    {
+        "label": "OnBoard",
+        "importPath": "onBoard",
+        "description": "onBoard",
+        "isExtraImport": true,
+        "detail": "onBoard",
+        "documentation": {}
+    },
+    {
+        "label": "vec2d",
+        "importPath": "ple.games.utils.vec2d",
+        "description": "ple.games.utils.vec2d",
+        "isExtraImport": true,
+        "detail": "ple.games.utils.vec2d",
+        "documentation": {}
+    },
+    {
+        "label": "percent_round_int",
+        "importPath": "ple.games.utils",
+        "description": "ple.games.utils",
+        "isExtraImport": true,
+        "detail": "ple.games.utils",
+        "documentation": {}
+    },
+    {
+        "label": "PyGameWrapper",
+        "importPath": "ple.games.base.pygamewrapper",
+        "description": "ple.games.base.pygamewrapper",
+        "isExtraImport": true,
+        "detail": "ple.games.base.pygamewrapper",
+        "documentation": {}
+    },
+    {
+        "label": "pdb",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pdb",
+        "description": "pdb",
+        "detail": "pdb",
+        "documentation": {}
+    },
+    {
+        "label": "copy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "copy",
+        "description": "copy",
+        "detail": "copy",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "nose",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "nose",
+        "description": "nose",
+        "detail": "nose",
+        "documentation": {}
+    },
+    {
         "label": "extensions",
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']\n# Add any paths that contain templates here, relative to this directory.\ntemplates_path = ['_templates']\n# The suffix(es) of source filenames.\n# You can specify multiple suffix as a list of string:\n#\n# source_suffix = ['.rst', '.md']\nsource_suffix = '.rst'\n# The master toctree document.\nmaster_doc = 'index'",
+        "peekOfCode": "extensions = [\"sphinx.ext.autodoc\", \"sphinx.ext.viewcode\"]\n# Add any paths that contain templates here, relative to this directory.\ntemplates_path = [\"_templates\"]\n# The suffix(es) of source filenames.\n# You can specify multiple suffix as a list of string:\n#\n# source_suffix = ['.rst', '.md']\nsource_suffix = \".rst\"\n# The master toctree document.\nmaster_doc = \"index\"",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -390,7 +933,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "templates_path = ['_templates']\n# The suffix(es) of source filenames.\n# You can specify multiple suffix as a list of string:\n#\n# source_suffix = ['.rst', '.md']\nsource_suffix = '.rst'\n# The master toctree document.\nmaster_doc = 'index'\n# General information about the project.\nproject = 'lorebook_generator_for_novelai'",
+        "peekOfCode": "templates_path = [\"_templates\"]\n# The suffix(es) of source filenames.\n# You can specify multiple suffix as a list of string:\n#\n# source_suffix = ['.rst', '.md']\nsource_suffix = \".rst\"\n# The master toctree document.\nmaster_doc = \"index\"\n# General information about the project.\nproject = \"lorebook_generator_for_novelai\"",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -399,7 +942,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "source_suffix = '.rst'\n# The master toctree document.\nmaster_doc = 'index'\n# General information about the project.\nproject = 'lorebook_generator_for_novelai'\ncopyright = \"2022, Graham G. Waters\"\nauthor = \"Graham G. Waters\"\n# The version info for the project you're documenting, acts as replacement\n# for |version| and |release|, also used in various other places throughout\n# the built documents.",
+        "peekOfCode": "source_suffix = \".rst\"\n# The master toctree document.\nmaster_doc = \"index\"\n# General information about the project.\nproject = \"lorebook_generator_for_novelai\"\ncopyright = \"2022, Graham G. Waters\"\nauthor = \"Graham G. Waters\"\n# The version info for the project you're documenting, acts as replacement\n# for |version| and |release|, also used in various other places throughout\n# the built documents.",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -408,7 +951,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "master_doc = 'index'\n# General information about the project.\nproject = 'lorebook_generator_for_novelai'\ncopyright = \"2022, Graham G. Waters\"\nauthor = \"Graham G. Waters\"\n# The version info for the project you're documenting, acts as replacement\n# for |version| and |release|, also used in various other places throughout\n# the built documents.\n#\n# The short X.Y version.",
+        "peekOfCode": "master_doc = \"index\"\n# General information about the project.\nproject = \"lorebook_generator_for_novelai\"\ncopyright = \"2022, Graham G. Waters\"\nauthor = \"Graham G. Waters\"\n# The version info for the project you're documenting, acts as replacement\n# for |version| and |release|, also used in various other places throughout\n# the built documents.\n#\n# The short X.Y version.",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -417,7 +960,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "project = 'lorebook_generator_for_novelai'\ncopyright = \"2022, Graham G. Waters\"\nauthor = \"Graham G. Waters\"\n# The version info for the project you're documenting, acts as replacement\n# for |version| and |release|, also used in various other places throughout\n# the built documents.\n#\n# The short X.Y version.\nversion = none.__version__\n# The full version, including alpha/beta/rc tags.",
+        "peekOfCode": "project = \"lorebook_generator_for_novelai\"\ncopyright = \"2022, Graham G. Waters\"\nauthor = \"Graham G. Waters\"\n# The version info for the project you're documenting, acts as replacement\n# for |version| and |release|, also used in various other places throughout\n# the built documents.\n#\n# The short X.Y version.\nversion = none.__version__\n# The full version, including alpha/beta/rc tags.",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -462,7 +1005,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "language = None\n# List of patterns, relative to source directory, that match files and\n# directories to ignore when looking for source files.\n# This patterns also effect to html_static_path and html_extra_path\nexclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']\n# The name of the Pygments (syntax highlighting) style to use.\npygments_style = 'sphinx'\n# If true, `todo` and `todoList` produce output, else they produce nothing.\ntodo_include_todos = False\n# -- Options for HTML output -------------------------------------------",
+        "peekOfCode": "language = None\n# List of patterns, relative to source directory, that match files and\n# directories to ignore when looking for source files.\n# This patterns also effect to html_static_path and html_extra_path\nexclude_patterns = [\"_build\", \"Thumbs.db\", \".DS_Store\"]\n# The name of the Pygments (syntax highlighting) style to use.\npygments_style = \"sphinx\"\n# If true, `todo` and `todoList` produce output, else they produce nothing.\ntodo_include_todos = False\n# -- Options for HTML output -------------------------------------------",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -471,7 +1014,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']\n# The name of the Pygments (syntax highlighting) style to use.\npygments_style = 'sphinx'\n# If true, `todo` and `todoList` produce output, else they produce nothing.\ntodo_include_todos = False\n# -- Options for HTML output -------------------------------------------\n# The theme to use for HTML and HTML Help pages.  See the documentation for\n# a list of builtin themes.\n#\nhtml_theme = 'alabaster'",
+        "peekOfCode": "exclude_patterns = [\"_build\", \"Thumbs.db\", \".DS_Store\"]\n# The name of the Pygments (syntax highlighting) style to use.\npygments_style = \"sphinx\"\n# If true, `todo` and `todoList` produce output, else they produce nothing.\ntodo_include_todos = False\n# -- Options for HTML output -------------------------------------------\n# The theme to use for HTML and HTML Help pages.  See the documentation for\n# a list of builtin themes.\n#\nhtml_theme = \"alabaster\"",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -480,7 +1023,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "pygments_style = 'sphinx'\n# If true, `todo` and `todoList` produce output, else they produce nothing.\ntodo_include_todos = False\n# -- Options for HTML output -------------------------------------------\n# The theme to use for HTML and HTML Help pages.  See the documentation for\n# a list of builtin themes.\n#\nhtml_theme = 'alabaster'\n# Theme options are theme-specific and customize the look and feel of a\n# theme further.  For a list of options available for each theme, see the",
+        "peekOfCode": "pygments_style = \"sphinx\"\n# If true, `todo` and `todoList` produce output, else they produce nothing.\ntodo_include_todos = False\n# -- Options for HTML output -------------------------------------------\n# The theme to use for HTML and HTML Help pages.  See the documentation for\n# a list of builtin themes.\n#\nhtml_theme = \"alabaster\"\n# Theme options are theme-specific and customize the look and feel of a\n# theme further.  For a list of options available for each theme, see the",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -489,7 +1032,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "todo_include_todos = False\n# -- Options for HTML output -------------------------------------------\n# The theme to use for HTML and HTML Help pages.  See the documentation for\n# a list of builtin themes.\n#\nhtml_theme = 'alabaster'\n# Theme options are theme-specific and customize the look and feel of a\n# theme further.  For a list of options available for each theme, see the\n# documentation.\n#",
+        "peekOfCode": "todo_include_todos = False\n# -- Options for HTML output -------------------------------------------\n# The theme to use for HTML and HTML Help pages.  See the documentation for\n# a list of builtin themes.\n#\nhtml_theme = \"alabaster\"\n# Theme options are theme-specific and customize the look and feel of a\n# theme further.  For a list of options available for each theme, see the\n# documentation.\n#",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -498,7 +1041,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "html_theme = 'alabaster'\n# Theme options are theme-specific and customize the look and feel of a\n# theme further.  For a list of options available for each theme, see the\n# documentation.\n#\n# html_theme_options = {}\n# Add any paths that contain custom static files (such as style sheets) here,\n# relative to this directory. They are copied after the builtin static files,\n# so a file named \"default.css\" will overwrite the builtin \"default.css\".\nhtml_static_path = ['_static']",
+        "peekOfCode": "html_theme = \"alabaster\"\n# Theme options are theme-specific and customize the look and feel of a\n# theme further.  For a list of options available for each theme, see the\n# documentation.\n#\n# html_theme_options = {}\n# Add any paths that contain custom static files (such as style sheets) here,\n# relative to this directory. They are copied after the builtin static files,\n# so a file named \"default.css\" will overwrite the builtin \"default.css\".\nhtml_static_path = [\"_static\"]",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -507,7 +1050,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "html_static_path = ['_static']\n# -- Options for HTMLHelp output ---------------------------------------\n# Output file base name for HTML help builder.\nhtmlhelp_basename = 'nonedoc'\n# -- Options for LaTeX output ------------------------------------------\nlatex_elements = {\n    # The paper size ('letterpaper' or 'a4paper').\n    #\n    # 'papersize': 'letterpaper',\n    # The font size ('10pt', '11pt' or '12pt').",
+        "peekOfCode": "html_static_path = [\"_static\"]\n# -- Options for HTMLHelp output ---------------------------------------\n# Output file base name for HTML help builder.\nhtmlhelp_basename = \"nonedoc\"\n# -- Options for LaTeX output ------------------------------------------\nlatex_elements = {\n    # The paper size ('letterpaper' or 'a4paper').\n    #\n    # 'papersize': 'letterpaper',\n    # The font size ('10pt', '11pt' or '12pt').",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -516,7 +1059,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "htmlhelp_basename = 'nonedoc'\n# -- Options for LaTeX output ------------------------------------------\nlatex_elements = {\n    # The paper size ('letterpaper' or 'a4paper').\n    #\n    # 'papersize': 'letterpaper',\n    # The font size ('10pt', '11pt' or '12pt').\n    #\n    # 'pointsize': '10pt',\n    # Additional stuff for the LaTeX preamble.",
+        "peekOfCode": "htmlhelp_basename = \"nonedoc\"\n# -- Options for LaTeX output ------------------------------------------\nlatex_elements = {\n    # The paper size ('letterpaper' or 'a4paper').\n    #\n    # 'papersize': 'letterpaper',\n    # The font size ('10pt', '11pt' or '12pt').\n    #\n    # 'pointsize': '10pt',\n    # Additional stuff for the LaTeX preamble.",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -534,7 +1077,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "latex_documents = [\n    (master_doc, 'none.tex',\n     'lorebook_generator_for_novelai Documentation',\n     'Graham G. Waters', 'manual'),\n]\n# -- Options for manual page output ------------------------------------\n# One entry per manual page. List of tuples\n# (source start file, name, description, authors, manual section).\nman_pages = [\n    (master_doc, 'none',",
+        "peekOfCode": "latex_documents = [\n    (\n        master_doc,\n        \"none.tex\",\n        \"lorebook_generator_for_novelai Documentation\",\n        \"Graham G. Waters\",\n        \"manual\",\n    ),\n]\n# -- Options for manual page output ------------------------------------",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -543,7 +1086,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "man_pages = [\n    (master_doc, 'none',\n     'lorebook_generator_for_novelai Documentation',\n     [author], 1)\n]\n# -- Options for Texinfo output ----------------------------------------\n# Grouping the document tree into Texinfo files. List of tuples\n# (source start file, target name, title, author,\n#  dir menu entry, description, category)\ntexinfo_documents = [",
+        "peekOfCode": "man_pages = [\n    (master_doc, \"none\", \"lorebook_generator_for_novelai Documentation\", [author], 1)\n]\n# -- Options for Texinfo output ----------------------------------------\n# Grouping the document tree into Texinfo files. List of tuples\n# (source start file, target name, title, author,\n#  dir menu entry, description, category)\ntexinfo_documents = [\n    (\n        master_doc,",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -552,7 +1095,7 @@
         "kind": 5,
         "importPath": "none.docs.conf",
         "description": "none.docs.conf",
-        "peekOfCode": "texinfo_documents = [\n    (master_doc, 'none',\n     'lorebook_generator_for_novelai Documentation',\n     author,\n     'none',\n     'One line description of project.',\n     'Miscellaneous'),\n]",
+        "peekOfCode": "texinfo_documents = [\n    (\n        master_doc,\n        \"none\",\n        \"lorebook_generator_for_novelai Documentation\",\n        author,\n        \"none\",\n        \"One line description of project.\",\n        \"Miscellaneous\",\n    ),",
         "detail": "none.docs.conf",
         "documentation": {}
     },
@@ -561,7 +1104,7 @@
         "kind": 2,
         "importPath": "none.none.cli",
         "description": "none.none.cli",
-        "peekOfCode": "def main(args=None):\n    \"\"\"Console script for none.\"\"\"\n    click.echo(\"Replace this message by putting your code into \"\n               \"none.cli.main\")\n    click.echo(\"See click documentation at https://click.palletsprojects.com/\")\n    return 0\nif __name__ == \"__main__\":\n    sys.exit(main())  # pragma: no cover",
+        "peekOfCode": "def main(args=None):\n    \"\"\"Console script for none.\"\"\"\n    click.echo(\"Replace this message by putting your code into \" \"none.cli.main\")\n    click.echo(\"See click documentation at https://click.palletsprojects.com/\")\n    return 0\nif __name__ == \"__main__\":\n    sys.exit(main())  # pragma: no cover",
         "detail": "none.none.cli",
         "documentation": {}
     },
@@ -579,7 +1122,7 @@
         "kind": 5,
         "importPath": "none.setup",
         "description": "none.setup",
-        "peekOfCode": "requirements = ['Click>=7.0', ]\ntest_requirements = [ ]\nsetup(\n    author=\"Graham G. Waters\",\n    author_email='graham.waters.business@gmail.com',\n    python_requires='>=3.6',\n    classifiers=[\n        'Development Status :: 2 - Pre-Alpha',\n        'Intended Audience :: Developers',\n        'License :: OSI Approved :: MIT License',",
+        "peekOfCode": "requirements = [\n    \"Click>=7.0\",\n]\ntest_requirements = []\nsetup(\n    author=\"Graham G. Waters\",\n    author_email=\"graham.waters.business@gmail.com\",\n    python_requires=\">=3.6\",\n    classifiers=[\n        \"Development Status :: 2 - Pre-Alpha\",",
         "detail": "none.setup",
         "documentation": {}
     },
@@ -588,7 +1131,7 @@
         "kind": 5,
         "importPath": "none.setup",
         "description": "none.setup",
-        "peekOfCode": "test_requirements = [ ]\nsetup(\n    author=\"Graham G. Waters\",\n    author_email='graham.waters.business@gmail.com',\n    python_requires='>=3.6',\n    classifiers=[\n        'Development Status :: 2 - Pre-Alpha',\n        'Intended Audience :: Developers',\n        'License :: OSI Approved :: MIT License',\n        'Natural Language :: English',",
+        "peekOfCode": "test_requirements = []\nsetup(\n    author=\"Graham G. Waters\",\n    author_email=\"graham.waters.business@gmail.com\",\n    python_requires=\">=3.6\",\n    classifiers=[\n        \"Development Status :: 2 - Pre-Alpha\",\n        \"Intended Audience :: Developers\",\n        \"License :: OSI Approved :: MIT License\",\n        \"Natural Language :: English\",",
         "detail": "none.setup",
         "documentation": {}
     },
@@ -773,6 +1316,15 @@
         "documentation": {}
     },
     {
+        "label": "extract_dates",
+        "kind": 2,
+        "importPath": "scripts.03_lorebook_from_wiki_withpulls",
+        "description": "scripts.03_lorebook_from_wiki_withpulls",
+        "peekOfCode": "def extract_dates(text_paragraph):\n    # using spacy, return a list of the dates in the text\n    dates = []\n    for sent in sent_tokenize(text_paragraph):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                if chunk.label() == \"DATE\":\n                    dates.append(\" \".join(c[0] for c in chunk.leaves()))\n    return dates\n# import the json file lorebook_example.lorebook",
+        "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
         "label": "examine_dates",
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
@@ -804,7 +1356,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                entities.append(\" \".join(c[0] for c in chunk.leaves()))\n    return entities\nperiod = 300  # 5 minutes\n@sleep_and_retry",
+        "peekOfCode": "def get_the_entities(content, label):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                if chunk.label() == label:\n                    entities.append(\" \".join(c[0] for c in chunk.leaves()))\n    return entities\nperiod = 300  # 5 minutes",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -932,6 +1484,33 @@
         "description": "scripts.03_lorebook_from_wiki_withpulls",
         "peekOfCode": "period = 300  # 5 minutes\n@sleep_and_retry\n# @limits(calls=15, period=period) # 15 calls per 5 minutes\ndef inner_generator(name, entries, entry_keywords, entry_names, bar):\n    if name != \"\":\n        try:\n            entry = wikipedia.search(name)[\n                0\n            ]  # get the first result from wikipedia, which is usually the most relevant\n            page = wikipedia.page(entry)",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
+        "documentation": {}
+    },
+    {
+        "label": "is_person",
+        "kind": 2,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "def is_person(word):\n    doc = nlp(word)\n    for ent in doc.ents:\n        if ent.label_ == \"PERSON\":\n            return True\n    return False\ndef is_country(word):\n    doc = nlp(word)\n    for ent in doc.ents:\n        if ent.label_ == \"GPE\":",
+        "detail": "scripts.04_get_relevant_subtopics",
+        "documentation": {}
+    },
+    {
+        "label": "is_country",
+        "kind": 2,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "def is_country(word):\n    doc = nlp(word)\n    for ent in doc.ents:\n        if ent.label_ == \"GPE\":\n            return True\n    return False\ndef is_organization(word):\n    doc = nlp(word)\n    for ent in doc.ents:\n        if ent.label_ == \"ORG\":",
+        "detail": "scripts.04_get_relevant_subtopics",
+        "documentation": {}
+    },
+    {
+        "label": "is_organization",
+        "kind": 2,
+        "importPath": "scripts.04_get_relevant_subtopics",
+        "description": "scripts.04_get_relevant_subtopics",
+        "peekOfCode": "def is_organization(word):\n    doc = nlp(word)\n    for ent in doc.ents:\n        if ent.label_ == \"ORG\":\n            return True\n    return False\nwarnings.filterwarnings(\n    \"ignore\"\n)  # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.\n# Global Variables Declaration ------------------------------------------------",
+        "detail": "scripts.04_get_relevant_subtopics",
         "documentation": {}
     },
     {
@@ -1139,6 +1718,933 @@
         "description": "scripts.helpers",
         "peekOfCode": "def generate_lorebook(\n    lore_dict, characters, entries, entry_names, ids, years_list, topics_scanner_list\n):\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    keys_dict = create_keys(\n        entries\n    )  # create the keys for each entry in the entries list\n    global context_config\n    for i in range(len(entries)):\n        # append blanks to lore_dict['entries'] to make room for the new entries",
         "detail": "scripts.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules[\"pygame\"]",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "sys.modules[\"pygame\"] = Mock()\nsys.modules[\"pygame.constants\"] = Mock()\n# so we can import ple\nsys.path.append(os.path.join(os.path.dirname(__name__), \"..\"))\nextensions = [\n    \"sphinx.ext.autodoc\",\n    \"sphinx.ext.autosummary\",\n    \"sphinx.ext.mathjax\",\n    \"sphinx.ext.viewcode\",\n    \"numpydoc\",",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules[\"pygame.constants\"]",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "sys.modules[\"pygame.constants\"] = Mock()\n# so we can import ple\nsys.path.append(os.path.join(os.path.dirname(__name__), \"..\"))\nextensions = [\n    \"sphinx.ext.autodoc\",\n    \"sphinx.ext.autosummary\",\n    \"sphinx.ext.mathjax\",\n    \"sphinx.ext.viewcode\",\n    \"numpydoc\",\n]",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "extensions",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "extensions = [\n    \"sphinx.ext.autodoc\",\n    \"sphinx.ext.autosummary\",\n    \"sphinx.ext.mathjax\",\n    \"sphinx.ext.viewcode\",\n    \"numpydoc\",\n]\nnumpydoc_show_class_members = False\n# Add any paths that contain templates here, relative to this directory.\ntemplates_path = [\"_templates\"]",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "numpydoc_show_class_members",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "numpydoc_show_class_members = False\n# Add any paths that contain templates here, relative to this directory.\ntemplates_path = [\"_templates\"]\nsource_suffix = \".rst\"\nmaster_doc = \"index\"\n# General information about the project.\nproject = \"PyGame Learning Environment\"\ncopyright = \"2016, Norman Tasfi\"\nauthor = \"Norman Tasfi\"\nimport ple",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "templates_path",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "templates_path = [\"_templates\"]\nsource_suffix = \".rst\"\nmaster_doc = \"index\"\n# General information about the project.\nproject = \"PyGame Learning Environment\"\ncopyright = \"2016, Norman Tasfi\"\nauthor = \"Norman Tasfi\"\nimport ple\nversion = \"0.1.dev1\"\n# The full version, including alpha/beta/rc tags.",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "source_suffix",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "source_suffix = \".rst\"\nmaster_doc = \"index\"\n# General information about the project.\nproject = \"PyGame Learning Environment\"\ncopyright = \"2016, Norman Tasfi\"\nauthor = \"Norman Tasfi\"\nimport ple\nversion = \"0.1.dev1\"\n# The full version, including alpha/beta/rc tags.\nrelease = \"0.1.dev1\"",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "master_doc",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "master_doc = \"index\"\n# General information about the project.\nproject = \"PyGame Learning Environment\"\ncopyright = \"2016, Norman Tasfi\"\nauthor = \"Norman Tasfi\"\nimport ple\nversion = \"0.1.dev1\"\n# The full version, including alpha/beta/rc tags.\nrelease = \"0.1.dev1\"\nlanguage = None",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "project",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "project = \"PyGame Learning Environment\"\ncopyright = \"2016, Norman Tasfi\"\nauthor = \"Norman Tasfi\"\nimport ple\nversion = \"0.1.dev1\"\n# The full version, including alpha/beta/rc tags.\nrelease = \"0.1.dev1\"\nlanguage = None\nexclude_patterns = [\"_build\", \"Thumbs.db\", \".DS_Store\"]\npygments_style = \"sphinx\"",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "copyright",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "copyright = \"2016, Norman Tasfi\"\nauthor = \"Norman Tasfi\"\nimport ple\nversion = \"0.1.dev1\"\n# The full version, including alpha/beta/rc tags.\nrelease = \"0.1.dev1\"\nlanguage = None\nexclude_patterns = [\"_build\", \"Thumbs.db\", \".DS_Store\"]\npygments_style = \"sphinx\"\ntodo_include_todos = False",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "author",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "author = \"Norman Tasfi\"\nimport ple\nversion = \"0.1.dev1\"\n# The full version, including alpha/beta/rc tags.\nrelease = \"0.1.dev1\"\nlanguage = None\nexclude_patterns = [\"_build\", \"Thumbs.db\", \".DS_Store\"]\npygments_style = \"sphinx\"\ntodo_include_todos = False\n# from lasagne!",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "version",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "version = \"0.1.dev1\"\n# The full version, including alpha/beta/rc tags.\nrelease = \"0.1.dev1\"\nlanguage = None\nexclude_patterns = [\"_build\", \"Thumbs.db\", \".DS_Store\"]\npygments_style = \"sphinx\"\ntodo_include_todos = False\n# from lasagne!\nif os.environ.get(\"READTHEDOCS\") != \"True\":\n    try:",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "release",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "release = \"0.1.dev1\"\nlanguage = None\nexclude_patterns = [\"_build\", \"Thumbs.db\", \".DS_Store\"]\npygments_style = \"sphinx\"\ntodo_include_todos = False\n# from lasagne!\nif os.environ.get(\"READTHEDOCS\") != \"True\":\n    try:\n        import sphinx_rtd_theme\n    except ImportError:",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "language",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "language = None\nexclude_patterns = [\"_build\", \"Thumbs.db\", \".DS_Store\"]\npygments_style = \"sphinx\"\ntodo_include_todos = False\n# from lasagne!\nif os.environ.get(\"READTHEDOCS\") != \"True\":\n    try:\n        import sphinx_rtd_theme\n    except ImportError:\n        pass  # assume we have sphinx >= 1.3",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "exclude_patterns",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "exclude_patterns = [\"_build\", \"Thumbs.db\", \".DS_Store\"]\npygments_style = \"sphinx\"\ntodo_include_todos = False\n# from lasagne!\nif os.environ.get(\"READTHEDOCS\") != \"True\":\n    try:\n        import sphinx_rtd_theme\n    except ImportError:\n        pass  # assume we have sphinx >= 1.3\n    else:",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "pygments_style",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "pygments_style = \"sphinx\"\ntodo_include_todos = False\n# from lasagne!\nif os.environ.get(\"READTHEDOCS\") != \"True\":\n    try:\n        import sphinx_rtd_theme\n    except ImportError:\n        pass  # assume we have sphinx >= 1.3\n    else:\n        html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "todo_include_todos",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "todo_include_todos = False\n# from lasagne!\nif os.environ.get(\"READTHEDOCS\") != \"True\":\n    try:\n        import sphinx_rtd_theme\n    except ImportError:\n        pass  # assume we have sphinx >= 1.3\n    else:\n        html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]\n    html_theme = \"sphinx_rtd_theme\"",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "html_static_path",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "html_static_path = [\"_static\"]\nhtmlhelp_basename = \"PyGameLearningEnvironmentdoc\"\nlatex_elements = {}\n# Grouping the document tree into LaTeX files. List of tuples\n# (source start file, target name, title,\n#  author, documentclass [howto, manual, or own class]).\nlatex_documents = [\n    (\n        master_doc,\n        \"PyGameLearningEnvironment.tex\",",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "htmlhelp_basename",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "htmlhelp_basename = \"PyGameLearningEnvironmentdoc\"\nlatex_elements = {}\n# Grouping the document tree into LaTeX files. List of tuples\n# (source start file, target name, title,\n#  author, documentclass [howto, manual, or own class]).\nlatex_documents = [\n    (\n        master_doc,\n        \"PyGameLearningEnvironment.tex\",\n        \"PyGame Learning Environment Documentation\",",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "latex_elements",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "latex_elements = {}\n# Grouping the document tree into LaTeX files. List of tuples\n# (source start file, target name, title,\n#  author, documentclass [howto, manual, or own class]).\nlatex_documents = [\n    (\n        master_doc,\n        \"PyGameLearningEnvironment.tex\",\n        \"PyGame Learning Environment Documentation\",\n        \"Norman Tasfi\",",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "latex_documents",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "latex_documents = [\n    (\n        master_doc,\n        \"PyGameLearningEnvironment.tex\",\n        \"PyGame Learning Environment Documentation\",\n        \"Norman Tasfi\",\n        \"manual\",\n    ),\n]\nman_pages = [",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "man_pages",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "man_pages = [\n    (\n        master_doc,\n        \"pygamelearningenvironment\",\n        \"PyGame Learning Environment Documentation\",\n        [author],\n        1,\n    )\n]\ntexinfo_documents = [",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "texinfo_documents",
+        "kind": 5,
+        "importPath": "src.ple.docs.conf",
+        "description": "src.ple.docs.conf",
+        "peekOfCode": "texinfo_documents = [\n    (\n        master_doc,\n        \"PyGameLearningEnvironment\",\n        \"PyGame Learning Environment Documentation\",\n        author,\n        \"PyGameLearningEnvironment\",\n        \"RL for all.\",\n        \"Miscellaneous\",\n    ),",
+        "detail": "src.ple.docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "NaiveAgent",
+        "kind": 6,
+        "importPath": "src.ple.examples.example_doom",
+        "description": "src.ple.examples.example_doom",
+        "peekOfCode": "class NaiveAgent:\n    \"\"\"\n    This is our naive agent. It picks actions at random!\n    \"\"\"\n    def __init__(self, actions):\n        self.actions = actions\n    def pickAction(self, reward, obs):\n        return self.actions[np.random.randint(0, len(self.actions))]\n###################################\ngame = Doom(scenario=\"take_cover\")",
+        "detail": "src.ple.examples.example_doom",
+        "documentation": {}
+    },
+    {
+        "label": "game",
+        "kind": 5,
+        "importPath": "src.ple.examples.example_doom",
+        "description": "src.ple.examples.example_doom",
+        "peekOfCode": "game = Doom(scenario=\"take_cover\")\nenv = PLE(game)\nagent = NaiveAgent(env.getActionSet())\nenv.init()\nreward = 0.0\nfor f in range(15000):\n    # if the game is over\n    if env.game_over():\n        env.reset_game()\n    action = agent.pickAction(reward, env.getScreenRGB())",
+        "detail": "src.ple.examples.example_doom",
+        "documentation": {}
+    },
+    {
+        "label": "env",
+        "kind": 5,
+        "importPath": "src.ple.examples.example_doom",
+        "description": "src.ple.examples.example_doom",
+        "peekOfCode": "env = PLE(game)\nagent = NaiveAgent(env.getActionSet())\nenv.init()\nreward = 0.0\nfor f in range(15000):\n    # if the game is over\n    if env.game_over():\n        env.reset_game()\n    action = agent.pickAction(reward, env.getScreenRGB())\n    reward = env.act(action)",
+        "detail": "src.ple.examples.example_doom",
+        "documentation": {}
+    },
+    {
+        "label": "agent",
+        "kind": 5,
+        "importPath": "src.ple.examples.example_doom",
+        "description": "src.ple.examples.example_doom",
+        "peekOfCode": "agent = NaiveAgent(env.getActionSet())\nenv.init()\nreward = 0.0\nfor f in range(15000):\n    # if the game is over\n    if env.game_over():\n        env.reset_game()\n    action = agent.pickAction(reward, env.getScreenRGB())\n    reward = env.act(action)\n    if f > 2000:",
+        "detail": "src.ple.examples.example_doom",
+        "documentation": {}
+    },
+    {
+        "label": "reward",
+        "kind": 5,
+        "importPath": "src.ple.examples.example_doom",
+        "description": "src.ple.examples.example_doom",
+        "peekOfCode": "reward = 0.0\nfor f in range(15000):\n    # if the game is over\n    if env.game_over():\n        env.reset_game()\n    action = agent.pickAction(reward, env.getScreenRGB())\n    reward = env.act(action)\n    if f > 2000:\n        env.display_screen = True\n        env.force_fps = False",
+        "detail": "src.ple.examples.example_doom",
+        "documentation": {}
+    },
+    {
+        "label": "ExampleAgent",
+        "kind": 6,
+        "importPath": "src.ple.examples.example_support",
+        "description": "src.ple.examples.example_support",
+        "peekOfCode": "class ExampleAgent():\n    \"\"\"\n        Implements a DQN-ish agent. It has replay memory and epsilon decay. It is missing model freezing. The models are sensitive to the parameters and if applied to other games must be tinkered with.\n    \"\"\"\n    def __init__(self, env, batch_size, num_frames,\n                 frame_skip, lr, discount, rng, optimizer=\"adam\", frame_dim=None):\n        self.env = env\n        self.batch_size = batch_size\n        self.num_frames = num_frames\n        self.frame_skip = frame_skip",
+        "detail": "src.ple.examples.example_support",
+        "documentation": {}
+    },
+    {
+        "label": "ReplayMemory",
+        "kind": 6,
+        "importPath": "src.ple.examples.example_support",
+        "description": "src.ple.examples.example_support",
+        "peekOfCode": "class ReplayMemory():\n    def __init__(self, max_size, min_size):\n        self.min_replay_size = min_size\n        self.memory = deque(maxlen=max_size)\n    def __len__(self):\n        return len(self.memory)\n    def add(self, transition):\n        self.memory.append(transition)\n    def train_agent_batch(self, agent):\n        if len(self.memory) > self.min_replay_size:",
+        "detail": "src.ple.examples.example_support",
+        "documentation": {}
+    },
+    {
+        "label": "loop_play_forever",
+        "kind": 2,
+        "importPath": "src.ple.examples.example_support",
+        "description": "src.ple.examples.example_support",
+        "peekOfCode": "def loop_play_forever(env, agent):\n    # our forever play loop\n    try:\n        # slow it down\n        env.display_screen = True\n        env.force_fps = False\n        while True:\n            agent.start_episode()\n            episode_reward = 0.0\n            while env.game_over() == False:",
+        "detail": "src.ple.examples.example_support",
+        "documentation": {}
+    },
+    {
+        "label": "Agent",
+        "kind": 6,
+        "importPath": "src.ple.examples.keras_nonvis",
+        "description": "src.ple.examples.keras_nonvis",
+        "peekOfCode": "class Agent(ExampleAgent):\n    \"\"\"\n        Our agent takes 1D inputs which are flattened.\n        We define a full connected model below.\n    \"\"\"\n    def __init__(self, *args, **kwargs):\n        ExampleAgent.__init__(self, *args, **kwargs)\n        self.state_dim = self.env.getGameStateDims()\n        self.state_shape = np.prod((num_frames,) + self.state_dim)\n        self.input_shape = (batch_size, self.state_shape)",
+        "detail": "src.ple.examples.keras_nonvis",
+        "documentation": {}
+    },
+    {
+        "label": "nv_state_preprocessor",
+        "kind": 2,
+        "importPath": "src.ple.examples.keras_nonvis",
+        "description": "src.ple.examples.keras_nonvis",
+        "peekOfCode": "def nv_state_preprocessor(state):\n    \"\"\"\n        This preprocesses our state from PLE. We rescale the values to be between\n        0,1 and -1,1.\n    \"\"\"\n    # taken by inspection of source code. Better way is on its way!\n    max_values = np.array([128.0, 20.0, 128.0, 128.0])\n    state = np.array([state.values()]) / max_values\n    return state.flatten()\nif __name__ == \"__main__\":",
+        "detail": "src.ple.examples.keras_nonvis",
+        "documentation": {}
+    },
+    {
+        "label": "NaiveAgent",
+        "kind": 6,
+        "importPath": "src.ple.examples.random_agent",
+        "description": "src.ple.examples.random_agent",
+        "peekOfCode": "class NaiveAgent:\n    \"\"\"\n    This is our naive agent. It picks actions at random!\n    \"\"\"\n    def __init__(self, actions):\n        self.actions = actions\n    def pickAction(self, reward, obs):\n        return self.actions[np.random.randint(0, len(self.actions))]\n###################################\ngame = RaycastMaze(map_size=6)  # create our game",
+        "detail": "src.ple.examples.random_agent",
+        "documentation": {}
+    },
+    {
+        "label": "game",
+        "kind": 5,
+        "importPath": "src.ple.examples.random_agent",
+        "description": "src.ple.examples.random_agent",
+        "peekOfCode": "game = RaycastMaze(map_size=6)  # create our game\nfps = 30  # fps we want to run at\nframe_skip = 2\nnum_steps = 1\nforce_fps = False  # slower speed\ndisplay_screen = True\nreward = 0.0\nmax_noops = 20\nnb_frames = 15000\n# make a PLE instance.",
+        "detail": "src.ple.examples.random_agent",
+        "documentation": {}
+    },
+    {
+        "label": "fps",
+        "kind": 5,
+        "importPath": "src.ple.examples.random_agent",
+        "description": "src.ple.examples.random_agent",
+        "peekOfCode": "fps = 30  # fps we want to run at\nframe_skip = 2\nnum_steps = 1\nforce_fps = False  # slower speed\ndisplay_screen = True\nreward = 0.0\nmax_noops = 20\nnb_frames = 15000\n# make a PLE instance.\np = PLE(",
+        "detail": "src.ple.examples.random_agent",
+        "documentation": {}
+    },
+    {
+        "label": "frame_skip",
+        "kind": 5,
+        "importPath": "src.ple.examples.random_agent",
+        "description": "src.ple.examples.random_agent",
+        "peekOfCode": "frame_skip = 2\nnum_steps = 1\nforce_fps = False  # slower speed\ndisplay_screen = True\nreward = 0.0\nmax_noops = 20\nnb_frames = 15000\n# make a PLE instance.\np = PLE(\n    game,",
+        "detail": "src.ple.examples.random_agent",
+        "documentation": {}
+    },
+    {
+        "label": "num_steps",
+        "kind": 5,
+        "importPath": "src.ple.examples.random_agent",
+        "description": "src.ple.examples.random_agent",
+        "peekOfCode": "num_steps = 1\nforce_fps = False  # slower speed\ndisplay_screen = True\nreward = 0.0\nmax_noops = 20\nnb_frames = 15000\n# make a PLE instance.\np = PLE(\n    game,\n    fps=fps,",
+        "detail": "src.ple.examples.random_agent",
+        "documentation": {}
+    },
+    {
+        "label": "force_fps",
+        "kind": 5,
+        "importPath": "src.ple.examples.random_agent",
+        "description": "src.ple.examples.random_agent",
+        "peekOfCode": "force_fps = False  # slower speed\ndisplay_screen = True\nreward = 0.0\nmax_noops = 20\nnb_frames = 15000\n# make a PLE instance.\np = PLE(\n    game,\n    fps=fps,\n    frame_skip=frame_skip,",
+        "detail": "src.ple.examples.random_agent",
+        "documentation": {}
+    },
+    {
+        "label": "display_screen",
+        "kind": 5,
+        "importPath": "src.ple.examples.random_agent",
+        "description": "src.ple.examples.random_agent",
+        "peekOfCode": "display_screen = True\nreward = 0.0\nmax_noops = 20\nnb_frames = 15000\n# make a PLE instance.\np = PLE(\n    game,\n    fps=fps,\n    frame_skip=frame_skip,\n    num_steps=num_steps,",
+        "detail": "src.ple.examples.random_agent",
+        "documentation": {}
+    },
+    {
+        "label": "reward",
+        "kind": 5,
+        "importPath": "src.ple.examples.random_agent",
+        "description": "src.ple.examples.random_agent",
+        "peekOfCode": "reward = 0.0\nmax_noops = 20\nnb_frames = 15000\n# make a PLE instance.\np = PLE(\n    game,\n    fps=fps,\n    frame_skip=frame_skip,\n    num_steps=num_steps,\n    force_fps=force_fps,",
+        "detail": "src.ple.examples.random_agent",
+        "documentation": {}
+    },
+    {
+        "label": "max_noops",
+        "kind": 5,
+        "importPath": "src.ple.examples.random_agent",
+        "description": "src.ple.examples.random_agent",
+        "peekOfCode": "max_noops = 20\nnb_frames = 15000\n# make a PLE instance.\np = PLE(\n    game,\n    fps=fps,\n    frame_skip=frame_skip,\n    num_steps=num_steps,\n    force_fps=force_fps,\n    display_screen=display_screen,",
+        "detail": "src.ple.examples.random_agent",
+        "documentation": {}
+    },
+    {
+        "label": "nb_frames",
+        "kind": 5,
+        "importPath": "src.ple.examples.random_agent",
+        "description": "src.ple.examples.random_agent",
+        "peekOfCode": "nb_frames = 15000\n# make a PLE instance.\np = PLE(\n    game,\n    fps=fps,\n    frame_skip=frame_skip,\n    num_steps=num_steps,\n    force_fps=force_fps,\n    display_screen=display_screen,\n)",
+        "detail": "src.ple.examples.random_agent",
+        "documentation": {}
+    },
+    {
+        "label": "p",
+        "kind": 5,
+        "importPath": "src.ple.examples.random_agent",
+        "description": "src.ple.examples.random_agent",
+        "peekOfCode": "p = PLE(\n    game,\n    fps=fps,\n    frame_skip=frame_skip,\n    num_steps=num_steps,\n    force_fps=force_fps,\n    display_screen=display_screen,\n)\n# our Naive agent!\nagent = NaiveAgent(p.getActionSet())",
+        "detail": "src.ple.examples.random_agent",
+        "documentation": {}
+    },
+    {
+        "label": "agent",
+        "kind": 5,
+        "importPath": "src.ple.examples.random_agent",
+        "description": "src.ple.examples.random_agent",
+        "peekOfCode": "agent = NaiveAgent(p.getActionSet())\n# init agent and game.\np.init()\n# lets do a random number of NOOP's\nfor i in range(np.random.randint(0, max_noops)):\n    reward = p.act(p.NOOP)\n# start our training loop\nfor f in range(nb_frames):\n    # if the game is over\n    if p.game_over():",
+        "detail": "src.ple.examples.random_agent",
+        "documentation": {}
+    },
+    {
+        "label": "rewards",
+        "kind": 5,
+        "importPath": "src.ple.examples.scaling_rewards",
+        "description": "src.ple.examples.scaling_rewards",
+        "peekOfCode": "rewards = {\n    \"tick\": -0.01,  # each time the game steps forward in time the agent gets -0.1\n    \"positive\": 1.0,  # each time the agent collects a green circle\n    \"negative\": -5.0,  # each time the agent bumps into a red circle\n}\n# make a PLE instance.\n# use lower fps so we can see whats happening a little easier\ngame = WaterWorld(width=256, height=256, num_creeps=8)\np = PLE(game, fps=15, force_fps=False, display_screen=True,\n        reward_values=rewards)",
+        "detail": "src.ple.examples.scaling_rewards",
+        "documentation": {}
+    },
+    {
+        "label": "game",
+        "kind": 5,
+        "importPath": "src.ple.examples.scaling_rewards",
+        "description": "src.ple.examples.scaling_rewards",
+        "peekOfCode": "game = WaterWorld(width=256, height=256, num_creeps=8)\np = PLE(game, fps=15, force_fps=False, display_screen=True,\n        reward_values=rewards)\n# we pass in the rewards and PLE will adjust the game for us\np.init()\nactions = p.getActionSet()\nfor i in range(1000):\n    if p.game_over():\n        p.reset_game()\n    action = actions[np.random.randint(0, len(actions))]  # random actions",
+        "detail": "src.ple.examples.scaling_rewards",
+        "documentation": {}
+    },
+    {
+        "label": "p",
+        "kind": 5,
+        "importPath": "src.ple.examples.scaling_rewards",
+        "description": "src.ple.examples.scaling_rewards",
+        "peekOfCode": "p = PLE(game, fps=15, force_fps=False, display_screen=True,\n        reward_values=rewards)\n# we pass in the rewards and PLE will adjust the game for us\np.init()\nactions = p.getActionSet()\nfor i in range(1000):\n    if p.game_over():\n        p.reset_game()\n    action = actions[np.random.randint(0, len(actions))]  # random actions\n    reward = p.act(action)",
+        "detail": "src.ple.examples.scaling_rewards",
+        "documentation": {}
+    },
+    {
+        "label": "actions",
+        "kind": 5,
+        "importPath": "src.ple.examples.scaling_rewards",
+        "description": "src.ple.examples.scaling_rewards",
+        "peekOfCode": "actions = p.getActionSet()\nfor i in range(1000):\n    if p.game_over():\n        p.reset_game()\n    action = actions[np.random.randint(0, len(actions))]  # random actions\n    reward = p.act(action)\n    print \"Score: {:0.3f} | Reward: {:0.3f} \".format(p.score(), reward)",
+        "detail": "src.ple.examples.scaling_rewards",
+        "documentation": {}
+    },
+    {
+        "label": "DoomWrapper",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.base.doomwrapper",
+        "description": "src.ple.ple.games.base.doomwrapper",
+        "peekOfCode": "class DoomWrapper(object):\n    def __init__(self, width, height, cfg_file, scenario_file):\n        self.doom_game = doom_py.DoomGame()\n        self._loader = doom_py.Loader()\n        # make most sense to keep cfg and wads together.\n        # which is why we ship them all together\n        self.cfg_file = cfg_file\n        self.scenario_file = self._loader.get_scenario_path(scenario_file)\n        self.freedom_file = self._loader.get_freedoom_path()\n        self.vizdoom_file = self._loader.get_vizdoom_path()",
+        "detail": "src.ple.ple.games.base.doomwrapper",
+        "documentation": {}
+    },
+    {
+        "label": "DoomWindow",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.base.doomwrapper",
+        "description": "src.ple.ple.games.base.doomwrapper",
+        "peekOfCode": "class DoomWindow(object):\n    def __init__(self, width, height):\n        self.width = width\n        self.height = height\n        pygame.init()\n        self.window = pygame.display.set_mode(\n            (self.width, self.height), pygame.DOUBLEBUF, 24\n        )\n        pygame.display.set_caption(\"PLE ViZDoom\")\n    def show_frame(self, frame):",
+        "detail": "src.ple.ple.games.base.doomwrapper",
+        "documentation": {}
+    },
+    {
+        "label": "PyGameWrapper",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.base.pygamewrapper",
+        "description": "src.ple.ple.games.base.pygamewrapper",
+        "peekOfCode": "class PyGameWrapper(object):\n    \"\"\"PyGameWrapper  class\n    ple.games.base.PyGameWrapper(width, height, actions={})\n    This :class:`PyGameWrapper` class sets methods all games require. It should be subclassed when creating new games.\n    Parameters\n    ----------\n    width: int\n        The width of the game screen.\n    height: int\n        The height of the game screen.",
+        "detail": "src.ple.ple.games.base.pygamewrapper",
+        "documentation": {}
+    },
+    {
+        "label": "Doom",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.doom.doom",
+        "description": "src.ple.ple.games.doom.doom",
+        "peekOfCode": "class Doom(DoomWrapper):\n    def __init__(self, scenario=\"basic\"):\n        cfg_file = \"assets/cfg/%s.cfg\" % scenario\n        scenario_file = \"%s.wad\" % scenario\n        width = 320\n        height = 240\n        package_directory = os.path.dirname(os.path.abspath(__file__))\n        cfg_file = os.path.join(package_directory, cfg_file)\n        DoomWrapper.__init__(self, width, height, cfg_file, scenario_file)",
+        "detail": "src.ple.ple.games.doom.doom",
+        "documentation": {}
+    },
+    {
+        "label": "Board",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.monsterkong.board",
+        "description": "src.ple.ple.games.monsterkong.board",
+        "peekOfCode": "class Board(object):\n    \"\"\"\n    This class defines our gameboard.\n    A gameboard contains everthing related to our game on it like our characters, walls, ladders, coins etc\n    The generation of the level also happens in this class.\n    \"\"\"\n    def __init__(self, width, height, rewards, rng, _dir):\n        self.__width = width\n        self.__actHeight = height\n        self.__height = self.__actHeight + 10",
+        "detail": "src.ple.ple.games.monsterkong.board",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "src.ple.ple.games.monsterkong.board",
+        "description": "src.ple.ple.games.monsterkong.board",
+        "peekOfCode": "__author__ = \"Batchu Vishal\"\nimport pygame\nimport math\nimport sys\nimport os\nfrom .person import Person\nfrom .onBoard import OnBoard\nfrom .coin import Coin\nfrom .player import Player\nfrom .fireball import Fireball",
+        "detail": "src.ple.ple.games.monsterkong.board",
+        "documentation": {}
+    },
+    {
+        "label": "Coin",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.monsterkong.coin",
+        "description": "src.ple.ple.games.monsterkong.coin",
+        "peekOfCode": "class Coin(OnBoard):\n    \"\"\"\n    This class defines all our coins.\n    Each coin will increase our score by an amount of 'value'\n    We animate each coin with 5 images\n    A coin inherits from the OnBoard class since we will use it as an inanimate object on our board.\n    \"\"\"\n    def __init__(self, raw_image, position, _dir):\n        OnBoard.__init__(self, raw_image, position)\n        self.__coinAnimState = 0  # Initialize animation state to 0",
+        "detail": "src.ple.ple.games.monsterkong.coin",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "src.ple.ple.games.monsterkong.coin",
+        "description": "src.ple.ple.games.monsterkong.coin",
+        "peekOfCode": "__author__ = \"Batchu Vishal\"\nimport pygame\nimport os\nfrom .onBoard import OnBoard\nclass Coin(OnBoard):\n    \"\"\"\n    This class defines all our coins.\n    Each coin will increase our score by an amount of 'value'\n    We animate each coin with 5 images\n    A coin inherits from the OnBoard class since we will use it as an inanimate object on our board.",
+        "detail": "src.ple.ple.games.monsterkong.coin",
+        "documentation": {}
+    },
+    {
+        "label": "Fireball",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.monsterkong.fireball",
+        "description": "src.ple.ple.games.monsterkong.fireball",
+        "peekOfCode": "class Fireball(OnBoard):\n    def __init__(self, raw_image, position, index, speed, rng, dir):\n        super(Fireball, self).__init__(raw_image, position)\n        # Set the fireball direction randomly\n        self.rng = rng\n        self.__direction = int(math.floor(self.rng.rand() * 100)) % 2\n        self.index = index\n        self.wallsBelow = []\n        self.laddersBelow = []\n        self.IMAGES = {",
+        "detail": "src.ple.ple.games.monsterkong.fireball",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "src.ple.ple.games.monsterkong.fireball",
+        "description": "src.ple.ple.games.monsterkong.fireball",
+        "peekOfCode": "__author__ = \"Erilyth\"\nimport pygame\nimport math\nimport os\nfrom .onBoard import OnBoard\n\"\"\"\nThis class defines all our fireballs.\nA fireball inherits from the OnBoard class since we will use it as an inanimate object on our board.\nEach fireball can check for collisions in order to decide when to turn and when they hit a player.\n\"\"\"",
+        "detail": "src.ple.ple.games.monsterkong.fireball",
+        "documentation": {}
+    },
+    {
+        "label": "Ladder",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.monsterkong.ladder",
+        "description": "src.ple.ple.games.monsterkong.ladder",
+        "peekOfCode": "class Ladder(OnBoard):\n    def __init__(self, raw_image, position):\n        super(Ladder, self).__init__(raw_image, position)\n    # Update the ladder image\n    def updateImage(self, raw_image):\n        self.image = raw_image\n        self.image = pygame.transform.scale(self.image, (15, 15))",
+        "detail": "src.ple.ple.games.monsterkong.ladder",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "src.ple.ple.games.monsterkong.ladder",
+        "description": "src.ple.ple.games.monsterkong.ladder",
+        "peekOfCode": "__author__ = \"Batchu Vishal\"\nimport pygame\nfrom onBoard import OnBoard\n\"\"\"\nThis class defines all our ladders in the game.\nCurrently not much is done here, but we can add features such as ladder climb sounds etc here\n\"\"\"\nclass Ladder(OnBoard):\n    def __init__(self, raw_image, position):\n        super(Ladder, self).__init__(raw_image, position)",
+        "detail": "src.ple.ple.games.monsterkong.ladder",
+        "documentation": {}
+    },
+    {
+        "label": "MonsterPerson",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.monsterkong.monsterPerson",
+        "description": "src.ple.ple.games.monsterkong.monsterPerson",
+        "peekOfCode": "class MonsterPerson(Person):\n    def __init__(self, raw_image, position, rng, dir, width=15, height=15):\n        super(MonsterPerson, self).__init__(raw_image, position, width, height)\n        self.__speed = 2\n        self.rng = rng\n        self.__direction = int(self.rng.rand() * 100) % 2\n        self.__cycles = 0\n        self.__stopDuration = 0\n        self.IMAGES = {\n            \"monster0\": pygame.image.load(",
+        "detail": "src.ple.ple.games.monsterkong.monsterPerson",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "src.ple.ple.games.monsterkong.monsterPerson",
+        "description": "src.ple.ple.games.monsterkong.monsterPerson",
+        "peekOfCode": "__author__ = \"Erilyth\"\nimport pygame\nimport os\nfrom .person import Person\n\"\"\"\nThis class defines all the Monsters present in our game.\nEach Monster can only move on the top floor and cannot move vertically.\n\"\"\"\nclass MonsterPerson(Person):\n    def __init__(self, raw_image, position, rng, dir, width=15, height=15):",
+        "detail": "src.ple.ple.games.monsterkong.monsterPerson",
+        "documentation": {}
+    },
+    {
+        "label": "OnBoard",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.monsterkong.onBoard",
+        "description": "src.ple.ple.games.monsterkong.onBoard",
+        "peekOfCode": "class OnBoard(pygame.sprite.Sprite):\n    \"\"\"\n    This class defines all inanimate objects that we need to display on our board.\n    Any object that is on the board and not a person, comes under this class (ex. Coins,Ladders,Walls etc)\n    Sets up the image and its position for all its child classes.\n    \"\"\"\n    def __init__(self, raw_image, position):\n        pygame.sprite.Sprite.__init__(self)\n        self.__position = position\n        self.image = raw_image",
+        "detail": "src.ple.ple.games.monsterkong.onBoard",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "src.ple.ple.games.monsterkong.onBoard",
+        "description": "src.ple.ple.games.monsterkong.onBoard",
+        "peekOfCode": "__author__ = \"Batchu Vishal\"\nimport pygame\nclass OnBoard(pygame.sprite.Sprite):\n    \"\"\"\n    This class defines all inanimate objects that we need to display on our board.\n    Any object that is on the board and not a person, comes under this class (ex. Coins,Ladders,Walls etc)\n    Sets up the image and its position for all its child classes.\n    \"\"\"\n    def __init__(self, raw_image, position):\n        pygame.sprite.Sprite.__init__(self)",
+        "detail": "src.ple.ple.games.monsterkong.onBoard",
+        "documentation": {}
+    },
+    {
+        "label": "Person",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.monsterkong.person",
+        "description": "src.ple.ple.games.monsterkong.person",
+        "peekOfCode": "class Person(pygame.sprite.Sprite):\n    def __init__(self, raw_image, position, width, height):\n        super(Person, self).__init__()\n        self.width = width\n        self.height = height\n        self.__position = position\n        self.image = raw_image\n        self.image = pygame.transform.scale(self.image, (width, height)).convert_alpha()\n        self.rect = self.image.get_rect()\n        self.rect.center = self.__position",
+        "detail": "src.ple.ple.games.monsterkong.person",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "src.ple.ple.games.monsterkong.person",
+        "description": "src.ple.ple.games.monsterkong.person",
+        "peekOfCode": "__author__ = \"Batchu Vishal\"\nimport pygame\n\"\"\"\nThis class defines all living things in the game, ex.Donkey Kong, Player etc\nEach of these objects can move in any direction specified.\n\"\"\"\nclass Person(pygame.sprite.Sprite):\n    def __init__(self, raw_image, position, width, height):\n        super(Person, self).__init__()\n        self.width = width",
+        "detail": "src.ple.ple.games.monsterkong.person",
+        "documentation": {}
+    },
+    {
+        "label": "Player",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.monsterkong.player",
+        "description": "src.ple.ple.games.monsterkong.player",
+        "peekOfCode": "class Player(Person):\n    def __init__(self, raw_image, position, width, height):\n        super(Player, self).__init__(raw_image, position, width, height)\n        self.isJumping = 0\n        self.onLadder = 0\n        self.currentJumpSpeed = 0\n        self.__gravity = 0.85  # Gravity affecting the jump velocity of the player\n        self.__speed = 5  # Movement speed of the player\n    # Getters and Setters\n    def getSpeed(self):",
+        "detail": "src.ple.ple.games.monsterkong.player",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "src.ple.ple.games.monsterkong.player",
+        "description": "src.ple.ple.games.monsterkong.player",
+        "peekOfCode": "__author__ = \"Batchu Vishal\"\nfrom .person import Person\n\"\"\"\nThis class defines our player.\nIt inherits from the Person class since a Player is also a person.\nWe specialize the person by adding capabilities such as jump etc..\n\"\"\"\nclass Player(Person):\n    def __init__(self, raw_image, position, width, height):\n        super(Player, self).__init__(raw_image, position, width, height)",
+        "detail": "src.ple.ple.games.monsterkong.player",
+        "documentation": {}
+    },
+    {
+        "label": "Wall",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.monsterkong.wall",
+        "description": "src.ple.ple.games.monsterkong.wall",
+        "peekOfCode": "class Wall(OnBoard):\n    def __init__(self, raw_image, position):\n        super(Wall, self).__init__(raw_image, position)\n    # Update the ladder image\n    def updateImage(self, raw_image):\n        self.image = raw_image\n        self.image = pygame.transform.scale(self.image, (15, 15))",
+        "detail": "src.ple.ple.games.monsterkong.wall",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "src.ple.ple.games.monsterkong.wall",
+        "description": "src.ple.ple.games.monsterkong.wall",
+        "peekOfCode": "__author__ = \"Batchu Vishal\"\nfrom onBoard import OnBoard\nimport pygame\n\"\"\"\nThis class defines all our walls in the game.\nCurrently not much is done here, but we can add traps to certain walls such as spiked walls etc to damage the player\n\"\"\"\nclass Wall(OnBoard):\n    def __init__(self, raw_image, position):\n        super(Wall, self).__init__(raw_image, position)",
+        "detail": "src.ple.ple.games.monsterkong.wall",
+        "documentation": {}
+    },
+    {
+        "label": "vec2d",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.utils.vec2d",
+        "description": "src.ple.ple.games.utils.vec2d",
+        "peekOfCode": "class vec2d:\n    def __init__(self, pos):\n        self.x = pos[0]\n        self.y = pos[1]\n    def __add__(self, o):\n        x = self.x + o.x\n        y = self.y + o.y\n        return vec2d((x, y))\n    def __eq__(self, o):\n        return self.x == o.x and self.y == o.y",
+        "detail": "src.ple.ple.games.utils.vec2d",
+        "documentation": {}
+    },
+    {
+        "label": "Paddle",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.catcher",
+        "description": "src.ple.ple.games.catcher",
+        "peekOfCode": "class Paddle(pygame.sprite.Sprite):\n    def __init__(self, speed, width, height, SCREEN_WIDTH, SCREEN_HEIGHT):\n        self.speed = speed\n        self.width = width\n        self.SCREEN_WIDTH = SCREEN_WIDTH\n        self.vel = 0.0\n        pygame.sprite.Sprite.__init__(self)\n        image = pygame.Surface((width, height))\n        image.fill((0, 0, 0, 0))\n        image.set_colorkey((0, 0, 0))",
+        "detail": "src.ple.ple.games.catcher",
+        "documentation": {}
+    },
+    {
+        "label": "Fruit",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.catcher",
+        "description": "src.ple.ple.games.catcher",
+        "peekOfCode": "class Fruit(pygame.sprite.Sprite):\n    def __init__(self, speed, size, SCREEN_WIDTH, SCREEN_HEIGHT, rng):\n        self.speed = speed\n        self.size = size\n        self.SCREEN_WIDTH = SCREEN_WIDTH\n        self.SCREEN_HEIGHT = SCREEN_HEIGHT\n        self.rng = rng\n        pygame.sprite.Sprite.__init__(self)\n        image = pygame.Surface((size, size))\n        image.fill((0, 0, 0, 0))",
+        "detail": "src.ple.ple.games.catcher",
+        "documentation": {}
+    },
+    {
+        "label": "Catcher",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.catcher",
+        "description": "src.ple.ple.games.catcher",
+        "peekOfCode": "class Catcher(base.PyGameWrapper):\n    \"\"\"\n    Based on `Eder Santana`_'s game idea.\n    .. _`Eder Santana`: https://github.com/EderSantana\n    Parameters\n    ----------\n    width : int\n        Screen width.\n    height : int\n        Screen height, recommended to be same dimension as width.",
+        "detail": "src.ple.ple.games.catcher",
+        "documentation": {}
+    },
+    {
+        "label": "Block",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.pixelcopter",
+        "description": "src.ple.ple.games.pixelcopter",
+        "peekOfCode": "class Block(pygame.sprite.Sprite):\n    def __init__(self, pos_init, speed, SCREEN_WIDTH, SCREEN_HEIGHT):\n        pygame.sprite.Sprite.__init__(self)\n        self.pos = vec2d(pos_init)\n        self.width = int(SCREEN_WIDTH * 0.1)\n        self.height = int(SCREEN_HEIGHT * 0.2)\n        self.speed = speed\n        self.SCREEN_WIDTH = SCREEN_WIDTH\n        self.SCREEN_HEIGHT = SCREEN_HEIGHT\n        image = pygame.Surface((self.width, self.height))",
+        "detail": "src.ple.ple.games.pixelcopter",
+        "documentation": {}
+    },
+    {
+        "label": "HelicopterPlayer",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.pixelcopter",
+        "description": "src.ple.ple.games.pixelcopter",
+        "peekOfCode": "class HelicopterPlayer(pygame.sprite.Sprite):\n    def __init__(self, speed, SCREEN_WIDTH, SCREEN_HEIGHT):\n        pygame.sprite.Sprite.__init__(self)\n        pos_init = (int(SCREEN_WIDTH * 0.35), SCREEN_HEIGHT / 2)\n        self.pos = vec2d(pos_init)\n        self.speed = speed\n        self.climb_speed = speed * -0.875  # -0.0175\n        self.fall_speed = speed * 0.09  # 0.0019\n        self.momentum = 0\n        self.width = SCREEN_WIDTH * 0.05",
+        "detail": "src.ple.ple.games.pixelcopter",
+        "documentation": {}
+    },
+    {
+        "label": "Terrain",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.pixelcopter",
+        "description": "src.ple.ple.games.pixelcopter",
+        "peekOfCode": "class Terrain(pygame.sprite.Sprite):\n    def __init__(self, pos_init, speed, SCREEN_WIDTH, SCREEN_HEIGHT):\n        pygame.sprite.Sprite.__init__(self)\n        self.pos = vec2d(pos_init)\n        self.speed = speed\n        self.width = int(SCREEN_WIDTH * 0.1)\n        image = pygame.Surface((self.width, SCREEN_HEIGHT * 1.5))\n        image.fill((0, 0, 0, 0))\n        image.set_colorkey((0, 0, 0))\n        color = (120, 240, 80)",
+        "detail": "src.ple.ple.games.pixelcopter",
+        "documentation": {}
+    },
+    {
+        "label": "Pixelcopter",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.pixelcopter",
+        "description": "src.ple.ple.games.pixelcopter",
+        "peekOfCode": "class Pixelcopter(PyGameWrapper):\n    \"\"\"\n    Parameters\n    ----------\n    width : int\n        Screen width.\n    height : int\n        Screen height, recommended to be same dimension as width.\n    \"\"\"\n    def __init__(self, width=48, height=48):",
+        "detail": "src.ple.ple.games.pixelcopter",
+        "documentation": {}
+    },
+    {
+        "label": "Ball",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.pong",
+        "description": "src.ple.ple.games.pong",
+        "peekOfCode": "class Ball(pygame.sprite.Sprite):\n    def __init__(self, radius, speed, rng, pos_init, SCREEN_WIDTH, SCREEN_HEIGHT):\n        pygame.sprite.Sprite.__init__(self)\n        self.rng = rng\n        self.radius = radius\n        self.speed = speed\n        self.pos = vec2d(pos_init)\n        self.pos_before = vec2d(pos_init)\n        self.vel = vec2d((speed, -1.0 * speed))\n        self.SCREEN_HEIGHT = SCREEN_HEIGHT",
+        "detail": "src.ple.ple.games.pong",
+        "documentation": {}
+    },
+    {
+        "label": "Player",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.pong",
+        "description": "src.ple.ple.games.pong",
+        "peekOfCode": "class Player(pygame.sprite.Sprite):\n    def __init__(\n        self, speed, rect_width, rect_height, pos_init, SCREEN_WIDTH, SCREEN_HEIGHT\n    ):\n        pygame.sprite.Sprite.__init__(self)\n        self.speed = speed\n        self.pos = vec2d(pos_init)\n        self.vel = vec2d((0, 0))\n        self.rect_height = rect_height\n        self.rect_width = rect_width",
+        "detail": "src.ple.ple.games.pong",
+        "documentation": {}
+    },
+    {
+        "label": "Pong",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.pong",
+        "description": "src.ple.ple.games.pong",
+        "peekOfCode": "class Pong(PyGameWrapper):\n    \"\"\"\n    Loosely based on code from marti1125's `pong game`_.\n    .. _pong game: https://github.com/marti1125/pong/\n    Parameters\n    ----------\n    width : int\n        Screen width.\n    height : int\n        Screen height, recommended to be same dimension as width.",
+        "detail": "src.ple.ple.games.pong",
+        "documentation": {}
+    },
+    {
+        "label": "Creep",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.primitives",
+        "description": "src.ple.ple.games.primitives",
+        "peekOfCode": "class Creep(pygame.sprite.Sprite):\n    def __init__(\n        self,\n        color,\n        radius,\n        pos_init,\n        dir_init,\n        speed,\n        reward,\n        TYPE,",
+        "detail": "src.ple.ple.games.primitives",
+        "documentation": {}
+    },
+    {
+        "label": "Wall",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.primitives",
+        "description": "src.ple.ple.games.primitives",
+        "peekOfCode": "class Wall(pygame.sprite.Sprite):\n    def __init__(self, pos, w, h):\n        pygame.sprite.Sprite.__init__(self)\n        self.pos = vec2d(pos)\n        self.w = w\n        self.h = h\n        image = pygame.Surface([w, h])\n        image.fill((10, 10, 10))\n        self.image = image.convert()\n        self.rect = self.image.get_rect()",
+        "detail": "src.ple.ple.games.primitives",
+        "documentation": {}
+    },
+    {
+        "label": "Player",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.primitives",
+        "description": "src.ple.ple.games.primitives",
+        "peekOfCode": "class Player(pygame.sprite.Sprite):\n    def __init__(self, radius, color, speed, pos_init, SCREEN_WIDTH, SCREEN_HEIGHT):\n        pygame.sprite.Sprite.__init__(self)\n        self.SCREEN_WIDTH = SCREEN_WIDTH\n        self.SCREEN_HEIGHT = SCREEN_HEIGHT\n        self.pos = vec2d(pos_init)\n        self.vel = vec2d((0, 0))\n        image = pygame.Surface([radius * 2, radius * 2])\n        image.set_colorkey((0, 0, 0))\n        pygame.draw.circle(image, color, (radius, radius), radius, 0)",
+        "detail": "src.ple.ple.games.primitives",
+        "documentation": {}
+    },
+    {
+        "label": "PuckCreep",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.puckworld",
+        "description": "src.ple.ple.games.puckworld",
+        "peekOfCode": "class PuckCreep(pygame.sprite.Sprite):\n    def __init__(self, pos_init, attr, SCREEN_WIDTH, SCREEN_HEIGHT):\n        pygame.sprite.Sprite.__init__(self)\n        self.pos = vec2d(pos_init)\n        self.attr = attr\n        self.SCREEN_WIDTH = SCREEN_WIDTH\n        self.SCREEN_HEIGHT = SCREEN_HEIGHT\n        image = pygame.Surface(\n            (self.attr[\"radius_outer\"] * 2, self.attr[\"radius_outer\"] * 2)\n        )",
+        "detail": "src.ple.ple.games.puckworld",
+        "documentation": {}
+    },
+    {
+        "label": "PuckWorld",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.puckworld",
+        "description": "src.ple.ple.games.puckworld",
+        "peekOfCode": "class PuckWorld(PyGameWrapper):\n    \"\"\"\n    Based Karpthy's PuckWorld in `REINFORCEjs`_.\n    .. _REINFORCEjs: https://github.com/karpathy/reinforcejs\n    Parameters\n    ----------\n    width : int\n        Screen width.\n    height : int\n        Screen height, recommended to be same dimension as width.",
+        "detail": "src.ple.ple.games.puckworld",
+        "documentation": {}
+    },
+    {
+        "label": "RayCastPlayer",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.raycast",
+        "description": "src.ple.ple.games.raycast",
+        "peekOfCode": "class RayCastPlayer:\n    \"\"\"\n    Loosely based on code from Lode's `Computer Graphics Tutorial`_.\n    .. _Computer Graphics Tutorial: http://lodev.org/cgtutor/raycasting.html\n    Takes input from key presses and traverses a map\n    \"\"\"\n    def __init__(\n        self,\n        map_,\n        init_pos,",
+        "detail": "src.ple.ple.games.raycast",
+        "documentation": {}
+    },
+    {
+        "label": "make_map",
+        "kind": 2,
+        "importPath": "src.ple.ple.games.raycast",
+        "description": "src.ple.ple.games.raycast",
+        "peekOfCode": "def make_map(dim):\n    map_grid = np.zeros((dim, dim))\n    map_grid[0, :] = 1.0\n    map_grid[:, 0] = 1.0\n    map_grid[:, -1] = 1.0\n    map_grid[-1, :] = 1.0\n    return map_grid\ndef make_box(grid, p0, p1, fill=0, isFilled=True):\n    x0, y0 = p0\n    x1, y1 = p1",
+        "detail": "src.ple.ple.games.raycast",
+        "documentation": {}
+    },
+    {
+        "label": "make_box",
+        "kind": 2,
+        "importPath": "src.ple.ple.games.raycast",
+        "description": "src.ple.ple.games.raycast",
+        "peekOfCode": "def make_box(grid, p0, p1, fill=0, isFilled=True):\n    x0, y0 = p0\n    x1, y1 = p1\n    if isFilled:\n        grid[x0:x1, y0:y1] = fill\n    else:\n        grid[x0, y0 : y1 + 1] = fill\n        grid[x1, y0 : y1 + 1] = fill\n        grid[x0:x1, y0] = fill\n        grid[x0:x1, y1] = fill",
+        "detail": "src.ple.ple.games.raycast",
+        "documentation": {}
+    },
+    {
+        "label": "RaycastMaze",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.raycastmaze",
+        "description": "src.ple.ple.games.raycastmaze",
+        "peekOfCode": "class RaycastMaze(PyGameWrapper, RayCastPlayer):\n    \"\"\"\n    Parameters\n    ----------\n    init_pos : tuple of int (default: (1,1))\n        The position the player starts on in the grid. The grid is zero indexed.\n    resolution : int (default: 1)\n        This instructs the Raycast engine on how many vertical lines to use when drawing the screen. The number is equal to the width / resolution.\n    move_speed : int (default: 20)\n        How fast the agent moves forwards or backwards.",
+        "detail": "src.ple.ple.games.raycastmaze",
+        "documentation": {}
+    },
+    {
+        "label": "Food",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.snake",
+        "description": "src.ple.ple.games.snake",
+        "peekOfCode": "class Food(pygame.sprite.Sprite):\n    def __init__(self, pos_init, width, color, SCREEN_WIDTH, SCREEN_HEIGHT, rng):\n        pygame.sprite.Sprite.__init__(self)\n        self.pos = vec2d(pos_init)\n        self.color = color\n        self.SCREEN_WIDTH = SCREEN_WIDTH\n        self.SCREEN_HEIGHT = SCREEN_HEIGHT\n        self.width = width\n        self.rng = rng\n        image = pygame.Surface((width, width))",
+        "detail": "src.ple.ple.games.snake",
+        "documentation": {}
+    },
+    {
+        "label": "SnakeSegment",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.snake",
+        "description": "src.ple.ple.games.snake",
+        "peekOfCode": "class SnakeSegment(pygame.sprite.Sprite):\n    def __init__(self, pos_init, width, height, color):\n        pygame.sprite.Sprite.__init__(self)\n        self.pos = vec2d(pos_init)\n        self.color = color\n        self.width = width\n        self.height = height\n        image = pygame.Surface((width, height))\n        image.fill((0, 0, 0))\n        image.set_colorkey((0, 0, 0))",
+        "detail": "src.ple.ple.games.snake",
+        "documentation": {}
+    },
+    {
+        "label": "SnakePlayer",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.snake",
+        "description": "src.ple.ple.games.snake",
+        "peekOfCode": "class SnakePlayer:\n    def __init__(\n        self, speed, length, pos_init, width, color, SCREEN_WIDTH, SCREEN_HEIGHT\n    ):\n        self.dir = vec2d((1, 0))\n        self.speed = speed\n        self.pos = vec2d(pos_init)\n        self.color = color\n        self.width = width\n        self.length = length",
+        "detail": "src.ple.ple.games.snake",
+        "documentation": {}
+    },
+    {
+        "label": "Snake",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.snake",
+        "description": "src.ple.ple.games.snake",
+        "peekOfCode": "class Snake(PyGameWrapper):\n    \"\"\"\n    Parameters\n    ----------\n    width : int\n        Screen width.\n    height : int\n        Screen height, recommended to be same dimension as width.\n    init_length : int (default: 3)\n        The starting number of segments the snake has. Do not set below 3 segments. Has issues with hitbox detection with the body for lower values.",
+        "detail": "src.ple.ple.games.snake",
+        "documentation": {}
+    },
+    {
+        "label": "WaterWorld",
+        "kind": 6,
+        "importPath": "src.ple.ple.games.waterworld",
+        "description": "src.ple.ple.games.waterworld",
+        "peekOfCode": "class WaterWorld(PyGameWrapper):\n    \"\"\"\n    Based Karpthy's WaterWorld in `REINFORCEjs`_.\n    .. _REINFORCEjs: https://github.com/karpathy/reinforcejs\n    Parameters\n    ----------\n    width : int\n        Screen width.\n    height : int\n        Screen height, recommended to be same dimension as width.",
+        "detail": "src.ple.ple.games.waterworld",
+        "documentation": {}
+    },
+    {
+        "label": "PLE",
+        "kind": 6,
+        "importPath": "src.ple.ple.ple",
+        "description": "src.ple.ple.ple",
+        "peekOfCode": "class PLE(object):\n    \"\"\"\n    ple.PLE(\n        game, fps=30,\n        frame_skip=1, num_steps=1,\n        reward_values={}, force_fps=True,\n        display_screen=False, add_noop_action=True,\n        NOOP=K_F15, state_preprocessor=None,\n        rng=24\n    )",
+        "detail": "src.ple.ple.ple",
+        "documentation": {}
+    },
+    {
+        "label": "NaiveAgent",
+        "kind": 6,
+        "importPath": "src.ple.tests.test_ple",
+        "description": "src.ple.tests.test_ple",
+        "peekOfCode": "class NaiveAgent:\n    def __init__(self, actions):\n        self.actions = actions\n    def pickAction(self, reward, obs):\n        return self.actions[np.random.randint(0, len(self.actions))]\nclass MyTestCase(unittest.TestCase):\n    def run_a_game(self, game):\n        from ple import PLE\n        p = PLE(game, display_screen=True)\n        agent = NaiveAgent(p.getActionSet())",
+        "detail": "src.ple.tests.test_ple",
+        "documentation": {}
+    },
+    {
+        "label": "MyTestCase",
+        "kind": 6,
+        "importPath": "src.ple.tests.test_ple",
+        "description": "src.ple.tests.test_ple",
+        "peekOfCode": "class MyTestCase(unittest.TestCase):\n    def run_a_game(self, game):\n        from ple import PLE\n        p = PLE(game, display_screen=True)\n        agent = NaiveAgent(p.getActionSet())\n        p.init()\n        reward = p.act(p.NOOP)\n        for i in range(NUM_STEPS):\n            obs = p.getScreenRGB()\n            reward = p.act(agent.pickAction(reward, obs))",
+        "detail": "src.ple.tests.test_ple",
+        "documentation": {}
+    },
+    {
+        "label": "NUM_STEPS",
+        "kind": 5,
+        "importPath": "src.ple.tests.test_ple",
+        "description": "src.ple.tests.test_ple",
+        "peekOfCode": "NUM_STEPS = 150\nclass NaiveAgent:\n    def __init__(self, actions):\n        self.actions = actions\n    def pickAction(self, reward, obs):\n        return self.actions[np.random.randint(0, len(self.actions))]\nclass MyTestCase(unittest.TestCase):\n    def run_a_game(self, game):\n        from ple import PLE\n        p = PLE(game, display_screen=True)",
+        "detail": "src.ple.tests.test_ple",
+        "documentation": {}
+    },
+    {
+        "label": "NaiveAgent",
+        "kind": 6,
+        "importPath": "src.ple.tests.test_ple_doom",
+        "description": "src.ple.tests.test_ple_doom",
+        "peekOfCode": "class NaiveAgent:\n    def __init__(self, actions):\n        self.actions = actions\n    def pickAction(self, reward, obs):\n        return self.actions[np.random.randint(0, len(self.actions))]\nclass MyTestCase(unittest.TestCase):\n    def run_a_game(self, game):\n        from ple import PLE\n        p = PLE(game)\n        agent = NaiveAgent(p.getActionSet())",
+        "detail": "src.ple.tests.test_ple_doom",
+        "documentation": {}
+    },
+    {
+        "label": "MyTestCase",
+        "kind": 6,
+        "importPath": "src.ple.tests.test_ple_doom",
+        "description": "src.ple.tests.test_ple_doom",
+        "peekOfCode": "class MyTestCase(unittest.TestCase):\n    def run_a_game(self, game):\n        from ple import PLE\n        p = PLE(game)\n        agent = NaiveAgent(p.getActionSet())\n        p.init()\n        reward = p.act(p.NOOP)\n        for i in range(50):\n            obs = p.getScreenRGB()\n            reward = p.act(agent.pickAction(reward, obs))",
+        "detail": "src.ple.tests.test_ple_doom",
+        "documentation": {}
+    },
+    {
+        "label": "here",
+        "kind": 5,
+        "importPath": "src.ple.setup",
+        "description": "src.ple.setup",
+        "peekOfCode": "here = os.path.abspath(os.path.dirname(__file__))\ninstall_requires = [\"numpy\", \"Pillow\"]\nsetup(\n    name=\"ple\",\n    version=\"0.0.1\",\n    description=\"PyGame Learning Environment\",\n    classifiers=[\n        \"Intended Audience :: Developers\",\n        \"Intended Audience :: Science/Research\",\n        \"License :: OSI Approved :: MIT License\",",
+        "detail": "src.ple.setup",
+        "documentation": {}
+    },
+    {
+        "label": "install_requires",
+        "kind": 5,
+        "importPath": "src.ple.setup",
+        "description": "src.ple.setup",
+        "peekOfCode": "install_requires = [\"numpy\", \"Pillow\"]\nsetup(\n    name=\"ple\",\n    version=\"0.0.1\",\n    description=\"PyGame Learning Environment\",\n    classifiers=[\n        \"Intended Audience :: Developers\",\n        \"Intended Audience :: Science/Research\",\n        \"License :: OSI Approved :: MIT License\",\n        \"Programming Language :: Python :: 2.7\",",
+        "detail": "src.ple.setup",
         "documentation": {}
     }
 ]

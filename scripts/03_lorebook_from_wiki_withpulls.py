@@ -1,5 +1,4 @@
 # Imported Libraries
-from unicodedata import name
 import pandas as pd
 import re
 import json
@@ -41,6 +40,18 @@ context_config = {
     "maximumTrimType": "sentence",
     "insertionPosition": -1,
 }
+
+
+def extract_dates(text_paragraph):
+    # using spacy, return a list of the dates in the text
+    dates = []
+    for sent in sent_tokenize(text_paragraph):
+        for chunk in nltk.ne_chunk(preprocess(sent)):
+            if hasattr(chunk, "label"):
+                if chunk.label() == "DATE":
+                    dates.append(" ".join(c[0] for c in chunk.leaves()))
+    return dates
+
 
 # import the json file lorebook_example.lorebook
 def examine_dates(entry1, entry2):
@@ -109,13 +120,14 @@ def find_unique_keys(keys_dict):
                 )  # get the list of names from the topics file
 
 
-def get_the_entities(content):
+def get_the_entities(content, label):
     # get the entities from the text
     entities = []
     for sent in sent_tokenize(content):
         for chunk in nltk.ne_chunk(preprocess(sent)):
             if hasattr(chunk, "label"):
-                entities.append(" ".join(c[0] for c in chunk.leaves()))
+                if chunk.label() == label:
+                    entities.append(" ".join(c[0] for c in chunk.leaves()))
     return entities
 
 
@@ -148,13 +160,26 @@ def inner_generator(name, entries, entry_keywords, entry_names, bar):
             entry = entry.replace("  ", " ")
             entry = entry.replace("  ", " ")
             entries.append(entry)
+
+            # entry_dates = extract_dates(entry)
+            entry_places = get_the_entities(entry, "GPE")
+            entry_people = get_the_entities(entry, "PERSON")
+            entry_dates = get_the_entities(entry, "DATE")
+
             # entry_keywords.append(get_the_entities(entry))
             # there may be related links in the wikipedia page, which we can also add to the list of keywords later
             related_links = page.links
 
             entry_keywords.append(related_links)
+            entry_keywords.extend(entry_dates)
+            entry_keywords.extend(entry_places)
+            entry_keywords.extend(entry_people)
+
+            # remove any duplicates from the list of keywords
+            entry_keywords = list(dict.fromkeys(entry_keywords))
+
             entry_names.append(page.title)
-        except:
+        except Exception as e:
             print(
                 "could not find entry for",
                 name,
@@ -170,8 +195,9 @@ def inner_generator(name, entries, entry_keywords, entry_names, bar):
                     entry_names.append(page.title)
                     # entry_keywords.append(entry_keywords)
                     break  # break out of the loop if we find a result
-                except:
+                except Exception as f:
                     print("could not find summary for", name, " skipping")
+        bar()
 
 
 def generate_entries_from_list(list_of_names, bar):
