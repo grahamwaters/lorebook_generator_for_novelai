@@ -152,7 +152,7 @@ pathspec==0.9.0
 pathy==0.6.2
 pexpect==4.8.0
 pickleshare==0.7.5
-Pillow==9.1.1
+Pillow==9.3.0
 platformdirs==2.5.2
 -e git+https://github.com/ntasfi/PyGame-Learning-Environment@3dbe79dc0c35559bb441b9359948aabf9bb3d331#egg=ple
 pluggy==1.0.0
