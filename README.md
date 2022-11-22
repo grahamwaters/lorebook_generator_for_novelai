@@ -1,5 +1,39 @@
 
-# Lorebook Generator
+<div align='center'>
+<h1 align="center">
+
+![banner](images/lorebookbanner.png)
+</h1>
+
+[![contributions - welcome](https://img.shields.io/badge/contributions-welcome-blue)](/CONTRIBUTING.md "Go to contributions doc") [![Made with Python](https://img.shields.io/badge/Python->=3.6-blue?logo=python&logoColor=white)](https://python.org "Go to Python homepage")
+
+![license](https://img.shields.io/github/license/grahamwaters/lorebook_generator_for_novelai)
+![ViewCount](https://views.whatilearened.today/views/github/grahamwaters/lorebook_generator_for_novelai.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/grahamwaters/lorebook_generator_for_novelai)
+![GitHub repo size](https://img.shields.io/github/repo-size/grahamwaters/lorebook_generator_for_novelai)
+![GitHub issues](https://img.shields.io/github/issues/grahamwaters/lorebook_generator_for_novelai)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/grahamwaters/lorebook_generator_for_novelai)
+</div>
+
+
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+
+- [Introduction](#introduction)
+
+- [Installation](#installation)
+
+- [Usage](#usage)
+
+- [Contributing](#contributing)
+
+- [License](#license)
+
+
+
+
+## Background
 
 This repo is designed to help all of us as authors using NovelAI. It pulls from Wikipedia articles to automatically generate lorebooks for real places or years and pretty much anything you could find on Wikipedia using python's wikipedia library.
 The repo contains two different versions: a basic one that generates based on a CSV file, 'characters.csv' and a more advanced version that implements multiple keywords for a more tailored search.
@@ -109,5 +143,8 @@ This will ensure that your literary work is kept confidential and that it is sep
 
 
 ## License
+
+
+
 
 [MIT](https://choosealicense.com/licenses/mit/)
