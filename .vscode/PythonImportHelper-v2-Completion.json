@@ -85,6 +85,22 @@
         "documentation": {}
     },
     {
+        "label": "sent_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
+        "isExtraImport": true,
+        "detail": "nltk.tokenize",
+        "documentation": {}
+    },
+    {
+        "label": "stopwords",
+        "importPath": "nltk.corpus",
+        "description": "nltk.corpus",
+        "isExtraImport": true,
+        "detail": "nltk.corpus",
+        "documentation": {}
+    },
+    {
         "label": "stopwords",
         "importPath": "nltk.corpus",
         "description": "nltk.corpus",
@@ -810,6 +826,60 @@
         "description": "scripts.helpers",
         "peekOfCode": "def generate_lorebook(\n    lore_dict, characters, entries, entry_names, ids, years_list, topics_scanner_list\n):\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    keys_dict = create_keys(\n        entries\n    )  # create the keys for each entry in the entries list\n    global context_config\n    for i in range(len(entries)):\n        # append blanks to lore_dict['entries'] to make room for the new entries",
         "detail": "scripts.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess",
+        "kind": 2,
+        "importPath": "shorter_03",
+        "description": "shorter_03",
+        "peekOfCode": "def preprocess(sent):\n  sent = nltk.word_tokenize(sent)\n  sent = nltk.pos_tag(sent)\n  return sent\ndef examine_dates(entry1, entry2):\n  article_one_dates = []\n  article_two_dates = []\n  for sent in sent_tokenize(entry1):\n    for chunk in nltk.ne_chunk(preprocess(sent)):\n      if hasattr(chunk, \"label\") and chunk.label() == \"DATE\":",
+        "detail": "shorter_03",
+        "documentation": {}
+    },
+    {
+        "label": "examine_dates",
+        "kind": 2,
+        "importPath": "shorter_03",
+        "description": "shorter_03",
+        "peekOfCode": "def examine_dates(entry1, entry2):\n  article_one_dates = []\n  article_two_dates = []\n  for sent in sent_tokenize(entry1):\n    for chunk in nltk.ne_chunk(preprocess(sent)):\n      if hasattr(chunk, \"label\") and chunk.label() == \"DATE\":\n        article_one_dates.append(\" \".join(c[0] for c in chunk.leaves()))\n  for sent in sent_tokenize(entry2):\n    for chunk in nltk.ne_chunk(preprocess(sent)):\n      if hasattr(chunk, \"label\") and chunk.label() == \"DATE\":",
+        "detail": "shorter_03",
+        "documentation": {}
+    },
+    {
+        "label": "find_unique_keys",
+        "kind": 2,
+        "importPath": "shorter_03",
+        "description": "shorter_03",
+        "peekOfCode": "def find_unique_keys(keys_dict):\n  # get all the keywords (across all entries) -> keyword_master_list\n  keyword_master_list = [key for entry in keys_dict for key in keys_dict[entry]]\n  # go through each row's keywords and keep them in one of two cases:\n  # (1) if they occur only once in keyword_master_list or (2) if they occur more often than the minimum threshold\n  unique_keys = []\n  for entry in keys_dict:\n    for key in keys_dict[entry]:\n      if keyword_master_list.count(key) == 1 or keyword_master_list.count(key) >= minimum_key_occurrences:\n        unique_keys.append(key)",
+        "detail": "shorter_03",
+        "documentation": {}
+    },
+    {
+        "label": "stop_words",
+        "kind": 5,
+        "importPath": "shorter_03",
+        "description": "shorter_03",
+        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30\nminimum_key_occurrences = 4",
+        "detail": "shorter_03",
+        "documentation": {}
+    },
+    {
+        "label": "maxlinksperpage",
+        "kind": 5,
+        "importPath": "shorter_03",
+        "description": "shorter_03",
+        "peekOfCode": "maxlinksperpage = 30\nminimum_key_occurrences = 4",
+        "detail": "shorter_03",
+        "documentation": {}
+    },
+    {
+        "label": "minimum_key_occurrences",
+        "kind": 5,
+        "importPath": "shorter_03",
+        "description": "shorter_03",
+        "peekOfCode": "minimum_key_occurrences = 4",
+        "detail": "shorter_03",
         "documentation": {}
     }
 ]
