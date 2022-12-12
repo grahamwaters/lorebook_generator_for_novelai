@@ -1,5 +1,86 @@
 [
     {
+        "label": "wikipedia",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "wikipedia",
+        "description": "wikipedia",
+        "detail": "wikipedia",
+        "documentation": {}
+    },
+    {
+        "label": "limits",
+        "importPath": "ratelimit",
+        "description": "ratelimit",
+        "isExtraImport": true,
+        "detail": "ratelimit",
+        "documentation": {}
+    },
+    {
+        "label": "sleep_and_retry",
+        "importPath": "ratelimit",
+        "description": "ratelimit",
+        "isExtraImport": true,
+        "detail": "ratelimit",
+        "documentation": {}
+    },
+    {
+        "label": "sleep_and_retry",
+        "importPath": "ratelimit",
+        "description": "ratelimit",
+        "isExtraImport": true,
+        "detail": "ratelimit",
+        "documentation": {}
+    },
+    {
+        "label": "sleep_and_retry",
+        "importPath": "ratelimit",
+        "description": "ratelimit",
+        "isExtraImport": true,
+        "detail": "ratelimit",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
         "label": "pandas",
         "kind": 6,
         "isExtraImport": true,
@@ -32,6 +113,14 @@
         "isExtraImport": true,
         "importPath": "uuid",
         "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
         "detail": "uuid",
         "documentation": {}
     },
@@ -125,52 +214,11 @@
         "documentation": {}
     },
     {
-        "label": "wikipedia",
-        "kind": 6,
+        "label": "stopwords",
+        "importPath": "nltk.corpus",
+        "description": "nltk.corpus",
         "isExtraImport": true,
-        "importPath": "wikipedia",
-        "description": "wikipedia",
-        "detail": "wikipedia",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
+        "detail": "nltk.corpus",
         "documentation": {}
     },
     {
@@ -205,14 +253,6 @@
         "description": "nltk.tag",
         "isExtraImport": true,
         "detail": "nltk.tag",
-        "documentation": {}
-    },
-    {
-        "label": "name",
-        "importPath": "unicodedata",
-        "description": "unicodedata",
-        "isExtraImport": true,
-        "detail": "unicodedata",
         "documentation": {}
     },
     {
@@ -268,30 +308,6 @@
         "documentation": {}
     },
     {
-        "label": "limits",
-        "importPath": "ratelimit",
-        "description": "ratelimit",
-        "isExtraImport": true,
-        "detail": "ratelimit",
-        "documentation": {}
-    },
-    {
-        "label": "sleep_and_retry",
-        "importPath": "ratelimit",
-        "description": "ratelimit",
-        "isExtraImport": true,
-        "detail": "ratelimit",
-        "documentation": {}
-    },
-    {
-        "label": "sleep_and_retry",
-        "importPath": "ratelimit",
-        "description": "ratelimit",
-        "isExtraImport": true,
-        "detail": "ratelimit",
-        "documentation": {}
-    },
-    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -306,6 +322,76 @@
         "description": "01_lorebook_from_year",
         "isExtraImport": true,
         "detail": "01_lorebook_from_year",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "extract_paragraphs",
+        "kind": 2,
+        "importPath": "scripts.00_chatGPT_version",
+        "description": "scripts.00_chatGPT_version",
+        "peekOfCode": "def extract_paragraphs(feature1, feature2):\n    # Get the Wikipedia page for the first feature\n    page1 = wikipedia.page(feature1)\n    # Get the titles of all the links on the page\n    links = [str(link).title() for link in page1.links]\n    # Initialize an empty dictionary to store the extracted paragraphs\n    # paragraphs = {}\n    # In the extract_paragraphs function, the paragraphs dictionary is initialized with keys as the titles of the linked pages and values as None. However, when extracting paragraphs from the linked pages, you are trying to store the paragraph in the paragraphs dictionary using the title of the linked page as the key, but since the dictionary already has keys with the same names, the paragraph will not be added to the dictionary. To fix this, you can simply initialize the paragraphs dictionary with empty values for each key.\n    # fix\n    paragraphs = {link: '' for link in links}",
+        "detail": "scripts.00_chatGPT_version",
+        "documentation": {}
+    },
+    {
+        "label": "pattern",
+        "kind": 5,
+        "importPath": "scripts.00_chatGPT_version",
+        "description": "scripts.00_chatGPT_version",
+        "peekOfCode": "pattern = re.compile(r'people|births', re.IGNORECASE)\nevents_pattern = re.compile(r'events', re.IGNORECASE)\nlocations_pattern = re.compile(r'locations|Coordinates|location|city|place', re.IGNORECASE)\n# Set the rate limit to 10 requests per second\n@sleep_and_retry\n@limits(calls=20, period=1)\ndef extract_paragraphs(feature1, feature2):\n    # Get the Wikipedia page for the first feature\n    page1 = wikipedia.page(feature1)\n    # Get the titles of all the links on the page",
+        "detail": "scripts.00_chatGPT_version",
+        "documentation": {}
+    },
+    {
+        "label": "events_pattern",
+        "kind": 5,
+        "importPath": "scripts.00_chatGPT_version",
+        "description": "scripts.00_chatGPT_version",
+        "peekOfCode": "events_pattern = re.compile(r'events', re.IGNORECASE)\nlocations_pattern = re.compile(r'locations|Coordinates|location|city|place', re.IGNORECASE)\n# Set the rate limit to 10 requests per second\n@sleep_and_retry\n@limits(calls=20, period=1)\ndef extract_paragraphs(feature1, feature2):\n    # Get the Wikipedia page for the first feature\n    page1 = wikipedia.page(feature1)\n    # Get the titles of all the links on the page\n    links = [str(link).title() for link in page1.links]",
+        "detail": "scripts.00_chatGPT_version",
+        "documentation": {}
+    },
+    {
+        "label": "locations_pattern",
+        "kind": 5,
+        "importPath": "scripts.00_chatGPT_version",
+        "description": "scripts.00_chatGPT_version",
+        "peekOfCode": "locations_pattern = re.compile(r'locations|Coordinates|location|city|place', re.IGNORECASE)\n# Set the rate limit to 10 requests per second\n@sleep_and_retry\n@limits(calls=20, period=1)\ndef extract_paragraphs(feature1, feature2):\n    # Get the Wikipedia page for the first feature\n    page1 = wikipedia.page(feature1)\n    # Get the titles of all the links on the page\n    links = [str(link).title() for link in page1.links]\n    # Initialize an empty dictionary to store the extracted paragraphs",
+        "detail": "scripts.00_chatGPT_version",
+        "documentation": {}
+    },
+    {
+        "label": "paragraphs",
+        "kind": 5,
+        "importPath": "scripts.00_chatGPT_version",
+        "description": "scripts.00_chatGPT_version",
+        "peekOfCode": "paragraphs = extract_paragraphs(\"England\", \"Tesla\")\ntry:\n    paragraphs2 = extract_paragraphs(\"France\", \"Tesla\")\n    paragraphs3 = extract_paragraphs(\"Germany\", \"Tesla\")\n    paragraphs4 = extract_paragraphs(\"Italy\", \"Tesla\")\n    # concatenate the paragraphs dictionaries into one dictionary, if duplicate keys exist then replace one of them with the name + 2\n    paragraphs.update(paragraphs2)\n    paragraphs.update(paragraphs3)\n    paragraphs.update(paragraphs4)\nexcept Exception as e:",
+        "detail": "scripts.00_chatGPT_version",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "scripts.00_chatGPT_version",
+        "description": "scripts.00_chatGPT_version",
+        "peekOfCode": "df = pd.DataFrame.from_dict(paragraphs, orient='index', columns=[\"link\", \"paragraph\"])\ndf.to_csv(\"../data/ai_identified_paragraphs.csv\", index=False)\n# Print the extracted paragraphs\nfor link, paragraph in paragraphs.items():\n    print(f\"Paragraph from '{link}' page:\")\n    print(paragraph)",
+        "detail": "scripts.00_chatGPT_version",
         "documentation": {}
     },
     {
@@ -457,7 +543,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\n#todo:ticket 0001 - add a function to reduce keywords to a max of 50.\n# get the top most unique keywords for the entry as compared to the other entries\ndef find_unique_keys(keys_dict):\n    # the top most unique keywords for the entry as compared to the other entries in the lorebook\n    # the keys_dict is a dictionary with all keywords in it.\n    # each row is an entry, and each column is a keyword",
+        "peekOfCode": "def preprocess(sent):\n    sent = nltk.word_tokenize(sent)\n    sent = nltk.pos_tag(sent)\n    return sent\n# todo:ticket 0001 - add a function to reduce keywords to a max of 50.\n# get the top most unique keywords for the entry as compared to the other entries\ndef find_unique_keys(keys_dict):\n    # the top most unique keywords for the entry as compared to the other entries in the lorebook\n    # the keys_dict is a dictionary with all keywords in it.\n    # each row is an entry, and each column is a keyword",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -475,7 +561,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                entities.append(\" \".join(c[0] for c in chunk.leaves()))\n    return entities\nperiod = 300 # 5 minutes\n@sleep_and_retry",
+        "peekOfCode": "def get_the_entities(content):\n    # get the entities from the text\n    entities = []\n    for sent in sent_tokenize(content):\n        for chunk in nltk.ne_chunk(preprocess(sent)):\n            if hasattr(chunk, \"label\"):\n                entities.append(\" \".join(c[0] for c in chunk.leaves()))\n    return entities\nperiod = 300  # 5 minutes\n@sleep_and_retry",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -484,7 +570,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def inner_generator(name,entries,entry_keywords,entry_names,bar):\n    if name != \"\":\n        try:\n            entry = wikipedia.search(name)[\n                0\n            ]  # get the first result from wikipedia, which is usually the most relevant\n            page = wikipedia.page(entry)\n            entry = page.content\n            entry = re.sub(r\"\\([^)]*\\)\", \" \", entry)  # remove anything in brackets\n            # strip the text of all special characters, and any escaped characters using regex",
+        "peekOfCode": "def inner_generator(name, entries, entry_keywords, entry_names, bar):\n    if name != \"\":\n        try:\n            entry = wikipedia.search(name)[\n                0\n            ]  # get the first result from wikipedia, which is usually the most relevant\n            page = wikipedia.page(entry)\n            entry = page.content\n            entry = re.sub(r\"\\([^)]*\\)\", \" \", entry)  # remove anything in brackets\n            # strip the text of all special characters, and any escaped characters using regex",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -493,7 +579,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def generate_entries_from_list(list_of_names,bar):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    with alive_bar(len(list_of_names),bar=bar) as bar2:\n        for name in list_of_names:\n            # pause every 10 iterations to avoid getting blocked by wikipedia (for a random number of seconds)\n            # if list_of_names.index(name) % rest_time == 0:\n            #     waittime = random.randint(2, 6) # wait between 4 and 15 seconds",
+        "peekOfCode": "def generate_entries_from_list(list_of_names, bar):\n    # enter a list of people's names and get a list of entries, from wikipedia\n    entries = []\n    entry_names = []\n    entry_keywords = []\n    with alive_bar(len(list_of_names), bar=bar) as bar2:\n        for name in list_of_names:\n            # pause every 10 iterations to avoid getting blocked by wikipedia (for a random number of seconds)\n            # if list_of_names.index(name) % rest_time == 0:\n            #     waittime = random.randint(2, 6) # wait between 4 and 15 seconds",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -529,7 +615,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def main():\n    \"\"\"\n    main function - runs the program, processing the names provided in the characters.csv file and adding them to the lorebook_generated.lorebook file in the supporting_files folder. The function uses the generate_entries_from_list function to generate the entries, and then adds them to the lorebook_generated.lorebook file.\n    \"\"\"\n    global context_config\n    global minimum_key_occurrences\n    global chunk_size # the number of names to process in each chunk\n    # open the lorebook_generated.lorebook file\n    try:\n        with open(\"./supporting_files/lorebook_generated.lorebook\") as f:",
+        "peekOfCode": "def main():\n    \"\"\"\n    main function - runs the program, processing the names provided in the characters.csv file and adding them to the lorebook_generated.lorebook file in the supporting_files folder. The function uses the generate_entries_from_list function to generate the entries, and then adds them to the lorebook_generated.lorebook file.\n    \"\"\"\n    global context_config\n    global minimum_key_occurrences\n    global chunk_size  # the number of names to process in each chunk\n    # open the lorebook_generated.lorebook file\n    try:\n        with open(\"./supporting_files/lorebook_generated.lorebook\") as f:",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -538,7 +624,7 @@
         "kind": 2,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "def final_checks(entries, entry_names, entry_keywords, lore_dict, list_of_names,ids):\n    # #assert -- make sure the lengths are the same\n    #assert(len(entries) == len(entry_names), \"after removing existing entries lengths are not the same\")\n    #assert(len(entries) == len(entry_keywords), \"after removing existing entries lengths are not the same\")\n    #assert(len(entries) == len(ids), \"after removing existing entries lengths are not the same\")\n    #assert(len(entry_names) == len(entry_keywords), \"after removing existing entries lengths are not the same\")\n    # check that the name of each entry (i.e. 'Florence Nightingale') is in the first paragraph of the entry's text. If not, then raise an error\n    for entry, entry_name in zip(entries, entry_names):\n        if entry_name not in entry.split('\\n')[0]:\n            raise Exception(f\"{entry_name} is not in the first paragraph of the entry\")",
+        "peekOfCode": "def final_checks(entries, entry_names, entry_keywords, lore_dict, list_of_names, ids):\n    # #assert -- make sure the lengths are the same\n    # assert(len(entries) == len(entry_names), \"after removing existing entries lengths are not the same\")\n    # assert(len(entries) == len(entry_keywords), \"after removing existing entries lengths are not the same\")\n    # assert(len(entries) == len(ids), \"after removing existing entries lengths are not the same\")\n    # assert(len(entry_names) == len(entry_keywords), \"after removing existing entries lengths are not the same\")\n    # check that the name of each entry (i.e. 'Florence Nightingale') is in the first paragraph of the entry's text. If not, then raise an error\n    for entry, entry_name in zip(entries, entry_names):\n        if entry_name not in entry.split(\"\\n\")[0]:\n            raise Exception(f\"{entry_name} is not in the first paragraph of the entry\")",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -547,7 +633,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "rest_time = 10 # max number of calls before resting\nchunk_size = 10 # number of entries per chunk\nwarnings.filterwarnings(\n    \"ignore\"\n)  # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.\n# Global Variables Declaration ------------------------------------------------\n# get the list of names from the topics file\nnltk.download(\"stopwords\")  # & download stopwords\nstop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30 # how many randomly sampled links to get from each page, to add to the list of keywords",
+        "peekOfCode": "rest_time = 10  # max number of calls before resting\nchunk_size = 10  # number of entries per chunk\nwarnings.filterwarnings(\n    \"ignore\"\n)  # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.\n# Explanation\n\"\"\"\nis a script for generating a lorebook, which is a book containing historical or fictional information. It uses several Python libraries such as Pandas, NLTK, and Wikipedia to extract information from Wikipedia articles and organize it into a lorebook format.\nThe script starts by importing several libraries that will be used throughout the code. These include Pandas for data manipulation, NLTK for natural language processing, and Wikipedia for accessing and extracting information from Wikipedia articles. The script also defines some global variables such as the maximum number of links to get from each page and the minimum number of occurrences for a keyword to be considered relevant.\nThe code then has a function called examine_dates which takes in two entries (presumably from a lorebook) and returns a boolean indicating whether the dates in one entry fall within the range of dates in the other entry (with a 10-year error margin). This function uses NLTK's sentence tokenization and named entity recognition to extract dates from the entries and compares them to determine their relevance to each other.",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -556,7 +642,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "chunk_size = 10 # number of entries per chunk\nwarnings.filterwarnings(\n    \"ignore\"\n)  # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.\n# Global Variables Declaration ------------------------------------------------\n# get the list of names from the topics file\nnltk.download(\"stopwords\")  # & download stopwords\nstop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30 # how many randomly sampled links to get from each page, to add to the list of keywords\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword",
+        "peekOfCode": "chunk_size = 10  # number of entries per chunk\nwarnings.filterwarnings(\n    \"ignore\"\n)  # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.\n# Explanation\n\"\"\"\nis a script for generating a lorebook, which is a book containing historical or fictional information. It uses several Python libraries such as Pandas, NLTK, and Wikipedia to extract information from Wikipedia articles and organize it into a lorebook format.\nThe script starts by importing several libraries that will be used throughout the code. These include Pandas for data manipulation, NLTK for natural language processing, and Wikipedia for accessing and extracting information from Wikipedia articles. The script also defines some global variables such as the maximum number of links to get from each page and the minimum number of occurrences for a keyword to be considered relevant.\nThe code then has a function called examine_dates which takes in two entries (presumably from a lorebook) and returns a boolean indicating whether the dates in one entry fall within the range of dates in the other entry (with a 10-year error margin). This function uses NLTK's sentence tokenization and named entity recognition to extract dates from the entries and compares them to determine their relevance to each other.\nAnother function called preprocess takes in a sentence and returns it after performing some basic natural language processing steps such as tokenization and part-of-speech tagging. This is used to help identify relevant keywords and dates in the entries.",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -565,7 +651,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30 # how many randomly sampled links to get from each page, to add to the list of keywords\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",",
+        "peekOfCode": "stop_words = set(stopwords.words(\"english\"))\nmaxlinksperpage = 30  # how many randomly sampled links to get from each page, to add to the list of keywords\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -574,7 +660,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "maxlinksperpage = 30 # how many randomly sampled links to get from each page, to add to the list of keywords\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",",
+        "peekOfCode": "maxlinksperpage = 30  # how many randomly sampled links to get from each page, to add to the list of keywords\nminimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword\ncontext_config = {\n    \"prefix\": \"\",\n    \"suffix\": \"\\n\",\n    \"tokenBudget\": 100,  # max 2048\n    \"reservedTokens\": 0,\n    \"budgetPriority\": 400,\n    \"trimDirection\": \"trimBottom\",\n    \"insertionType\": \"newline\",",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -601,7 +687,7 @@
         "kind": 5,
         "importPath": "scripts.03_lorebook_from_wiki_withpulls",
         "description": "scripts.03_lorebook_from_wiki_withpulls",
-        "peekOfCode": "period = 300 # 5 minutes\n@sleep_and_retry\n#@limits(calls=15, period=period) # 15 calls per 5 minutes\ndef inner_generator(name,entries,entry_keywords,entry_names,bar):\n    if name != \"\":\n        try:\n            entry = wikipedia.search(name)[\n                0\n            ]  # get the first result from wikipedia, which is usually the most relevant\n            page = wikipedia.page(entry)",
+        "peekOfCode": "period = 300  # 5 minutes\n@sleep_and_retry\n# @limits(calls=15, period=period) # 15 calls per 5 minutes\ndef inner_generator(name, entries, entry_keywords, entry_names, bar):\n    if name != \"\":\n        try:\n            entry = wikipedia.search(name)[\n                0\n            ]  # get the first result from wikipedia, which is usually the most relevant\n            page = wikipedia.page(entry)",
         "detail": "scripts.03_lorebook_from_wiki_withpulls",
         "documentation": {}
     },
@@ -810,6 +896,132 @@
         "description": "scripts.helpers",
         "peekOfCode": "def generate_lorebook(\n    lore_dict, characters, entries, entry_names, ids, years_list, topics_scanner_list\n):\n    # add the entries to the lorebook dictionary. All we have to change is the text, display name, create a random id, and add the keys (which are the words in the text). All other fields can be copied from the first entry.\n    keys_dict = create_keys(\n        entries\n    )  # create the keys for each entry in the entries list\n    global context_config\n    for i in range(len(entries)):\n        # append blanks to lore_dict['entries'] to make room for the new entries",
         "detail": "scripts.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "get_keywords",
+        "kind": 2,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "def get_keywords(text, stopwords, n_keys):  #  -> Tuple[list, str]:\n    \"\"\"\n    Extract keywords from text\n    :param text: text to extract keywords from\n    :param stopwords: list of stopwords to filter out\n    :param n_keys: number of keywords to extract\n    :return: list of keywords and the text\n    \"\"\"\n    n_keys = int(n_keys)  # cast the n_keys to an integer\n    text = text.strip().lower()",
+        "detail": "simple_lore",
+        "documentation": {}
+    },
+    {
+        "label": "text",
+        "kind": 5,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "text = \"\"  # enter text here\nsorted_keywords = []  # enter keywords here\n# n_keys = 20 # enter number of keywords here\ndata_template_dict = {\n    \"lorebookVersion\": 4,\n    \"entries\": [\n        {\n            \"text\": text,\n            \"contextConfig\": {\n                \"prefix\": \"\",",
+        "detail": "simple_lore",
+        "documentation": {}
+    },
+    {
+        "label": "sorted_keywords",
+        "kind": 5,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "sorted_keywords = []  # enter keywords here\n# n_keys = 20 # enter number of keywords here\ndata_template_dict = {\n    \"lorebookVersion\": 4,\n    \"entries\": [\n        {\n            \"text\": text,\n            \"contextConfig\": {\n                \"prefix\": \"\",\n                \"suffix\": \"\\n\",",
+        "detail": "simple_lore",
+        "documentation": {}
+    },
+    {
+        "label": "data_template_dict",
+        "kind": 5,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "data_template_dict = {\n    \"lorebookVersion\": 4,\n    \"entries\": [\n        {\n            \"text\": text,\n            \"contextConfig\": {\n                \"prefix\": \"\",\n                \"suffix\": \"\\n\",\n                \"tokenBudget\": 2048,\n                \"reservedTokens\": 0,",
+        "detail": "simple_lore",
+        "documentation": {}
+    },
+    {
+        "label": "text",
+        "kind": 5,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "text = input(\"Enter text: \")\n##########\nstopwords = set(stopwords.words(\"english\"))\nnumber_of_keywords = 20\nsorted_keywords, text = get_keywords(text, stopwords, number_of_keywords)\n# get the keywords\ndata_dict = data_template_dict.copy()  # create a copy of the data_template_dict\n# update the data dictionary's keywords and text with the formatting of data_template_dict\nsorted_keywords = get_keywords(text, stopwords, number_of_keywords)[\n    0",
+        "detail": "simple_lore",
+        "documentation": {}
+    },
+    {
+        "label": "stopwords",
+        "kind": 5,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "stopwords = set(stopwords.words(\"english\"))\nnumber_of_keywords = 20\nsorted_keywords, text = get_keywords(text, stopwords, number_of_keywords)\n# get the keywords\ndata_dict = data_template_dict.copy()  # create a copy of the data_template_dict\n# update the data dictionary's keywords and text with the formatting of data_template_dict\nsorted_keywords = get_keywords(text, stopwords, number_of_keywords)[\n    0\n]  # get the keywords\ndata_dict[\"keywords\"] = sorted_keywords[:number_of_keywords]  # update the keywords",
+        "detail": "simple_lore",
+        "documentation": {}
+    },
+    {
+        "label": "number_of_keywords",
+        "kind": 5,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "number_of_keywords = 20\nsorted_keywords, text = get_keywords(text, stopwords, number_of_keywords)\n# get the keywords\ndata_dict = data_template_dict.copy()  # create a copy of the data_template_dict\n# update the data dictionary's keywords and text with the formatting of data_template_dict\nsorted_keywords = get_keywords(text, stopwords, number_of_keywords)[\n    0\n]  # get the keywords\ndata_dict[\"keywords\"] = sorted_keywords[:number_of_keywords]  # update the keywords\ndata_dict[\"entries\"][0][\"text\"] = text",
+        "detail": "simple_lore",
+        "documentation": {}
+    },
+    {
+        "label": "data_dict",
+        "kind": 5,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "data_dict = data_template_dict.copy()  # create a copy of the data_template_dict\n# update the data dictionary's keywords and text with the formatting of data_template_dict\nsorted_keywords = get_keywords(text, stopwords, number_of_keywords)[\n    0\n]  # get the keywords\ndata_dict[\"keywords\"] = sorted_keywords[:number_of_keywords]  # update the keywords\ndata_dict[\"entries\"][0][\"text\"] = text\ndata_dict[\"entries\"][0][\"searchRange\"] = 10_000  # update the search range to 10,000\ndata_dict[\"entries\"][0][\"id\"] = str(uuid4().int)  # update the keys\n# add the name of the entry",
+        "detail": "simple_lore",
+        "documentation": {}
+    },
+    {
+        "label": "sorted_keywords",
+        "kind": 5,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "sorted_keywords = get_keywords(text, stopwords, number_of_keywords)[\n    0\n]  # get the keywords\ndata_dict[\"keywords\"] = sorted_keywords[:number_of_keywords]  # update the keywords\ndata_dict[\"entries\"][0][\"text\"] = text\ndata_dict[\"entries\"][0][\"searchRange\"] = 10_000  # update the search range to 10,000\ndata_dict[\"entries\"][0][\"id\"] = str(uuid4().int)  # update the keys\n# add the name of the entry\ndata_dict[\"entries\"][0][\"displayName\"] = text[0:10] + \"...\"\n# save the data_template_dict to a json file",
+        "detail": "simple_lore",
+        "documentation": {}
+    },
+    {
+        "label": "data_dict[\"keywords\"]",
+        "kind": 5,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "data_dict[\"keywords\"] = sorted_keywords[:number_of_keywords]  # update the keywords\ndata_dict[\"entries\"][0][\"text\"] = text\ndata_dict[\"entries\"][0][\"searchRange\"] = 10_000  # update the search range to 10,000\ndata_dict[\"entries\"][0][\"id\"] = str(uuid4().int)  # update the keys\n# add the name of the entry\ndata_dict[\"entries\"][0][\"displayName\"] = text[0:10] + \"...\"\n# save the data_template_dict to a json file\nwith open(\"data_template.json\", \"w\") as f:\n    json.dump(data_template_dict, f, indent=2)\nprint(data_dict)",
+        "detail": "simple_lore",
+        "documentation": {}
+    },
+    {
+        "label": "data_dict[\"entries\"][0][\"text\"]",
+        "kind": 5,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "data_dict[\"entries\"][0][\"text\"] = text\ndata_dict[\"entries\"][0][\"searchRange\"] = 10_000  # update the search range to 10,000\ndata_dict[\"entries\"][0][\"id\"] = str(uuid4().int)  # update the keys\n# add the name of the entry\ndata_dict[\"entries\"][0][\"displayName\"] = text[0:10] + \"...\"\n# save the data_template_dict to a json file\nwith open(\"data_template.json\", \"w\") as f:\n    json.dump(data_template_dict, f, indent=2)\nprint(data_dict)",
+        "detail": "simple_lore",
+        "documentation": {}
+    },
+    {
+        "label": "data_dict[\"entries\"][0][\"searchRange\"]",
+        "kind": 5,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "data_dict[\"entries\"][0][\"searchRange\"] = 10_000  # update the search range to 10,000\ndata_dict[\"entries\"][0][\"id\"] = str(uuid4().int)  # update the keys\n# add the name of the entry\ndata_dict[\"entries\"][0][\"displayName\"] = text[0:10] + \"...\"\n# save the data_template_dict to a json file\nwith open(\"data_template.json\", \"w\") as f:\n    json.dump(data_template_dict, f, indent=2)\nprint(data_dict)",
+        "detail": "simple_lore",
+        "documentation": {}
+    },
+    {
+        "label": "data_dict[\"entries\"][0][\"id\"]",
+        "kind": 5,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "data_dict[\"entries\"][0][\"id\"] = str(uuid4().int)  # update the keys\n# add the name of the entry\ndata_dict[\"entries\"][0][\"displayName\"] = text[0:10] + \"...\"\n# save the data_template_dict to a json file\nwith open(\"data_template.json\", \"w\") as f:\n    json.dump(data_template_dict, f, indent=2)\nprint(data_dict)",
+        "detail": "simple_lore",
+        "documentation": {}
+    },
+    {
+        "label": "data_dict[\"entries\"][0][\"displayName\"]",
+        "kind": 5,
+        "importPath": "simple_lore",
+        "description": "simple_lore",
+        "peekOfCode": "data_dict[\"entries\"][0][\"displayName\"] = text[0:10] + \"...\"\n# save the data_template_dict to a json file\nwith open(\"data_template.json\", \"w\") as f:\n    json.dump(data_template_dict, f, indent=2)\nprint(data_dict)",
+        "detail": "simple_lore",
         "documentation": {}
     }
 ]

@@ -1,5 +1,4 @@
 # Imported Libraries
-from unicodedata import name
 import pandas as pd
 import re
 import json
@@ -8,7 +7,6 @@ import nltk
 from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
 import wikipedia
-from tqdm import tqdm
 import datetime
 import warnings
 import random
@@ -16,18 +14,41 @@ import time
 import os
 import math
 from alive_progress import alive_bar
-from ratelimit import limits, sleep_and_retry
-rest_time = 10 # max number of calls before resting
-chunk_size = 10 # number of entries per chunk
+from ratelimit import sleep_and_retry
+
+rest_time = 10  # max number of calls before resting
+chunk_size = 10  # number of entries per chunk
 warnings.filterwarnings(
     "ignore"
 )  # reason we are ignoring the warning is because we are using the wikipedia package to get the content of the articles but we don't mind if we miss a few along the way. As it is right now, the process is designed to be slightly imperfect.
+
+# Explanation
+"""
+is a script for generating a lorebook, which is a book containing historical or fictional information. It uses several Python libraries such as Pandas, NLTK, and Wikipedia to extract information from Wikipedia articles and organize it into a lorebook format.
+
+The script starts by importing several libraries that will be used throughout the code. These include Pandas for data manipulation, NLTK for natural language processing, and Wikipedia for accessing and extracting information from Wikipedia articles. The script also defines some global variables such as the maximum number of links to get from each page and the minimum number of occurrences for a keyword to be considered relevant.
+
+The code then has a function called examine_dates which takes in two entries (presumably from a lorebook) and returns a boolean indicating whether the dates in one entry fall within the range of dates in the other entry (with a 10-year error margin). This function uses NLTK's sentence tokenization and named entity recognition to extract dates from the entries and compares them to determine their relevance to each other.
+
+Another function called preprocess takes in a sentence and returns it after performing some basic natural language processing steps such as tokenization and part-of-speech tagging. This is used to help identify relevant keywords and dates in the entries.
+
+The find_unique_keys function takes in a dictionary of keywords and returns the top most unique keywords for a given entry compared to the other entries in the lorebook. It does this by creating a list of all keywords across all entries, then going through each row's keywords and keeping them if they occur only once in the master list or if they occur more than the minimum number of times specified in the global variable minimum_key_occurrences.
+
+Overall, the script appears to be a tool for generating a lorebook from information on Wikipedia. It uses natural language processing and information extraction techniques to extract relevant keywords and dates from Wikipedia articles and organize them into a structured format.
+
+The code uses global variables for settings such as the maximum number of links to get from each page and the minimum number of occurrences for a keyword to be considered relevant. It would be better to pass these values as arguments to the functions that need them instead of using global variables, which can make the code less modular and harder to understand.
+Some of the functions, such as examine_dates and find_unique_keys, are quite long and could be broken down into smaller, more focused functions to improve readability and maintainability.
+The code could be made more Pythonic by using more concise and idiomatic syntax. For example, instead of using hasattr(chunk, "label") and if chunk.label() == "DATE":, you can use the isinstance built-in function to check the type of chunk and the in keyword to check if "DATE" is in chunk.label().
+The code could be improved by adding more comments explaining the purpose and behavior of each function, as well as any important details or assumptions. This would make it easier for other developers to understand the code and use it for their own purposes.
+
+"""
+
 
 # Global Variables Declaration ------------------------------------------------
 # get the list of names from the topics file
 nltk.download("stopwords")  # & download stopwords
 stop_words = set(stopwords.words("english"))
-maxlinksperpage = 30 # how many randomly sampled links to get from each page, to add to the list of keywords
+maxlinksperpage = 30  # how many randomly sampled links to get from each page, to add to the list of keywords
 minimum_key_occurrences = 4  # minimum number of times a keyword must appear in the text to be considered a keyword
 context_config = {
     "prefix": "",
@@ -76,7 +97,7 @@ def preprocess(sent):
     return sent
 
 
-#todo:ticket 0001 - add a function to reduce keywords to a max of 50.
+# todo:ticket 0001 - add a function to reduce keywords to a max of 50.
 # get the top most unique keywords for the entry as compared to the other entries
 def find_unique_keys(keys_dict):
     # the top most unique keywords for the entry as compared to the other entries in the lorebook
@@ -90,18 +111,22 @@ def find_unique_keys(keys_dict):
     # code:
     # consolidate all the keywords into one list (from all the entries in keys_dict)
     keyword_master_list = []
-    final_keywords = [] # the final list of keywords to return (max 50 in each row)
+    final_keywords = []  # the final list of keywords to return (max 50 in each row)
     for entry in keys_dict:
         keyword_master_list.extend(keys_dict[entry])
     # go through each row's keywords and keep them in one of two cases (1) if they occur only once in keyword_master_list or (2) if they occur more than once but the number of keywords currently saved is less than 50 and we have already checked all the keywords in the row for uniqueness.
     # sort the row's keywords by their frequency (descending)
     for entry in keys_dict:
-        sorted_keywords = sorted(keys_dict[entry], key=keys_dict[entry].count, reverse=True) # sort the keywords by their frequency (descending)
-        for keyword in sorted_keywords: # go through each keyword in the row
-            if keyword_master_list.count(keyword) == 1 or (len(final_keywords) < 50 and keyword not in final_keywords): # if the keyword occurs only once in the master list or if the number of keywords currently saved is less than 50 and we have already checked all the keywords in the row for uniqueness.
-                final_keywords.append(keyword) # get the list of names from the topics file
-
-
+        sorted_keywords = sorted(
+            keys_dict[entry], key=keys_dict[entry].count, reverse=True
+        )  # sort the keywords by their frequency (descending)
+        for keyword in sorted_keywords:  # go through each keyword in the row
+            if keyword_master_list.count(keyword) == 1 or (
+                len(final_keywords) < 50 and keyword not in final_keywords
+            ):  # if the keyword occurs only once in the master list or if the number of keywords currently saved is less than 50 and we have already checked all the keywords in the row for uniqueness.
+                final_keywords.append(
+                    keyword
+                )  # get the list of names from the topics file
 
 
 def get_the_entities(content):
@@ -113,12 +138,13 @@ def get_the_entities(content):
                 entities.append(" ".join(c[0] for c in chunk.leaves()))
     return entities
 
-period = 300 # 5 minutes
+
+period = 300  # 5 minutes
+
 
 @sleep_and_retry
-#@limits(calls=15, period=period) # 15 calls per 5 minutes
-def inner_generator(name,entries,entry_keywords,entry_names,bar):
-
+# @limits(calls=15, period=period) # 15 calls per 5 minutes
+def inner_generator(name, entries, entry_keywords, entry_names, bar):
 
     if name != "":
         try:
@@ -167,12 +193,13 @@ def inner_generator(name,entries,entry_keywords,entry_names,bar):
                 except:
                     print("could not find summary for", name, " skipping")
 
-def generate_entries_from_list(list_of_names,bar):
+
+def generate_entries_from_list(list_of_names, bar):
     # enter a list of people's names and get a list of entries, from wikipedia
     entries = []
     entry_names = []
     entry_keywords = []
-    with alive_bar(len(list_of_names),bar=bar) as bar2:
+    with alive_bar(len(list_of_names), bar=bar) as bar2:
         for name in list_of_names:
             # pause every 10 iterations to avoid getting blocked by wikipedia (for a random number of seconds)
             # if list_of_names.index(name) % rest_time == 0:
@@ -181,7 +208,7 @@ def generate_entries_from_list(list_of_names,bar):
             #     time.sleep(waittime)
 
             bar.text(f"Getting entry for {name}")
-            inner_generator(name,entries,entry_keywords,entry_names,bar)
+            inner_generator(name, entries, entry_keywords, entry_names, bar)
             bar2()
     # generate fake ids for the entries in the format: 642723d1-a4a1-47a3-a63f-d36aee33de1b
     ids = []
@@ -193,7 +220,6 @@ def generate_entries_from_list(list_of_names,bar):
     # print('--------------------------------')
     # print(len(entry_keywords))
     # print('--------------------------------')
-
 
     return entries, entry_names, ids, entry_keywords
 
@@ -234,7 +260,7 @@ def main():
     """
     global context_config
     global minimum_key_occurrences
-    global chunk_size # the number of names to process in each chunk
+    global chunk_size  # the number of names to process in each chunk
     # open the lorebook_generated.lorebook file
     try:
         with open("./supporting_files/lorebook_generated.lorebook") as f:
@@ -282,7 +308,7 @@ def main():
     entry_names = list_of_names
 
     print(f"Generating entries for {len(entry_names)} names")
-    print(entry_names[0:5],'...')
+    print(entry_names[0:5], "...")
 
     # print(f"Processed {len(entry_names)} names")
     countnans = list_of_names.count("nan")
@@ -290,30 +316,30 @@ def main():
     list_of_names = [x for x in entry_names if str(x) != "nan"]
     print(f"Removed {countnans} nan values")
 
-
-
-
     # remove any names that are already in the json file
-    for entry in range(len(data['entries'])):
-        if data['entries'][entry]['displayName'] in list_of_names:
+    for entry in range(len(data["entries"])):
+        if data["entries"][entry]["displayName"] in list_of_names:
             try:
-                list_of_names.remove(data['entries'][entry]['displayName'])
+                list_of_names.remove(data["entries"][entry]["displayName"])
                 # and remove the corresponding entry from the entries list
-                entries.remove(data['entries'][entry])
+                entries.remove(data["entries"][entry])
                 # and remove the corresponding entry from the entry_names list
-                entry_names.remove(data['entries'][entry]['displayName'])
+                entry_names.remove(data["entries"][entry]["displayName"])
                 # and remove the corresponding entry from the ids list
-                ids.remove(data['entries'][entry]['id'])
+                ids.remove(data["entries"][entry]["id"])
                 # and remove the corresponding entry from the entry_keywords list
-                entry_keywords.remove(data['entries'][entry]['keywords'])
+                entry_keywords.remove(data["entries"][entry]["keywords"])
             except Exception as e:
                 print(e)
-                print(f"Error removing {data['entries'][entry]['displayName']} from the list of names")
+                print(
+                    f"Error removing {data['entries'][entry]['displayName']} from the list of names"
+                )
 
-
-    print(f"Removed {len(entry_names) - len(list_of_names)} names that were already in the json file")
+    print(
+        f"Removed {len(entry_names) - len(list_of_names)} names that were already in the json file"
+    )
     # for each Name
-    #todo: chunk this into smaller iteratable chunks and save the results to a file incrementally (will reduce the likelihood of losing all the work if the program crashes or is interrupted. It also will reduce load on the wikipedia API).
+    # todo: chunk this into smaller iteratable chunks and save the results to a file incrementally (will reduce the likelihood of losing all the work if the program crashes or is interrupted. It also will reduce load on the wikipedia API).
 
     # divide the list of names into as many chunks of 30 as possible and then process each chunk (the final chunk may be smaller than 30).
     # this is to reduce the load on the wikipedia API
@@ -325,7 +351,7 @@ def main():
         print(f"Processing chunk {chunk + 1} of {number_of_chunks}")
         # get pages seen from the data directory (if it exists)
         try:
-            with open("./data/pages_seen.csv",'r') as f:
+            with open("./data/pages_seen.csv", "r") as f:
                 pages_seen = pd.read_csv(f)["Pages"].tolist()
         except Exception as e:
             print(e)
@@ -335,8 +361,11 @@ def main():
         # convert the list 'pages_seen' to a list of strings
         pages_seen = [str(x).lower() for x in pages_seen]
 
-
-        with alive_bar(len(list_of_names[chunk * chunk_size : (chunk + 1) * chunk_size]),dual_line=False,title='Processing') as bar:
+        with alive_bar(
+            len(list_of_names[chunk * chunk_size : (chunk + 1) * chunk_size]),
+            dual_line=False,
+            title="Processing",
+        ) as bar:
             for name in list_of_names[chunk * chunk_size : (chunk + 1) * chunk_size]:
                 # keys = []  # list of keys for the entry
 
@@ -363,23 +392,15 @@ def main():
                         print(e)
                         continue
 
-
                 bar()
 
-            print(f'Resting the wikipedia API for {rest_time} seconds')
+            print(f"Resting the wikipedia API for {rest_time} seconds")
             time.sleep(rest_time)
-            pd.DataFrame(entry_names).to_pickle('./supporting_files/entry_names.pkl')
-            pd.DataFrame(entries).to_pickle('./supporting_files/entries.pkl')
-
-
+            pd.DataFrame(entry_names).to_pickle("./supporting_files/entry_names.pkl")
+            pd.DataFrame(entries).to_pickle("./supporting_files/entries.pkl")
 
     with open("./supporting_files/lorebook_generated.lorebook") as f:
         lore_dict = json.load(f)
-
-
-
-
-
 
     # topics_list = []
     # entry_keys = []
@@ -394,8 +415,8 @@ def main():
 
     # generate only the entries in topics_list that are not already in the lorebook
     entries, entry_names, ids, entry_keywords = generate_entries_from_list(
-        list_of_names, # topics_list
-        bar # pass the alive_bar object to the function so that it can be updated
+        list_of_names,  # topics_list
+        bar,  # pass the alive_bar object to the function so that it can be updated
     )
 
     # remove any keywords from the dictionary that are found in multiple entries, in other words, identify which keys are unique to each entry
@@ -425,9 +446,9 @@ def main():
     for entry in entries:
         entry_keywords.append(
             [
-                word for word in entry.split()
-                if word.lower() not in stopwords.words('english')
-                and len(word) > 3
+                word
+                for word in entry.split()
+                if word.lower() not in stopwords.words("english") and len(word) > 3
             ]
         )
 
@@ -446,15 +467,15 @@ def main():
     # remove duplicates
     entries = list(dict.fromkeys(entries))
 
-
-
     successful_saves = 0  # count the number of successful saves
     # add the new entries to the lorebook
-    with alive_bar(len(entries),dual_line=False,title='Adding Entries to Lorebook') as bar:
+    with alive_bar(
+        len(entries), dual_line=False, title="Adding Entries to Lorebook"
+    ) as bar:
         for i in range(len(entries)):
             #!print(f"\nAdding {entry_names[i]} to the lorebook")
             # #assert that list_of_names[i] is in the entries[i] string (this is to make sure that the entry is about the correct topic)
-            #assert(list_of_names[i].lower() in entries[i].lower(), "The entry is not about the correct topic")
+            # assert(list_of_names[i].lower() in entries[i].lower(), "The entry is not about the correct topic")
             try:
                 default_config = {
                     "prefix": "",
@@ -468,9 +489,11 @@ def main():
                     "insertionPosition": -1,
                 }
 
-                #& Reducing Key Count to at most 50
-                entry_keys = entry_keywords[i][:50] # get the list of keys for the entry
-                #todo:ticket 0001
+                # & Reducing Key Count to at most 50
+                entry_keys = entry_keywords[i][
+                    :50
+                ]  # get the list of keys for the entry
+                # todo:ticket 0001
 
                 lore_dict["entries"].append(
                     {
@@ -495,7 +518,7 @@ def main():
                 print(f" and saved progress...")
                 successful_saves += 1
             except Exception as e:
-                #print(e)
+                # print(e)
                 continue
             bar()
     print(f"Saved {successful_saves} entries to the lorebook")
@@ -509,37 +532,42 @@ def main():
         json.dump(lore_dict, f, indent=4)
 
 
-def final_checks(entries, entry_names, entry_keywords, lore_dict, list_of_names,ids):
+def final_checks(entries, entry_names, entry_keywords, lore_dict, list_of_names, ids):
 
     # #assert -- make sure the lengths are the same
-    #assert(len(entries) == len(entry_names), "after removing existing entries lengths are not the same")
-    #assert(len(entries) == len(entry_keywords), "after removing existing entries lengths are not the same")
-    #assert(len(entries) == len(ids), "after removing existing entries lengths are not the same")
-    #assert(len(entry_names) == len(entry_keywords), "after removing existing entries lengths are not the same")
+    # assert(len(entries) == len(entry_names), "after removing existing entries lengths are not the same")
+    # assert(len(entries) == len(entry_keywords), "after removing existing entries lengths are not the same")
+    # assert(len(entries) == len(ids), "after removing existing entries lengths are not the same")
+    # assert(len(entry_names) == len(entry_keywords), "after removing existing entries lengths are not the same")
     # check that the name of each entry (i.e. 'Florence Nightingale') is in the first paragraph of the entry's text. If not, then raise an error
     for entry, entry_name in zip(entries, entry_names):
-        if entry_name not in entry.split('\n')[0]:
+        if entry_name not in entry.split("\n")[0]:
             raise Exception(f"{entry_name} is not in the first paragraph of the entry")
-
 
 
 if __name__ == "__main__":
 
     print("\n\nWelcome to the Lorebook Generator!")
-    print("This program will generate a lorebook json file with the pages related to a given topic.")
-    print("All subtopics will be saved (article text to the wikipedia_pages directory) and added to the master dictionary.")
+    print(
+        "This program will generate a lorebook json file with the pages related to a given topic."
+    )
+    print(
+        "All subtopics will be saved (article text to the wikipedia_pages directory) and added to the master dictionary."
+    )
     choice = input("\n  Would you like to clear previously generated articles? (y/n) ")
     if choice == "y":
         clear_all_previously_saved_files()
 
     print("Settings (Current):")
-    #todo: maxlinksperpage may not be needed.
-    print(f'maxlinksperpage = {maxlinksperpage} - The maximum number of child pages or related links to extract from the pages (and examine).')
+    # todo: maxlinksperpage may not be needed.
+    print(
+        f"maxlinksperpage = {maxlinksperpage} - The maximum number of child pages or related links to extract from the pages (and examine)."
+    )
 
     choice = input("Would you like to change settings? (y/n) ")
     if choice == "y":
         maxlinksperpage = int(input("maxlinksperpage = "))
-        print(f'maxlinksperpage = {maxlinksperpage} - has been updated.')
+        print(f"maxlinksperpage = {maxlinksperpage} - has been updated.")
 
     choice = input("Would you like to generate a new lorebook? (y/n): ")
 
@@ -555,32 +583,29 @@ if __name__ == "__main__":
     # using all inputs from above generate a new lorebook
 
     # Basic Checks --
-    print(f'Running File Checks...')
-    print(f'Check 1. Characters in the list must be unique. (Current):', end='')
+    print(f"Running File Checks...")
+    print(f"Check 1. Characters in the list must be unique. (Current):", end="")
     # Check 1. Detect any duplicates in the character list (characters.csv)
-    ch_list = pd.read_csv('./data/characters.csv')
-    ch_list = ch_list['Name'].tolist() # convert to list
-    orig_count = len(ch_list) # get the original count
-    ch_list_lower = [x.lower() for x in ch_list] # convert to lowercase
-    ch_list_lower = list(dict.fromkeys(ch_list_lower)) # remove duplicates
+    ch_list = pd.read_csv("./data/characters.csv")
+    ch_list = ch_list["Name"].tolist()  # convert to list
+    orig_count = len(ch_list)  # get the original count
+    ch_list_lower = [x.lower() for x in ch_list]  # convert to lowercase
+    ch_list_lower = list(dict.fromkeys(ch_list_lower))  # remove duplicates
     # now go through ch_list and remove any characters not in ch_list_lower
     ch_list_upd = [x for x in ch_list if x.lower() in ch_list_lower]
     # save the updated list to the characters.csv file with the header 'Name'
-    ch_list_upd = pd.DataFrame(ch_list_upd, columns=['Name'])
-    ch_list_upd.to_csv('./data/characters.csv', index=False)
-    print(f' {orig_count} characters in the list.')
+    ch_list_upd = pd.DataFrame(ch_list_upd, columns=["Name"])
+    ch_list_upd.to_csv("./data/characters.csv", index=False)
+    print(f" {orig_count} characters in the list.")
     if orig_count != len(ch_list_upd):
-        print(f'  - {orig_count - len(ch_list_upd)} duplicates removed.')
-        print(f'Updated characters.csv file with {len(ch_list_upd)} unique characters.')
+        print(f"  - {orig_count - len(ch_list_upd)} duplicates removed.")
+        print(f"Updated characters.csv file with {len(ch_list_upd)} unique characters.")
     else:
-        print(f'\nPassed Check 1.\n')
+        print(f"\nPassed Check 1.\n")
 
     main()  # run the main function when the script is run
 
     print("Done")
-
-
-
 
 
 # Notes:
