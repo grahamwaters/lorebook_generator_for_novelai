@@ -42,7 +42,7 @@ conference-radar==0.10.1
 configobj==5.0.6
 contourpy==1.0.5
 coverage==6.4.4
-cryptography==37.0.4
+cryptography==39.0.1
 cycler==0.11.0
 cymem==2.0.6
 datefinder==0.7.3
